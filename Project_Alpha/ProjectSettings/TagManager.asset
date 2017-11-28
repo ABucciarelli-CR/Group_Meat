@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Corpse
+  - UnEatable
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -13,11 +17,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - player
+  - enemy
+  - playerDamageArea
+  - corpse
+  - ground
   - 
   - 
   - 
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: corpse
+    uniqueID: 4082418231
+    locked: 0
+  - name: player
+    uniqueID: 741974043
+    locked: 0
+  - name: enemy
+    uniqueID: 775600805
+    locked: 0
+  - name: ground
+    uniqueID: 1864014581
     locked: 0
