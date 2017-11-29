@@ -118,9 +118,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4798709846587248}
   - component: {fileID: 212800774272531110}
-  - component: {fileID: 61506056387263064}
+  - component: {fileID: 61606613823008370}
+  - component: {fileID: 114912151999499022}
   m_Layer: 10
-  m_Name: DamageHitBox
+  m_Name: AttackHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,6 +193,8 @@ GameObject:
   - component: {fileID: 61042430500004922}
   - component: {fileID: 114725742420858288}
   - component: {fileID: 114350179339841894}
+  - component: {fileID: 114530660987050772}
+  - component: {fileID: 114564726556900528}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -221,7 +224,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894979789325452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.01, y: -2.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7715329, y: 1.7715304, z: 1}
   m_Children:
   - {fileID: 4824403053174358}
@@ -240,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 1337074898162348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.47, y: -0.11, z: 0}
-  m_LocalScale: {x: 2.8224146, y: 5.6448364, z: 0}
+  m_LocalScale: {x: 2.8224146, y: 7.9115925, z: 0}
   m_Children: []
   m_Father: {fileID: 4606773618635164}
   m_RootOrder: 3
@@ -379,7 +382,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.68}
   m_EdgeRadius: 0
---- !u!61 &61506056387263064
+--- !u!61 &61606613823008370
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -402,7 +405,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
 --- !u!81 &81158791680946526
 AudioListener:
@@ -477,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -485,7 +488,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -493,6 +496,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114530660987050772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894979789325452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6d54a905d26104dafd556c9bb00244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 1000
+  lifeBar: {fileID: 114577895299564378}
 --- !u!114 &114562643381333646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +530,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114564726556900528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894979789325452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6c94a25c0be81499e1125ae602da4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalDamage: 10
+  grabDamage: 5
+  damageAreaGameObject: {fileID: 1337074898162348}
 --- !u!114 &114577895299564378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,7 +586,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.237
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -600,18 +630,18 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Material: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -643,6 +673,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c39af977959204288b32eed27a5539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114912151999499022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337074898162348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290947af015b6b04696311461c9424a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter: 1
+  onTriggerExit: 0
+  onTriggerStay: 0
+  whoIsEnter: {fileID: 0}
+  whoIsExit: {fileID: 0}
+  whoIsStay: {fileID: 0}
 --- !u!124 &124239697627932048
 Behaviour:
   m_ObjectHideFlags: 1

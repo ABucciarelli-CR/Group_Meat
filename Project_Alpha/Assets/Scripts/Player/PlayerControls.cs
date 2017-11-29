@@ -9,29 +9,41 @@ namespace Player
     {
     
         private PlayerMain playerMain;
+        private AttackAndGrab attackAndGrab;
         private float leftAndRightMovement;
+        private bool attack = false;
+        private bool grab = false;
         private bool jump = false;
 
 
         // Use this for initialization
-        public void Awake()
+        void Awake()
         {
             playerMain = GetComponent<PlayerMain>();
+            attackAndGrab = GetComponent<AttackAndGrab>();
         }
         
-        public void Update()
+        void Update()
         {
             leftAndRightMovement = Input.GetAxis("Horizontal");
+            attack = Input.GetButtonDown("Attack");
+            grab = Input.GetButtonDown("Grab");
 
             //if (!jump)
             //{
-                // Read the jump input in Update so button presses aren't missed.
-                jump = Input.GetButtonDown("Jump");
+            // Read the jump input in Update so button presses aren't missed.
+            jump = Input.GetButtonDown("Jump");
             //}
 
 
             playerMain.Move(jump, leftAndRightMovement);
+            attackAndGrab.AttackEnemy(attack);
+            attackAndGrab.GrabEnemy(grab);
+
+
             jump = false;
+
+
 
         }
     }

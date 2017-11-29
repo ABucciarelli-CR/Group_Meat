@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Player
 {
@@ -23,6 +22,7 @@ namespace Player
         [SerializeField] private LayerMask whatIsGround;
         private Rigidbody2D rb2d;
         private Transform transform2d;
+
         private float groundRadiusCollision = .3f;
         private float ceilingRadiusCollision = .2f;
 
@@ -31,8 +31,7 @@ namespace Player
         {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
-
-
+            
         }
         
         void FixedUpdate()
@@ -51,6 +50,7 @@ namespace Player
             // Set the vertical animation
             anim.SetFloat("vSpeed", rb2d.velocity.y);
         }
+
 
         public void Move(bool jump, float leftRightMove)
         {
@@ -83,7 +83,7 @@ namespace Player
 
         public void Flip()
         {
-            Debug.Log("Do Flip");
+            //Debug.Log("Do Flip");
             facingRight = !facingRight;
             Vector3 normalScale = transform.localScale;
             normalScale.x *= -1;
