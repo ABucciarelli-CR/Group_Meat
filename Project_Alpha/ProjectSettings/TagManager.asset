@@ -8,6 +8,7 @@ TagManager:
   - Corpse
   - UnEatable
   - Ground
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - playerDamageArea
   - corpse
   - ground
-  - 
+  - midGhost
   - 
   - 
   - 

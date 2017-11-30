@@ -8,7 +8,7 @@ namespace Player
     public class AttackAndGrab : MonoBehaviour
     {
 
-        public int normalDamage = 10;
+        public int normalDamage = 20;
         public int grabDamage = 5;
 
 
@@ -16,6 +16,8 @@ namespace Player
         [SerializeField] private GameObject damageAreaGameObject;
         private DamageAreaCollider damageAreaCollider;
         private Animator anim;
+
+        //RaycastHit2D ray2D;
 
 
         void Awake()
@@ -39,7 +41,10 @@ namespace Player
             {
 
                 //Debug.Log("Attacked");
-                damageAreaCollider.whoIs.gameObject.SendMessage("Damage", normalDamage);
+                if(!damageAreaCollider.whoIs.CompareTag("Shield"))
+                {
+                    damageAreaCollider.whoIs.gameObject.SendMessage("Damage", normalDamage);
+                }
                 //Debug.Log(damageAreaCollider.whoIsEnter);
                 //damageAreaCollider.whoIsExit.SendMessage("Damage", normalDamage);
                 //damageAreaCollider.whoIsStay.SendMessage("Damage", normalDamage);

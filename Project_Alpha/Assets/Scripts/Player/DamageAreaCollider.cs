@@ -10,7 +10,14 @@ namespace Player
         public bool onTriggerExit = false;
         public bool onTriggerStay = false;
         public Collider2D whoIs;
+        public Collider2D[] enemyHitted;
 
+        public void CeckHit()
+        {
+
+
+        }
+        /*
         private void OnTriggerEnter2D(Collider2D other)
         {
             //Debug.Log("Enter");
@@ -35,7 +42,6 @@ namespace Player
             onTriggerEnter = false;
             onTriggerExit = false;
             onTriggerStay = true;
-            whoIs = other;
-        }
+        }*/
     }
 }

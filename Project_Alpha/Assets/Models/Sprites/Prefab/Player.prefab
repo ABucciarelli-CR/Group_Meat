@@ -463,6 +463,8 @@ MonoBehaviour:
   moveForce: 10
   gravity: -10
   jumpForce: 1000
+  dashTime: 0.01
+  dashSpeed: 1000
   groundCheck: {fileID: 4984823797818854}
   ceilingCheck: {fileID: 4967222402650848}
   isGrounded: 0
@@ -687,9 +689,7 @@ MonoBehaviour:
   onTriggerEnter: 1
   onTriggerExit: 0
   onTriggerStay: 0
-  whoIsEnter: {fileID: 0}
-  whoIsExit: {fileID: 0}
-  whoIsStay: {fileID: 0}
+  whoIs: {fileID: 0}
 --- !u!124 &124239697627932048
 Behaviour:
   m_ObjectHideFlags: 1

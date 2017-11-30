@@ -13,6 +13,8 @@ namespace Player
         public float moveForce = 10f;
         public float gravity = -10f;
         public float jumpForce = 1000f;
+        public float dashTime = .01f;
+        public float dashSpeed = 5000f;
         public Transform groundCheck;
         public Transform ceilingCheck;
 
@@ -20,8 +22,10 @@ namespace Player
         [SerializeField] private bool isGrounded = false;
         private Animator anim;
         [SerializeField] private LayerMask whatIsGround;
+        private float currentDashTime;
         private Rigidbody2D rb2d;
         private Transform transform2d;
+        private float lastMove;
 
         private float groundRadiusCollision = .3f;
         private float ceilingRadiusCollision = .2f;
@@ -33,7 +37,12 @@ namespace Player
             rb2d = GetComponent<Rigidbody2D>();
             
         }
-        
+
+        private void Start()
+        {
+            currentDashTime = dashTime;
+        }
+
         void FixedUpdate()
         {
             isGrounded = false;
@@ -52,8 +61,31 @@ namespace Player
         }
 
 
-        public void Move(bool jump, float leftRightMove)
+        public void Move(bool jump, float leftRightMove, bool dash)
         {
+
+            if(leftRightMove != 0)
+            {
+                lastMove = leftRightMove;
+            }
+
+            if(dash)
+            {
+                currentDashTime = 0f;
+                //Debug.Log("Dashing");
+            }
+            if(currentDashTime < dashTime)
+            {
+                gameObject.layer = 13;
+                //Debug.Log(Mathf.Sign(lastMove) * dashSpeed);
+                rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+                currentDashTime += Time.deltaTime;
+            }
+            else
+            {
+                gameObject.layer = 8;
+            }
+
 
             if (isGrounded && jump)
             {
