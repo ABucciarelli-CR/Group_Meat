@@ -8,18 +8,35 @@ namespace Player
     [RequireComponent(typeof(PlayerMain))]
     public class Life : MonoBehaviour
     {
-
-        public int life = 1000;
+        public int maxLife = 1000;
+        
 
         public Slider lifeBar;
+
+        private int actualLife = 1000;
 
         // Use this for initialization
         void Awake()
         {
             //lifeBar = GetComponent<Slider>();
-            lifeBar.maxValue = life;
-            lifeBar.value = life;
+            lifeBar.maxValue = maxLife;
+            lifeBar.value = maxLife;
+            actualLife = maxLife;
 
+        }
+
+        public void Damage(int dmg)
+        {
+            actualLife -= dmg;
+            Debug.Log("Player Damaged");
+        }
+
+        private void Update()
+        {
+            if(lifeBar.value > actualLife)
+            {
+                lifeBar.value = actualLife;
+            }
         }
     }
 }
