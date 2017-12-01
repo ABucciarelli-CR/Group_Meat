@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace Enemy
 {
+    [RequireComponent(typeof(EnemyStateMachine))]
     public class EnemyStateMachine : MonoBehaviour
     {
 
         [HideInInspector] public EnemyState enemyState;
 
-        
+
         public float speed = .01f;
         public int damage;
         public float attackDelay;
@@ -19,15 +19,21 @@ namespace Enemy
         [HideInInspector] public float direction = 1;
         [HideInInspector] public float timeToChangeDirection = 5f;
         [HideInInspector] public float ttcd;
-        /*[HideInInspector]*/ public Collider2D[] hitColliders;
+        /*[HideInInspector]*/
+        public Collider2D[] hitColliders;
         [HideInInspector] public int maxArray = 100;
+        public LayerMask deadLayer;
+
+        private EnemyHealth enemyHealth;
+        
 
 
         public enum EnemyState
         {
             idle,
             attack,
-            searchPlayer
+            searchPlayer,
+            stun
         }
 
         void Awake()
@@ -37,11 +43,18 @@ namespace Enemy
 
         void Start()
         {
+            deadLayer = (LayerMask.NameToLayer("corpse"));
+            enemyHealth = GetComponent<EnemyHealth>();
             enemyState = EnemyState.idle;
+            //Debug.Log(deadLayer.value);
         }
 
         void Update()
         {
+            if (enemyHealth.health <= 0)
+            {
+                enemyState = EnemyState.stun;
+            }
 
             switch (enemyState)
             {
@@ -55,6 +68,10 @@ namespace Enemy
 
                 case EnemyState.searchPlayer:
                     SearchPlayer();
+                    break;
+
+                case EnemyState.stun:
+                    Stun();
                     break;
 
                 default:
@@ -72,5 +89,12 @@ namespace Enemy
         public virtual void SearchPlayer()
         { }
 
+        public virtual void Stun()
+        {
+            gameObject.tag = "Corpse";
+            gameObject.layer = deadLayer;
+        }
+
     }
 }
+

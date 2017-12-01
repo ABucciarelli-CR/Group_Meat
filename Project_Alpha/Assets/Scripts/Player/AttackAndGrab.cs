@@ -5,25 +5,36 @@ using UnityEngine;
 namespace Player
 {
     [RequireComponent(typeof(PlayerMain))]
+    [RequireComponent(typeof(Life))]
     public class AttackAndGrab : MonoBehaviour
     {
 
         public int normalDamage = 20;
         public int grabDamage = 5;
+        public int heal = 50;
 
 
         //private bool enemyIsGrabbed = false;
+        private Life life;
         [SerializeField] private GameObject damageAreaGameObject;
+        public ContactFilter2D contactFilter;
         private DamageAreaCollider damageAreaCollider;
+        public Collider2D eatCollider;
         private Animator anim;
         private int i = 0;
+
+        private Collider2D[] enemyDeadHitted;
+        private int maxEnemyDeadHittedArray = 100;
 
         //RaycastHit2D ray2D;
 
 
         void Awake()
         {
+            life = GetComponent<Life>();
+            enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
             anim = GetComponent<Animator>();
+            //eatCollider = GetComponent<Collider2D>();
             damageAreaCollider = damageAreaGameObject.GetComponent<DamageAreaCollider>();
         }
 
@@ -92,10 +103,29 @@ namespace Player
             }
             
         }*/
+
+        public void EatEnemy(bool eat)
+        {
+            if(eat)
+            {
+                //Debug.Log("Eating");
+                eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
+                foreach (Collider2D collider in enemyDeadHitted)
+                {
+                    if (enemyDeadHitted[i].CompareTag("Corpse"))
+                    {
+                        Destroy(enemyDeadHitted[i].gameObject);
+                        life.Heal(heal);
+                        //Debug.Log("Eated");
+                    }
+                    i++;
+                }
+            }
+        }
         
         IEnumerator WaitForAnimation(Animation animation)
         {
-            Debug.Log("DebugghiIn");
+            //Debug.Log("DebugghiIn");
             yield return new WaitForSeconds(animation["Attack"].length);
         }
 

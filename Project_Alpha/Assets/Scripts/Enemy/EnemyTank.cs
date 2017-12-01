@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Enemy
 {
-
     [RequireComponent(typeof(EnemyStateMachine))]
     public class EnemyTank : EnemyStateMachine
     {
         public float offenceArea = 10f;
         public float maxVisibleDistance = 5f;
-        public int tankDamage = 20;
-        public float tankAttackDelay = 5;
+        public int tankDamage = 100;
+        public float tankAttackDelay = 2f;
 
         private float delay = 0;
         private int i = 0;
@@ -34,7 +34,7 @@ namespace Enemy
             {
                 delay -= Time.fixedDeltaTime;
             }
-            if(delay < 0)
+            if (delay < 0)
             {
                 delay = 0;
             }
@@ -58,7 +58,7 @@ namespace Enemy
 
         public override void Attack()
         {
-            Debug.Log("damaging");
+            //Debug.Log("damaging");
             hitColliders[i].gameObject.SendMessage("Damage", damage);
             i = 0;
             delay = attackDelay;
@@ -73,10 +73,10 @@ namespace Enemy
             //Debug.Log("Me collide");
             foreach (Collider2D collider in hitColliders)
             {
-                
+
                 if (hitColliders[i] != null)
                 {
-                    Debug.Log("Hitted" + i);
+                    //Debug.Log("Hitted" + i);
                     if (hitColliders[i].CompareTag("Player") && delay == 0)
                     {
                         enemyState = EnemyState.attack;
@@ -93,7 +93,7 @@ namespace Enemy
                 }
             }
             //Debug.Log("Exit");
-            if(enemyState == EnemyState.searchPlayer)
+            if (enemyState == EnemyState.searchPlayer)
             {
                 enemyState = EnemyState.idle;
                 i = 0;
@@ -104,4 +104,5 @@ namespace Enemy
 
         }
     }
+
 }

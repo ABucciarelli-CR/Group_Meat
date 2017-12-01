@@ -15,6 +15,7 @@ namespace Player
         //private bool grab = false;
         private bool jump = false;
         private bool dash = false;
+        private bool eat = false;
 
 
         // Use this for initialization
@@ -30,6 +31,7 @@ namespace Player
             attack = Input.GetButtonDown("Attack");
             //grab = Input.GetButtonDown("Grab");
             dash = Input.GetButtonDown("Dash");
+            eat = Input.GetButtonDown("Eat");
 
             //if (!jump)
             //{
@@ -41,6 +43,7 @@ namespace Player
             playerMain.Move(jump, leftAndRightMovement, dash);
             attackAndGrab.AttackEnemy(attack);
             //attackAndGrab.GrabEnemy(grab);
+            attackAndGrab.EatEnemy(eat);
 
 
             jump = false;

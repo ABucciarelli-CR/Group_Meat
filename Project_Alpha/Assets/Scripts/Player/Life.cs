@@ -31,11 +31,27 @@ namespace Player
             Debug.Log("Player Damaged");
         }
 
+        public void Heal(int heal)
+        {
+            if((actualLife + heal) >= maxLife)
+            {
+                actualLife = maxLife;
+            }
+            else
+            {
+                actualLife += heal;
+            }
+        }
+
         private void Update()
         {
             if(lifeBar.value > actualLife)
             {
                 lifeBar.value = actualLife;
+            }
+            if(actualLife <= 0)
+            {
+                Debug.Log("Sei Morto");
             }
         }
     }
