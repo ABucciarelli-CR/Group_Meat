@@ -6,7 +6,7 @@ public class EnemyAlive : MonoBehaviour
 {
 
 	public float speed = .01f;
-    public float life = -1;
+    public float life = 0;
 
     public GameObject deadBody;
 
