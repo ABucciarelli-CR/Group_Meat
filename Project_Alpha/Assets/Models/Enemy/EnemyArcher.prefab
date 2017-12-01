@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 58380452408276234}
   - component: {fileID: 114297171087717318}
   - component: {fileID: 114720744593888452}
-  - component: {fileID: 114205159042408928}
+  - component: {fileID: 114261174878613148}
   m_Layer: 9
   m_Name: EnemyArcher
   m_TagString: Enemy
@@ -59,7 +59,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114205159042408928
+--- !u!114 &114261174878613148
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811349277448878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f99f6ac7b47a24eb84825aa9ca6244, type: 3}
+  m_Script: {fileID: 11500000, guid: 454af97e3d44a574a8b8c8bdb0caa40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 0
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -97,10 +97,11 @@ MonoBehaviour:
   deadLayer:
     serializedVersion: 2
     m_Bits: 0
-  offenceArea: 10
-  maxVisibleDistance: 5
-  tankDamage: 20
-  tankAttackDelay: 5
+  escapeArea: 10
+  maxVisibleDistance: 50
+  archerDamage: 100
+  archerAttackDelay: 2
+  arrow: {fileID: 1389375353478948, guid: 61e5cc062fa9eec4d95e91eab99cbb93, type: 2}
 --- !u!114 &114297171087717318
 MonoBehaviour:
   m_ObjectHideFlags: 1
