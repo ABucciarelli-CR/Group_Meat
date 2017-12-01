@@ -28,7 +28,7 @@ namespace Player
         private float lastMove;
 
         private float groundRadiusCollision = .3f;
-        private float ceilingRadiusCollision = .2f;
+        //private float ceilingRadiusCollision = .2f;
 
        
         void Awake()

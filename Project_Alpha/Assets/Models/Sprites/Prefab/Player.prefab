@@ -464,7 +464,7 @@ MonoBehaviour:
   gravity: -10
   jumpForce: 1000
   dashTime: 0.01
-  dashSpeed: 1000
+  dashSpeed: 5000
   groundCheck: {fileID: 4984823797818854}
   ceilingCheck: {fileID: 4967222402650848}
   isGrounded: 0
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6d54a905d26104dafd556c9bb00244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 1000
+  maxLife: 1000
   lifeBar: {fileID: 114577895299564378}
 --- !u!114 &114562643381333646
 MonoBehaviour:
@@ -689,7 +689,23 @@ MonoBehaviour:
   onTriggerEnter: 1
   onTriggerExit: 0
   onTriggerStay: 0
+  playerAttackCollider: {fileID: 61606613823008370}
+  contactFilter2D:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1024
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   whoIs: {fileID: 0}
+  enemyHitted: []
 --- !u!124 &124239697627932048
 Behaviour:
   m_ObjectHideFlags: 1

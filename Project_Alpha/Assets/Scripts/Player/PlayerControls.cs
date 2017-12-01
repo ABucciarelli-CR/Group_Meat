@@ -12,7 +12,7 @@ namespace Player
         private AttackAndGrab attackAndGrab;
         private float leftAndRightMovement;
         private bool attack = false;
-        private bool grab = false;
+        //private bool grab = false;
         private bool jump = false;
         private bool dash = false;
 
@@ -28,7 +28,7 @@ namespace Player
         {
             leftAndRightMovement = Input.GetAxis("Horizontal");
             attack = Input.GetButtonDown("Attack");
-            grab = Input.GetButtonDown("Grab");
+            //grab = Input.GetButtonDown("Grab");
             dash = Input.GetButtonDown("Dash");
 
             //if (!jump)
@@ -40,7 +40,7 @@ namespace Player
 
             playerMain.Move(jump, leftAndRightMovement, dash);
             attackAndGrab.AttackEnemy(attack);
-            attackAndGrab.GrabEnemy(grab);
+            //attackAndGrab.GrabEnemy(grab);
 
 
             jump = false;
