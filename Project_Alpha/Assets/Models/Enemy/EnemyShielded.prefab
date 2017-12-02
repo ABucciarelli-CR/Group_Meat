@@ -153,6 +153,13 @@ MonoBehaviour:
   deadLayer:
     serializedVersion: 2
     m_Bits: 0
+  liveLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  stunnedTime: 0
   offenceArea: 10
   maxVisibleDistance: 5
   tankDamage: 20
@@ -210,6 +217,13 @@ MonoBehaviour:
   deadLayer:
     serializedVersion: 2
     m_Bits: 2048
+  liveLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  stunnedTime: 0
 --- !u!212 &212515605274089580
 SpriteRenderer:
   m_ObjectHideFlags: 1

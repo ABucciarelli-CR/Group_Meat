@@ -60,7 +60,10 @@ namespace Player
                             //Debug.Log("Hitted" + i);
                             if (damageAreaCollider.enemyHitted[i] != null)
                             {
-                                damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", normalDamage);
+                                if(damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
+                                {
+                                    damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", normalDamage);
+                                }
                                 i++;
                             }
                             else

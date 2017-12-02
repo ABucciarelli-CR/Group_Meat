@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyStateMachine))]
+[RequireComponent(typeof(EnemyHealth))]
 public class EnemyArcher : EnemyStateMachine
 {
+    public int archerDamage = 100;
+    public int archerHealth = 50;
+
     public float escapeArea = 10f;
     public float maxVisibleDistance = 50f;
-    public int archerDamage = 100;
     public float archerAttackDelay = 1f;
     //public float arrowVelocity = 50f;
     public GameObject arrowPrefab;
@@ -15,7 +18,9 @@ public class EnemyArcher : EnemyStateMachine
 
     private float delay = 0;
     private int i = 0;
+    private bool healtToSet = true;
     private bool thereIsAPlayer = false;//variable for check if the player CI SEGUE!!!!
+    
 
 
     private void Awake()
@@ -24,12 +29,26 @@ public class EnemyArcher : EnemyStateMachine
         attackDelay = archerAttackDelay;
         delay = archerAttackDelay;
 
+        
+
         hitColliders = new Collider2D[maxArray];
     }
 
     private void FixedUpdate()
     {
+        if(healtToSet)
+        {
+            enemyHealth.SetHealth(archerHealth);
+            healtToSet = false;
+        }
         
+        if(regenerate)
+        {
+            enemyHealth.Heal(healthRegenAfterStun);
+            regenerate = false;
+            onlyOneDeath = true;
+        }
+
         if(player == null)
         {
             player = GameObject.FindWithTag("Player");

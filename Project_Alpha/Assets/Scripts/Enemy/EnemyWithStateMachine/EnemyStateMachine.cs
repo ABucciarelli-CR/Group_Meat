@@ -20,8 +20,15 @@ public class EnemyStateMachine : MonoBehaviour
     public Collider2D[] hitColliders;
     [HideInInspector] public int maxArray = 100;
     public LayerMask deadLayer;
+    public LayerMask liveLayer;
+    public float stunTime = 5f;
+    public int healthRegenAfterStun = 20;//is in %
+    public bool activeStunTime = true;
+    [HideInInspector] public bool regenerate = false;//to abilitate the enemy regeneration afrer stun
+    [HideInInspector] public bool onlyOneDeath = true; //ceck to not die several times
 
-    private EnemyHealth enemyHealth;
+    [HideInInspector] public EnemyHealth enemyHealth;
+    [HideInInspector] public float stunnedTime = 0;
         
 
 
@@ -49,10 +56,29 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Update()
     {
-        if (enemyHealth.health <= 0)
+        if (enemyHealth.health <= 0 && onlyOneDeath)
         {
+            onlyOneDeath = false;
             enemyState = EnemyState.stun;
         }
+
+        if (activeStunTime)
+        {
+            if (stunnedTime < stunTime && enemyState == EnemyState.stun)
+            {
+                stunnedTime += Time.deltaTime;
+                //Debug.Log(stunnedTime);
+            }
+            else if (stunnedTime >= stunTime && enemyState == EnemyState.stun)
+            {
+                regenerate = true;
+                enemyState = EnemyState.idle;
+                gameObject.tag = "Enemy";
+                gameObject.layer = deadLayer;
+                stunnedTime = 0;
+            }
+        }
+
 
         switch (enemyState)
         {

@@ -393,16 +393,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114261174878613148, guid: 4ccb441af51938448a63f3bb12caa240,
-        type: 2}
-      propertyPath: arrowVelocity
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114261174878613148, guid: 4ccb441af51938448a63f3bb12caa240,
-        type: 2}
-      propertyPath: archerAttackDelay
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ccb441af51938448a63f3bb12caa240, type: 2}
   m_IsPrefabParent: 0
@@ -899,6 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  maxHealth: 0
   playerAndShieldsLayerMask:
     serializedVersion: 2
     m_Bits: 0

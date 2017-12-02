@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811349277448878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.4, y: 7.33, z: 0}
+  m_LocalPosition: {x: -22.4, y: 6.29, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,11 +97,17 @@ MonoBehaviour:
   deadLayer:
     serializedVersion: 2
     m_Bits: 0
+  liveLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  stunnedTime: 0
   escapeArea: 10
   maxVisibleDistance: 50
   archerDamage: 100
-  archerAttackDelay: 2
-  arrowVelocity: 5
+  archerAttackDelay: 1
   arrowPrefab: {fileID: 1389375353478948, guid: 61e5cc062fa9eec4d95e91eab99cbb93,
     type: 2}
   player: {fileID: 0}
@@ -158,6 +164,13 @@ MonoBehaviour:
   deadLayer:
     serializedVersion: 2
     m_Bits: 2048
+  liveLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  stunnedTime: 0
 --- !u!212 &212325278991086032
 SpriteRenderer:
   m_ObjectHideFlags: 1

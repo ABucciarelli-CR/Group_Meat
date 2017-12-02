@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int health = 50;
+    /*[HideInInspector]*/public int health;
+    [HideInInspector]public int maxHealth;
     public LayerMask playerAndShieldsLayerMask;
 
     private float maxDistance;
@@ -40,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log("Inside");
 
             //if (ceckPlayerRightRayHit2D.collider.CompareTag("player") || ceckPlayerLeftRayHit2D.collider.CompareTag("player"))
-            Debug.Log(hitLeft.collider.tag);
+            //Debug.Log(hitLeft.collider.tag);
             if (hitLeft.collider.CompareTag("Player") || hitRight.collider.CompareTag("Player"))
             {
                 health -= dmg;
@@ -68,6 +69,17 @@ public class EnemyHealth : MonoBehaviour
         }
     }*/
         
+    public void SetHealth(int settedHealth)
+    {
+        health = settedHealth;
+        maxHealth = settedHealth;
+    }
+
+    public void Heal(int heal)
+    {
+        health = heal;
+    }
+
     void Update()
     {
         if (health <= 0)

@@ -4,15 +4,22 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(EnemyStateMachine))]
+[RequireComponent(typeof(EnemyHealth))]
 public class EnemyTank : EnemyStateMachine
 {
+    public int tankDamage = 100;
+    public int tankHealth = 80;
+
     public float offenceArea = 10f;
     public float maxVisibleDistance = 5f;
-    public int tankDamage = 100;
     public float tankAttackDelay = 2f;
+    
 
     private float delay = 0;
     private int i = 0;
+
+    private bool healtToSet = true;
+
 
 
     private void Awake()
@@ -21,6 +28,8 @@ public class EnemyTank : EnemyStateMachine
         attackDelay = tankAttackDelay;
         delay = tankAttackDelay;
 
+        
+
         hitColliders = new Collider2D[maxArray];
     }
 
@@ -28,6 +37,20 @@ public class EnemyTank : EnemyStateMachine
     {
         //Debug.Log("Me update");
         //Debug.Log(delay);
+        if (healtToSet)
+        {
+            enemyHealth.SetHealth(tankHealth);
+            healtToSet = false;
+        }
+
+        if (regenerate)
+        {
+            //Debug.Log("Regenerate");
+            enemyHealth.Heal(healthRegenAfterStun);
+            regenerate = false;
+            onlyOneDeath = true;
+        }
+
         if (delay >= 0)
         {
             delay -= Time.fixedDeltaTime;
