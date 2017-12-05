@@ -24,12 +24,22 @@ public class EnemyStateMachine : MonoBehaviour
     public float stunTime = 5f;
     public int healthRegenAfterStun = 20;//is in %
     public bool activeStunTime = true;
+    public GameObject offenseState;//the gameObject that visualize
     [HideInInspector] public bool regenerate = false;//to abilitate the enemy regeneration afrer stun
     [HideInInspector] public bool onlyOneDeath = true; //ceck to not die several times
 
     [HideInInspector] public EnemyHealth enemyHealth;
     [HideInInspector] public float stunnedTime = 0;
-        
+
+    private Color enemyStandardColor;
+    private Color enemyAttackColor;
+    private Color enemyStunnedColor;
+    private Color enemyDamagedColor;
+    private Color enemyOffenseStateStandardColor;
+
+    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer offenseStateSpriteRenderer;
+
 
 
     public enum EnemyState
@@ -48,6 +58,22 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Start()
     {
+        //offenseState = offenseState.GetComponent<GameObject>();
+
+        enemyStandardColor = Color.black;
+        enemyAttackColor = new Color(1f, 0.3f, 0f);
+        enemyStunnedColor = Color.yellow;
+        enemyDamagedColor = Color.red;
+        enemyOffenseStateStandardColor = Color.white;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        offenseStateSpriteRenderer = offenseState.GetComponent<SpriteRenderer>();
+
+        spriteRenderer.color = enemyStandardColor;
+        offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
+
+        
+
         deadLayer = (LayerMask.NameToLayer("corpse"));
         enemyHealth = GetComponent<EnemyHealth>();
         enemyState = EnemyState.idle;
@@ -56,6 +82,16 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Update()
     {
+        /*
+        if(spriteRenderer == null && offenseStateSpriteRenderer == null)
+        {
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            offenseStateSpriteRenderer = offenseState.GetComponent<SpriteRenderer>();
+
+            
+        }*/
+
+
         if (enemyHealth.health <= 0 && onlyOneDeath)
         {
             onlyOneDeath = false;
@@ -109,21 +145,40 @@ public class EnemyStateMachine : MonoBehaviour
 
 
     public virtual void Idle()
-    { }
+    {
+        if(spriteRenderer.color != enemyDamagedColor)
+        {
+            spriteRenderer.color = enemyStandardColor;
+        }
+        
+    }
 
     public virtual void Attack()
-    { }
+    {
+        offenseStateSpriteRenderer.color = enemyAttackColor;
+    }
 
     public virtual void SearchPlayer()
-    { }
+    {
+        offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
+    }
 
     public virtual void Escape()
     { }
 
     public virtual void Stun()
     {
+        //Debug.Log("name:" + spriteRenderer.name);
+        spriteRenderer.color = enemyStunnedColor;
         gameObject.tag = "Corpse";
         gameObject.layer = deadLayer;
+    }
+
+    public virtual IEnumerator WaitTime(float time)
+    {
+        Debug.Log("waiting");
+        yield return new WaitForSeconds(time);
+        Debug.Log("stop waiting");
     }
 
 }

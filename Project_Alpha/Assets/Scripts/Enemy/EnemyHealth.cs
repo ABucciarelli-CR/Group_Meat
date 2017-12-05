@@ -11,6 +11,12 @@ public class EnemyHealth : MonoBehaviour
     private float maxDistance;
     //private float minDepth;
     //private float maxDepth;
+    private SpriteRenderer spriteRenderer;
+    private Color enemyDamagedColor;
+    private Color enemyStandardColor;
+
+    private int waitFrame = 2;
+    private int waitedFrame = 0;
 
 
     private RaycastHit2D hitLeft;
@@ -23,6 +29,11 @@ public class EnemyHealth : MonoBehaviour
         maxDistance = Mathf.Infinity;
         //minDepth = -Mathf.Infinity;
         //maxDepth = Mathf.Infinity;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        enemyDamagedColor = Color.red;
+        enemyStandardColor = Color.black;
 
         playerAndShieldsLayerMask = (1 << LayerMask.NameToLayer("player")) | (1 << LayerMask.NameToLayer("blockPlayer"));
     }
@@ -44,9 +55,11 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log(hitLeft.collider.tag);
             if (hitLeft.collider.CompareTag("Player") || hitRight.collider.CompareTag("Player"))
             {
+                spriteRenderer.color = enemyDamagedColor;
                 health -= dmg;
-                //Debug.Log("Damaged");
+                Debug.Log("Damaged");
             }
+            
         }
 
     }
@@ -82,6 +95,16 @@ public class EnemyHealth : MonoBehaviour
 
     void Update()
     {
+        if (spriteRenderer.color == enemyDamagedColor && waitedFrame == waitFrame)
+        {
+            waitedFrame = 0;
+            spriteRenderer.color = enemyStandardColor;
+        }
+        if(spriteRenderer.color == enemyDamagedColor)
+        {
+            waitedFrame++;
+        }
+
         if (health <= 0)
         {
             Debug.Log("DEAD");

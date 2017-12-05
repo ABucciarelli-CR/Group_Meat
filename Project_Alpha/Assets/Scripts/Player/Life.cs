@@ -28,7 +28,7 @@ namespace Player
         public void Damage(int dmg)
         {
             actualLife -= dmg;
-            Debug.Log("Player Damaged");
+            //Debug.Log("Player Damaged");
         }
 
         public void Heal(int heal)

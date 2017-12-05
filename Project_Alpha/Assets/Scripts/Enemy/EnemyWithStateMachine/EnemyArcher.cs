@@ -67,6 +67,8 @@ public class EnemyArcher : EnemyStateMachine
 
     public override void Idle()
     {
+        base.Idle();
+
         //Debug.Log("To search");
         enemyState = EnemyState.searchPlayer;
 
@@ -74,6 +76,8 @@ public class EnemyArcher : EnemyStateMachine
 
     public override void Attack()
     {
+        base.Attack();
+
         //Debug.Log("damaging");
         /*
         hitColliders[i].gameObject.SendMessage("Damage", damage);
@@ -96,6 +100,8 @@ public class EnemyArcher : EnemyStateMachine
 
     public override void SearchPlayer()
     {
+        base.SearchPlayer();
+
         //check if the player is in the area
         System.Array.Clear(hitColliders, 0, maxArray);
         Physics2D.OverlapCircle(transform.position, maxVisibleDistance, contactFilter, hitColliders);
@@ -160,6 +166,8 @@ public class EnemyArcher : EnemyStateMachine
 
     public override void Escape()
     {
+        base.Escape();
+
         Debug.Log("Ruun forrest, ruuuuuuuuuuuuuuunnnnnnnnnnnn!!!!!!");
         i = 0;
         System.Array.Clear(hitColliders, 0, maxArray);

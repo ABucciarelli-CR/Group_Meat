@@ -63,6 +63,8 @@ public class EnemyTank : EnemyStateMachine
 
     public override void Idle()
     {
+        base.Idle();
+
         ttcd += Time.deltaTime;
         //Debug.Log("Me idle");
         if (ttcd >= timeToChangeDirection)
@@ -79,16 +81,22 @@ public class EnemyTank : EnemyStateMachine
 
     public override void Attack()
     {
+        base.Attack();
+
         //Debug.Log("damaging");
         hitColliders[i].gameObject.SendMessage("Damage", damage);
         i = 0;
         delay = attackDelay;
+        //WaitTime(tankAttackDelay);
+
         System.Array.Clear(hitColliders, 0, maxArray);
         enemyState = EnemyState.searchPlayer;
     }
 
     public override void SearchPlayer()
     {
+        base.SearchPlayer();
+
         Physics2D.OverlapCircle(transform.position, maxVisibleDistance, contactFilter, hitColliders);
         //Debug.DrawRay(transform.position, Vector2.left, Color.green, maxVisibleDistance);
         //Debug.Log("Me collide");
