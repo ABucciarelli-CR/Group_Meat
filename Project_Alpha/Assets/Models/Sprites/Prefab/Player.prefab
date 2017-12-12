@@ -367,7 +367,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -550,12 +550,12 @@ MonoBehaviour:
   jumpForce: 1000
   dashTime: 0.01
   dashSpeed: 5000
-  groundCheck: {fileID: 4984823797818854}
-  ceilingCheck: {fileID: 4967222402650848}
   isGrounded: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4096
+  groundCheck: {fileID: 4984823797818854}
+  ceilingCheck: {fileID: 4967222402650848}
 --- !u!114 &114355696890597098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -596,6 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 1000
   lifeBar: {fileID: 114577895299564378}
+  offenseStateSpriteRenderer: {fileID: 212225742116510286}
 --- !u!114 &114562643381333646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -647,6 +648,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   eatCollider: {fileID: 61130487018317882}
+  offenseStateSpriteRenderer: {fileID: 212225742116510286}
 --- !u!114 &114577895299564378
 MonoBehaviour:
   m_ObjectHideFlags: 1

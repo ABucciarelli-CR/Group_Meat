@@ -15,22 +15,26 @@ namespace Player
         public float jumpForce = 1000f;
         public float dashTime = .01f;
         public float dashSpeed = 5000f;
-        public Transform groundCheck;
-        public Transform ceilingCheck;
-
-
+        
         [SerializeField] private bool isGrounded = false;
-        private Animator anim;
-        [SerializeField] private LayerMask whatIsGround;
         private float currentDashTime;
-        private Rigidbody2D rb2d;
-        private Transform transform2d;
         private float lastMove;
 
         private float groundRadiusCollision = .3f;
         //private float ceilingRadiusCollision = .2f;
 
-       
+        [SerializeField] private LayerMask whatIsGround;
+
+        private Animator anim;
+
+        private Rigidbody2D rb2d;
+
+        private Transform transform2d;
+        public Transform groundCheck;
+        public Transform ceilingCheck;
+
+
+
         void Awake()
         {
             anim = GetComponent<Animator>();

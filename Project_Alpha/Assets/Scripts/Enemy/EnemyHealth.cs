@@ -47,19 +47,33 @@ public class EnemyHealth : MonoBehaviour
         hitRight = Physics2D.Raycast(transform.position, -Vector2.left, maxDistance, playerAndShieldsLayerMask);
 
         //if (ceckPlayerRightRayHit2D.collider != null || ceckPlayerLeftRayHit2D.collider != null)
-        if (hitLeft.collider != null || hitRight != null)
+        if (hitLeft.collider != null || hitRight.collider != null)
         {
             //Debug.Log("Inside");
 
             //if (ceckPlayerRightRayHit2D.collider.CompareTag("player") || ceckPlayerLeftRayHit2D.collider.CompareTag("player"))
+            //Debug.Log(hitRight.collider.tag);
             //Debug.Log(hitLeft.collider.tag);
-            if (hitLeft.collider.CompareTag("Player") || hitRight.collider.CompareTag("Player"))
+
+            if(hitLeft.collider != null)
             {
-                spriteRenderer.color = enemyDamagedColor;
-                health -= dmg;
-                Debug.Log("Damaged");
+                if (hitLeft.collider.CompareTag("Player"))
+                {
+                    spriteRenderer.color = enemyDamagedColor;
+                    health -= dmg;
+                    Debug.Log("Damaged");
+                }
             }
-            
+
+            if (hitRight.collider != null)
+            {
+                if (hitRight.collider.CompareTag("Player"))
+                {
+                    spriteRenderer.color = enemyDamagedColor;
+                    health -= dmg;
+                    Debug.Log("Damaged");
+                }
+            }
         }
 
     }

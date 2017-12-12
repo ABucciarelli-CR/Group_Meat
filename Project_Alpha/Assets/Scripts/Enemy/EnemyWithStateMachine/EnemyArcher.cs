@@ -16,7 +16,7 @@ public class EnemyArcher : EnemyStateMachine
     public GameObject arrowPrefab;
     public GameObject player;
 
-    private float delay = 0;
+    //private float delay = 0;
     private int i = 0;
     private bool healtToSet = true;
     private bool thereIsAPlayer = false;//variable for check if the player CI SEGUE!!!!
@@ -52,16 +52,6 @@ public class EnemyArcher : EnemyStateMachine
         if(player == null)
         {
             player = GameObject.FindWithTag("Player");
-        }
-        //Debug.Log("Me update");
-        //Debug.Log(delay);
-        if (delay >= 0)
-        {
-            delay -= Time.fixedDeltaTime;
-        }
-        if (delay < 0)
-        {
-            delay = 0;
         }
     }
 
@@ -113,6 +103,16 @@ public class EnemyArcher : EnemyStateMachine
             if (hitColliders[i] != null)
             {
                 //Debug.Log("Hitted" + i);
+                if(hitColliders[i].CompareTag("Player") && !stardCountdown)
+                {
+                    stardCountdown = true;
+                }
+
+                if (hitColliders[i].CompareTag("Player") && delay <= (attackDelay/2))
+                {
+                    offenseStateSpriteRenderer.color = enemyIsOnAttack;
+                }
+
                 if (hitColliders[i].CompareTag("Player") && delay == 0)
                 {
                     enemyState = EnemyState.attack;

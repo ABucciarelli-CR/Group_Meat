@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Blink))]
 public class EnemyStateMachine : MonoBehaviour
 {
 
@@ -11,25 +12,38 @@ public class EnemyStateMachine : MonoBehaviour
     public float speed = .01f;
     public int damage;
     public float attackDelay;
-    public ContactFilter2D contactFilter;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
     [HideInInspector] public float ttcd;
     /*[HideInInspector]*/
-    public Collider2D[] hitColliders;
-    [HideInInspector] public int maxArray = 100;
-    public LayerMask deadLayer;
-    public LayerMask liveLayer;
+    
+    
     public float stunTime = 5f;
     public int healthRegenAfterStun = 20;//is in %
     public bool activeStunTime = true;
-    public GameObject offenseState;//the gameObject that visualize
+    [HideInInspector]public float delay;
+    [HideInInspector] public int maxArray = 100;
+    [HideInInspector]public bool stardCountdown = true;
     [HideInInspector] public bool regenerate = false;//to abilitate the enemy regeneration afrer stun
     [HideInInspector] public bool onlyOneDeath = true; //ceck to not die several times
-
+    
     [HideInInspector] public EnemyHealth enemyHealth;
     [HideInInspector] public float stunnedTime = 0;
+
+    public GameObject offenseState;//the gameObject that visualize
+
+    public ContactFilter2D contactFilter;
+
+    public Collider2D[] hitColliders;
+
+    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer offenseStateSpriteRenderer;
+
+    public LayerMask deadLayer;
+    public LayerMask liveLayer;
+
+    public Color enemyIsOnAttack;
 
     private Color enemyStandardColor;
     private Color enemyAttackColor;
@@ -37,9 +51,7 @@ public class EnemyStateMachine : MonoBehaviour
     private Color enemyDamagedColor;
     private Color enemyOffenseStateStandardColor;
 
-    public SpriteRenderer spriteRenderer;
-    public SpriteRenderer offenseStateSpriteRenderer;
-
+    private Blink blink;
 
 
     public enum EnemyState
@@ -53,7 +65,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Awake()
     {
-            
+           
     }
 
     void Start()
@@ -64,10 +76,12 @@ public class EnemyStateMachine : MonoBehaviour
         enemyAttackColor = new Color(1f, 0.3f, 0f);
         enemyStunnedColor = Color.yellow;
         enemyDamagedColor = Color.red;
+        enemyIsOnAttack = Color.magenta;
         enemyOffenseStateStandardColor = Color.white;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         offenseStateSpriteRenderer = offenseState.GetComponent<SpriteRenderer>();
+        blink = GetComponent<Blink>();
 
         spriteRenderer.color = enemyStandardColor;
         offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
@@ -108,10 +122,24 @@ public class EnemyStateMachine : MonoBehaviour
             else if (stunnedTime >= stunTime && enemyState == EnemyState.stun)
             {
                 regenerate = true;
+                spriteRenderer.color = enemyStandardColor;
                 enemyState = EnemyState.idle;
                 gameObject.tag = "Enemy";
                 gameObject.layer = deadLayer;
                 stunnedTime = 0;
+            }
+        }
+
+        if (stardCountdown)
+        {
+            if (delay >= 0)
+            {
+                delay -= Time.deltaTime;
+            }
+            if (delay < 0)
+            {
+                delay = 0;
+                stardCountdown = false;
             }
         }
 
@@ -145,26 +173,31 @@ public class EnemyStateMachine : MonoBehaviour
 
 
     public virtual void Idle()
-    {
+    {/*
         if(spriteRenderer.color != enemyDamagedColor)
         {
             spriteRenderer.color = enemyStandardColor;
-        }
+        }*/
         
     }
 
     public virtual void Attack()
     {
-        offenseStateSpriteRenderer.color = enemyAttackColor;
+        blink.DoBlink(enemyAttackColor, enemyOffenseStateStandardColor, 10, offenseState);
+        //offenseStateSpriteRenderer.color = enemyAttackColor;
     }
 
     public virtual void SearchPlayer()
     {
-        offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
+        //offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
     }
 
     public virtual void Escape()
-    { }
+    {
+        offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
+        delay = attackDelay;
+        stardCountdown = false;
+    }
 
     public virtual void Stun()
     {

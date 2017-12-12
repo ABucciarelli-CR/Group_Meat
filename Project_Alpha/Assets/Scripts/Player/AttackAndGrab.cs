@@ -26,6 +26,12 @@ namespace Player
         private Collider2D[] enemyDeadHitted;
         private int maxEnemyDeadHittedArray = 100;
 
+
+        public SpriteRenderer offenseStateSpriteRenderer;
+
+        private Color playerOffenseStateStandardColor;
+        private Color playerOffenseStateAttackColor;
+
         //RaycastHit2D ray2D;
 
 
@@ -34,6 +40,9 @@ namespace Player
             life = GetComponent<Life>();
             enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
             anim = GetComponent<Animator>();
+
+            playerOffenseStateStandardColor = Color.white;
+            playerOffenseStateAttackColor = Color.red;
             //eatCollider = GetComponent<Collider2D>();
             damageAreaCollider = damageAreaGameObject.GetComponent<DamageAreaCollider>();
         }
@@ -44,6 +53,8 @@ namespace Player
         {
             if(attack)
             {
+                offenseStateSpriteRenderer.color = playerOffenseStateAttackColor;
+
                 anim.SetBool("Attack", true);
                 //Debug.Log("DebugghiOut");
                 WaitForAnimation(anim.GetComponent<Animation>());
@@ -75,11 +86,11 @@ namespace Player
                         i = 0;
                         System.Array.Clear(damageAreaCollider.enemyHitted, 0, damageAreaCollider.maxArrayEnemy);
                     }
-                    
                 }
-
-                
-
+            }
+            else
+            {
+                offenseStateSpriteRenderer.color = playerOffenseStateStandardColor;
             }
             /*
             if (attack && damageAreaCollider.whoIs != null)

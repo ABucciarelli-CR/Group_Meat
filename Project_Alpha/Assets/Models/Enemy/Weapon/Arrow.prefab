@@ -92,7 +92,7 @@ MonoBehaviour:
   player: {fileID: 0}
   arrowVelocity: 10
   arrowDamage: 100
-  precision: 2
+  precision: 1
 --- !u!212 &212635473991634756
 SpriteRenderer:
   m_ObjectHideFlags: 1

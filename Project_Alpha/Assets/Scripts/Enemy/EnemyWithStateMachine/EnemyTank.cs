@@ -14,13 +14,9 @@ public class EnemyTank : EnemyStateMachine
     public float maxVisibleDistance = 5f;
     public float tankAttackDelay = 2f;
     
-
-    private float delay = 0;
     private int i = 0;
 
     private bool healtToSet = true;
-
-
 
     private void Awake()
     {
@@ -51,14 +47,6 @@ public class EnemyTank : EnemyStateMachine
             onlyOneDeath = true;
         }
 
-        if (delay >= 0)
-        {
-            delay -= Time.fixedDeltaTime;
-        }
-        if (delay < 0)
-        {
-            delay = 0;
-        }
     }
 
     public override void Idle()
@@ -102,10 +90,18 @@ public class EnemyTank : EnemyStateMachine
         //Debug.Log("Me collide");
         foreach (Collider2D collider in hitColliders)
         {
-
             if (hitColliders[i] != null)
             {
                 //Debug.Log("Hitted" + i);
+                if (hitColliders[i].CompareTag("Player") && !stardCountdown)
+                {
+                    stardCountdown = true;
+                }
+                else if(hitColliders[i].CompareTag("Player") && delay <= (attackDelay / 2))
+                {
+                    offenseStateSpriteRenderer.color = enemyIsOnAttack;
+                }
+
                 if (hitColliders[i].CompareTag("Player") && delay == 0)
                 {
                     enemyState = EnemyState.attack;
@@ -128,9 +124,6 @@ public class EnemyTank : EnemyStateMachine
             i = 0;
             System.Array.Clear(hitColliders, 0, maxArray);
         }
-
-
-
     }
 }
 

@@ -15,9 +15,19 @@ namespace Player
 
         private int actualLife = 1000;
 
+        public SpriteRenderer playerSprite;
+
+        private Color playerOffenseStateStandardColor;
+        private Color playerOffenseStateDamagedColor;
+
         // Use this for initialization
         void Awake()
         {
+            playerSprite = GetComponent<SpriteRenderer>();
+
+            playerOffenseStateStandardColor = Color.white;
+            playerOffenseStateDamagedColor = Color.red;
+
             //lifeBar = GetComponent<Slider>();
             lifeBar.maxValue = maxLife;
             lifeBar.value = maxLife;
@@ -47,7 +57,12 @@ namespace Player
         {
             if(lifeBar.value > actualLife)
             {
+                playerSprite.color = playerOffenseStateDamagedColor;
                 lifeBar.value = actualLife;
+            }
+            else
+            {
+                playerSprite.color = playerOffenseStateStandardColor;
             }
             if(actualLife <= 0)
             {

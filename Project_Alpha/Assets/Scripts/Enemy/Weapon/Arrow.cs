@@ -7,7 +7,7 @@ public class Arrow : MonoBehaviour
     public GameObject player;
     public float arrowVelocity = 10f;
     public float arrowDamage = 100f;
-    public float precision = 2f;
+    public float precision = 1f;
 
     private Rigidbody2D rb2d;
 
