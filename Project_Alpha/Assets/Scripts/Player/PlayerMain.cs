@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
+    [RequireComponent(typeof(Tween))]
     public class PlayerMain : MonoBehaviour
     {
         
@@ -20,6 +21,12 @@ namespace Player
         private float currentDashTime;
         private float lastMove;
 
+        private bool dashing = false;
+
+        private bool avoidJumpAfterDash = false;
+        private float avoidJumpTime = .5f;
+        private float avoidedJumpForTime = 0;
+
         private float groundRadiusCollision = .3f;
         //private float ceilingRadiusCollision = .2f;
 
@@ -33,18 +40,35 @@ namespace Player
         public Transform groundCheck;
         public Transform ceilingCheck;
 
+        private Tween tween;
 
 
         void Awake()
         {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
+
+            tween = GetComponent<Tween>();
             
         }
 
         private void Start()
         {
             currentDashTime = dashTime;
+        }
+
+        private void Update()
+        {
+            if(avoidJumpAfterDash)
+            {
+                avoidedJumpForTime += Time.deltaTime;
+                if(avoidedJumpForTime >= avoidJumpTime)
+                {
+                    avoidedJumpForTime = 0;
+                    avoidJumpAfterDash = false;
+                    rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
+            }
         }
 
         void FixedUpdate()
@@ -73,22 +97,40 @@ namespace Player
                 lastMove = leftRightMove;
             }
 
-            if(dash)
+            if (dash)
             {
+                rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 currentDashTime = 0f;
+                dashing = true;
                 //Debug.Log("Dashing");
             }
-            if(currentDashTime < dashTime)
+
+            if (currentDashTime < dashTime && dashing)
             {
                 gameObject.layer = 13;
                 //Debug.Log(Mathf.Sign(lastMove) * dashSpeed);
-                rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+
+                if (isGrounded)
+                {
+                    rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+                }
+                else
+                {
+                    rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * (dashSpeed / 1.5f), 0));
+                }
+
+
+                //tween.Move(Mathf.Sign(lastMove));
                 currentDashTime += Time.deltaTime;
             }
-            else
+            else if( currentDashTime >= dashTime && dashing)
             {
+                dashing = false;
+                rb2d.velocity = new Vector2(0, 0);
+                avoidJumpAfterDash = true;
                 gameObject.layer = 8;
             }
+            
 
 
             if (isGrounded && jump)

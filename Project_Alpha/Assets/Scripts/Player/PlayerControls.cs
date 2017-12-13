@@ -38,18 +38,13 @@ namespace Player
             // Read the jump input in Update so button presses aren't missed.
             jump = Input.GetButtonDown("Jump");
             //}
-
-
+            
             playerMain.Move(jump, leftAndRightMovement, dash);
             attackAndGrab.AttackEnemy(attack);
             //attackAndGrab.GrabEnemy(grab);
             attackAndGrab.EatEnemy(eat);
-
-
+            
             jump = false;
-
-
-
         }
     }
 }
