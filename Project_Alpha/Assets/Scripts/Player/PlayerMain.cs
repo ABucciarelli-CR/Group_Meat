@@ -59,6 +59,7 @@ namespace Player
 
         private void Update()
         {
+            /*
             if(avoidJumpAfterDash)
             {
                 avoidedJumpForTime += Time.deltaTime;
@@ -68,7 +69,7 @@ namespace Player
                     avoidJumpAfterDash = false;
                     rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
                 }
-            }
+            }*/
         }
 
         void FixedUpdate()
@@ -99,7 +100,7 @@ namespace Player
 
             if (dash)
             {
-                rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                //rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 currentDashTime = 0f;
                 dashing = true;
                 //Debug.Log("Dashing");
@@ -110,13 +111,15 @@ namespace Player
                 gameObject.layer = 13;
                 //Debug.Log(Mathf.Sign(lastMove) * dashSpeed);
 
-                if (isGrounded)
+                if (isGrounded || !isGrounded)
                 {
-                    rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+                    //rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+                    transform.Translate(- Mathf.Sign(lastMove) * Vector2.left * 5);
                 }
                 else
                 {
-                    rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * (dashSpeed / 1.5f), 0));
+                    //rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+                    //transform2d.Translate(new Vector2(Mathf.Sign(lastMove) * dashSpeed + transform2d.position.x, transform2d.position.y));
                 }
 
 
