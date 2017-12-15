@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
 
 	private GlobalVariables globalVariables;
 
+    public bool startSpawning = false;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -25,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(enemyNumber > 0 && globalVariables.closeDoor)
+		if(enemyNumber > 0 && startSpawning/*globalVariables.closeDoor*/)
         {
             if(spawnTime >= spawnRate)
             {

@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace TheArenaDoor
 {
+    [RequireComponent(typeof(CheckArenaEnemyEnd))]
     public class ArenaDoorExitCollider : MonoBehaviour
     {
-		private GameObject gameManager;
+        CheckArenaEnemyEnd checkArenaEnemyEnd;
+
+        public GameObject door;
+
+        private GameObject gameManager;
 		private GlobalVariables globalVariables;
 
 		public bool thisDoorClosed = false;
 
 		void Start()
 		{
-			gameManager = GameObject.Find ("GameManager");
+            checkArenaEnemyEnd = door.GetComponent<CheckArenaEnemyEnd>();
+            gameManager = GameObject.Find ("GameManager");
 			globalVariables = gameManager.GetComponent<GlobalVariables> ();
 		}
 
@@ -22,8 +29,16 @@ namespace TheArenaDoor
             //Debug.Log(collision);
             if (collision.CompareTag("Player"))
             {
-				globalVariables.closeDoor = true;
-				thisDoorClosed = true;
+				
+                for(int i = 0; i < checkArenaEnemyEnd.spawner.Length; i++)
+                {
+                    //Debug.Log("UNLIMITATE!");
+                    checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawner>().startSpawning = true;
+                }
+
+                globalVariables.closeDoor = true;
+
+                thisDoorClosed = true;
             }
         }
     }
