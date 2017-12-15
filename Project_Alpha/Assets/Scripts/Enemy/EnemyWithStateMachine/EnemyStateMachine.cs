@@ -9,7 +9,7 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public EnemyState enemyState;
 
 
-    public float speed = .01f;
+    public float speed = .1f;
     public int damage;
     public float attackDelay;
     [HideInInspector] public Vector2 movement;
@@ -36,6 +36,8 @@ public class EnemyStateMachine : MonoBehaviour
     public ContactFilter2D contactFilter;
 
     public Collider2D[] hitColliders;
+
+    public Rigidbody2D rb2d;
 
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer offenseStateSpriteRenderer;
@@ -86,7 +88,7 @@ public class EnemyStateMachine : MonoBehaviour
         spriteRenderer.color = enemyStandardColor;
         offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
 
-        
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
 
         deadLayer = (LayerMask.NameToLayer("corpse"));
         enemyHealth = GetComponent<EnemyHealth>();

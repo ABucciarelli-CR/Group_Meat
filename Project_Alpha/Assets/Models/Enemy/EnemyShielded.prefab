@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114125889677765178}
   - component: {fileID: 114064559987149854}
   - component: {fileID: 61181959249927204}
+  - component: {fileID: 50883783362006112}
   m_Layer: 9
   m_Name: EnemyShielded
   m_TagString: Enemy
@@ -106,6 +107,26 @@ Transform:
   m_Father: {fileID: 4568471042553730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50883783362006112
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1974832197323084}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 500
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &61181959249927204
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -214,6 +235,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   hitColliders: []
+  rb2d: {fileID: 0}
   spriteRenderer: {fileID: 0}
   offenseStateSpriteRenderer: {fileID: 212070874530945418}
   deadLayer:
@@ -289,6 +311,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   hitColliders: []
+  rb2d: {fileID: 0}
   spriteRenderer: {fileID: 0}
   offenseStateSpriteRenderer: {fileID: 212070874530945418}
   deadLayer:

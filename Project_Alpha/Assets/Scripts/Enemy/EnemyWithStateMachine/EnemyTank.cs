@@ -60,8 +60,9 @@ public class EnemyTank : EnemyStateMachine
             ttcd = 0;
             direction *= -1;
         }
-        movement = new Vector2(direction * speed, 0);
-        gameObject.transform.Translate(movement);
+        movement = new Vector2(direction * speed * 2, 0);
+        //gameObject.transform.Translate(movement);
+        rb2d.MovePosition(rb2d.position + movement);
 
         enemyState = EnemyState.searchPlayer;
 

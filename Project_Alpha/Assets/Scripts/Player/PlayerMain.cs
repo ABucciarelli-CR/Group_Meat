@@ -11,11 +11,11 @@ namespace Player
         [HideInInspector] public bool facingRight = true;
         public bool airControl = false;
 
-        public float moveForce = 10f;
+        private float moveForce = 10f;
         public float gravity = -10f;
-        public float jumpForce = 1000f;
+        public float jumpForce = 50f;
         public float dashTime = .01f;
-        private float dashSpeed = 5f;
+        public float dashSpeed = 5f;
         
         [SerializeField] private bool isGrounded = false;
         private float currentDashTime;
@@ -142,6 +142,7 @@ namespace Player
             {
                 isGrounded = false;
                 rb2d.AddForce(new Vector2(0f, jumpForce));
+                //rb2d.MovePosition(rb2d.position + new Vector2(0, jumpForce * Time.fixedDeltaTime));
 
                 anim.SetBool("Ground", false);
             }
@@ -151,6 +152,7 @@ namespace Player
                 anim.SetFloat("Speed", Mathf.Abs(leftRightMove));
 
                 rb2d.velocity = new Vector2(leftRightMove * moveForce, rb2d.velocity.y);
+                //rb2d.MovePosition(rb2d.position + new Vector2(leftRightMove * moveForce, 0));
 
             }
 

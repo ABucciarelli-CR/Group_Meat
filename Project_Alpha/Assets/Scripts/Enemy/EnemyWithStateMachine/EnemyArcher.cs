@@ -20,8 +20,8 @@ public class EnemyArcher : EnemyStateMachine
     private int i = 0;
     private bool healtToSet = true;
     private bool thereIsAPlayer = false;//variable for check if the player CI SEGUE!!!!
-    
 
+    
 
     private void Awake()
     {
@@ -181,8 +181,12 @@ public class EnemyArcher : EnemyStateMachine
                 {
                     direction = gameObject.transform.position.x - player.transform.position.x;
 
-                    movement = new Vector2(Mathf.Sign(direction) * speed * Time.deltaTime, 0);
-                    gameObject.transform.Translate(movement);
+                    movement = new Vector2(Mathf.Sign(direction) * speed, 0);
+                    //gameObject.transform.Translate(movement);
+                    //rb2d.MovePosition(rb2d.position + movement);
+
+                    rb2d.velocity = new Vector2(Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
+                    //rb2d.velocity = movement;
                 }
                 else
                 {
