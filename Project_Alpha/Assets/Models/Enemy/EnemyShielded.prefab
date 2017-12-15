@@ -53,10 +53,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4568471042553730}
   - component: {fileID: 212839314771093000}
-  - component: {fileID: 58553182270792416}
   - component: {fileID: 114495365045145720}
   - component: {fileID: 114960383601567194}
   - component: {fileID: 114125889677765178}
+  - component: {fileID: 114064559987149854}
+  - component: {fileID: 61181959249927204}
   m_Layer: 9
   m_Name: EnemyShielded
   m_TagString: Enemy
@@ -71,8 +72,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1974832197323084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.83, y: -2.78, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 9.83, y: -1.4, z: 0}
+  m_LocalScale: {x: 0.19999997, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4934348613433786}
   - {fileID: 4816227418721724}
@@ -86,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819755204931250}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.002, y: 0.17, z: 0}
-  m_LocalScale: {x: 0.35430637, y: 0.35430637, z: 1}
+  m_LocalPosition: {x: -0.6, y: 8.6, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 4568471042553730}
   m_RootOrder: 1
@@ -99,14 +100,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715333952390076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 2, z: 1}
+  m_LocalPosition: {x: -5.6, y: -1.2, z: 0}
+  m_LocalScale: {x: 20, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 4568471042553730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58553182270792416
-CircleCollider2D:
+--- !u!61 &61181959249927204
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -117,9 +118,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.92}
+  m_SpriteTilingProperty:
+    border: {x: 12.650001, y: 14.2300005, z: 13.270001, w: 15.660001}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 40, y: 45}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Size: {x: 8, y: 14}
+  m_EdgeRadius: 0
 --- !u!61 &61996997263628030
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -145,6 +156,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &114064559987149854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1974832197323084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f268a6321345a8f409e87518ac55c280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinking: 0
+  frameToBlink: 2
 --- !u!114 &114125889677765178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +184,21 @@ MonoBehaviour:
   speed: 0.01
   damage: 0
   attackDelay: 0
+  movement: {x: 0, y: 0}
+  direction: 1
+  timeToChangeDirection: 5
+  ttcd: 0
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  delay: 0
+  maxArray: 100
+  stardCountdown: 1
+  regenerate: 0
+  onlyOneDeath: 1
+  enemyHealth: {fileID: 0}
+  stunnedTime: 0
+  offenseState: {fileID: 1819755204931250}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -174,28 +213,16 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  movement: {x: 0, y: 0}
-  direction: 1
-  timeToChangeDirection: 5
-  ttcd: 0
   hitColliders: []
-  maxArray: 100
+  spriteRenderer: {fileID: 0}
+  offenseStateSpriteRenderer: {fileID: 212070874530945418}
   deadLayer:
     serializedVersion: 2
     m_Bits: 0
   liveLayer:
     serializedVersion: 2
     m_Bits: 0
-  stunTime: 5
-  healthRegenAfterStun: 50
-  activeStunTime: 1
-  offenseState: {fileID: 1819755204931250}
-  regenerate: 0
-  onlyOneDeath: 1
-  enemyHealth: {fileID: 0}
-  stunnedTime: 0
-  spriteRenderer: {fileID: 0}
-  offenseStateSpriteRenderer: {fileID: 212070874530945418}
+  enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   tankDamage: 20
   tankHealth: 80
   offenceArea: 10
@@ -232,6 +259,21 @@ MonoBehaviour:
   speed: 0.01
   damage: 0
   attackDelay: 0
+  movement: {x: 0, y: 0}
+  direction: 1
+  timeToChangeDirection: 5
+  ttcd: 0
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  delay: 0
+  maxArray: 100
+  stardCountdown: 1
+  regenerate: 0
+  onlyOneDeath: 1
+  enemyHealth: {fileID: 0}
+  stunnedTime: 0
+  offenseState: {fileID: 1819755204931250}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -246,28 +288,16 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  movement: {x: 0, y: 0}
-  direction: 1
-  timeToChangeDirection: 5
-  ttcd: 0
   hitColliders: []
-  maxArray: 100
+  spriteRenderer: {fileID: 0}
+  offenseStateSpriteRenderer: {fileID: 212070874530945418}
   deadLayer:
     serializedVersion: 2
     m_Bits: 2048
   liveLayer:
     serializedVersion: 2
     m_Bits: 512
-  stunTime: 5
-  healthRegenAfterStun: 50
-  activeStunTime: 1
-  offenseState: {fileID: 1819755204931250}
-  regenerate: 0
-  onlyOneDeath: 1
-  enemyHealth: {fileID: 0}
-  stunnedTime: 0
-  spriteRenderer: {fileID: 0}
-  offenseStateSpriteRenderer: {fileID: 212070874530945418}
+  enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212070874530945418
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -301,9 +331,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -347,7 +377,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -390,8 +420,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0.461, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c9876f82034305343bb34ea1e6f345c7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

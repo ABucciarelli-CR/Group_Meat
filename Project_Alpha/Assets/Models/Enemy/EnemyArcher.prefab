@@ -20,10 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4947244010513676}
   - component: {fileID: 212325278991086032}
-  - component: {fileID: 58380452408276234}
   - component: {fileID: 114297171087717318}
   - component: {fileID: 114720744593888452}
   - component: {fileID: 114261174878613148}
+  - component: {fileID: 114346256597667916}
+  - component: {fileID: 61511458595064008}
   m_Layer: 9
   m_Name: EnemyArcher
   m_TagString: Enemy
@@ -54,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986522584074868}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.0026, y: 0.1474, z: 0}
-  m_LocalScale: {x: 0.35430598, y: 0.35430598, z: 1}
+  m_LocalPosition: {x: 8.1, y: 5.2, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 4947244010513676}
   m_RootOrder: 0
@@ -68,14 +69,14 @@ Transform:
   m_GameObject: {fileID: 1811349277448878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.4, y: 5.52, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4691547086682294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58380452408276234
-CircleCollider2D:
+--- !u!61 &61511458595064008
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -86,9 +87,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 8.24, y: -2.55}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 40, y: 45}
+    newSize: {x: 40, y: 45}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Size: {x: 8, y: 13}
+  m_EdgeRadius: 0
 --- !u!114 &114261174878613148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +115,21 @@ MonoBehaviour:
   speed: 0.01
   damage: 0
   attackDelay: 0
+  movement: {x: 0, y: 0}
+  direction: 1
+  timeToChangeDirection: 5
+  ttcd: 0
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  delay: 0
+  maxArray: 100
+  stardCountdown: 1
+  regenerate: 0
+  onlyOneDeath: 1
+  enemyHealth: {fileID: 0}
+  stunnedTime: 0
+  offenseState: {fileID: 1986522584074868}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -118,29 +144,17 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  movement: {x: 0, y: 0}
-  direction: 1
-  timeToChangeDirection: 5
-  ttcd: 0
   hitColliders: []
-  maxArray: 100
+  spriteRenderer: {fileID: 0}
+  offenseStateSpriteRenderer: {fileID: 212072716522831124}
   deadLayer:
     serializedVersion: 2
     m_Bits: 0
   liveLayer:
     serializedVersion: 2
     m_Bits: 0
-  stunTime: 5
-  healthRegenAfterStun: 50
-  activeStunTime: 1
-  offenseState: {fileID: 1986522584074868}
-  regenerate: 0
-  onlyOneDeath: 1
-  enemyHealth: {fileID: 0}
-  stunnedTime: 0
-  spriteRenderer: {fileID: 0}
-  offenseStateSpriteRenderer: {fileID: 212072716522831124}
-  archerDamage: 100
+  enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  archerDamage: 10
   archerHealth: 50
   escapeArea: 10
   maxVisibleDistance: 50
@@ -164,6 +178,19 @@ MonoBehaviour:
   playerAndShieldsLayerMask:
     serializedVersion: 2
     m_Bits: 16384
+--- !u!114 &114346256597667916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811349277448878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f268a6321345a8f409e87518ac55c280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinking: 0
+  frameToBlink: 2
 --- !u!114 &114720744593888452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,6 +206,21 @@ MonoBehaviour:
   speed: 0.01
   damage: 0
   attackDelay: 0
+  movement: {x: 0, y: 0}
+  direction: 1
+  timeToChangeDirection: 5
+  ttcd: 0
+  stunTime: 5
+  healthRegenAfterStun: 50
+  activeStunTime: 1
+  delay: 0
+  maxArray: 100
+  stardCountdown: 1
+  regenerate: 0
+  onlyOneDeath: 1
+  enemyHealth: {fileID: 0}
+  stunnedTime: 0
+  offenseState: {fileID: 1986522584074868}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -193,28 +235,16 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  movement: {x: 0, y: 0}
-  direction: 1
-  timeToChangeDirection: 5
-  ttcd: 0
   hitColliders: []
-  maxArray: 100
+  spriteRenderer: {fileID: 0}
+  offenseStateSpriteRenderer: {fileID: 212072716522831124}
   deadLayer:
     serializedVersion: 2
     m_Bits: 2048
   liveLayer:
     serializedVersion: 2
     m_Bits: 512
-  stunTime: 5
-  healthRegenAfterStun: 50
-  activeStunTime: 1
-  offenseState: {fileID: 1986522584074868}
-  regenerate: 0
-  onlyOneDeath: 1
-  enemyHealth: {fileID: 0}
-  stunnedTime: 0
-  spriteRenderer: {fileID: 0}
-  offenseStateSpriteRenderer: {fileID: 212072716522831124}
+  enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212072716522831124
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -248,9 +278,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -293,12 +323,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d14072264bba5aa4b9c2c88acafba07e, type: 3}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 40, y: 45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
