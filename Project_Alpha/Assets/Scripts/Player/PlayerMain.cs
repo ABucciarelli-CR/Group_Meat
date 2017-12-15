@@ -15,7 +15,7 @@ namespace Player
         public float gravity = -10f;
         public float jumpForce = 1000f;
         public float dashTime = .01f;
-        public float dashSpeed = 5000f;
+        private float dashSpeed = 5f;
         
         [SerializeField] private bool isGrounded = false;
         private float currentDashTime;
@@ -114,7 +114,9 @@ namespace Player
                 if (isGrounded || !isGrounded)
                 {
                     //rb2d.AddForce(new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
-                    transform.Translate(- Mathf.Sign(lastMove) * Vector2.left * 5);
+                    //transform.Translate(- Mathf.Sign(lastMove) * Vector2.left * 5);
+
+                    rb2d.MovePosition(rb2d.position + new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
                 }
                 else
                 {
