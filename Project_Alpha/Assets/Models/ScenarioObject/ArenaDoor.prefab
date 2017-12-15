@@ -190,7 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb307c9e4c6dde48a6572b3003d9e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: []
+  spawner:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &212630584460566662
 SpriteRenderer:
   m_ObjectHideFlags: 1
