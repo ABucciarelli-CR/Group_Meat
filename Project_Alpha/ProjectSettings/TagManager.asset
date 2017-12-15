@@ -9,6 +9,7 @@ TagManager:
   - UnEatable
   - Ground
   - Shield
+  - Flank
   layers:
   - Default
   - TransparentFX

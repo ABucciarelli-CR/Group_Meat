@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyTank : EnemyStateMachine
 {
+	[HideInInspector] public bool facingleft = true;
     public int tankDamage = 100;
     public int tankHealth = 80;
 
@@ -46,6 +47,9 @@ public class EnemyTank : EnemyStateMachine
             regenerate = false;
             onlyOneDeath = true;
         }
+		if (facingleft == false) {
+			Flip ();
+		}
 
     }
 
@@ -126,5 +130,16 @@ public class EnemyTank : EnemyStateMachine
             System.Array.Clear(hitColliders, 0, maxArray);
         }
     }
+
+
+
+	public void Flip()
+	{
+		//Debug.Log("Do Flip");
+		facingleft = !facingleft;
+		Vector3 normalScale = transform.localScale;
+		normalScale.x *= -1;
+		transform.localScale = normalScale;
+	}
 }
 
