@@ -7,15 +7,13 @@ public class OtherArenaDoor : MonoBehaviour
 
 	public GameObject phisicalDoor;
 
-	private GameObject gameManager;
 	private GlobalVariables globalVariables;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		gameManager = GameObject.Find ("GameManager");
-		globalVariables = gameManager.GetComponent<GlobalVariables> ();
+		globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables> ();
 
 		phisicalDoor.SetActive(false);
 	}

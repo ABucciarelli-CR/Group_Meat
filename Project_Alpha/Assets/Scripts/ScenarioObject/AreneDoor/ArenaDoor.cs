@@ -9,13 +9,16 @@ namespace TheArenaDoor
         public GameObject phisicalDoor;
         public GameObject colliderWithPlayer;
 
+        private GlobalVariables globalVariables;
 
-		private ArenaDoorExitCollider doorExitCollider;
+        private ArenaDoorExitCollider doorExitCollider;
 
         // Use this for initialization
         void Start()
         {
-			doorExitCollider = colliderWithPlayer.GetComponent<ArenaDoorExitCollider>();
+            globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
+
+            doorExitCollider = colliderWithPlayer.GetComponent<ArenaDoorExitCollider>();
 
             phisicalDoor.SetActive(false);
             colliderWithPlayer.GetComponent<SpriteRenderer>().enabled = false;
@@ -27,13 +30,15 @@ namespace TheArenaDoor
         {
 			if (doorExitCollider.thisDoorClosed)
 			{
-				phisicalDoor.SetActive (true);
+                globalVariables.enemyDead = 0;
+                phisicalDoor.SetActive (true);
 				colliderWithPlayer.SetActive (false);
-			} 
-			else
-			{
-				phisicalDoor.SetActive (false);
 			}
+
+            if(globalVariables.closeDoor)
+            {
+                phisicalDoor.SetActive(false);
+            }
         }
     }
 }

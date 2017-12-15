@@ -26,6 +26,7 @@ namespace Player
         private Collider2D[] enemyDeadHitted;
         private int maxEnemyDeadHittedArray = 100;
 
+        private GlobalVariables globalVariables;
 
         public SpriteRenderer offenseStateSpriteRenderer;
 
@@ -47,6 +48,10 @@ namespace Player
             damageAreaCollider = damageAreaGameObject.GetComponent<DamageAreaCollider>();
         }
 
+        void Start()
+        {
+            globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
+        }
 
 
         public void AttackEnemy(bool attack)
@@ -130,6 +135,7 @@ namespace Player
                     {
                         Destroy(enemyDeadHitted[i].gameObject);
                         life.Heal(heal);
+                        globalVariables.enemyDead++;
                         //Debug.Log("Eated");
                     }
                     i++;
