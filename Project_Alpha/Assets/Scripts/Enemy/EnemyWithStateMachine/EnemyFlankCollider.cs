@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFlankCollider : MonoBehaviour {
+public class EnemyFlankCollider : MonoBehaviour
+{
 	
 
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 	void OnTriggerEnter2D(Collider2D other)

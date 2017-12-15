@@ -7,7 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyTank : EnemyStateMachine
 {
-	[HideInInspector] public bool facingleft = true;
+    [HideInInspector] public bool facingleft = true;
+    //[HideInInspector] public bool rotate = false;
+
     public int tankDamage = 100;
     public int tankHealth = 80;
 
@@ -47,7 +49,9 @@ public class EnemyTank : EnemyStateMachine
             regenerate = false;
             onlyOneDeath = true;
         }
-		if (facingleft == false) {
+
+		if (facingleft == false)
+        {
 			Flip ();
 		}
 
