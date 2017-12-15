@@ -72,7 +72,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         //offenseState = offenseState.GetComponent<GameObject>();
 
-        enemyStandardColor = Color.black;
+        enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);
         enemyStunnedColor = Color.yellow;
         enemyDamagedColor = Color.red;
