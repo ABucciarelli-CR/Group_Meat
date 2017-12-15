@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4204228465134554}
   - component: {fileID: 114353848605149598}
-  - component: {fileID: 114628892458511106}
+  - component: {fileID: 114721213262292568}
+  - component: {fileID: 114636302211730472}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cd8deb220bd0c4c948b9ee8d241ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114628892458511106
+--- !u!114 &114636302211730472
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -64,4 +65,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeDoor: 0
-  enemyDead: 0
+--- !u!114 &114721213262292568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702519557532684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f268a6321345a8f409e87518ac55c280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinking: 0
+  frameToBlink: 2
