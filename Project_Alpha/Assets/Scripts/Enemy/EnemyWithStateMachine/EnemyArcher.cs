@@ -209,6 +209,7 @@ public class EnemyArcher : EnemyStateMachine
                 //Debug.Log("Hitted" + i);
                 if (hitColliders[i].CompareTag("Player"))
                 {
+                    //Debug.Log("Nothing 1");
                     thereIsAPlayer = true;
                     break;
                 }
@@ -219,14 +220,16 @@ public class EnemyArcher : EnemyStateMachine
             }
             else
             {
+                //Debug.Log("Nothing 2");
+                thereIsAPlayer = true;
                 break;
             }
+        }
 
-            if(!thereIsAPlayer)
-            {
-                enemyState = EnemyState.idle;
-            }
-
+        if (thereIsAPlayer)
+        {
+            //Debug.Log("Nothing 3");
+            enemyState = EnemyState.idle;
         }
     }
 }
