@@ -939,24 +939,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4485899484426154, guid: c16d686438635ca48a662f9cbaf09144,
     type: 2}
   m_PrefabInternal: {fileID: 1810781580}
---- !u!1 &661499140 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1702519557532684, guid: be1b5b7138d6a5b47a882d7492b13adb,
-    type: 2}
-  m_PrefabInternal: {fileID: 883269455}
---- !u!114 &661499141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 661499140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 920cb3273fb218b44803f202e3063360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closeDoor: 0
-  enemyDead: 0
 --- !u!4 &662207929 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4144960325136348, guid: 9ca07c2b693b1c5408d8125b92641196,
@@ -2584,6 +2566,16 @@ Prefab:
       propertyPath: spawnRate
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114109652553623266, guid: c16d686438635ca48a662f9cbaf09144,
+        type: 2}
+      propertyPath: enemyNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114109652553623266, guid: c16d686438635ca48a662f9cbaf09144,
+        type: 2}
+      propertyPath: startSpawning
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c16d686438635ca48a662f9cbaf09144, type: 2}
   m_IsPrefabParent: 0
@@ -2809,7 +2801,7 @@ Prefab:
     - target: {fileID: 224420354144769982, guid: c62a88b0a5e77424c80183444d9d7971,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 75.8665
+      value: 216.98723
       objectReference: {fileID: 0}
     - target: {fileID: 224420354144769982, guid: c62a88b0a5e77424c80183444d9d7971,
         type: 2}

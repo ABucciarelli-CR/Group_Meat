@@ -67,7 +67,7 @@ public class EnemyHealth : MonoBehaviour
                 {
                     spriteRenderer.color = enemyDamagedColor;
                     health -= dmg;
-                    Debug.Log("Damaged");
+                    //Debug.Log("Damaged");
                 }
             }
 

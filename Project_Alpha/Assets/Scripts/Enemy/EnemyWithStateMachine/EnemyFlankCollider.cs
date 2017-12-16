@@ -23,7 +23,7 @@ public class EnemyFlankCollider : MonoBehaviour
 
 	IEnumerator Flank()
 	{
-		print ("ciao");
+		//print ("ciao");
 		yield return new WaitForSeconds(1.5f);
 		transform.parent.GetComponent<EnemyTank> ().facingleft = false;
 	}

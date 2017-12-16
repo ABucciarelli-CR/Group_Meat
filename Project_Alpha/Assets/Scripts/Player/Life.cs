@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -67,6 +68,7 @@ namespace Player
             if(actualLife <= 0)
             {
                 Debug.Log("Sei Morto");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }

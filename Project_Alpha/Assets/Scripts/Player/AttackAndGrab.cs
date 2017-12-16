@@ -12,7 +12,8 @@ namespace Player
         public int normalDamage = 20;
         public int grabDamage = 5;
         public int heal = 50;
-
+        private int waitFrame = 4;
+        private int waitedFrame = 0;
 
         //private bool enemyIsGrabbed = false;
         private Life life;
@@ -45,7 +46,16 @@ namespace Player
             playerOffenseStateStandardColor = Color.white;
             playerOffenseStateAttackColor = Color.red;
             //eatCollider = GetComponent<Collider2D>();
+
             damageAreaCollider = damageAreaGameObject.GetComponent<DamageAreaCollider>();
+        }
+
+        private void Update()
+        {
+            if(offenseStateSpriteRenderer.color == playerOffenseStateAttackColor)
+            {
+                waitedFrame++;
+            }
         }
 
         void Start()
@@ -96,7 +106,11 @@ namespace Player
             }
             else
             {
-                offenseStateSpriteRenderer.color = playerOffenseStateStandardColor;
+                if(waitedFrame >= waitFrame)
+                {
+                    waitedFrame = 0;
+                    offenseStateSpriteRenderer.color = playerOffenseStateStandardColor;
+                }
             }
             /*
             if (attack && damageAreaCollider.whoIs != null)

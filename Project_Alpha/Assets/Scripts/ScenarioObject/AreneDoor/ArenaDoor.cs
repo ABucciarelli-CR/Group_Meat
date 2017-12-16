@@ -11,6 +11,8 @@ namespace TheArenaDoor
 
         private GlobalVariables globalVariables;
 
+        private bool onlyOne = true;
+
         private ArenaDoorExitCollider doorExitCollider;
 
         // Use this for initialization
@@ -28,16 +30,17 @@ namespace TheArenaDoor
         // Update is called once per frame
         void Update()
         {
-			if (doorExitCollider.thisDoorClosed)
+			if (doorExitCollider.thisDoorClosed && onlyOne)
 			{
+                onlyOne = false;
                 globalVariables.enemyDead = 0;
                 phisicalDoor.SetActive (true);
 				colliderWithPlayer.SetActive (false);
-
             }
 
             if(!globalVariables.closeDoor)
             {
+                onlyOne = true;
                 phisicalDoor.SetActive(false);
             }
         }

@@ -9,7 +9,7 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 
     private GlobalVariables globalVariables;
 
-    private int enemyCountDown;
+    public int enemyCountDown;
 
 	// Use this for initialization
 	void Start ()
