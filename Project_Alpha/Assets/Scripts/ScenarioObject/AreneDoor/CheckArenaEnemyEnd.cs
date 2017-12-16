@@ -18,14 +18,16 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 
         for (int i = 0; i < spawner.Length; i++)
         {
-            enemyCountDown = spawner[i].GetComponent<EnemySpawner>().enemyNumber;
+            //Debug.Log(spawner[i].GetComponent<EnemySpawner>().name);
+            enemyCountDown += spawner[i].GetComponent<EnemySpawner>().enemyNumber;
         }
+        
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if(globalVariables.enemyDead == enemyCountDown && enemyCountDown != 0)
+		if(globalVariables.enemyDead == enemyCountDown /*&& enemyCountDown != 0*/)
         {
             globalVariables.closeDoor = false;
             globalVariables.enemyDead = 0;
