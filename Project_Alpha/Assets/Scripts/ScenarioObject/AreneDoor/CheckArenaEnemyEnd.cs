@@ -27,8 +27,9 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(globalVariables.enemyDead == enemyCountDown /*&& enemyCountDown != 0*/)
+		if(globalVariables.enemyDead == enemyCountDown && enemyCountDown != 0)
         {
+            Debug.Log("Here!");
             globalVariables.closeDoor = false;
             globalVariables.enemyDead = 0;
             enemyCountDown = 0;
