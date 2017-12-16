@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         enemyDamagedColor = Color.red;
-        enemyStandardColor = Color.black;
+        enemyStandardColor = Color.white;
 
         playerAndShieldsLayerMask = (1 << LayerMask.NameToLayer("player")) | (1 << LayerMask.NameToLayer("blockPlayer"));
     }
@@ -42,9 +42,14 @@ public class EnemyHealth : MonoBehaviour
     {
         //ceckPlayerLeftRayHit2D = Physics2D.Raycast(new Vector2(0,0), Vector2.left, maxDistance, playerAndShieldsLayerMask.value);
         //ceckPlayerRightRayHit2D = Physics2D.Raycast(new Vector2(0, 0), -Vector2.left, maxDistance, playerAndShieldsLayerMask.value);
-
+        
         hitLeft = Physics2D.Raycast(transform.position, Vector2.left, maxDistance, playerAndShieldsLayerMask);
         hitRight = Physics2D.Raycast(transform.position, -Vector2.left, maxDistance, playerAndShieldsLayerMask);
+
+        //Debug.Log(hitRight.collider.name);
+        //Debug.Log(hitLeft.collider.name);
+        //Debug.DrawRay(transform.position, Vector2.left, Color.red);
+        //Debug.DrawRay(transform.position, -Vector2.left, Color.red);
 
         //if (ceckPlayerRightRayHit2D.collider != null || ceckPlayerLeftRayHit2D.collider != null)
         if (hitLeft.collider != null || hitRight.collider != null)
@@ -57,6 +62,7 @@ public class EnemyHealth : MonoBehaviour
 
             if(hitLeft.collider != null)
             {
+                //Debug.Log("Here1!");
                 if (hitLeft.collider.CompareTag("Player"))
                 {
                     spriteRenderer.color = enemyDamagedColor;
@@ -67,6 +73,7 @@ public class EnemyHealth : MonoBehaviour
 
             if (hitRight.collider != null)
             {
+                //Debug.Log("Here1!");
                 if (hitRight.collider.CompareTag("Player"))
                 {
                     spriteRenderer.color = enemyDamagedColor;
@@ -123,6 +130,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Debug.Log("DEAD");
         }
+
     }
 }
 

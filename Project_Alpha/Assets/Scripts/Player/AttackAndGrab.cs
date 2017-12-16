@@ -73,10 +73,11 @@ namespace Player
                     {
                         foreach (Collider2D enemy in damageAreaCollider.enemyHitted)
                         {
-                            //Debug.Log("Hitted" + i);
+                            
                             if (damageAreaCollider.enemyHitted[i] != null)
                             {
-                                if(damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
+                                //Debug.Log(damageAreaCollider.enemyHitted[i].name + " " + damageAreaCollider.enemyHitted[i].gameObject.layer.ToString());
+                                if (damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
                                 {
                                     damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", normalDamage);
                                 }

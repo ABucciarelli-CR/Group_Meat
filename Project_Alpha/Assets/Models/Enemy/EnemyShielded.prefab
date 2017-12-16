@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4921086357393098}
   - component: {fileID: 61670180044867486}
   - component: {fileID: 114256064550489358}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: Flank
   m_TagString: Flank
   m_Icon: {fileID: 0}

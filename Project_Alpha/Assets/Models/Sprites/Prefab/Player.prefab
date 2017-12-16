@@ -274,7 +274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4606773618635164}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!4 &4606773618635164
 Transform:
@@ -286,8 +286,8 @@ Transform:
   m_LocalPosition: {x: -1.2, y: 0.1, z: 0}
   m_LocalScale: {x: 1.7715329, y: 1.7715304, z: 1}
   m_Children:
-  - {fileID: 4516732919162750}
   - {fileID: 4824403053174358}
+  - {fileID: 4516732919162750}
   - {fileID: 4984823797818854}
   - {fileID: 4967222402650848}
   - {fileID: 4798709846587248}
@@ -320,7 +320,7 @@ Transform:
   m_LocalScale: {x: 9.858241, y: 9.831326, z: 0}
   m_Children: []
   m_Father: {fileID: 4606773618635164}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4967222402650848
 Transform:
@@ -441,7 +441,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.68}
+  m_Size: {x: 0.4, y: 0.95}
   m_EdgeRadius: 0
 --- !u!61 &61130487018317882
 BoxCollider2D:
