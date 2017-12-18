@@ -20,6 +20,7 @@ public class EnemyArcher : EnemyStateMachine
     private int i = 0;
     private bool healtToSet = true;
     private bool thereIsAPlayer = false;//variable for check if the player CI SEGUE!!!!
+    private RaycastHit2D playerInLine;//check if the player is in line with the archer
 
     
 
@@ -99,10 +100,13 @@ public class EnemyArcher : EnemyStateMachine
         //Debug.Log("Me collide");
         foreach (Collider2D collider in hitColliders)
         {
-
             if (hitColliders[i] != null)
             {
                 //Debug.Log("Hitted" + i);
+
+                var dir = player.transform.position - this.transform.position;
+                //if (Physics.Raycast(transform.position, dir, out playerInLine)) { }
+
                 if(hitColliders[i].CompareTag("Player") && !stardCountdown)
                 {
                     stardCountdown = true;
@@ -161,7 +165,6 @@ public class EnemyArcher : EnemyStateMachine
             i = 0;
             System.Array.Clear(hitColliders, 0, maxArray);
         }
-        
     }
 
     public override void Escape()

@@ -9,12 +9,12 @@ namespace Player
     [RequireComponent(typeof(PlayerMain))]
     public class Life : MonoBehaviour
     {
-        public int maxLife = 1000;
+        public int maxLife = 5000;
         
 
         public Slider lifeBar;
 
-        private int actualLife = 1000;
+        private int actualLife = 5000;
 
         public SpriteRenderer playerSprite;
 

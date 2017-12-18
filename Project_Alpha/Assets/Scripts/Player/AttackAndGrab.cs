@@ -146,13 +146,17 @@ namespace Player
                 eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
                 foreach (Collider2D collider in enemyDeadHitted)
                 {
-                    if (enemyDeadHitted[i].CompareTag("Corpse"))
+                    if(enemyDeadHitted[i] != null)
                     {
-                        Destroy(enemyDeadHitted[i].gameObject);
-                        life.Heal(heal);
-                        globalVariables.enemyDead++;
-                        //Debug.Log("Eated");
+                        if (enemyDeadHitted[i].CompareTag("Corpse"))
+                        {
+                            Destroy(enemyDeadHitted[i].gameObject);
+                            life.Heal(heal);
+                            globalVariables.enemyDead++;
+                            //Debug.Log("Eated");
+                        }
                     }
+                    
                     i++;
                 }
             }
