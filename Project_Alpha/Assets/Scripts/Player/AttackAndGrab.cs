@@ -77,7 +77,9 @@ namespace Player
 
                 damageAreaCollider.CeckHit();
 
-                if(damageAreaCollider.enemyHitted != null)
+                i = 0;
+
+                if (damageAreaCollider.enemyHitted != null)
                 {
                     if(damageAreaCollider.enemyHitted[0] != null)
                     {
@@ -99,7 +101,7 @@ namespace Player
                             }
                         }
                         //Debug.Log("Exit");
-                        i = 0;
+                        
                         System.Array.Clear(damageAreaCollider.enemyHitted, 0, damageAreaCollider.maxArrayEnemy);
                     }
                 }
@@ -144,6 +146,7 @@ namespace Player
             {
                 //Debug.Log("Eating");
                 eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
+                i = 0;
                 foreach (Collider2D collider in enemyDeadHitted)
                 {
                     if(enemyDeadHitted[i] != null)
