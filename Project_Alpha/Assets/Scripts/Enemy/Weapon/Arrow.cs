@@ -6,7 +6,8 @@ public class Arrow : MonoBehaviour
 {
     public GameObject player;
     public float arrowVelocity = 10f;
-    public float arrowDamage = 100f;
+    private float arrowDamage = 15f;
+
     public float precision = 1f;
 
     private Rigidbody2D rb2d;
@@ -35,6 +36,7 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Called");
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("Damage", arrowDamage);

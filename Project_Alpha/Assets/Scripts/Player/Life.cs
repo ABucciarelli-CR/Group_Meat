@@ -9,12 +9,12 @@ namespace Player
     [RequireComponent(typeof(PlayerMain))]
     public class Life : MonoBehaviour
     {
-        public int maxLife = 5000;
+        private int maxLife = 100;
         
 
         public Slider lifeBar;
 
-        private int actualLife = 5000;
+        private int actualLife = 100;
 
         public SpriteRenderer playerSprite;
 
@@ -39,27 +39,32 @@ namespace Player
         public void Damage(int dmg)
         {
             actualLife -= dmg;
-            //Debug.Log("Player Damaged");
+            //Debug.Log(actualLife);
         }
 
         public void Heal(int heal)
         {
             if((actualLife + heal) >= maxLife)
             {
+                
                 actualLife = maxLife;
+                //Debug.Log(actualLife);
             }
             else
             {
                 actualLife += heal;
+                //Debug.Log(actualLife);
             }
         }
 
         private void Update()
         {
-            if(lifeBar.value > actualLife)
+            lifeBar.value = actualLife;
+
+            if (lifeBar.value > actualLife)
             {
                 playerSprite.color = playerOffenseStateDamagedColor;
-                lifeBar.value = actualLife;
+                
             }
             else
             {
@@ -67,7 +72,7 @@ namespace Player
             }
             if(actualLife <= 0)
             {
-                Debug.Log("Sei Morto");
+                //Debug.Log("Sei Morto");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }

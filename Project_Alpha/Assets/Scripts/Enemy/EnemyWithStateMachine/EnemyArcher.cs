@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyArcher : EnemyStateMachine
 {
-    public int archerDamage = 100;
+    private int archerDamage = 15;
     public int archerHealth = 50;
 
     public float escapeArea = 10f;

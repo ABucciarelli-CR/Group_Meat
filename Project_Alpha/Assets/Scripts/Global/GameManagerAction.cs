@@ -5,19 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerAction : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     public void RestartTheLevel(bool isRestart)
     {
         if (isRestart)

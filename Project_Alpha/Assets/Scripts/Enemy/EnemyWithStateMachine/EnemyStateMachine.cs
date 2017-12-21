@@ -76,7 +76,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);
-        enemyStunnedColor = Color.yellow;
+        enemyStunnedColor = Color.black;
         enemyDamagedColor = Color.red;
         enemyIsOnAttack = Color.magenta;
         enemyOffenseStateStandardColor = Color.white;

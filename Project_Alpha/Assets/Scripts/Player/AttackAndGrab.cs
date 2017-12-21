@@ -11,7 +11,8 @@ namespace Player
 
         public int normalDamage = 20;
         public int grabDamage = 5;
-        public int heal = 50;
+        private int heal = 50;
+        private int healForDamage = 2;
         private int waitFrame = 4;
         private int waitedFrame = 0;
 
@@ -92,6 +93,7 @@ namespace Player
                                 if (damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
                                 {
                                     damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", normalDamage);
+                                    life.Heal(healForDamage);
                                 }
                                 i++;
                             }
@@ -156,7 +158,7 @@ namespace Player
                             Destroy(enemyDeadHitted[i].gameObject);
                             life.Heal(heal);
                             globalVariables.enemyDead++;
-                            //Debug.Log("Eated");
+                            //Debug.Log(globalVariables.enemyDead);
                         }
                     }
                     
