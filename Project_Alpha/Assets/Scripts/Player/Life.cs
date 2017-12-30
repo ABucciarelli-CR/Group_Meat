@@ -21,6 +21,8 @@ namespace Player
         private Color playerOffenseStateStandardColor;
         private Color playerOffenseStateDamagedColor;
 
+        private GlobalVariables globalVariables;
+
         // Use this for initialization
         void Awake()
         {
@@ -28,6 +30,8 @@ namespace Player
 
             playerOffenseStateStandardColor = Color.white;
             playerOffenseStateDamagedColor = Color.red;
+
+            globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
 
             //lifeBar = GetComponent<Slider>();
             lifeBar.maxValue = maxLife;
@@ -75,6 +79,12 @@ namespace Player
                 //Debug.Log("Sei Morto");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+        }
+
+        private void ResetGlobalVariables()
+        {
+            globalVariables.enemyDead = 0;
+            globalVariables.closeDoor = false;
         }
     }
 }

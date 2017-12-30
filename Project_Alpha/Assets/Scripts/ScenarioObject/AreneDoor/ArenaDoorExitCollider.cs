@@ -47,6 +47,7 @@ namespace TheArenaDoor
                     }
 
                     globalVariables.closeDoor = true;
+                    globalVariables.enemyDead = 0;
 
                     thisDoorClosed = true;
                 }

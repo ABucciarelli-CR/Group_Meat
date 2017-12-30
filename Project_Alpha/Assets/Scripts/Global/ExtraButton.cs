@@ -12,7 +12,6 @@ public class ExtraButton : MonoBehaviour
     void Start ()
     {
         gameManager = GetComponent<GameManagerAction>();
-
     }
 	
 	// Update is called once per frame
