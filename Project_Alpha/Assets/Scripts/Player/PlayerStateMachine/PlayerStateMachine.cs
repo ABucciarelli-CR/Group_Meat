@@ -47,10 +47,12 @@ public class PlayerStateMachine : MonoBehaviour
     public Collider2D eatCollider;
     public ContactFilter2D contactFilter;
 
-    private float groundRadiusCollision = .3f;
+    private float realGroundRadiusCollision = .1f;
+    private float groundRadiusCollision = 0f;
     private int maxEnemyDeadHittedArray = 100;
+    private bool waited = false;
     private bool singleJump = true;
-    [SerializeField] private bool isGrounded = false;
+    [SerializeField] private bool isGrounded = true;
     private int i = 0; //counter
     
 
@@ -69,6 +71,7 @@ public class PlayerStateMachine : MonoBehaviour
         anim = GetComponent<Animator>();
         life = GetComponent<Life>();
         rb2d = GetComponent<Rigidbody2D>();
+        groundRadiusCollision = realGroundRadiusCollision;
         enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
     }
 
@@ -84,12 +87,15 @@ public class PlayerStateMachine : MonoBehaviour
     {
         isGrounded = false;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundRadiusCollision, whatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        if (waited)
         {
-            if (colliders[i].gameObject != gameObject)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundRadiusCollision, whatIsGround);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                isGrounded = true;
+                if (colliders[i].gameObject != gameObject)
+                {
+                    isGrounded = true;
+                }
             }
         }
         anim.SetBool("Ground", isGrounded);
@@ -140,7 +146,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Idle()
     {
-        singleJump = true;
+        if (isGrounded)
+        {
+            singleJump = true;
+        }
+
+        groundRadiusCollision = realGroundRadiusCollision;
         gameObject.layer = 8;
         //TODO: animation start
     }
@@ -189,6 +200,9 @@ public class PlayerStateMachine : MonoBehaviour
         if(singleJump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            waited = false;
+            StartCoroutine(Wait(.1f));
+            isGrounded = false;
             singleJump = false;
         }
 
@@ -246,5 +260,11 @@ public class PlayerStateMachine : MonoBehaviour
         Vector3 normalScale = transform.localScale;
         normalScale.x *= -1;
         transform.localScale = normalScale;
+    }
+
+    IEnumerator Wait(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        waited = true;
     }
 }
