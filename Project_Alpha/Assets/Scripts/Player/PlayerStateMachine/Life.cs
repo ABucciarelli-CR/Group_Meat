@@ -16,6 +16,7 @@ public class Life : MonoBehaviour
     private bool waited = false;
 
     public SpriteRenderer playerSprite;
+    public GameObject body;
 
     private Color playerOffenseStateStandardColor;
     private Color playerOffenseStateDamagedColor;
@@ -25,7 +26,7 @@ public class Life : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        playerSprite = GetComponent<SpriteRenderer>();
+        playerSprite = body.GetComponent<SpriteRenderer>();
 
         playerOffenseStateStandardColor = Color.white;
         playerOffenseStateDamagedColor = Color.red;

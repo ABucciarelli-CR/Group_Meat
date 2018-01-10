@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
 {
     public ContactFilter2D contactFilter;
     public SpriteRenderer offenseStateSpriteRenderer;
+    public GameObject playerLife;
 
     public int standardDamage = 20;
     private int healForDamage = 2;
@@ -27,7 +28,7 @@ public class Attack : MonoBehaviour
     private void Awake()
     {
         damageAreaCollider = damageAreaGameObject.GetComponent<DamageAreaCollider>();
-        life = GetComponent<Life>();
+        life = playerLife.GetComponent<Life>();
         //anim = GetComponent<Animator>();
     }
 

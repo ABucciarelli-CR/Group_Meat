@@ -31,7 +31,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
         if(stateMachine.playerState == PlayerStateMachine.PlayerState.idle)
         {
-            Debug.Log("Doing");
+            //Debug.Log("Doing");
             Move();
             CheckAllTheAttack();
             Jump();

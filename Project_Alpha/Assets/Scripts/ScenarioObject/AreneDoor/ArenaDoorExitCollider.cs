@@ -26,12 +26,12 @@ namespace TheArenaDoor
             checkArenaEnemyEnd = door.GetComponent<CheckArenaEnemyEnd>();
             gameManager = GameObject.Find ("GameManager");
 			globalVariables = gameManager.GetComponent<GlobalVariables> ();
-            playerLayerMask = 1 << LayerMask.NameToLayer("player");
-
+            playerLayerMask = (1 << LayerMask.NameToLayer("player")) | (1 << LayerMask.NameToLayer("midGhost"));
         }
 
         private void Update()
         {
+            //Debug.Log(playerLayerMask.value);
             hitRight = Physics2D.Raycast(transform.position, -Vector2.left, maxDistance, playerLayerMask);
 
             if(hitRight.collider != null)

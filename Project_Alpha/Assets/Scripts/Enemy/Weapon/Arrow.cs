@@ -36,7 +36,7 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Called");
+        //Debug.Log("Called");
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("Damage", arrowDamage);

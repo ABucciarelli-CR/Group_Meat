@@ -4,8 +4,8 @@ using UnityEngine;
 /// <attackSummary>
 /// 
 /// 0 = normal Attack
-/// 
-/// 
+/// 1 = frenzy
+/// 2 = warcry
 /// 
 /// </attackSummary>
 
@@ -44,6 +44,7 @@ public class PlayerStateMachine : MonoBehaviour
     private Rigidbody2D rb2d;
     private Collider2D[] enemyDeadHitted;
 
+    public GameObject playerLife;
     public Collider2D eatCollider;
     public ContactFilter2D contactFilter;
 
@@ -106,7 +107,7 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     private void Update ()
     {
-        Debug.Log(playerState);
+        //Debug.Log(playerState);
         switch (playerState)
         {
             case PlayerState.idle:
@@ -234,7 +235,7 @@ public class PlayerStateMachine : MonoBehaviour
                 if (enemyDeadHitted[i].CompareTag("Corpse"))
                 {
                     Destroy(enemyDeadHitted[i].gameObject);
-                    life.Heal(heal);
+                    Heal(heal);
                     globalVariables.enemyDead++;
                     //Debug.Log(globalVariables.enemyDead);
                 }
@@ -260,6 +261,16 @@ public class PlayerStateMachine : MonoBehaviour
         Vector3 normalScale = transform.localScale;
         normalScale.x *= -1;
         transform.localScale = normalScale;
+    }
+
+    public void Damage(int dmg)
+    {
+        playerLife.GetComponent<Life>().Damage(dmg);
+    }
+
+    public void Heal(int heal)
+    {
+        playerLife.GetComponent<Life>().Heal(heal);
     }
 
     IEnumerator Wait(float sec)
