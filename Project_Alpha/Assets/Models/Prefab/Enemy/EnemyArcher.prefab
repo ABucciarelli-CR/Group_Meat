@@ -176,7 +176,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
-  archerDamage: 10
   archerHealth: 50
   escapeArea: 10
   maxVisibleDistance: 50
@@ -346,7 +345,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d581f439ec68ad1449f086cb8fef6eed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11981b6a0e76772489fd42ac38f1b3f4, type: 3}
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
   m_FlipX: 0
   m_FlipY: 0

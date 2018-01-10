@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player
-{
+
     public class DamageAreaCollider : MonoBehaviour
     {
         //public bool onTriggerEnter = false;
@@ -52,4 +51,4 @@ namespace Player
             onTriggerStay = true;
         }*/
     }
-}
+
