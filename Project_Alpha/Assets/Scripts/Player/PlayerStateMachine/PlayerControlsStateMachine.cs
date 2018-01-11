@@ -29,9 +29,9 @@ public class PlayerControlsStateMachine : MonoBehaviour
         eat = Input.GetButtonDown("Eat");
         jump = Input.GetButtonDown("Jump");
 
+        //se in Idle o in Movement
         if(stateMachine.playerState == PlayerStateMachine.PlayerState.idle)
         {
-            //Debug.Log("Doing");
             Move();
             CheckAllTheAttack();
             Jump();
@@ -40,9 +40,23 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
             jump = false;
         }
+        //se in Jump
         else if(stateMachine.playerState == PlayerStateMachine.PlayerState.jump)
         {
+            Dash();
             Jump();
+
+            jump = false;
+        }
+        //se in Movement
+        else if(stateMachine.playerState == PlayerStateMachine.PlayerState.movement)
+        {
+            CheckAllTheAttack();
+            Jump();
+            Dash();
+            Eat();
+
+            jump = false;
         }
 
         stateMachine.playerMovement = leftAndRightMovement;

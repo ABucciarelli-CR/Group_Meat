@@ -639,6 +639,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  offenseStateSpriteRenderer: {fileID: 212475299580733758}
   isGrounded: 0
 --- !u!114 &114415530798472824
 MonoBehaviour:

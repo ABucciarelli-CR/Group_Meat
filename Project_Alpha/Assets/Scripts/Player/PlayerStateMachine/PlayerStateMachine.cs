@@ -47,6 +47,7 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject playerLife;
     public Collider2D eatCollider;
     public ContactFilter2D contactFilter;
+    public SpriteRenderer offenseStateSpriteRenderer;
 
     private float realGroundRadiusCollision = .1f;
     private float groundRadiusCollision = 0f;
@@ -55,7 +56,10 @@ public class PlayerStateMachine : MonoBehaviour
     private bool singleJump = true;
     [SerializeField] private bool isGrounded = true;
     private int i = 0; //counter
-    
+    private Color playerOffenseStateStandardColor;
+    private Color playerOffenseStateAttackColor;
+    private Color playerOffenseStateEatColor;
+
 
     public enum PlayerState
     {
@@ -74,6 +78,11 @@ public class PlayerStateMachine : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         groundRadiusCollision = realGroundRadiusCollision;
         enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
+
+        playerOffenseStateStandardColor = Color.white;
+        playerOffenseStateAttackColor = Color.red;
+        playerOffenseStateEatColor = Color.green;
+        offenseStateSpriteRenderer.color = playerOffenseStateStandardColor;
     }
 
     // Use this for initialization
@@ -99,9 +108,10 @@ public class PlayerStateMachine : MonoBehaviour
                 }
             }
         }
+        /*
         anim.SetBool("Ground", isGrounded);
         // Set the vertical animation
-        anim.SetFloat("vSpeed", rb2d.velocity.y);
+        anim.SetFloat("vSpeed", rb2d.velocity.y);*/
     }
 
     // Update is called once per frame
@@ -115,6 +125,8 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
 
             case PlayerState.attack:
+                offenseStateSpriteRenderer.color = playerOffenseStateAttackColor;
+                StartCoroutine(Wait(.1f, false));
                 Attack(playerAttack);
                 break;
 
@@ -131,6 +143,8 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
 
             case PlayerState.eat:
+                offenseStateSpriteRenderer.color = playerOffenseStateEatColor;
+                StartCoroutine(Wait(.1f, false));
                 Eat();
                 break;
 
@@ -166,10 +180,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Movement(float leftRightMove, bool jumpCall = true)
     {
-        if(jumpCall)
+        if (jumpCall)
         {
+            if (isGrounded)
+            {
+                singleJump = true;
+            }
             //TODO: animation start
         }
+    
 
         rb2d.velocity = new Vector2(leftRightMove * moveForce, rb2d.velocity.y);
 
@@ -273,9 +292,17 @@ public class PlayerStateMachine : MonoBehaviour
         playerLife.GetComponent<Life>().Heal(heal);
     }
 
-    IEnumerator Wait(float sec)
+    IEnumerator Wait(float sec, bool returnWait = true)
     {
         yield return new WaitForSeconds(sec);
-        waited = true;
+        if(returnWait)
+        {
+            waited = true;
+        }
+        else
+        {
+            offenseStateSpriteRenderer.color = playerOffenseStateStandardColor;
+        }
+        
     }
 }
