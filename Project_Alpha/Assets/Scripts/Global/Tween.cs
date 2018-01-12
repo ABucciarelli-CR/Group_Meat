@@ -7,7 +7,7 @@ public class Tween : MonoBehaviour
 	public float time = 5;
 	private float start;
 	private float end;
-	private float startTime;
+	//private float startTime;
     public AnimationCurve curve;
 
     public enum Tweens
@@ -22,7 +22,7 @@ public class Tween : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        startTime = Time.time;
+        //startTime = Time.time;
 	}
 	
 	// Update is called once per frame

@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour
     private Life life;
     [SerializeField] private GameObject damageAreaGameObject;
     private DamageAreaCollider damageAreaCollider;
-    private GlobalVariables globalVariables;
+    //private GlobalVariables globalVariables;
     //private Animator anim;
 
     private int i = 0;//counter variables
@@ -34,7 +34,7 @@ public class Attack : MonoBehaviour
 
     private void Start()
     {
-        globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
+        //globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
     }
 
     // Update is called once per frame

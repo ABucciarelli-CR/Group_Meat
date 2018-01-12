@@ -50,7 +50,7 @@ public class EnemyStateMachine : MonoBehaviour
     private Color enemyStandardColor;
     private Color enemyAttackColor;
     private Color enemyStunnedColor;
-    private Color enemyDamagedColor;
+    //private Color enemyDamagedColor;
     private Color enemyOffenseStateStandardColor;
 
     private Blink blink;
@@ -77,7 +77,7 @@ public class EnemyStateMachine : MonoBehaviour
         enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);
         enemyStunnedColor = Color.black;
-        enemyDamagedColor = Color.red;
+        //enemyDamagedColor = Color.red;
         enemyIsOnAttack = Color.magenta;
         enemyOffenseStateStandardColor = Color.white;
 

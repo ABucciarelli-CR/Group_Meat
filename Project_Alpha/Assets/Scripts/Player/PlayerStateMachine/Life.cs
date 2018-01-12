@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Life : MonoBehaviour
 {
-    private int maxLife = 100;
+    private int maxLife = 1000;
+    private int startLife = 100;
         
 
     public Slider lifeBar;
+    public Slider maxLifeBar;
 
-    private int actualLife = 100;
+    private int actualLife;
 
     private bool waited = false;
 
@@ -28,15 +30,20 @@ public class Life : MonoBehaviour
     {
         //playerSprite = body.GetComponent<SpriteRenderer>();
 
+        actualLife = startLife;
+
         playerOffenseStateStandardColor = Color.white;
         playerOffenseStateDamagedColor = Color.red;
 
         globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
-
-        //lifeBar = GetComponent<Slider>();
+        
+        //Defining the starting life
         lifeBar.maxValue = maxLife;
-        lifeBar.value = maxLife;
-        actualLife = maxLife;
+        maxLifeBar.maxValue = maxLife;
+
+        lifeBar.value = startLife;
+        maxLifeBar.value = startLife;
+        actualLife = startLife;
 
     }
 
@@ -48,10 +55,10 @@ public class Life : MonoBehaviour
 
     public void Heal(int heal)
     {
-        if((actualLife + heal) >= maxLife)
+        if((actualLife + heal) >= maxLifeBar.value)
         {
                 
-            actualLife = maxLife;
+            actualLife = (int)maxLifeBar.value;
             //Debug.Log(actualLife);
         }
         else
@@ -59,6 +66,16 @@ public class Life : MonoBehaviour
             actualLife += heal;
             //Debug.Log(actualLife);
         }
+    }
+
+    public void IncrementLife(int increment)
+    {
+        maxLifeBar.value += increment;
+    }
+
+    public void DecrementLife(int decrement)
+    {
+        maxLifeBar.value -= decrement;
     }
 
     private void Update()

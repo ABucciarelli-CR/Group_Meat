@@ -21,6 +21,7 @@ public class PlayerStateMachine : MonoBehaviour
     //playerValue
     public bool airControl = true;
     public int heal = 50;
+    public int lifeIncrement = 25;
     public float dashSpeed = 5f;
     private float jumpForce = 20f;
     public float moveForce = 10f;
@@ -254,7 +255,7 @@ public class PlayerStateMachine : MonoBehaviour
                 if (enemyDeadHitted[i].CompareTag("Corpse"))
                 {
                     Destroy(enemyDeadHitted[i].gameObject);
-                    Heal(heal);
+                    IncrementLife(lifeIncrement);
                     globalVariables.enemyDead++;
                     //Debug.Log(globalVariables.enemyDead);
                 }
@@ -290,6 +291,11 @@ public class PlayerStateMachine : MonoBehaviour
     public void Heal(int heal)
     {
         playerLife.GetComponent<Life>().Heal(heal);
+    }
+
+    public void IncrementLife(int increment)
+    {
+        playerLife.GetComponent<Life>().IncrementLife(increment);
     }
 
     IEnumerator Wait(float sec, bool returnWait = true)

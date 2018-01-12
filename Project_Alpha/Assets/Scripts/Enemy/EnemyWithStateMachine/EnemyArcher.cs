@@ -104,7 +104,7 @@ public class EnemyArcher : EnemyStateMachine
             {
                 //Debug.Log("Hitted" + i);
 
-                var dir = player.transform.position - this.transform.position;
+                //var dir = player.transform.position - this.transform.position;
                 //if (Physics.Raycast(transform.position, dir, out playerInLine)) { }
 
                 if(hitColliders[i].CompareTag("Player") && !stardCountdown)
