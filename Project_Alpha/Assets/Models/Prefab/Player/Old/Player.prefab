@@ -434,8 +434,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 39.81, y: 44.370003}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3981, y: 4437}
+    newSize: {x: 3981, y: 4437}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -626,7 +626,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 114577895299564378}
+  maxLifeBar: {fileID: 0}
   playerSprite: {fileID: 0}
+  body: {fileID: 0}
 --- !u!114 &114562643381333646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -925,7 +927,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3981, y: 4437}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
