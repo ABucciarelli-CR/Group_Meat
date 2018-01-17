@@ -5,6 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public GameObject player;
+    public bool friendlyFire = true;
     public float arrowVelocity = 150f;
     private float arrowDamage = 15f;
 
@@ -40,6 +41,13 @@ public class Arrow : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("Damage", arrowDamage);
+        }
+        else if(friendlyFire)
+        {
+            if(collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.SendMessage("Damage", arrowDamage);
+            }
         }
         Destroy(this.gameObject);
     }

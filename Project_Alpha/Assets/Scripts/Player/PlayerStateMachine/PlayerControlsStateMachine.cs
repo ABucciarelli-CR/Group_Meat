@@ -8,8 +8,10 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
     private float leftAndRightMovement;
     private bool jump = false;
-    private bool dash = false;
+    private bool inputDash = false;
+    private float axesDash = 0f;
     private bool eat = false;
+    private bool canDash = true;
 
     //attack Type
     //see summary in PlayerStateMachine.cs
@@ -25,7 +27,8 @@ public class PlayerControlsStateMachine : MonoBehaviour
 	void Update ()
     {
         leftAndRightMovement = Input.GetAxis("Horizontal");
-        dash = Input.GetButtonDown("Dash");
+        inputDash = Input.GetButtonDown("DashInput");
+        axesDash = Input.GetAxis("DashAxes");
         eat = Input.GetButtonDown("Eat");
         jump = Input.GetButtonDown("Jump");
 
@@ -89,9 +92,20 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
     private void Dash()
     {
-        if(dash)
+        if(inputDash)
         {
             stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
+        }
+        
+        if(axesDash == 1 && canDash)
+        {
+            canDash = false;
+            stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
+        }
+
+        if(axesDash <= 0.2f)
+        {
+            canDash = true;
         }
     }
 

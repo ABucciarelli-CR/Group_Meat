@@ -7,16 +7,17 @@ using UnityEngine;
 public class EnemyArcher : EnemyStateMachine
 {
     private int archerDamage = 15;
+    private float offsetEscape = 50f;
     public int archerHealth = 50;
 
-    public float escapeArea = 10f;
-    private float maxVisibleDistance = 5000f;
+    public float escapeAreaDistance = 2000f;
+    public float maxVisibleDistance = 5000f;
     public float archerAttackDelay = 1f;
     //public float arrowVelocity = 50f;
     public GameObject arrowPrefab;
     public GameObject player;
-    public GameObject AttackCollider;
-    public GameObject areaAttack;
+    public GameObject attackCollider;
+    public GameObject escapeArea;
 
     //private float delay = 0;
     private int i = 0;
@@ -32,7 +33,8 @@ public class EnemyArcher : EnemyStateMachine
         delay = archerAttackDelay;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
-        AttackCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
+        attackCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
+        escapeArea.GetComponent<CircleCollider2D>().radius = escapeAreaDistance;
 
         //hitColliders = new Collider2D[maxArray];
     }
@@ -73,11 +75,11 @@ public class EnemyArcher : EnemyStateMachine
         base.Attack();
 
         //create and shoot arrow
-        //Debug.Log(waited);
         if(waited)
         {
             waited = false;
             StartCoroutine(Wait(attackDelay));
+            //creare successivamente la parabola della freccia
             Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
         }
 
@@ -97,82 +99,6 @@ public class EnemyArcher : EnemyStateMachine
         {
             enemyState = EnemyState.escape;
         }
-
-        /*
-        //check if the player is in the area
-        System.Array.Clear(hitColliders, 0, maxArray);
-        Physics2D.OverlapCircle(transform.position, maxVisibleDistance, contactFilter, hitColliders);
-        //Debug.DrawRay(transform.position, Vector2.left, Color.green, maxVisibleDistance);
-        //Debug.Log("Me collide");
-        foreach (Collider2D collider in hitColliders)
-        {
-            if (hitColliders[i] != null)
-            {
-                //Debug.Log("Hitted" + i);
-
-                //var dir = player.transform.position - this.transform.position;
-                //if (Physics.Raycast(transform.position, dir, out playerInLine)) { }
-
-                if(hitColliders[i].CompareTag("Player") && !stardCountdown)
-                {
-                    stardCountdown = true;
-                }
-
-                if (hitColliders[i].CompareTag("Player") && delay <= (attackDelay/2))
-                {
-                    offenseStateSpriteRenderer.color = enemyIsOnAttack;
-                }
-
-                if (hitColliders[i].CompareTag("Player") && delay == 0)
-                {
-                    enemyState = EnemyState.attack;
-                    break;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-        */
-        //i = 0;
-        
-
-        /*
-        System.Array.Clear(hitColliders, 0, maxArray);
-        //run away if the player is too close
-        Physics2D.OverlapCircle(transform.position, escapeArea, contactFilter, hitColliders);
-        foreach (Collider2D collider in hitColliders)
-        {
-            if (hitColliders[i] != null)
-            {
-                //Debug.Log("Hitted" + i);
-                if (hitColliders[i].CompareTag("Player"))
-                {
-                    enemyState = EnemyState.escape;
-                    break;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-        //Debug.Log("Exit");
-        if (enemyState == EnemyState.searchPlayer)
-        {
-            enemyState = EnemyState.idle;
-            i = 0;
-            System.Array.Clear(hitColliders, 0, maxArray);
-        }*/
     }
 
     public override void Escape()
@@ -183,84 +109,23 @@ public class EnemyArcher : EnemyStateMachine
 
         if(thereIsAPlayer)
         {
-            direction = gameObject.transform.position.x - player.transform.position.x;
-
-            //movement = new Vector2(Mathf.Sign(direction) * speed, 0);
+            direction = gameObject.transform.position.x - player.transform.position.x + offsetEscape;
 
             rb2d.velocity = new Vector2(Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
         }
 
         enemyState = EnemyState.searchPlayer;
-
-        /*
-        i = 0;
         
-        System.Array.Clear(hitColliders, 0, maxArray);
-        Physics2D.OverlapCircle(transform.position, escapeArea, contactFilter, hitColliders);
-        foreach (Collider2D collider in hitColliders)
-        {
-            if (hitColliders[i] != null)
-            {
-                //Debug.Log("Hitted" + i);
-                if (hitColliders[i].CompareTag("Player"))
-                {
-                    direction = gameObject.transform.position.x - player.transform.position.x;
-
-                    movement = new Vector2(Mathf.Sign(direction) * speed, 0);
-                    //gameObject.transform.Translate(movement);
-                    //rb2d.MovePosition(rb2d.position + movement);
-
-                    rb2d.velocity = new Vector2(Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
-                    //rb2d.velocity = movement;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-        System.Array.Clear(hitColliders, 0, maxArray);
-
-        Physics2D.OverlapCircle(transform.position, escapeArea, contactFilter, hitColliders);
-        thereIsAPlayer = false;
-        foreach (Collider2D collider in hitColliders)
-        {
-            if (hitColliders[i] != null)
-            {
-                //Debug.Log("Hitted" + i);
-                if (hitColliders[i].CompareTag("Player"))
-                {
-                    //Debug.Log("Nothing 1");
-                    thereIsAPlayer = true;
-                    break;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            else
-            {
-                //Debug.Log("Nothing 2");
-                thereIsAPlayer = true;
-                break;
-            }
-        }
-        
-        if (thereIsAPlayer)
-        {
-            //Debug.Log("Nothing 3");
-            enemyState = EnemyState.idle;
-        }*/
     }
 
     private void IsPlayerIn(bool isIn)
     {
         playerIsDamageable = isIn;
+    }
+
+    private void IsPlayerTooNear(bool isIn)
+    {
+        thereIsAPlayer = isIn;
     }
 
     IEnumerator Wait(float sec)

@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1811349277448878}
   m_IsPrefabParent: 1
+--- !u!1 &1015236457583740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4454565796455174}
+  - component: {fileID: 58133551338093448}
+  - component: {fileID: 114045451954919124}
+  m_Layer: 18
+  m_Name: EscapeArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1811349277448878
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,6 +83,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4454565796455174
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015236457583740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4947244010513676}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4691547086682294
 Transform:
   m_ObjectHideFlags: 1
@@ -91,6 +121,7 @@ Transform:
   m_Children:
   - {fileID: 4691547086682294}
   - {fileID: 4976395501972798}
+  - {fileID: 4454565796455174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,6 +158,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58133551338093448
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015236457583740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 800, y: 0}
+  serializedVersion: 2
+  m_Radius: 2000
 --- !u!58 &58657393567099220
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -167,6 +213,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 463.05518, y: 1162.9772}
   m_EdgeRadius: 0
+--- !u!114 &114045451954919124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015236457583740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1365283839e55a49934a10356ecf34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisEnemy: {fileID: 1811349277448878}
 --- !u!114 &114261174878613148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,13 +282,14 @@ MonoBehaviour:
     m_Bits: 0
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   archerHealth: 50
-  escapeArea: 10
+  escapeAreaDistance: 2000
+  maxVisibleDistance: 5000
   archerAttackDelay: 10
   arrowPrefab: {fileID: 1389375353478948, guid: 61e5cc062fa9eec4d95e91eab99cbb93,
     type: 2}
   player: {fileID: 0}
-  AttackCollider: {fileID: 1917201181232136}
-  areaAttack: {fileID: 1917201181232136}
+  attackCollider: {fileID: 1917201181232136}
+  escapeArea: {fileID: 1015236457583740}
 --- !u!114 &114297171087717318
 MonoBehaviour:
   m_ObjectHideFlags: 1
