@@ -368,7 +368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896308057333150}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 784, y: 1370, z: 0}
+  m_LocalPosition: {x: 846, y: 1258, z: 0}
   m_LocalScale: {x: 1000, y: 1000, z: 1}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
@@ -381,7 +381,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319474957917156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1259, z: 0}
+  m_LocalPosition: {x: 0, y: -1320, z: 0}
   m_LocalScale: {x: 0.56448287, y: 0.5644837, z: 1}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
@@ -394,7 +394,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1282909400449946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 788, y: 1105, z: 0}
+  m_LocalPosition: {x: 788, y: 967, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
@@ -407,7 +407,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459610301309766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.96, y: -25.5, z: 0}
+  m_LocalPosition: {x: -1243, y: 110.7, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 1}
   m_Children:
   - {fileID: 4625044586655510}
@@ -427,8 +427,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385838484494572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1462, y: -0.11, z: 0}
-  m_LocalScale: {x: 5000, y: 20000, z: 0}
+  m_LocalPosition: {x: 1424.16, y: -37.6, z: 0}
+  m_LocalScale: {x: 7887.07, y: 19942.102, z: 0}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
   m_RootOrder: 4
@@ -454,7 +454,7 @@ Transform:
   m_GameObject: {fileID: 1285535157020518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.00003051758, y: -0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
   m_RootOrder: 5
@@ -508,7 +508,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -526,9 +526,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 494.69, y: -724.3}
+  m_Offset: {x: 528.6, y: -809.31}
   serializedVersion: 2
-  m_Radius: 617
+  m_Radius: 500
 --- !u!61 &61162276871010746
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -566,18 +566,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 490.9724, y: 187.34424}
+  m_Offset: {x: 526.51, y: -0.106472015}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3981, y: 4437}
-    newSize: {x: 3981, y: 4437}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1257.8752, y: 2005.333}
+  m_Size: {x: 1001.57, y: 2080.7}
   m_EdgeRadius: 0
 --- !u!61 &61925451319670590
 BoxCollider2D:
@@ -591,7 +591,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3, y: 0}
+  m_Offset: {x: 306, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -602,7 +602,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 31.1, y: 25.8}
+  m_Size: {x: 3314.3, y: 2604.2}
   m_EdgeRadius: 0
 --- !u!81 &81676978082146218
 AudioListener:
@@ -788,6 +788,9 @@ MonoBehaviour:
   airControl: 1
   heal: 50
   lifeIncrement: 25
+  dashSpeed: 500
+  jumpForce: 1000
+  moveForce: 500
   playerMovement: 0
   playerAttack: 0
   groundCheck: {fileID: 4235922149452398}
@@ -898,9 +901,9 @@ MonoBehaviour:
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 0
 --- !u!114 &114551036807482314
 MonoBehaviour:
@@ -952,7 +955,7 @@ MonoBehaviour:
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1053,8 +1056,8 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -1153,7 +1156,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3981, y: 4437}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1247,7 +1250,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 20073722310072582}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1313,7 +1316,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1042, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224416181041805564
 RectTransform:
@@ -1377,7 +1380,7 @@ RectTransform:
   m_GameObject: {fileID: 1834262673890864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 1.5, z: 1}
+  m_LocalScale: {x: 5, y: 3, z: 1}
   m_Children:
   - {fileID: 224420859144649680}
   - {fileID: 224991006211175418}
@@ -1491,7 +1494,7 @@ RectTransform:
   m_GameObject: {fileID: 1226769601088482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 1.5, z: 1}
+  m_LocalScale: {x: 5, y: 3, z: 1}
   m_Children:
   - {fileID: 224416181041805564}
   - {fileID: 224713084453140006}

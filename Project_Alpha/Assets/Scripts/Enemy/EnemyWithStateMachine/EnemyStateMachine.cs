@@ -9,7 +9,7 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public EnemyState enemyState;
 
 
-    public float speed = .1f;
+    public float speed = .8f;
     public int damage;
     public float attackDelay;
     [HideInInspector] public Vector2 movement;
@@ -22,12 +22,13 @@ public class EnemyStateMachine : MonoBehaviour
     public float stunTime = 5f;
     public int healthRegenAfterStun = 20;//is in %
     public bool activeStunTime = true;
-    [HideInInspector]public float delay;
+    [HideInInspector] public float delay;
     [HideInInspector] public int maxArray = 100;
-    [HideInInspector]public bool stardCountdown = true;
+    [HideInInspector] public bool stardCountdown = true;
     [HideInInspector] public bool regenerate = false;//to abilitate the enemy regeneration afrer stun
     [HideInInspector] public bool onlyOneDeath = true; //ceck to not die several times
-    
+    [HideInInspector] public bool waited = true;
+
     [HideInInspector] public EnemyHealth enemyHealth;
     [HideInInspector] public float stunnedTime = 0;
 
@@ -35,6 +36,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public ContactFilter2D contactFilter;
 
+    //public GameObject AttackCollider;
     public Collider2D[] hitColliders;
 
     public Rigidbody2D rb2d;
@@ -55,6 +57,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Blink blink;
 
+    
+
+
 
     public enum EnemyState
     {
@@ -67,12 +72,13 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Awake()
     {
-           
+        
     }
 
     void Start()
     {
         //offenseState = offenseState.GetComponent<GameObject>();
+        
 
         enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);

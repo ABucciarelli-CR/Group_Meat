@@ -52,6 +52,9 @@ public class EnemyHealth : MonoBehaviour
         //Debug.DrawRay(transform.position, -Vector2.left, Color.red);
 
         //if (ceckPlayerRightRayHit2D.collider != null || ceckPlayerLeftRayHit2D.collider != null)
+//sti due log mi sfanculano il codice... boh
+        //Debug.Log("Right hit: " + hitRight.collider.gameObject.name);
+        //Debug.Log("Left hit: " + hitLeft.collider.gameObject.name);
         if (hitLeft.collider != null || hitRight.collider != null)
         {
             //Debug.Log("Inside");
@@ -73,12 +76,12 @@ public class EnemyHealth : MonoBehaviour
 
             if (hitRight.collider != null)
             {
-                //Debug.Log("Here1!");
+                //Debug.Log("Here2!");
                 if (hitRight.collider.CompareTag("Player"))
                 {
                     spriteRenderer.color = enemyDamagedColor;
                     health -= dmg;
-                    Debug.Log("Damaged");
+                    //Debug.Log("Damaged");
                 }
             }
         }

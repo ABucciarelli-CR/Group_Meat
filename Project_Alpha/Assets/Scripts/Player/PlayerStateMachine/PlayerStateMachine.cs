@@ -22,9 +22,9 @@ public class PlayerStateMachine : MonoBehaviour
     public bool airControl = true;
     public int heal = 50;
     public int lifeIncrement = 25;
-    private float dashSpeed = 5000f;
-    private float jumpForce = 9000000f;
-    private float moveForce = 500f;
+    public float dashSpeed = 500f;
+    public float jumpForce = 20f;
+    public float moveForce = 10f;
 
     [HideInInspector] public float playerMovement;
     [HideInInspector] public int playerAttack;
@@ -109,6 +109,7 @@ public class PlayerStateMachine : MonoBehaviour
                 }
             }
         }
+        
         /*
         anim.SetBool("Ground", isGrounded);
         // Set the vertical animation
@@ -169,6 +170,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         groundRadiusCollision = realGroundRadiusCollision;
         gameObject.layer = 8;
+        //Debug.Log(gameObject.layer);
         //TODO: animation start
     }
 
@@ -238,10 +240,12 @@ public class PlayerStateMachine : MonoBehaviour
     {
         gameObject.layer = 13;
         //TODO: wait 4 animation
+        
+        rb2d.velocity = new Vector2(0, 0);
         rb2d.MovePosition(rb2d.position + new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
+        playerState = PlayerState.idle;
         //TODO: wait 4 animation
         
-        playerState = PlayerState.idle;
     }
 
     private void Eat()

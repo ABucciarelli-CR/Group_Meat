@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389375353478948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.776335, y: -11.891505, z: -0.038556453}
-  m_LocalScale: {x: 4, y: 0.3, z: 1}
+  m_LocalPosition: {x: -2273.2195, y: -53.81288, z: -0.038556453}
+  m_LocalScale: {x: 800, y: 60, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   arrowVelocity: 10
-  arrowDamage: 100
   precision: 1
 --- !u!212 &212635473991634756
 SpriteRenderer:

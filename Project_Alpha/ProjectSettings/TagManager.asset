@@ -29,7 +29,7 @@ TagManager:
   - eatingLayer
   - arrow
   - flank
-  - 
+  - collideWithPlayer
   - 
   - 
   - 

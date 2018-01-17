@@ -10,29 +10,31 @@ public class EnemyArcher : EnemyStateMachine
     public int archerHealth = 50;
 
     public float escapeArea = 10f;
-    public float maxVisibleDistance = 50f;
+    private float maxVisibleDistance = 5000f;
     public float archerAttackDelay = 1f;
     //public float arrowVelocity = 50f;
     public GameObject arrowPrefab;
     public GameObject player;
+    public GameObject AttackCollider;
+    public GameObject areaAttack;
 
     //private float delay = 0;
     private int i = 0;
     private bool healtToSet = true;
-    private bool thereIsAPlayer = false;//variable for check if the player CI SEGUE!!!!
+    private bool playerIsDamageable = false;//if the player is in the first area(attack)
+    private bool thereIsAPlayer = false;//if the player is in the second area(run)
     private RaycastHit2D playerInLine;//check if the player is in line with the archer
-
-    
 
     private void Awake()
     {
         damage = archerDamage;
         attackDelay = archerAttackDelay;
         delay = archerAttackDelay;
+        //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
-        
+        AttackCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
 
-        hitColliders = new Collider2D[maxArray];
+        //hitColliders = new Collider2D[maxArray];
     }
 
     private void FixedUpdate()
@@ -54,6 +56,7 @@ public class EnemyArcher : EnemyStateMachine
         {
             player = GameObject.FindWithTag("Player");
         }
+        
     }
 
     public override void Idle()
@@ -69,30 +72,33 @@ public class EnemyArcher : EnemyStateMachine
     {
         base.Attack();
 
-        //Debug.Log("damaging");
-        /*
-        hitColliders[i].gameObject.SendMessage("Damage", damage);
-        i = 0;
-        delay = attackDelay;
-        System.Array.Clear(hitColliders, 0, maxArray);*/
-
         //create and shoot arrow
-        Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
-        /*
-        arrow.transform.position = transform.position;
-
-        Vector3 playerPos = player.transform.position;
-        Vector3 playerPosFlattened = new Vector3(playerPos.x, playerPos.y, 0);
-        arrow.transform.LookAt(playerPosFlattened);*/
+        //Debug.Log(waited);
+        if(waited)
+        {
+            waited = false;
+            StartCoroutine(Wait(attackDelay));
+            Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+        }
 
         enemyState = EnemyState.idle;
-        delay = archerAttackDelay;
     }
 
     public override void SearchPlayer()
     {
         base.SearchPlayer();
+        
+        if(playerIsDamageable)
+        {
+            enemyState = EnemyState.attack;
+        }
 
+        if(thereIsAPlayer)
+        {
+            enemyState = EnemyState.escape;
+        }
+
+        /*
         //check if the player is in the area
         System.Array.Clear(hitColliders, 0, maxArray);
         Physics2D.OverlapCircle(transform.position, maxVisibleDistance, contactFilter, hitColliders);
@@ -132,9 +138,11 @@ public class EnemyArcher : EnemyStateMachine
                 break;
             }
         }
+        */
+        //i = 0;
+        
 
-        i = 0;
-
+        /*
         System.Array.Clear(hitColliders, 0, maxArray);
         //run away if the player is too close
         Physics2D.OverlapCircle(transform.position, escapeArea, contactFilter, hitColliders);
@@ -164,7 +172,7 @@ public class EnemyArcher : EnemyStateMachine
             enemyState = EnemyState.idle;
             i = 0;
             System.Array.Clear(hitColliders, 0, maxArray);
-        }
+        }*/
     }
 
     public override void Escape()
@@ -172,7 +180,21 @@ public class EnemyArcher : EnemyStateMachine
         base.Escape();
 
         Debug.Log("Ruun forrest, ruuuuuuuuuuuuuuunnnnnnnnnnnn!!!!!!");
+
+        if(thereIsAPlayer)
+        {
+            direction = gameObject.transform.position.x - player.transform.position.x;
+
+            //movement = new Vector2(Mathf.Sign(direction) * speed, 0);
+
+            rb2d.velocity = new Vector2(Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
+        }
+
+        enemyState = EnemyState.searchPlayer;
+
+        /*
         i = 0;
+        
         System.Array.Clear(hitColliders, 0, maxArray);
         Physics2D.OverlapCircle(transform.position, escapeArea, contactFilter, hitColliders);
         foreach (Collider2D collider in hitColliders)
@@ -228,12 +250,24 @@ public class EnemyArcher : EnemyStateMachine
                 break;
             }
         }
-
+        
         if (thereIsAPlayer)
         {
             //Debug.Log("Nothing 3");
             enemyState = EnemyState.idle;
-        }
+        }*/
+    }
+
+    private void IsPlayerIn(bool isIn)
+    {
+        playerIsDamageable = isIn;
+    }
+
+    IEnumerator Wait(float sec)
+    {
+        //Debug.Log("waiting");
+        yield return new WaitForSeconds(sec);
+        waited = true;
     }
 }
 
