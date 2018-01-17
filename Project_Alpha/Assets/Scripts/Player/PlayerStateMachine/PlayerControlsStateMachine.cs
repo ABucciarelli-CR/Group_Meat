@@ -43,9 +43,9 @@ public class PlayerControlsStateMachine : MonoBehaviour
         //se in Jump
         else if(stateMachine.playerState == PlayerStateMachine.PlayerState.jump)
         {
-            Dash();
             Jump();
-
+            Dash();
+            
             jump = false;
         }
         //se in Movement

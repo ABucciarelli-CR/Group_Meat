@@ -16,7 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
 {
     [HideInInspector] public PlayerState playerState;
     [HideInInspector] public bool facingRight = true;
-    [HideInInspector] public float lastMove = 0;
+    [HideInInspector] private float lastMove = 1;
 
     //playerValue
     public bool airControl = true;
@@ -194,8 +194,8 @@ public class PlayerStateMachine : MonoBehaviour
     
 
         rb2d.velocity = new Vector2(leftRightMove * moveForce, rb2d.velocity.y);
-
-        lastMove = leftRightMove;
+        
+        //lastMove = leftRightMove;
 
         //Flip The player to watch in the right way
         if (leftRightMove < 0 && facingRight)
@@ -239,9 +239,11 @@ public class PlayerStateMachine : MonoBehaviour
     private void Dash()
     {
         gameObject.layer = 13;
+        //lastMove = leftRightMove;
         //TODO: wait 4 animation
-        
+
         rb2d.velocity = new Vector2(0, 0);
+        //Debug.Log(Mathf.Sign(lastMove));
         rb2d.MovePosition(rb2d.position + new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
         playerState = PlayerState.idle;
         //TODO: wait 4 animation
@@ -282,6 +284,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         //Debug.Log("Do Flip");
         facingRight = !facingRight;
+        lastMove *= -1;
         Vector3 normalScale = transform.localScale;
         normalScale.x *= -1;
         transform.localScale = normalScale;
