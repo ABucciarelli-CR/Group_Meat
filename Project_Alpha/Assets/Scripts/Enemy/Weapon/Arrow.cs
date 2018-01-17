@@ -5,7 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public GameObject player;
-    public float arrowVelocity = 10f;
+    public float arrowVelocity = 150f;
     private float arrowDamage = 15f;
 
     public float precision = 1f;
