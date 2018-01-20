@@ -362,12 +362,12 @@ Prefab:
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7175
+      value: 10037.5
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 700
+      value: 2306.25
       objectReference: {fileID: 0}
     - target: {fileID: 1459610301309766, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_IsActive
@@ -1019,6 +1019,16 @@ Prefab:
     - target: {fileID: 1016767506314694, guid: 9ca07c2b693b1c5408d8125b92641196, type: 2}
       propertyPath: m_Name
       value: Floor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 61562397960905814, guid: 9ca07c2b693b1c5408d8125b92641196,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 61562397960905814, guid: 9ca07c2b693b1c5408d8125b92641196,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ca07c2b693b1c5408d8125b92641196, type: 2}

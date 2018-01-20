@@ -21,7 +21,7 @@ public class Elevator : MonoBehaviour
 
         if (move)
         {
-            rb2d.AddForce(new Vector2(0, speed * 1000));
+            rb2d.AddForce(new Vector2(-1, speed * 1000));
         }
     }
 
