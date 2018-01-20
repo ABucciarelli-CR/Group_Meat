@@ -2,36 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Elevator : MonoBehaviour {
+public class Elevator : MonoBehaviour
+{
     public Transform target;
     public Transform target2;
+    public bool move = false;
     public float speed;
+    private Rigidbody2D rb2d;
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+    }
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void FixedUpdate ()
+    {
+
+        if (move)
+        {
+            rb2d.AddForce(new Vector2(0, speed * 1000));
+        }
     }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            float step = speed * Time.deltaTime;
             if (!(transform.position == target.position))
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+                move = true;
+                //transform.position = Vector3.MoveTowards(transform.position, target.position, step);
             }
         }
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("EHI LISTEN");
-            float step = speed * Time.deltaTime;
             if (!(transform.position == target.position))
             {
-                transform.position = Vector3.MoveTowards(transform.position, target2.position, step);
+                move = true;
+                //transform.position = Vector3.MoveTowards(transform.position, target2.position, step);
             }
         }
     }

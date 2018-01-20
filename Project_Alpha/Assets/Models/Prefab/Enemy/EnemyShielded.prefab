@@ -273,6 +273,7 @@ MonoBehaviour:
   stardCountdown: 1
   regenerate: 0
   onlyOneDeath: 1
+  waited: 1
   enemyHealth: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1819755204931250}
@@ -361,6 +362,7 @@ MonoBehaviour:
   stardCountdown: 1
   regenerate: 0
   onlyOneDeath: 1
+  waited: 1
   enemyHealth: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1819755204931250}
