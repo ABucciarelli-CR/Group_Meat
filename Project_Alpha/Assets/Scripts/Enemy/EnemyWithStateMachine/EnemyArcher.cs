@@ -30,7 +30,6 @@ public class EnemyArcher : EnemyStateMachine
     {
         damage = archerDamage;
         attackDelay = archerAttackDelay;
-        delay = archerAttackDelay;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
