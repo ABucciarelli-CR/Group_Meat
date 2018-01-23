@@ -96,6 +96,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*
         isGrounded = false;
 
         if (waited)
@@ -108,7 +109,7 @@ public class PlayerStateMachine : MonoBehaviour
                     isGrounded = true;
                 }
             }
-        }
+        }*/
         
         /*
         anim.SetBool("Ground", isGrounded);
@@ -303,6 +304,11 @@ public class PlayerStateMachine : MonoBehaviour
     public void IncrementLife(int increment)
     {
         playerLife.GetComponent<Life>().IncrementLife(increment);
+    }
+
+    private void GoJump(bool isJump)
+    {
+        isGrounded = isJump;
     }
 
     IEnumerator Wait(float sec, bool returnWait = true)
