@@ -12,6 +12,7 @@ public class EnemyStateMachine : MonoBehaviour
     public float speed = .8f;
     public int damage;
     public float attackDelay;
+    public float healDelay;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
@@ -30,9 +31,11 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public bool waited = true;
 
     [HideInInspector] public EnemyHealth enemyHealth;
+    [HideInInspector] public GameObject gameManager;
     [HideInInspector] public float stunnedTime = 0;
 
     public GameObject offenseState;//the gameObject that visualize
+    
 
     public ContactFilter2D contactFilter;
 
@@ -57,17 +60,22 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Blink blink;
 
-    
-
-
-
     public enum EnemyState
     {
         idle,
         attack,
+        heal,
         searchPlayer,
         escape,
         stun
+    }
+
+    private void OnDestroy()
+    {
+        if(gameManager != null)
+        {
+            gameManager.GetComponent<EnemyManager>().Remove(this.gameObject);
+        }
     }
 
     void Awake()
@@ -78,8 +86,8 @@ public class EnemyStateMachine : MonoBehaviour
     void Start()
     {
         //offenseState = offenseState.GetComponent<GameObject>();
-        
-
+        gameManager = GameObject.Find("GameManager");
+        gameManager.GetComponent<EnemyManager>().Add(this.gameObject);
         enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);
         enemyStunnedColor = Color.black;
@@ -162,6 +170,10 @@ public class EnemyStateMachine : MonoBehaviour
                 Attack();
                 break;
 
+            case EnemyState.heal:
+                Heal();
+                break;
+
             case EnemyState.searchPlayer:
                 SearchPlayer();
                 break;
@@ -193,6 +205,11 @@ public class EnemyStateMachine : MonoBehaviour
     {
         blink.DoBlink(enemyAttackColor, enemyOffenseStateStandardColor, 10, offenseState);
         //offenseStateSpriteRenderer.color = enemyAttackColor;
+    }
+
+    public virtual void Heal()
+    {
+
     }
 
     public virtual void SearchPlayer()

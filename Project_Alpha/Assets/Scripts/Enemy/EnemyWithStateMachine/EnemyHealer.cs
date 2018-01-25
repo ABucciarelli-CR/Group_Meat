@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyHealer : EnemyStateMachine
 {
-    private bool playerIsInVision = false;
+    private int maxEnemyInList = 20;
     private bool doPlayerDamage = false;
-    private bool enemyIsIn = false;
     private bool healtToSet = true;
+    private bool onlyHealer = false;
 
     public int healerDamage = 5;
     public int healerHeal = 10;
@@ -18,11 +18,8 @@ public class EnemyHealer : EnemyStateMachine
     public float healerAttackDelay = 5f;
     public float healerHealDelay = 3f;
     public float maxAttackDistance = 3000f;
-    public float maxVisibleDistance = 4000f;
 
     public GameObject attackCollider;
-    public GameObject visibleDistanceCollider;
-    public GameObject healDistanceCollider;
     public GameObject player;
 
 
@@ -30,12 +27,11 @@ public class EnemyHealer : EnemyStateMachine
     {
         damage = healerDamage;
         attackDelay = healerAttackDelay;
+        healDelay = healerHealDelay;
         speed = healerSpeed;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
-        visibleDistanceCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
-        healDistanceCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
 
         //hitColliders = new Collider2D[maxArray];
     }
@@ -60,6 +56,16 @@ public class EnemyHealer : EnemyStateMachine
             player = GameObject.FindWithTag("Player");
         }
 
+        onlyHealer = true;
+
+        foreach (GameObject thisEnemy in gameManager.GetComponent<EnemyManager>().enemy)
+        {
+            if(thisEnemy.name != "Healer" || thisEnemy.name != "Healer(Clone)")
+            {
+                onlyHealer = false;
+                break;
+            }
+        }
     }
 
     public override void Idle()
@@ -67,8 +73,23 @@ public class EnemyHealer : EnemyStateMachine
         base.Idle();
 
         //Debug.Log("To search");
-        enemyState = EnemyState.searchPlayer;
 
+        if (onlyHealer && doPlayerDamage)
+        {
+            enemyState = EnemyState.attack;
+        }
+        else if(onlyHealer && !doPlayerDamage)
+        {
+            enemyState = EnemyState.heal;
+        }
+        else if(!onlyHealer)
+        {
+            enemyState = EnemyState.heal;
+        }
+        else
+        {
+            enemyState = EnemyState.searchPlayer;
+        }
     }
 
     public override void Attack()
@@ -85,6 +106,25 @@ public class EnemyHealer : EnemyStateMachine
         enemyState = EnemyState.idle;
     }
 
+    public override void Heal()
+    {
+        base.Heal();
+
+        Debug.Log("try heal");
+        if (waited)
+        {
+            foreach (GameObject thisEnemy in gameManager.GetComponent<EnemyManager>().enemy)
+            {
+                Debug.Log("Healing: " + thisEnemy.name);
+                thisEnemy.SendMessage("Heal", healerHeal);
+            }
+            waited = false;
+            StartCoroutine(Wait(healDelay));
+        }
+
+        enemyState = EnemyState.idle;
+    }
+
     public override void SearchPlayer()
     {
         base.SearchPlayer();
@@ -94,27 +134,17 @@ public class EnemyHealer : EnemyStateMachine
             enemyState = EnemyState.attack;
         }
 
-        if (playerIsInVision && !enemyIsIn)
+        if (onlyHealer)
         {
             direction = gameObject.transform.position.x - player.transform.position.x;
 
             rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
         }
     }
-
-    private void IsPlayerIn(bool isIn)
-    {
-        playerIsInVision = isIn;
-    }
-
-    private void IsEnemyIn(bool isEnemyIn)
-    {
-        enemyIsIn = isEnemyIn;
-    }
-
+    
     private void IsPlayerdamageable(bool isDamageable)
     {
-        Debug.Log("canDamagePlayer");
+        //Debug.Log("canDamagePlayer");
         doPlayerDamage = isDamageable;
     }
 
