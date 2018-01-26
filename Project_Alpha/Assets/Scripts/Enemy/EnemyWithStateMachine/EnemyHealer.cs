@@ -106,17 +106,16 @@ public class EnemyHealer : EnemyStateMachine
         enemyState = EnemyState.idle;
     }
 
-    public override void Heal()
+    public override void Healing()
     {
-        base.Heal();
-
-        Debug.Log("try heal");
+        base.Healing();
+        
         if (waited)
         {
             foreach (GameObject thisEnemy in gameManager.GetComponent<EnemyManager>().enemy)
             {
-                Debug.Log("Healing: " + thisEnemy.name);
-                thisEnemy.SendMessage("Heal", healerHeal);
+                //Debug.Log("Healing: " + thisEnemy.name);
+                thisEnemy.SendMessage("HealIfAlive", healerHeal);
             }
             waited = false;
             StartCoroutine(Wait(healDelay));

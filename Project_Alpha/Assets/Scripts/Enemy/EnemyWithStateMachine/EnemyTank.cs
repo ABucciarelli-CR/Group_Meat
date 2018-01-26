@@ -27,8 +27,6 @@ public class EnemyTank : EnemyStateMachine
         attackDelay = tankAttackDelay;
         delay = tankAttackDelay;
 
-        
-
         hitColliders = new Collider2D[maxArray];
     }
 

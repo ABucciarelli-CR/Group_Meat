@@ -18,7 +18,6 @@ public class EnemyHealth : MonoBehaviour
     private int waitFrame = 2;
     private int waitedFrame = 0;
 
-
     private RaycastHit2D hitLeft;
     private RaycastHit2D hitRight;
 
@@ -27,8 +26,6 @@ public class EnemyHealth : MonoBehaviour
         hitLeft = new RaycastHit2D();
         hitRight = new RaycastHit2D();
         maxDistance = Mathf.Infinity;
-        //minDepth = -Mathf.Infinity;
-        //maxDepth = Mathf.Infinity;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -40,28 +37,11 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(int dmg)
     {
-        //ceckPlayerLeftRayHit2D = Physics2D.Raycast(new Vector2(0,0), Vector2.left, maxDistance, playerAndShieldsLayerMask.value);
-        //ceckPlayerRightRayHit2D = Physics2D.Raycast(new Vector2(0, 0), -Vector2.left, maxDistance, playerAndShieldsLayerMask.value);
-        
         hitLeft = Physics2D.Raycast(transform.position, Vector2.left, maxDistance, playerAndShieldsLayerMask);
         hitRight = Physics2D.Raycast(transform.position, -Vector2.left, maxDistance, playerAndShieldsLayerMask);
-
-        //Debug.Log(hitRight.collider.name);
-        //Debug.Log(hitLeft.collider.name);
-        //Debug.DrawRay(transform.position, Vector2.left, Color.red);
-        //Debug.DrawRay(transform.position, -Vector2.left, Color.red);
-
-        //if (ceckPlayerRightRayHit2D.collider != null || ceckPlayerLeftRayHit2D.collider != null)
-//sti due log mi sfanculano il codice... boh
-        //Debug.Log("Right hit: " + hitRight.collider.gameObject.name);
-        //Debug.Log("Left hit: " + hitLeft.collider.gameObject.name);
+        
         if (hitLeft.collider != null || hitRight.collider != null)
         {
-            //Debug.Log("Inside");
-
-            //if (ceckPlayerRightRayHit2D.collider.CompareTag("player") || ceckPlayerLeftRayHit2D.collider.CompareTag("player"))
-            //Debug.Log(hitRight.collider.tag);
-            //Debug.Log(hitLeft.collider.tag);
 
             if(hitLeft.collider != null)
             {
@@ -87,25 +67,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
     }
-    /*
-    private void FixedUpdate()
-    {
-        ceckPlayerLeftRayHit2D = Physics2D.Raycast(new Vector2(0, 0), Vector2.left, maxDistance, playerAndShieldsLayerMask.value);
-        ceckPlayerRightRayHit2D = Physics2D.Raycast(new Vector2(0, 0), -Vector2.left, maxDistance, playerAndShieldsLayerMask.value);
-
-        Debug.DrawRay(new Vector2(0, 0), ceckPlayerRightRayHit2D.point, Color.green);
-        if (ceckPlayerRightRayHit2D.collider != null || ceckPlayerLeftRayHit2D.collider != null)
-        {
-            Debug.Log("Inside");
-
-            if (ceckPlayerRightRayHit2D.collider.CompareTag("player") || ceckPlayerLeftRayHit2D.collider.CompareTag("player"))
-            {
-                health -= 5;
-                Debug.Log("Damaged");
-            }
-        }
-    }*/
-        
+     
     public void SetHealth(int settedHealth)
     {
         health = settedHealth;
@@ -114,7 +76,19 @@ public class EnemyHealth : MonoBehaviour
 
     public void Heal(int heal)
     {
-        health = heal;
+        health = Mathf.RoundToInt(heal / 2);
+    }
+
+    public void HealIfAlive(int heal)
+    {
+        if(health > 0 && (health + heal) < maxHealth)
+        {
+            health += heal;
+        }
+        if((health + heal) >= maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     void Update()

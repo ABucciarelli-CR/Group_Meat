@@ -7,8 +7,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
 
     [HideInInspector] public EnemyState enemyState;
-
-
+    
     public float speed = .8f;
     public int damage;
     public float attackDelay;
@@ -18,7 +17,6 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public float timeToChangeDirection = 5f;
     [HideInInspector] public float ttcd;
     /*[HideInInspector]*/
-    
     
     public float stunTime = 5f;
     public int healthRegenAfterStun = 20;//is in %
@@ -171,7 +169,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyState.heal:
-                Heal();
+                Healing();
                 break;
 
             case EnemyState.searchPlayer:
@@ -207,7 +205,7 @@ public class EnemyStateMachine : MonoBehaviour
         //offenseStateSpriteRenderer.color = enemyAttackColor;
     }
 
-    public virtual void Heal()
+    public virtual void Healing()
     {
 
     }

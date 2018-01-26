@@ -9,7 +9,7 @@ public class EnemyArcher : EnemyStateMachine
     private int archerDamage = 15;
     private float offsetEscape = 50f;
     public int archerHealth = 50;
-
+    
     public float escapeAreaDistance = 2000f;
     public float maxVisibleDistance = 5000f;
     public float archerAttackDelay = 1f;
