@@ -70,8 +70,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4568471042553730}
   - component: {fileID: 212839314771093000}
-  - component: {fileID: 114495365045145720}
   - component: {fileID: 114960383601567194}
+  - component: {fileID: 114495365045145720}
   - component: {fileID: 114125889677765178}
   - component: {fileID: 114064559987149854}
   - component: {fileID: 61181959249927204}
@@ -261,6 +261,7 @@ MonoBehaviour:
   speed: 0.8
   damage: 0
   attackDelay: 0
+  healDelay: 0
   movement: {x: 0, y: 0}
   direction: 1
   timeToChangeDirection: 5
@@ -275,6 +276,7 @@ MonoBehaviour:
   onlyOneDeath: 1
   waited: 1
   enemyHealth: {fileID: 0}
+  gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1819755204931250}
   contactFilter:
@@ -350,6 +352,7 @@ MonoBehaviour:
   speed: 0.8
   damage: 0
   attackDelay: 0
+  healDelay: 0
   movement: {x: 0, y: 0}
   direction: 1
   timeToChangeDirection: 5
@@ -364,6 +367,7 @@ MonoBehaviour:
   onlyOneDeath: 1
   waited: 1
   enemyHealth: {fileID: 0}
+  gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1819755204931250}
   contactFilter:

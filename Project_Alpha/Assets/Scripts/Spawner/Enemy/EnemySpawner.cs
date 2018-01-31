@@ -10,11 +10,16 @@ public class EnemySpawner : MonoBehaviour
 
     public float spawnRate = 1;
 
+    public bool startSpawning = false;
+
     private float spawnTime = 0;
 
 	private GlobalVariables globalVariables;
 
-    public bool startSpawning = false;
+    private bool AddEnemyAtExternal = false;
+    private List<GameObject> whoExternalEntity;
+
+    
 
 	// Use this for initialization
 	void Start ()
@@ -32,10 +37,25 @@ public class EnemySpawner : MonoBehaviour
             if(spawnTime >= spawnRate)
             {
                 Instantiate(enemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+                if(AddEnemyAtExternal)
+                {
+                    whoExternalEntity.Add(enemy);
+                }
                 enemyNumber--;
                 spawnTime = 0;
             }
             spawnTime += Time.deltaTime;
         }
 	}
+
+    private void StartToSpawn(bool doSpawn)
+    {
+        startSpawning = doSpawn;
+    }
+
+    private void AddEnemy(List<GameObject> externalEntity)
+    {
+        AddEnemyAtExternal = true;
+        whoExternalEntity = externalEntity;
+    }
 }

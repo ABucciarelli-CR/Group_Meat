@@ -58,6 +58,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Blink blink;
 
+    private List<GameObject> list;
+
     public enum EnemyState
     {
         idle,
@@ -73,6 +75,10 @@ public class EnemyStateMachine : MonoBehaviour
         if(gameManager != null)
         {
             gameManager.GetComponent<EnemyManager>().Remove(this.gameObject);
+            if(list != null)
+            {
+                list.Remove(this.gameObject);
+            }
         }
     }
 
@@ -228,6 +234,12 @@ public class EnemyStateMachine : MonoBehaviour
         spriteRenderer.color = enemyStunnedColor;
         gameObject.tag = "Corpse";
         gameObject.layer = deadLayer;
+    }
+
+    public virtual void AddToList(List<GameObject> thisList)
+    {
+        Debug.Log("Received");
+        list = thisList;
     }
 
     public virtual IEnumerator WaitTime(float time)

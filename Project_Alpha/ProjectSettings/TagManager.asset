@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Shield
   - Flank
+  - Lift
   layers:
   - Default
   - TransparentFX
