@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
 {
     public GameObject player;
     public bool friendlyFire = true;
-    public float arrowVelocity = 150f;
+    public float arrowVelocity = 200f;
     private float arrowDamage = 15f;
 
     public float precision = 1f;

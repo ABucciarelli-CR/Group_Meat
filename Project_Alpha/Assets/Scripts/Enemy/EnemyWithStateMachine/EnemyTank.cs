@@ -11,7 +11,7 @@ public class EnemyTank : EnemyStateMachine
     //[HideInInspector] public bool rotate = false;
 
     public int tankDamage = 10;
-    public int tankHealth = 80;
+    public int tankHealth = 100;
 
     public float offenceArea = 10f;
     public float maxVisibleDistance = 5f;

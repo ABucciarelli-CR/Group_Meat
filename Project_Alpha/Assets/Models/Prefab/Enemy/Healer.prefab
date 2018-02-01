@@ -285,7 +285,7 @@ MonoBehaviour:
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   healerDamage: 5
   healerHeal: 10
-  healerHealth: 50
+  healerHealth: 60
   healerSpeed: 0.5
   healerAttackDelay: 5
   healerHealDelay: 3

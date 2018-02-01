@@ -11,7 +11,7 @@ public class EnemyHound : EnemyStateMachine
     private bool healtToSet = true;
 
     public int houndDamage = 10;
-    public int houndHealth = 50;
+    public int houndHealth = 30;
     public float houndSpeed = 1.2f;
     public float houndAttackDelay = 5f;
     public float maxAttackDistance = 3000f;

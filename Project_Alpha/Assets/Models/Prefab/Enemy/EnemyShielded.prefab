@@ -306,7 +306,7 @@ MonoBehaviour:
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   facingleft: 1
   tankDamage: 20
-  tankHealth: 80
+  tankHealth: 100
   offenceArea: 10
   maxVisibleDistance: 5
   tankAttackDelay: 5

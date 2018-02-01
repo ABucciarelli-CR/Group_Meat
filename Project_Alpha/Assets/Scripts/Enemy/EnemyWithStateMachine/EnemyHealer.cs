@@ -13,10 +13,10 @@ public class EnemyHealer : EnemyStateMachine
 
     public int healerDamage = 5;
     public int healerHeal = 10;
-    public int healerHealth = 50;
+    public int healerHealth = 60;
     public float healerSpeed = .5f;
     public float healerAttackDelay = 5f;
-    public float healerHealDelay = 3f;
+    public float healerHealDelay = .5f;
     public float maxAttackDistance = 3000f;
 
     public GameObject attackCollider;
