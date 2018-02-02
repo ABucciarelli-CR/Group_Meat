@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
-  speed: 0.8
+  speed: 1.6
   damage: 0
   attackDelay: 0
   healDelay: 0
@@ -383,12 +383,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
-  houndDamage: 10
+  houndDamage: 20
   houndHealth: 30
-  houndSpeed: 1.2
+  houndSpeed: 1
   houndAttackDelay: 5
   maxAttackDistance: 4000
-  maxVisibleDistance: 6000
+  maxVisibleDistance: 10000
   attackCollider: {fileID: 1141315643346728}
   visibleDistanceCollider: {fileID: 1916724179839626}
   player: {fileID: 0}

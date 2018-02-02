@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811349277448878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -520, y: 193, z: 0}
+  m_LocalPosition: {x: 5864, y: 641, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4691547086682294}
@@ -239,12 +239,13 @@ MonoBehaviour:
   enemyState: 0
   speed: 0.8
   damage: 0
-  attackDelay: 10
+  attackDelay: 0
+  healDelay: 0
   movement: {x: 0, y: 0}
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
-  stunTime: 5
+  stunTime: 3
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -254,6 +255,7 @@ MonoBehaviour:
   onlyOneDeath: 1
   waited: 1
   enemyHealth: {fileID: 0}
+  gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1986522584074868}
   contactFilter:
@@ -283,8 +285,8 @@ MonoBehaviour:
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   archerHealth: 50
   escapeAreaDistance: 2000
-  maxVisibleDistance: 5000
-  archerAttackDelay: 10
+  maxVisibleDistance: 8000
+  archerAttackDelay: 4
   arrowPrefab: {fileID: 1389375353478948, guid: 61e5cc062fa9eec4d95e91eab99cbb93,
     type: 2}
   player: {fileID: 0}
@@ -334,6 +336,7 @@ MonoBehaviour:
   speed: 500000000
   damage: 0
   attackDelay: 0
+  healDelay: 0
   movement: {x: 0, y: 0}
   direction: 1
   timeToChangeDirection: 5
@@ -348,6 +351,7 @@ MonoBehaviour:
   onlyOneDeath: 1
   waited: 1
   enemyHealth: {fileID: 0}
+  gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1986522584074868}
   contactFilter:

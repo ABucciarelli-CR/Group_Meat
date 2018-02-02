@@ -266,7 +266,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
-  stunTime: 5
+  stunTime: 3
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
