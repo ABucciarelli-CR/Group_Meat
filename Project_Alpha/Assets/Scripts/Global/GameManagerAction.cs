@@ -11,6 +11,7 @@ public class GameManagerAction : MonoBehaviour
     {
         globalVariables = GetComponent<GlobalVariables>();
     }
+
     public void RestartTheLevel(bool isRestart)
     {
         if (isRestart)
@@ -18,6 +19,22 @@ public class GameManagerAction : MonoBehaviour
             globalVariables.closeDoor = false;
             globalVariables.enemyDead = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void PauseLevel(bool pause)
+    {
+        if(pause)
+        {
+            Time.timeScale = 0;
+        }
+    }
+
+    public void ExitPauseLevel(bool pause)
+    {
+        if (pause)
+        {
+            Time.timeScale = 1;
         }
     }
 }
