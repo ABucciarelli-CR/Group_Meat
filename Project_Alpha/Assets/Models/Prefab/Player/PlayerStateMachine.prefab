@@ -78,21 +78,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1282909400449946
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4429496679912930}
-  m_Layer: 0
-  m_Name: CeilingCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1285535157020518
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +117,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4235922149452398}
-  m_Layer: 0
+  - component: {fileID: 61000876573311042}
+  - component: {fileID: 114303800225281382}
+  m_Layer: 13
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
@@ -381,24 +368,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319474957917156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1320, z: 0}
+  m_LocalPosition: {x: 334, y: -1347, z: 0}
   m_LocalScale: {x: 0.56448287, y: 0.5644837, z: 1}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4429496679912930
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1282909400449946}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 788, y: 967, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4429737013254770}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4429737013254770
 Transform:
@@ -407,13 +381,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459610301309766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1243, y: 110.7, z: 0}
+  m_LocalPosition: {x: -534.6129, y: 102.3, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 1}
   m_Children:
   - {fileID: 4625044586655510}
   - {fileID: 4214691822803006}
   - {fileID: 4235922149452398}
-  - {fileID: 4429496679912930}
   - {fileID: 4479272328469754}
   - {fileID: 4633356695317430}
   - {fileID: 224233907319326442}
@@ -431,7 +404,7 @@ Transform:
   m_LocalScale: {x: 7887.07, y: 19942.102, z: 0}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4625044586655510
 Transform:
@@ -457,7 +430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20073722310072582
 Camera:
@@ -529,6 +502,31 @@ CircleCollider2D:
   m_Offset: {x: 528.6, y: -809.31}
   serializedVersion: 2
   m_Radius: 500
+--- !u!61 &61000876573311042
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319474957917156}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 376.25867, y: 109.135735}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1391.0938, y: 219.27147}
+  m_EdgeRadius: 0
 --- !u!61 &61162276871010746
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -653,7 +651,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  offenseStateSpriteRenderer: {fileID: 0}
+  offenseStateSpriteRenderer: {fileID: 212475299580733758}
   playerLife: {fileID: 1540535394813866}
   standardDamage: 20
   damageAreaGameObject: {fileID: 1385838484494572}
@@ -743,6 +741,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114303800225281382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319474957917156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66d1b3c10a5df04b9f65c7ae96ebdd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPlayer: {fileID: 1459610301309766}
 --- !u!114 &114332949759382092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,7 +794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerState: 0
   facingRight: 1
-  lastMove: 0
   airControl: 1
   heal: 50
   lifeIncrement: 25
@@ -1291,7 +1300,7 @@ RectTransform:
   m_Children:
   - {fileID: 224399731072356728}
   m_Father: {fileID: 4429737013254770}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

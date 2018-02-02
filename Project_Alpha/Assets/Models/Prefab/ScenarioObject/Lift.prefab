@@ -1312,6 +1312,7 @@ MonoBehaviour:
   upNdownVelocity: 5
   upDirection: 1
   movableLiftPieces: {fileID: 1164160670457388}
+  movableBackGround: {fileID: 0}
   spawner: []
   active: 0
 --- !u!114 &114127014704888462

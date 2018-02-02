@@ -6,14 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/Home.unity
+    path: Assets/Levels/RealLevels/Home.unity
     guid: 91071ac108928054cb72f9faf9c0537b
   - enabled: 1
-    path: Assets/Levels/Tutorial.unity
-    guid: 38c94dc3c6f40174d90bda240f8fb6c7
-  - enabled: 1
-    path: Assets/Levels/Elevator_.unity
-    guid: e40576702436ee649b71b21d3931a36b
-  - enabled: 1
-    path: Assets/Levels/TestLevel.unity
-    guid: c1dc2fe5440bb5a4c90f2c6bb6591604
+    path: Assets/Levels/RealLevels/Tutorial.unity
+    guid: a1463eed82513ea46960bbaeb8918c56

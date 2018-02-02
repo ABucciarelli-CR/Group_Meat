@@ -36,7 +36,6 @@ public class PlayerStateMachine : MonoBehaviour
     private GlobalVariables globalVariables;
     private Attack attack;
     private Life life;
-    private Movement movement;
 
     //other
     [SerializeField] private Transform groundCheck;
@@ -91,7 +90,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
         attack = GetComponent<Attack>();
-        movement = GetComponent<Movement>();
     }
 
     private void FixedUpdate()

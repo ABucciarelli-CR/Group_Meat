@@ -8,15 +8,18 @@ public class Lift : MonoBehaviour
     public bool upDirection = true;
 
     public GameObject movableLiftPieces;
+    public GameObject movableBackGround;
     public GameObject[] spawner;
 
     public bool active = false;
 
-    private Rigidbody2D rb2d;
+    private Rigidbody2D rb2dMovableLiftPieces;
+    private Rigidbody2D rb2dBackground;
 
     private void Awake()
     {
-        rb2d = movableLiftPieces.GetComponent<Rigidbody2D>();
+        rb2dMovableLiftPieces = movableLiftPieces.GetComponent<Rigidbody2D>();
+        rb2dBackground = movableBackGround.GetComponent<Rigidbody2D>();
     }
 
     void Start ()
@@ -30,11 +33,13 @@ public class Lift : MonoBehaviour
         {
             if (upDirection)
             {
-                rb2d.MovePosition(rb2d.position + new Vector2(0f, -upNdownVelocity));
+                rb2dMovableLiftPieces.MovePosition(rb2dMovableLiftPieces.position + new Vector2(0f, -upNdownVelocity));
+                rb2dBackground.MovePosition(rb2dBackground.position + new Vector2(0f, -upNdownVelocity));
             }
             else
             {
-                rb2d.MovePosition(rb2d.position + new Vector2(0f, upNdownVelocity));
+                rb2dMovableLiftPieces.MovePosition(rb2dMovableLiftPieces.position + new Vector2(0f, upNdownVelocity));
+                rb2dBackground.MovePosition(rb2dBackground.position + new Vector2(0f, upNdownVelocity));
             }
         }
 	}
