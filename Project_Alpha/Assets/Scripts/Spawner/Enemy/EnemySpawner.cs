@@ -36,10 +36,10 @@ public class EnemySpawner : MonoBehaviour
         {
             if(spawnTime >= spawnRate)
             {
-                Instantiate(enemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+                GameObject _enemy = Instantiate(enemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
                 if(AddEnemyAtExternal)
                 {
-                    whoExternalEntity.Add(enemy);
+                    whoExternalEntity.Add(_enemy);
                 }
                 enemyNumber--;
                 spawnTime = 0;

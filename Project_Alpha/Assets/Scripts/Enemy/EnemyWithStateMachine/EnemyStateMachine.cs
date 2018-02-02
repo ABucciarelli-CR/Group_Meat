@@ -75,6 +75,7 @@ public class EnemyStateMachine : MonoBehaviour
         if(gameManager != null)
         {
             gameManager.GetComponent<EnemyManager>().Remove(this.gameObject);
+            
             if(list != null)
             {
                 list.Remove(this.gameObject);
@@ -238,7 +239,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void AddToList(List<GameObject> thisList)
     {
-        Debug.Log("Received");
         list = thisList;
     }
 

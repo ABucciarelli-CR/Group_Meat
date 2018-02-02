@@ -32,16 +32,17 @@ public class SpawnerActivator : MonoBehaviour
 
             this.GetComponent<Collider2D>().enabled = false;
             activation = false;
+            StartCoroutine(WaitToCheck());
         }
 
         foreach(GameObject enemies in enemy)
         {
-            enemies.GetComponent<EnemyTank>().SendMessage("AddToList", enemy);
-            Debug.Log(enemies.name);
+            enemies.SendMessage("AddToList", enemy);
         }
 
-        if(enemy.Count == 0 && startCheck)
+        if(enemy.Count <= 0 && startCheck)
         {
+            startCheck = false;
             lift.SendMessage("ActiveLift", true);
         }
 	}
@@ -54,7 +55,7 @@ public class SpawnerActivator : MonoBehaviour
         }
     }
 
-    IEnumerator Wait()
+    IEnumerator WaitToCheck()
     {
         yield return new WaitForSeconds(1f);
         startCheck = true;

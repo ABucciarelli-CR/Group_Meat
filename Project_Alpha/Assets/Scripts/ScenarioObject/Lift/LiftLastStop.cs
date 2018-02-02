@@ -8,6 +8,10 @@ public class LiftLastStop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        lift.SendMessage("ActiveLift", false);
+        if(collision.CompareTag("Lift"))
+        {
+            lift.SendMessage("ActiveLift", false);
+        }
+        
     }
 }

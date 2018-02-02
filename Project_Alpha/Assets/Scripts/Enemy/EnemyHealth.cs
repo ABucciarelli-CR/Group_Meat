@@ -103,10 +103,12 @@ public class EnemyHealth : MonoBehaviour
             waitedFrame++;
         }
 
+
+        /*
         if (health <= 0)
         {
             Debug.Log("DEAD");
-        }
+        }*/
 
     }
 }
