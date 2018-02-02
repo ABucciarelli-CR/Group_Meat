@@ -19,6 +19,8 @@ namespace TheArenaDoor
         private RaycastHit2D hitRight;
         private float maxDistance = 5;
 
+        private bool isPlayer = false;
+
         void Start()
 		{
             hitRight = new RaycastHit2D();
@@ -31,45 +33,36 @@ namespace TheArenaDoor
 
         private void Update()
         {
-            //Debug.Log(playerLayerMask.value);
-            hitRight = Physics2D.Raycast(transform.position, -Vector2.left, maxDistance, playerLayerMask);
-
-            if(hitRight.collider != null)
+            if (isPlayer)
             {
-                //Debug.Log("Here!1");
-                if (hitRight.collider.CompareTag("Player"))
-                {
-                    //Debug.Log("Here!2");
-                    for (int i = 0; i < checkArenaEnemyEnd.spawner.Length; i++)
-                    {
-                        //Debug.Log("UNLIMITATE!");
-                        checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawner>().startSpawning = true;
-                    }
-
-                    globalVariables.closeDoor = true;
-                    globalVariables.enemyDead = 0;
-
-                    thisDoorClosed = true;
-                }
-            }
-        }
-        /*
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            //Debug.Log(collision);
-            if (collision.CompareTag("Player"))
-            {
-				
-                for(int i = 0; i < checkArenaEnemyEnd.spawner.Length; i++)
+                //Debug.Log("Here!2");
+                for (int i = 0; i < checkArenaEnemyEnd.spawner.Length; i++)
                 {
                     //Debug.Log("UNLIMITATE!");
                     checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawner>().startSpawning = true;
                 }
 
                 globalVariables.closeDoor = true;
+                globalVariables.enemyDead = 0;
 
                 thisDoorClosed = true;
             }
-        }*/
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.CompareTag("Player"))
+            {
+                isPlayer = true;
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                isPlayer = true;
+            }
+        }
     }
 }

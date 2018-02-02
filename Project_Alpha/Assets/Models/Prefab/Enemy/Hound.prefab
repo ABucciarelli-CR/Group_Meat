@@ -129,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553377036661140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2008.4897, y: 120.34351, z: 0}
+  m_LocalPosition: {x: 7726.7246, y: -375.06372, z: 0}
   m_LocalScale: {x: 0.1289136, y: 0.1289136, z: 0.1289136}
   m_Children:
   - {fileID: 4006309861404298}
@@ -170,9 +170,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -3000, y: 0}
   serializedVersion: 2
-  m_Radius: 3000
+  m_Radius: 4000
 --- !u!58 &58903246472117154
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -387,8 +387,8 @@ MonoBehaviour:
   houndHealth: 30
   houndSpeed: 1.2
   houndAttackDelay: 5
-  maxAttackDistance: 3000
-  maxVisibleDistance: 4000
+  maxAttackDistance: 4000
+  maxVisibleDistance: 6000
   attackCollider: {fileID: 1141315643346728}
   visibleDistanceCollider: {fileID: 1916724179839626}
   player: {fileID: 0}
