@@ -20,7 +20,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     //playerValue
     public bool airControl = true;
-    public int heal = 50;
     public int lifeIncrement = 25;
     public float dashSpeed = 500f;
     public float jumpForce = 20f;

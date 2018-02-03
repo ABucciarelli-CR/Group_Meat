@@ -21,6 +21,7 @@ public class EnemyHealer : EnemyStateMachine
 
     public GameObject attackCollider;
     public GameObject player;
+    public GameObject disappearingPlatform;
 
 
     private void Awake()
@@ -32,6 +33,8 @@ public class EnemyHealer : EnemyStateMachine
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
+        gameManager = GameObject.Find("GameManager");
+        disappearingPlatform = GameObject.Find("DisapperingFloor"); ;
 
         //hitColliders = new Collider2D[maxArray];
     }
@@ -60,11 +63,18 @@ public class EnemyHealer : EnemyStateMachine
 
         foreach (GameObject thisEnemy in gameManager.GetComponent<EnemyManager>().enemy)
         {
-            if(thisEnemy.name != "Healer" || thisEnemy.name != "Healer(Clone)")
+            if(thisEnemy.name != "Healer" && thisEnemy.name != "Healer(Clone)")
             {
                 onlyHealer = false;
                 break;
             }
+        }
+
+        Debug.Log("Only Healer: " + onlyHealer);
+
+        if(onlyHealer && disappearingPlatform != null)
+        {
+            disappearingPlatform.SetActive(false);
         }
     }
 
