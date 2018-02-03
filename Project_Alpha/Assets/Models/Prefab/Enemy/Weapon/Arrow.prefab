@@ -92,6 +92,7 @@ MonoBehaviour:
   player: {fileID: 0}
   friendlyFire: 1
   arrowVelocity: 200
+  arrowDamage: 25
   precision: 1
 --- !u!212 &212635473991634756
 SpriteRenderer:

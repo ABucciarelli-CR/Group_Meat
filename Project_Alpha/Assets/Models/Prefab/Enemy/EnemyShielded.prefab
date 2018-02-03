@@ -89,9 +89,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1974832197323084}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -487, y: 198, z: 0}
-  m_LocalScale: {x: 0.19999997, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.7673972, y: -40.641953, z: 0}
+  m_LocalScale: {x: 0.003999992, y: 0.00009999986, z: 0}
   m_Children:
   - {fileID: 4934348613433786}
   - {fileID: 4816227418721724}
@@ -305,7 +305,7 @@ MonoBehaviour:
     m_Bits: 0
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   facingleft: 1
-  tankDamage: 20
+  tankDamage: 30
   tankHealth: 100
   offenceArea: 10
   maxVisibleDistance: 5
