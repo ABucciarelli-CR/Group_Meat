@@ -57,7 +57,7 @@ public class SpawnerActivator : MonoBehaviour
 
     IEnumerator WaitToCheck()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
         startCheck = true;
     }
 }

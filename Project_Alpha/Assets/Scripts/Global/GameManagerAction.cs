@@ -5,11 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerAction : MonoBehaviour
 {
+    public GameObject canvas;
+
     private GlobalVariables globalVariables;
+    private int actualLevel;
 
     private void Awake()
     {
+        actualLevel = SceneManager.GetActiveScene().buildIndex;
         globalVariables = GetComponent<GlobalVariables>();
+        canvas.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(actualLevel != SceneManager.GetActiveScene().buildIndex)
+        {
+            canvas.SetActive(false);
+            Time.timeScale = 1;
+            actualLevel = SceneManager.GetActiveScene().buildIndex;
+        }
     }
 
     public void RestartTheLevel(bool isRestart)
@@ -24,9 +39,10 @@ public class GameManagerAction : MonoBehaviour
 
     public void PauseLevel(bool pause)
     {
-        if(pause)
+        if(pause && SceneManager.GetActiveScene().buildIndex != 0)
         {
             Time.timeScale = 0;
+            canvas.SetActive(true);
         }
     }
 
@@ -35,6 +51,7 @@ public class GameManagerAction : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 1;
+            canvas.SetActive(false);
         }
     }
 }
