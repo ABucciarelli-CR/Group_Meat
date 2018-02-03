@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
     public GameObject playerLife;
 
     public int standardDamage = 20;
-    private int healForDamage = 2;
+    public int healForDamage = 2;
 
     private Life life;
     [SerializeField] private GameObject damageAreaGameObject;
