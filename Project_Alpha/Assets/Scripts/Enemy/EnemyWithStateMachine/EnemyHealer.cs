@@ -10,6 +10,7 @@ public class EnemyHealer : EnemyStateMachine
     private bool doPlayerDamage = false;
     private bool healtToSet = true;
     private bool onlyHealer = false;
+    private bool canCheckHealer = false;
 
     public int healerDamage = 5;
     public int healerHeal = 10;
@@ -22,6 +23,7 @@ public class EnemyHealer : EnemyStateMachine
     public GameObject attackCollider;
     public GameObject player;
     public GameObject disappearingPlatform;
+    public GameObject healingAnimation;
 
 
     private void Awake()
@@ -35,7 +37,7 @@ public class EnemyHealer : EnemyStateMachine
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
         gameManager = GameObject.Find("GameManager");
         disappearingPlatform = GameObject.Find("DisapperingFloor"); ;
-
+        StartCoroutine(WaitForSpawn(5f));
         //hitColliders = new Collider2D[maxArray];
     }
 
@@ -70,9 +72,7 @@ public class EnemyHealer : EnemyStateMachine
             }
         }
 
-        Debug.Log("Only Healer: " + onlyHealer);
-
-        if(onlyHealer && disappearingPlatform != null)
+        if(onlyHealer && disappearingPlatform != null && canCheckHealer)
         {
             disappearingPlatform.SetActive(false);
         }
@@ -126,6 +126,7 @@ public class EnemyHealer : EnemyStateMachine
             {
                 //Debug.Log("Healing: " + thisEnemy.name);
                 thisEnemy.SendMessage("HealIfAlive", healerHeal);
+                Instantiate(healingAnimation, thisEnemy.gameObject.transform.position, Quaternion.identity);
             }
             waited = false;
             StartCoroutine(Wait(healDelay));
@@ -155,6 +156,13 @@ public class EnemyHealer : EnemyStateMachine
     {
         //Debug.Log("canDamagePlayer");
         doPlayerDamage = isDamageable;
+    }
+
+    IEnumerator WaitForSpawn(float sec)
+    {
+        //Debug.Log("waiting");
+        yield return new WaitForSeconds(sec);
+        canCheckHealer = true;
     }
 
     IEnumerator Wait(float sec)

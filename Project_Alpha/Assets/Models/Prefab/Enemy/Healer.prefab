@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794234805142404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1455.9753, y: 31.785309, z: 17}
+  m_LocalPosition: {x: 735.0645, y: 100.72009, z: 17}
   m_LocalScale: {x: 0.22013965, y: 0.21824706, z: 0.38103327}
   m_Children:
   - {fileID: 4719136826578744}
@@ -292,6 +292,9 @@ MonoBehaviour:
   maxAttackDistance: 3000
   attackCollider: {fileID: 1408642077573574}
   player: {fileID: 0}
+  disappearingPlatform: {fileID: 0}
+  healingAnimation: {fileID: 1629729227346954, guid: e684a5a9ec48a3f48a6f415fe3b7c9e5,
+    type: 2}
 --- !u!114 &114307823924633202
 MonoBehaviour:
   m_ObjectHideFlags: 1

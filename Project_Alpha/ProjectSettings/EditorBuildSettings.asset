@@ -11,3 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/RealLevels/Tutorial.unity
     guid: a1463eed82513ea46960bbaeb8918c56
+  - enabled: 1
+    path: Assets/Levels/RealLevels/DualArena.unity
+    guid: 97544815f93f83a40b6fe26cb7153194
+  - enabled: 1
+    path: Assets/Levels/RealLevels/ArenaHealers.unity
+    guid: 950c1e66abfacb640bbb1dafffaa3cb9
+  - enabled: 1
+    path: Assets/Levels/RealLevels/Lifter.unity
+    guid: 1a8a78802176db24f970f30918eb62b3
