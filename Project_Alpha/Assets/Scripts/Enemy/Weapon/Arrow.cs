@@ -51,4 +51,9 @@ public class Arrow : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
+    public void AtkSet(float newAtk)
+    {
+        arrowDamage = newAtk;
+    }
 }

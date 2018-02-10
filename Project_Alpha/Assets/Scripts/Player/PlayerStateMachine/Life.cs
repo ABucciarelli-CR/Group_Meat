@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 public class Life : MonoBehaviour
 {
+    [ReadOnly]
+    public int actualLife;
+
     private int maxLife = 1000;
     private int startLife = 100;
         
 
     public Slider lifeBar;
     public Slider maxLifeBar;
-
-    private int actualLife;
-
+    
     private bool waited = false;
 
     public SpriteRenderer playerSprite;

@@ -1,19 +1,26 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Attack : MonoBehaviour
 {
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public ContactFilter2D contactFilter;
+    [ReadOnly]
     public SpriteRenderer offenseStateSpriteRenderer;
+    [ReadOnly]
     public GameObject playerLife;
+    [ReadOnly]
+    [SerializeField] private GameObject damageAreaGameObject;
 
+    [Title("Modifiche abilitate.")]
     public int standardDamage = 20;
     public int healForDamage = 2;
 
     private Life life;
-    [SerializeField] private GameObject damageAreaGameObject;
     private DamageAreaCollider damageAreaCollider;
     //private GlobalVariables globalVariables;
     //private Animator anim;

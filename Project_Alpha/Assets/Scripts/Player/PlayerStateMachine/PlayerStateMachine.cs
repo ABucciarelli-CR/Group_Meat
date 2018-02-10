@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <attackSummary>
@@ -43,9 +44,14 @@ public class PlayerStateMachine : MonoBehaviour
     private Rigidbody2D rb2d;
     private Collider2D[] enemyDeadHitted;
 
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public GameObject playerLife;
+    [ReadOnly]
     public Collider2D eatCollider;
+    [ReadOnly]
     public ContactFilter2D contactFilter;
+    [ReadOnly]
     public SpriteRenderer offenseStateSpriteRenderer;
 
     private float realGroundRadiusCollision = .1f;
@@ -53,6 +59,7 @@ public class PlayerStateMachine : MonoBehaviour
     private int maxEnemyDeadHittedArray = 100;
     private bool waited = false;
     private bool singleJump = true;
+    [Title("Modifiche abilitate.")]
     [SerializeField] private bool isGrounded = true;
     private int i = 0; //counter
     private Color playerOffenseStateStandardColor;

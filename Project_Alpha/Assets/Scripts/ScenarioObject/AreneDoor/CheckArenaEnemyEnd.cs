@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,12 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 {
 
     public GameObject[] spawner;
+    public GameObject[] singleEnemy;
 
     private GlobalVariables globalVariables;
 
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public int enemyCountDown;
 
 	// Use this for initialization
@@ -21,7 +25,12 @@ public class CheckArenaEnemyEnd : MonoBehaviour
             //Debug.Log(spawner[i].GetComponent<EnemySpawner>().name);
             enemyCountDown += spawner[i].GetComponent<EnemySpawner>().enemyNumber;
         }
-        
+
+        for (int i = 0; i < singleEnemy.Length; i++)
+        {
+            enemyCountDown ++;
+        }
+
     }
 	
 	// Update is called once per frame

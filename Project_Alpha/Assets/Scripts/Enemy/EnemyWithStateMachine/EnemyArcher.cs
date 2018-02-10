@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyArcher : EnemyStateMachine
 {
-    private int archerDamage = 15;
+    public int archerDamage = 15;
     private float offsetEscape = 50f;
     public int archerHealth = 50;
     
@@ -14,10 +15,15 @@ public class EnemyArcher : EnemyStateMachine
     public float maxVisibleDistance = 5000f;
     public float archerAttackDelay = 1f;
     //public float arrowVelocity = 50f;
-    public GameObject arrowPrefab;
-    public GameObject player;
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public GameObject attackCollider;
+    [ReadOnly]
     public GameObject escapeArea;
+    [ReadOnly]
+    public GameObject arrowPrefab;
+    [ReadOnly]
+    public GameObject player;
 
     //private float delay = 0;
     private int i = 0;
@@ -79,7 +85,9 @@ public class EnemyArcher : EnemyStateMachine
             waited = false;
             StartCoroutine(Wait(attackDelay));
             //creare successivamente la parabola della freccia
-            Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            GameObject arrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            arrow.SendMessage("AtkSet", damage);
+
         }
 
         enemyState = EnemyState.idle;

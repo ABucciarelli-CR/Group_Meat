@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner:
   - {fileID: 0}
+  singleEnemy: []
   enemyCountDown: 0
 --- !u!212 &212630584460566662
 SpriteRenderer:

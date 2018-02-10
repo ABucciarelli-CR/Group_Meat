@@ -1,25 +1,35 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Blink))]
 public class EnemyStateMachine : MonoBehaviour
 {
+    
 
     [HideInInspector] public EnemyState enemyState;
-    
+
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public float speed = .8f;
+    [ReadOnly]
     public int damage;
+    [ReadOnly]
     public float attackDelay;
+    [ReadOnly]
     public float healDelay;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
     [HideInInspector] public float ttcd;
     /*[HideInInspector]*/
-    
+
+    [ReadOnly]
     public float stunTime = 5f;
+    [ReadOnly]
     public int healthRegenAfterStun = 20;//is in %
+    [ReadOnly]
     public bool activeStunTime = true;
     [HideInInspector] public float delay;
     [HideInInspector] public int maxArray = 100;
@@ -32,33 +42,44 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public GameObject gameManager;
     [HideInInspector] public float stunnedTime = 0;
 
+    [ReadOnly]
     public GameObject offenseState;//the gameObject that visualize
-    
 
+    [ReadOnly]
     public ContactFilter2D contactFilter;
 
+    [ReadOnly]
     //public GameObject AttackCollider;
     public Collider2D[] hitColliders;
 
+    [ReadOnly]
     public Rigidbody2D rb2d;
 
+    [ReadOnly]
     public SpriteRenderer spriteRenderer;
+    [ReadOnly]
     public SpriteRenderer offenseStateSpriteRenderer;
 
+    [ReadOnly]
     public LayerMask deadLayer;
+    [ReadOnly]
     public LayerMask liveLayer;
-
+    
+    [ReadOnly]
     public Color enemyIsOnAttack;
-
+    
     private Color enemyStandardColor;
     private Color enemyAttackColor;
     private Color enemyStunnedColor;
     //private Color enemyDamagedColor;
     private Color enemyOffenseStateStandardColor;
-
+    
     private Blink blink;
 
     private List<GameObject> list;
+
+    [Title("Modifiche abilitate.", "$MyTitle")]
+    public string MyTitle = "piccolo test, puoi scriverci quello che vuoi :D";
 
     public enum EnemyState
     {

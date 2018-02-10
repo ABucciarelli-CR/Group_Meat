@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,9 +21,14 @@ public class EnemyHealer : EnemyStateMachine
     public float healerHealDelay = .5f;
     public float maxAttackDistance = 3000f;
 
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public GameObject attackCollider;
+    [ReadOnly]
     public GameObject player;
+    [ReadOnly]
     public GameObject disappearingPlatform;
+    [ReadOnly]
     public GameObject healingAnimation;
 
 

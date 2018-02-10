@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +9,12 @@ public class Lift : MonoBehaviour
     public bool upDirection = true;
 
     public GameObject movableLiftPieces;
+    [InfoBox("Il background deve avere un Rigidbody2d, Kinematico, simulato")]
     public GameObject movableBackGround;
     public GameObject[] spawner;
 
+    [Title("ReadOnly, modifiche disabilitate.")]
+    [ReadOnly]
     public bool active = false;
 
     private Rigidbody2D rb2dMovableLiftPieces;

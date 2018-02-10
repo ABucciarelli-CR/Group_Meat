@@ -283,6 +283,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
 --- !u!114 &114616277469257194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +384,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   houndDamage: 20
   houndHealth: 30
   houndSpeed: 1
