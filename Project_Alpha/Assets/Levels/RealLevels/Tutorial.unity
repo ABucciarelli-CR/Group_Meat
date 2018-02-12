@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1440,6 +1439,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1578839278}
     m_Modifications:
+    - target: {fileID: 114109652553623266, guid: c16d686438635ca48a662f9cbaf09144,
+        type: 2}
+      propertyPath: enemyList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4485899484426154, guid: c16d686438635ca48a662f9cbaf09144, type: 2}
       propertyPath: m_LocalPosition.x
       value: 8.667608
@@ -1493,6 +1497,11 @@ Prefab:
         type: 2}
       propertyPath: enemyNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114109652553623266, guid: c16d686438635ca48a662f9cbaf09144,
+        type: 2}
+      propertyPath: enemyList.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c16d686438635ca48a662f9cbaf09144, type: 2}
@@ -2736,16 +2745,21 @@ Prefab:
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 907.4149
+      value: 809.9149
       objectReference: {fileID: 0}
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 640.8162
+      value: 585.8162
       objectReference: {fileID: 0}
     - target: {fileID: 224157796922186142, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3735,22 +3749,22 @@ Prefab:
     - target: {fileID: 224130407552095980, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 224571424612031628, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -16275
+      value: -17493.75
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1575
+      value: 887.5
       objectReference: {fileID: 0}
     - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}

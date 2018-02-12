@@ -14,7 +14,6 @@ public class HealingAnimation : MonoBehaviour
     
 	void Update ()
     {
-        Debug.Log("Hitler");
         deltaTime += Time.deltaTime;
         while(deltaTime >= fps)
         {

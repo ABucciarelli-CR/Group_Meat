@@ -30,7 +30,6 @@ public class CheckArenaEnemyEnd : MonoBehaviour
         {
             enemyCountDown ++;
         }
-
     }
 	
 	// Update is called once per frame

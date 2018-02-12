@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music:
-  - {fileID: 8300000, guid: 0d8deb925b74fa14e92075a4a7f6c709, type: 3}
+  - {fileID: 8300000, guid: 37a103d00f37db44bb88bc6451fdc41f, type: 3}
 --- !u!114 &114909204866158476
 MonoBehaviour:
   m_ObjectHideFlags: 1
