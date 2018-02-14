@@ -1328,6 +1328,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 634793159}
     m_Modifications:
+    - target: {fileID: 114019968258345580, guid: 0316e6c59e92e1e4fbb65334479bd532,
+        type: 2}
+      propertyPath: enemyList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4010303393230322, guid: 0316e6c59e92e1e4fbb65334479bd532, type: 2}
       propertyPath: m_LocalPosition.x
       value: -790
@@ -1390,6 +1395,11 @@ Prefab:
       propertyPath: spawnerState
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114019968258345580, guid: 0316e6c59e92e1e4fbb65334479bd532,
+        type: 2}
+      propertyPath: enemyList.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0316e6c59e92e1e4fbb65334479bd532, type: 2}
   m_IsPrefabParent: 0
@@ -1450,17 +1460,17 @@ Prefab:
     - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -556.88257
+      value: -274.92212
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13393.75
+      value: 11450
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2071.25
+      value: 977.49994
       objectReference: {fileID: 0}
     - target: {fileID: 224571424612031628, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
@@ -1545,6 +1555,21 @@ Prefab:
     - target: {fileID: 224130407552095980, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356690045901092, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: jumpForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356690045901092, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: isGrounded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356690045901092, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: facingRight
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2763,12 +2788,12 @@ Prefab:
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1256.9445
+      value: -1412.4445
       objectReference: {fileID: 0}
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 393.65903
+      value: 306.15903
       objectReference: {fileID: 0}
     - target: {fileID: 114529991973370218, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}

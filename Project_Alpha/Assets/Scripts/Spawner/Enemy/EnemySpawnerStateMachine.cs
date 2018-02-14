@@ -42,6 +42,11 @@ public class EnemySpawnerStateMachine : MonoBehaviour
         inert
     }
 
+    public void Awake()
+    {
+        spawnerState = SpawnerState.check;
+    }
+
     void Update ()
     {
         if (startSpawning)
@@ -92,15 +97,15 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             {
                 if (thisEnemy == null)
                 {
+                    //Debug.Log("remove");
                     enemyList.Remove(thisEnemy);
+                    break;
                 }
             }
         }
 
         if(enemyNumber > 0 && enemyList.Count <= 0)
         {
-            spawnerState = SpawnerState.spawn;
-            
             if (initialSpawn)
             {
                 StartCoroutine(Delay(spawnDelayAtStart));
@@ -109,7 +114,9 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             {
                 StartCoroutine(Delay(spawnDelayBetweenEnemy));
             }
-            
+
+            spawnerState = SpawnerState.spawn;
+
         }
         else if(enemyList.Count <= 0)
         {

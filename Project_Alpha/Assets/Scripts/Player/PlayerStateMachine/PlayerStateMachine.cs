@@ -23,7 +23,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool airControl = true;
     public int lifeIncrement = 25;
     public float dashSpeed = 500f;
-    public float jumpForce = 20f;
+    public float jumpForce = 20000f;
     public float moveForce = 10f;
 
     [HideInInspector] public float playerMovement;

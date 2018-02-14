@@ -653,9 +653,9 @@ MonoBehaviour:
     maxNormalAngle: 0
   offenseStateSpriteRenderer: {fileID: 212475299580733758}
   playerLife: {fileID: 1540535394813866}
+  damageAreaGameObject: {fileID: 1385838484494572}
   standardDamage: 20
   healForDamage: 3
-  damageAreaGameObject: {fileID: 1385838484494572}
 --- !u!114 &114026052921751158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -796,10 +796,9 @@ MonoBehaviour:
   playerState: 0
   facingRight: 1
   airControl: 1
-  heal: 50
   lifeIncrement: 25
   dashSpeed: 500
-  jumpForce: 1000
+  jumpForce: 2000
   moveForce: 500
   playerMovement: 0
   playerAttack: 0
@@ -884,6 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6d54a905d26104dafd556c9bb00244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualLife: 0
   lifeBar: {fileID: 114253711503251318}
   maxLifeBar: {fileID: 114415530798472824}
   playerSprite: {fileID: 212465100969527914}
