@@ -23,6 +23,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     public List<GameObject> enemyList;
     [ReadOnly]
     public bool startSpawning = false;
+    [HideInInspector] public bool endSpawn = false;
 
     private GlobalVariables globalVariables;
 
@@ -30,9 +31,8 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     //private bool canSpawn = false;
     private bool waited = false;
     private bool initialSpawn = false;
-    //private bool canCheck = true;
+    
     private List<GameObject> whoExternalEntity;
-
     [HideInInspector] public SpawnerState spawnerState;
 
     public enum SpawnerState
@@ -121,6 +121,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
         else if(enemyList.Count <= 0)
         {
             spawnerState = SpawnerState.inert;
+            endSpawn = true;
         }
     }
 

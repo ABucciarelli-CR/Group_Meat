@@ -1169,6 +1169,11 @@ Prefab:
       propertyPath: singleEnemy.Array.data[1]
       value: 
       objectReference: {fileID: 1518630903}
+    - target: {fileID: 114482794870638986, guid: ade81885b923d75469185596548a92ee,
+        type: 2}
+      propertyPath: enemyEnd
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ade81885b923d75469185596548a92ee, type: 2}
   m_IsPrefabParent: 0
@@ -1383,7 +1388,7 @@ Prefab:
     - target: {fileID: 114019968258345580, guid: 0316e6c59e92e1e4fbb65334479bd532,
         type: 2}
       propertyPath: enemyNumber
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114019968258345580, guid: 0316e6c59e92e1e4fbb65334479bd532,
         type: 2}

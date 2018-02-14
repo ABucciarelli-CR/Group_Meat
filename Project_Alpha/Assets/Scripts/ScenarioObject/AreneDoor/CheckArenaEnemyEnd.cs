@@ -7,13 +7,15 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 {
 
     public GameObject[] spawner;
-    public GameObject[] singleEnemy;
+    public List<GameObject> singleEnemy;
 
     private GlobalVariables globalVariables;
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
     public int enemyCountDown = 0;
+    [ReadOnly]
+    public bool enemyEnd = true;
 
 	// Use this for initialization
 	void Start ()
@@ -27,7 +29,7 @@ public class CheckArenaEnemyEnd : MonoBehaviour
             enemyCountDown += spawner[i].GetComponent<EnemySpawnerStateMachine>().enemyNumber;
         }
 
-        for (int i = 0; i < singleEnemy.Length; i++)
+        for (int i = 0; i < singleEnemy.Count; i++)
         {
             enemyCountDown ++;
         }
@@ -36,12 +38,46 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(globalVariables.enemyDead == enemyCountDown && enemyCountDown != 0)
+        /*if(globalVariables.enemyDead == enemyCountDown && enemyCountDown != 0)
         {
-            Debug.Log("Here!");
             globalVariables.closeDoor = false;
             globalVariables.enemyDead = 0;
             enemyCountDown = 0;
+        }*/
+
+        foreach (GameObject _enemy in singleEnemy)
+        {
+            if (_enemy == null)
+            {
+                singleEnemy.Remove(_enemy);
+                break;
+            }
         }
+
+        enemyEnd = true;
+
+        foreach (GameObject _spawner in spawner)
+        {
+            if(!_spawner.GetComponent<EnemySpawnerStateMachine>().endSpawn)
+            {
+                enemyEnd = false;
+                break;
+            }
+        }
+        
+        if(singleEnemy.Count > 0)
+        {
+            enemyEnd = false;
+        }
+
+        Debug.Log("enemy end: " + enemyEnd);
+
+        if (enemyEnd)
+        {
+            globalVariables.closeDoor = false;
+            //globalVariables.enemyDead = 0;
+            //enemyCountDown = 0;
+        }
+
 	}
 }

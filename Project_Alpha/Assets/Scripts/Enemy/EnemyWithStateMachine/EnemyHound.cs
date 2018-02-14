@@ -104,7 +104,7 @@ public class EnemyHound : EnemyStateMachine
 
     private void IsPlayerdamageable(bool isDamageable)
     {
-        Debug.Log("canDamagePlayer");
+        //Debug.Log("canDamagePlayer");
         doPlayerDamage = isDamageable;
     }
 
