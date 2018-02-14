@@ -39,7 +39,8 @@ namespace TheArenaDoor
                 for (int i = 0; i < checkArenaEnemyEnd.spawner.Length; i++)
                 {
                     //Debug.Log("UNLIMITATE!");
-                    checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawner>().startSpawning = true;
+                    //checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawner>().startSpawning = true;
+                    checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawnerStateMachine>().startSpawning = true;
                 }
 
                 globalVariables.closeDoor = true;

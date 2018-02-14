@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private bool AddEnemyAtExternal = false;
     private bool canSpawn = false;
     private bool waited = false;
-    private bool initialSpawn = true;
+    private bool initialSpawn = false;
     private bool canCheck = true;
     private List<GameObject> whoExternalEntity;
 
@@ -48,12 +48,9 @@ public class EnemySpawner : MonoBehaviour
     {
         if(initialSpawn)
         {
-            if (canSpawn)
-            {
-                StartCoroutine(Delay(spawnDelayAtStart));
-            }
-            canSpawn = false;
+            StartCoroutine(Delay(spawnDelayAtStart));
             SpawnAtStart();
+            initialSpawn = false;
         }
 
 
@@ -72,6 +69,7 @@ public class EnemySpawner : MonoBehaviour
     private void StartToSpawn(bool doSpawn)
     {
         startSpawning = doSpawn;
+        initialSpawn = true;
     }
 
     private void AddEnemy(List<GameObject> externalEntity)
@@ -87,8 +85,6 @@ public class EnemySpawner : MonoBehaviour
         if(waited)
         {
             Spawn(spawnAtStart, spawnDelayBetweenEnemy);
-
-            initialSpawn = false;
         }
         //}
     }

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4621162373019786}
   - component: {fileID: 114875910968548052}
+  - component: {fileID: 114745349379677100}
   m_Layer: 0
   m_Name: Spawner_Healer
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114875910968548052
+--- !u!114 &114745349379677100
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,10 +49,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1224021042794902}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb5f5a631dd02944842c9b7d7a2fa6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1794234805142404, guid: 1628937724d3fa34db6c02e8c32bf115, type: 2}
+  enemyNumber: 1
+  spawnAtStart: 1
+  spawnDelayAtStart: 1
+  spawnDelayBetweenEnemy: 1
+  enemyList: []
+  startSpawning: 0
+  spawnerState: 0
+--- !u!114 &114875910968548052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224021042794902}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60c0c12ef4de72543b890a02478c6f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1794234805142404, guid: 1628937724d3fa34db6c02e8c32bf115, type: 2}
   enemyNumber: 1
-  spawnRate: 1
+  spawnAtStart: 1
+  spawnAtAllSpawnedDeath: 1
+  spawnDelayAtStart: 1
+  spawnDelayAtAllSpawnedDeath: 1
+  spawnDelayBetweenEnemy: 1
+  enemyList: []
   startSpawning: 0

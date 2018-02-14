@@ -13,7 +13,7 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
-    public int enemyCountDown;
+    public int enemyCountDown = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -23,7 +23,8 @@ public class CheckArenaEnemyEnd : MonoBehaviour
         for (int i = 0; i < spawner.Length; i++)
         {
             //Debug.Log(spawner[i].GetComponent<EnemySpawner>().name);
-            enemyCountDown += spawner[i].GetComponent<EnemySpawner>().enemyNumber;
+            //enemyCountDown += spawner[i].GetComponent<EnemySpawner>().enemyNumber;
+            enemyCountDown += spawner[i].GetComponent<EnemySpawnerStateMachine>().enemyNumber;
         }
 
         for (int i = 0; i < singleEnemy.Length; i++)

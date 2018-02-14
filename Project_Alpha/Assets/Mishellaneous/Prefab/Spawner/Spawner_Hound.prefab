@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4010303393230322}
   - component: {fileID: 114289760659151412}
+  - component: {fileID: 114019968258345580}
   m_Layer: 0
   m_Name: Spawner_Hound
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114289760659151412
+--- !u!114 &114019968258345580
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,10 +49,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1961738599043092}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb5f5a631dd02944842c9b7d7a2fa6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1553377036661140, guid: a6bc81573fb0281458d5f39ef8b2f2c2, type: 2}
+  enemyNumber: 1
+  spawnAtStart: 1
+  spawnDelayAtStart: 1
+  spawnDelayBetweenEnemy: 1
+  enemyList: []
+  startSpawning: 0
+  spawnerState: 0
+--- !u!114 &114289760659151412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961738599043092}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60c0c12ef4de72543b890a02478c6f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1553377036661140, guid: a6bc81573fb0281458d5f39ef8b2f2c2, type: 2}
   enemyNumber: 1
-  spawnRate: 1
+  spawnAtStart: 1
+  spawnAtAllSpawnedDeath: 1
+  spawnDelayAtStart: 1
+  spawnDelayAtAllSpawnedDeath: 1
+  spawnDelayBetweenEnemy: 1
+  enemyList: []
   startSpawning: 0
