@@ -157,7 +157,7 @@ namespace Player
                         {
                             Destroy(enemyDeadHitted[i].gameObject);
                             life.Heal(heal);
-                            globalVariables.enemyDead++;
+                            //globalVariables.enemyDead++;
                             //Debug.Log(globalVariables.enemyDead);
                         }
                     }

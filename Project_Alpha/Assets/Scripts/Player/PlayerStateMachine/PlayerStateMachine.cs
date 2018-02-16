@@ -59,6 +59,8 @@ public class PlayerStateMachine : MonoBehaviour
     private int maxEnemyDeadHittedArray = 100;
     private bool waited = false;
     private bool singleJump = true;
+    private bool activeFrenzy = false;
+
     [Title("Modifiche abilitate.")]
     [SerializeField] private bool isGrounded = true;
     private int i = 0; //counter
@@ -132,7 +134,10 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
 
             case PlayerState.attack:
-                offenseStateSpriteRenderer.color = playerOffenseStateAttackColor;
+                if(playerAttack == 0)
+                {
+                    offenseStateSpriteRenderer.color = playerOffenseStateAttackColor;
+                }
                 StartCoroutine(Wait(.1f, false));
                 Attack(playerAttack);
                 break;
@@ -267,7 +272,7 @@ public class PlayerStateMachine : MonoBehaviour
                 {
                     Destroy(enemyDeadHitted[i].gameObject);
                     IncrementLife(lifeIncrement);
-                    globalVariables.enemyDead++;
+                    //globalVariables.enemyDead++;
                     //Debug.Log(globalVariables.enemyDead);
                 }
             }

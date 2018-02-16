@@ -9,10 +9,19 @@ public class HealingAnimation : MonoBehaviour
     private float fps = .01f;
     private float deltaTime = 0;
     private float frame = 0;
+    private int lastFrame;
+    private bool loop = false;
+    private int startingFrameForLoop = 0;
+    
 
     private bool destroy = false;
-    
-	void Update ()
+
+    private void Awake()
+    {
+        lastFrame = healing.Length - 1;
+    }
+
+    void Update ()
     {
         deltaTime += Time.deltaTime;
         while(deltaTime >= fps)
@@ -23,9 +32,16 @@ public class HealingAnimation : MonoBehaviour
             sprtRenderer.sprite = healing[(int)frame];
         }
 
-        if(frame >= healing.Length - 1)
+        if(frame >= lastFrame)
         {
-            destroy = true;
+            if(loop)
+            {
+                frame = startingFrameForLoop;
+            }
+            else
+            {
+                destroy = true;
+            }
         }
 
         if(destroy)
@@ -33,4 +49,11 @@ public class HealingAnimation : MonoBehaviour
             Destroy(this.gameObject);
         }
 	}
+
+    private void Loop(/*int[] strartAndEnd*/)
+    {
+        //startingFrameForLoop = strartAndEnd[0];
+        //lastFrame = strartAndEnd[1];
+        loop = true;
+    }
 }

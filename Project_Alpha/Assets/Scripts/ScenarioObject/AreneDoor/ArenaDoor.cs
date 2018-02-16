@@ -33,7 +33,7 @@ namespace TheArenaDoor
 			if (doorExitCollider.thisDoorClosed && onlyOne)
 			{
                 onlyOne = false;
-                globalVariables.enemyDead = 0;
+                //globalVariables.enemyDead = 0;
                 phisicalDoor.SetActive (true);
 				colliderWithPlayer.SetActive (false);
             }

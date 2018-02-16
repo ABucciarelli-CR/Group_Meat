@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761089791490286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 107, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 4449434063787410}
@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849081114460880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -513, y: -156, z: 0}
+  m_LocalPosition: {x: -324, y: -156, z: 0}
   m_LocalScale: {x: 20, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 4449434063787410}
@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713834129059214}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -149, y: 877, z: 0}
+  m_LocalPosition: {x: 10, y: 880, z: 0}
   m_LocalScale: {x: 600, y: 600, z: 0}
   m_Children: []
   m_Father: {fileID: 4449434063787410}
@@ -129,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565304783806814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1464, y: 56, z: 0}
+  m_LocalPosition: {x: 1712.457, y: 287.38892, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 4381322732663870}
@@ -220,10 +220,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -26.361938, y: -67.802}
+  m_Offset: {x: 150.3, y: -67.802}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.45, y: 0.5}
     oldSize: {x: 4000, y: 4500}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
@@ -291,6 +291,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
 --- !u!114 &114394838672791466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,6 +390,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   facingleft: 1
   tankDamage: 30
   tankHealth: 100

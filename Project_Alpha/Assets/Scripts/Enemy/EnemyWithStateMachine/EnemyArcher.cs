@@ -25,6 +25,8 @@ public class EnemyArcher : EnemyStateMachine
     [ReadOnly]
     public GameObject player;
 
+    public GameObject arrowSpawn;
+
     //private float delay = 0;
     private int i = 0;
     private bool healtToSet = true;
@@ -85,7 +87,7 @@ public class EnemyArcher : EnemyStateMachine
             waited = false;
             StartCoroutine(Wait(attackDelay));
             //creare successivamente la parabola della freccia
-            GameObject arrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            GameObject arrow = Instantiate(arrowPrefab, arrowSpawn.transform.position, Quaternion.identity);
             arrow.SendMessage("AtkSet", damage);
 
         }

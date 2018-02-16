@@ -7,6 +7,6 @@ public class GlobalVariables : MonoBehaviour
 
 	public bool closeDoor = false;
 
-    public int enemyDead = 0;
+    //public int enemyDead = 0;
 
 }

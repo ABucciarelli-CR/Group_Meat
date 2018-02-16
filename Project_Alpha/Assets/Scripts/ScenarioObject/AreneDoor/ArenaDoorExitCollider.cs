@@ -20,6 +20,7 @@ namespace TheArenaDoor
         private float maxDistance = 5;
 
         private bool isPlayer = false;
+        private bool onlyOne = true;
 
         void Start()
 		{
@@ -43,10 +44,15 @@ namespace TheArenaDoor
                     checkArenaEnemyEnd.spawner[i].GetComponent<EnemySpawnerStateMachine>().startSpawning = true;
                 }
 
-                globalVariables.closeDoor = true;
-                globalVariables.enemyDead = 0;
+                if(onlyOne)
+                {
+                    globalVariables.closeDoor = true;
+                    onlyOne = false;
+                }
+                //globalVariables.enemyDead = 0;
 
                 thisDoorClosed = true;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 

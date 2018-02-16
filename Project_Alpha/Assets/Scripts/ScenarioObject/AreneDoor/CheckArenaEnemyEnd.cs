@@ -10,6 +10,7 @@ public class CheckArenaEnemyEnd : MonoBehaviour
     public List<GameObject> singleEnemy;
 
     private GlobalVariables globalVariables;
+    private bool onlyOne = true;
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
@@ -70,11 +71,16 @@ public class CheckArenaEnemyEnd : MonoBehaviour
             enemyEnd = false;
         }
 
-        Debug.Log("enemy end: " + enemyEnd);
+        //Debug.Log("enemy end: " + enemyEnd);
 
         if (enemyEnd)
         {
-            globalVariables.closeDoor = false;
+            if(onlyOne)
+            {
+                onlyOne = false;
+                globalVariables.closeDoor = false;
+            }
+            
             //globalVariables.enemyDead = 0;
             //enemyCountDown = 0;
         }

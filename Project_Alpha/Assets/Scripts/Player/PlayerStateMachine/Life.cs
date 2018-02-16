@@ -7,19 +7,22 @@ using Sirenix.OdinInspector;
 
 public class Life : MonoBehaviour
 {
+    public int maxLife = 1000;
+    public int startLife = 100;
+
     [ReadOnly]
     public int actualLife;
-
-    private int maxLife = 1000;
-    private int startLife = 100;
-        
-
+    [ReadOnly]
+    public int maxLifeBarValue;
+    [ReadOnly]
     public Slider lifeBar;
+    [ReadOnly]
     public Slider maxLifeBar;
     
     private bool waited = false;
-
+    [ReadOnly]
     public SpriteRenderer playerSprite;
+    [ReadOnly]
     public GameObject body;
 
     private Color playerOffenseStateStandardColor;
@@ -78,10 +81,21 @@ public class Life : MonoBehaviour
     public void DecrementLife(int decrement)
     {
         maxLifeBar.value -= decrement;
+        if(lifeBar.value > maxLifeBar.value)
+        {
+            lifeBar.value = maxLifeBar.value;
+        }
     }
 
     private void Update()
     {
+        maxLifeBarValue = (int)maxLifeBar.value;
+
+        if (actualLife > maxLifeBar.value)
+        {
+            actualLife = (int)maxLifeBar.value;
+        }
+
         if (lifeBar.value > actualLife)
         {
             playerSprite.color = playerOffenseStateDamagedColor;
@@ -105,7 +119,7 @@ public class Life : MonoBehaviour
 
     private void ResetGlobalVariables()
     {
-        globalVariables.enemyDead = 0;
+        //globalVariables.enemyDead = 0;
         globalVariables.closeDoor = false;
     }
 
