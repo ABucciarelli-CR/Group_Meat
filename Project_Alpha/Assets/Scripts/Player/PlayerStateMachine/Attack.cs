@@ -22,6 +22,8 @@ public class Attack : MonoBehaviour
     [ReadOnly]
     public bool abilityEnded = false;
 
+    public AudioSource audioSource;
+
     [Title("Modifiche abilitate.")]
     [InfoBox("Valori standard")]
     public int standardDamage = 20;
@@ -45,6 +47,8 @@ public class Attack : MonoBehaviour
     private DamageAreaCollider damageAreaCollider;
     private GameObject frenziPlaceholder;
     private float damageDeltaTime = 0;
+    private bool memeMusicOn = true;
+    private bool endWaitMemeMusic = false;
     private GlobalVariables globalVariables;
     //private Animator anim;
 
@@ -69,6 +73,34 @@ public class Attack : MonoBehaviour
         //globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
     }
 
+    private void FixedUpdate()
+    {
+        if (frenzyActive)
+        {
+            if (memeMusicOn)
+            {
+                if (endWaitMemeMusic)
+                {
+                    damageDeltaTime += (maxHealthConsume * Time.fixedDeltaTime);
+                    if (damageDeltaTime >= 1)
+                    {
+                        playerLife.SendMessage("DecrementLife", damageDeltaTime);
+                        damageDeltaTime = 0;
+                    }
+                }
+            }
+            else
+            {
+                damageDeltaTime += (maxHealthConsume * Time.fixedDeltaTime);
+                if (damageDeltaTime >= 1)
+                {
+                    playerLife.SendMessage("DecrementLife", damageDeltaTime);
+                    damageDeltaTime = 0;
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -77,17 +109,6 @@ public class Attack : MonoBehaviour
         {
             frenzyActive = false;
             abilityEnded = false;
-        }
-
-        if(frenzyActive)
-        {
-            damageDeltaTime += (maxHealthConsume * Time.deltaTime);
-            if(damageDeltaTime >= 1)
-            {
-                playerLife.SendMessage("DecrementLife", 1);
-                damageDeltaTime = 0;
-            }
-            
         }
     }
 
@@ -156,22 +177,46 @@ public class Attack : MonoBehaviour
     {
         if(!frenzyActive && globalVariables.frenzyCanBeUsed)
         {
-            frenziPlaceholder = Instantiate(frenzyAnimation, this.transform.position + new Vector3(0,30,0), Quaternion.identity, this.gameObject.transform);
-            frenziPlaceholder.gameObject.transform.localScale = new Vector3(10, 25, 0);
-            frenziPlaceholder.GetComponent<SpriteRenderer>().color = Color.red;
             //int[] startAndEnd = new int[2];
             //startAndEnd[0] = 4;
             //startAndEnd[0] = 10;
-            frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
-            
+
+            if(memeMusicOn)
+            {
+                StartCoroutine(StartingMusic(6.7f));
+            }
+            else
+            {
+                CreateAndActivateFrenzyPlaeholder();
+                frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
+                StartCoroutine(EndAbility(maxFrenzyTime));
+            }
             frenzyActive = true;
-            StartCoroutine(EndAbility(maxFrenzyTime));
         }
+    }
+
+    private void CreateAndActivateFrenzyPlaeholder()
+    {
+        frenziPlaceholder = Instantiate(frenzyAnimation, this.transform.position + new Vector3(0, 30, 0), Quaternion.identity, this.gameObject.transform);
+        frenziPlaceholder.gameObject.transform.localScale = new Vector3(10, 25, 0);
+        frenziPlaceholder.GetComponent<SpriteRenderer>().color = Color.yellow;
+    }
+
+    IEnumerator StartingMusic(float sec)
+    {
+        endWaitMemeMusic = false;
+        audioSource.Play();
+        yield return new WaitForSeconds(sec);
+        endWaitMemeMusic = true;
+        CreateAndActivateFrenzyPlaeholder();
+        frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
+        StartCoroutine(EndAbility(maxFrenzyTime));
     }
 
     IEnumerator EndAbility(float sec)
     {
         yield return new WaitForSeconds(sec);
+        audioSource.Stop();
         Destroy(frenziPlaceholder);
         abilityEnded = true;
     }
