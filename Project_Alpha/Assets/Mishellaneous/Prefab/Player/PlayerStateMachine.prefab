@@ -597,7 +597,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350652960365124}
   m_LocalRotation: {x: 0.0000005088771, y: 0.0000012090768, z: -6.152714e-13, w: 1}
-  m_LocalPosition: {x: -0.00076293945, y: 0.0005722046, z: -31.41}
+  m_LocalPosition: {x: -0.0011444092, y: 2700.001, z: -31.409779}
   m_LocalScale: {x: 12.5, y: 12.5, z: 1}
   m_Children:
   - {fileID: 4468680440718154}
@@ -670,7 +670,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491968176428530}
   m_LocalRotation: {x: 0.0000005088771, y: 0.0000012090768, z: -6.152714e-13, w: 1}
-  m_LocalPosition: {x: -0.00076293945, y: 0.0005722046, z: -31.41}
+  m_LocalPosition: {x: -0.0011444092, y: 2700.001, z: -31.409779}
   m_LocalScale: {x: 9.858241, y: 9.831326, z: 0}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
@@ -998,8 +998,10 @@ MonoBehaviour:
   audioSource: {fileID: 82090149285757014}
   standardDamage: 20
   healForDamage: 3
-  maxHealthConsume: 5
-  maxFrenzyTime: 9000
+  maxHealthConsume: 1
+  maxFrenzyTime: 90
+  frenzyAudioOn: 1
+  waitTimeToStartFrenzy: 6.7
   standardAttackModifier: 5
   standardHealthModifier: 5
 --- !u!114 &114026052921751158
@@ -1292,20 +1294,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 10
+  m_LookaheadTime: 0.2
+  m_LookaheadSmoothing: 30
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenY: 0.70000005
   m_CameraDistance: 31.41
-  m_DeadZoneWidth: 0.64093566
-  m_DeadZoneHeight: 0.18661469
+  m_DeadZoneWidth: 0.08
+  m_DeadZoneHeight: 0.184
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.81345046
-  m_SoftZoneHeight: 0.6492528
+  m_SoftZoneHeight: 0.42
   m_BiasX: 0
   m_BiasY: 0
   m_GroupFramingMode: 2
