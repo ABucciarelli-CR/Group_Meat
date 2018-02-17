@@ -91,6 +91,7 @@ public class EnemyHound : EnemyStateMachine
 
         if (playerIsInVision)
         {
+            Debug.Log("Leeeeeeeeeeeeroooooooy JENKINS!!!!");
             direction = gameObject.transform.position.x - player.transform.position.x;
 
             rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);

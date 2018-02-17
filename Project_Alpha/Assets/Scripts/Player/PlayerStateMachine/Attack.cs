@@ -45,7 +45,7 @@ public class Attack : MonoBehaviour
     private DamageAreaCollider damageAreaCollider;
     private GameObject frenziPlaceholder;
     private float damageDeltaTime = 0;
-    //private GlobalVariables globalVariables;
+    private GlobalVariables globalVariables;
     //private Animator anim;
 
     private int i = 0;//counter variables
@@ -58,6 +58,7 @@ public class Attack : MonoBehaviour
 
     private void Awake()
     {
+        globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
         damageAreaCollider = damageAreaGameObject.GetComponent<DamageAreaCollider>();
         life = playerLife.GetComponent<Life>();
         //anim = GetComponent<Animator>();
@@ -153,7 +154,7 @@ public class Attack : MonoBehaviour
 
     private void FrenzyState()
     {
-        if(!frenzyActive)
+        if(!frenzyActive && globalVariables.frenzyCanBeUsed)
         {
             frenziPlaceholder = Instantiate(frenzyAnimation, this.transform.position + new Vector3(0,30,0), Quaternion.identity, this.gameObject.transform);
             frenziPlaceholder.gameObject.transform.localScale = new Vector3(10, 25, 0);

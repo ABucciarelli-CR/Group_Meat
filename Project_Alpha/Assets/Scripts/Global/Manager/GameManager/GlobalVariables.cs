@@ -6,6 +6,7 @@ public class GlobalVariables : MonoBehaviour
 {
 
 	public bool closeDoor = false;
+    public bool frenzyCanBeUsed = false;
 
     //public int enemyDead = 0;
 
