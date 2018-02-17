@@ -14,10 +14,10 @@ public class Life : MonoBehaviour
     public int actualLife;
     [ReadOnly]
     public int maxLifeBarValue;
-    [ReadOnly]
-    public Slider lifeBar;
-    [ReadOnly]
-    public Slider maxLifeBar;
+    //[ReadOnly]
+    public Slider[] lifeBar;
+    //[ReadOnly]
+    public Slider[] maxLifeBar;
     
     private bool waited = false;
     [ReadOnly]
@@ -43,11 +43,16 @@ public class Life : MonoBehaviour
         globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
         
         //Defining the starting life
-        lifeBar.maxValue = maxLife;
-        maxLifeBar.maxValue = maxLife;
+        lifeBar[0].maxValue = maxLife;
+        lifeBar[1].maxValue = maxLife;
+        maxLifeBar[0].maxValue = maxLife;
+        maxLifeBar[1].maxValue = maxLife;
 
-        lifeBar.value = startLife;
-        maxLifeBar.value = startLife;
+        lifeBar[0].value = startLife;
+        lifeBar[1].value = startLife;
+        maxLifeBar[0].value = startLife;
+        maxLifeBar[1].value = startLife;
+
         actualLife = startLife;
 
     }
@@ -60,10 +65,10 @@ public class Life : MonoBehaviour
 
     public void Heal(int heal)
     {
-        if((actualLife + heal) >= maxLifeBar.value)
+        if((actualLife + heal) >= maxLifeBar[0].value)
         {
                 
-            actualLife = (int)maxLifeBar.value;
+            actualLife = (int)maxLifeBar[0].value;
             //Debug.Log(actualLife);
         }
         else
@@ -75,28 +80,31 @@ public class Life : MonoBehaviour
 
     public void IncrementLife(int increment)
     {
-        maxLifeBar.value += increment;
+        maxLifeBar[0].value += increment;
+        maxLifeBar[1].value += increment;
     }
 
     public void DecrementLife(int decrement)
     {
-        maxLifeBar.value -= decrement;
-        if(lifeBar.value > maxLifeBar.value)
+        maxLifeBar[0].value -= decrement;
+        maxLifeBar[1].value -= decrement;
+        if (lifeBar[0].value > maxLifeBar[0].value)
         {
-            lifeBar.value = maxLifeBar.value;
+            lifeBar[0].value = maxLifeBar[0].value;
+            lifeBar[1].value = maxLifeBar[1].value;
         }
     }
 
     private void Update()
     {
-        maxLifeBarValue = (int)maxLifeBar.value;
+        maxLifeBarValue = (int)maxLifeBar[0].value;
 
-        if (actualLife > maxLifeBar.value)
+        if (actualLife > maxLifeBar[0].value)
         {
-            actualLife = (int)maxLifeBar.value;
+            actualLife = (int)maxLifeBar[0].value;
         }
 
-        if (lifeBar.value > actualLife)
+        if (lifeBar[0].value > actualLife)
         {
             playerSprite.color = playerOffenseStateDamagedColor;
             StartCoroutine(Wait());
@@ -107,7 +115,8 @@ public class Life : MonoBehaviour
             playerSprite.color = playerOffenseStateStandardColor;
         }
 
-        lifeBar.value = actualLife;
+        lifeBar[0].value = actualLife;
+        lifeBar[1].value = actualLife;
 
         if (actualLife <= 0)
         {
