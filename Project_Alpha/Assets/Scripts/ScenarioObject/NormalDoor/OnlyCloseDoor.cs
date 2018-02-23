@@ -30,6 +30,7 @@ public class OnlyCloseDoor : MonoBehaviour
             if (hitRight.collider.CompareTag("Player"))
             {
                 door.SetActive(true);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -39,6 +40,7 @@ public class OnlyCloseDoor : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             door.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }
