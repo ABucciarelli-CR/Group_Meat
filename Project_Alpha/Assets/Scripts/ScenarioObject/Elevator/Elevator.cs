@@ -5,24 +5,12 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     public Transform target;
-    public Transform target2;
-    public bool move = false;
     public float speed;
-    private Rigidbody2D rb2d;
-    // Use this for initialization
-    void Start ()
+    private Rigidbody2D rb2;
+    // Update is called once per frame
+    void Start()
     {
-        rb2d = gameObject.GetComponent<Rigidbody2D>();
-    }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
-    {
-
-        if (move)
-        {
-            rb2d.AddForce(new Vector2(-1, speed * 1000));
-        }
+        rb2 = GetComponent<Rigidbody2D>();
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -31,17 +19,9 @@ public class Elevator : MonoBehaviour
         {
             if (!(transform.position == target.position))
             {
-                move = true;
-                //transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+                rb2.AddForce(Vector2.up*speed,ForceMode2D.Force);
             }
         }
-        if (collision.CompareTag("Enemy"))
-        {
-            if (!(transform.position == target.position))
-            {
-                move = true;
-                //transform.position = Vector3.MoveTowards(transform.position, target2.position, step);
-            }
-        }
+        
     }
 }
