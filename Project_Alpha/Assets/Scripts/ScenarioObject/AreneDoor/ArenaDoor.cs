@@ -37,12 +37,12 @@ namespace TheArenaDoor
                 phisicalDoor.SetActive (true);
 				colliderWithPlayer.SetActive (false);
             }
-
+            /*
             if(!globalVariables.closeDoor)
             {
                 onlyOne = true;
                 phisicalDoor.SetActive(false);
-            }
+            }*/
         }
     }
 }

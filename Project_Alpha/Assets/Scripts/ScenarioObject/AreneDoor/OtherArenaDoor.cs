@@ -7,17 +7,17 @@ public class OtherArenaDoor : MonoBehaviour
 
 	public GameObject phisicalDoor;
 
-	private GlobalVariables globalVariables;
+	//private GlobalVariables globalVariables;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables> ();
+		//globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables> ();
 
 		phisicalDoor.SetActive(false);
 	}
-	
+	/*
 	// Update is called once per frame
 	void Update () 
 	{
@@ -29,5 +29,10 @@ public class OtherArenaDoor : MonoBehaviour
 		{
 			phisicalDoor.SetActive (false);
 		}
-	}
+	}*/
+
+    private void CloseAndOpen(bool activation)
+    {
+        phisicalDoor.SetActive(activation);
+    }
 }

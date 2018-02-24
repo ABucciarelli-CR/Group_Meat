@@ -31,7 +31,7 @@ public class GameManagerAction : MonoBehaviour
     {
         if (isRestart)
         {
-            globalVariables.closeDoor = false;
+            //globalVariables.closeDoor = false;
             //globalVariables.enemyDead = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

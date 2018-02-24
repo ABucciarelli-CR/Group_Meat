@@ -8,8 +8,11 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 
     public GameObject[] spawner;
     public List<GameObject> singleEnemy;
+    public GameObject physicalDoor;
+    [Title("Inserire la porta corrispondente.")]
+    public GameObject[] otherDoor;
 
-    private GlobalVariables globalVariables;
+    //private GlobalVariables globalVariables;
     private bool onlyOne = true;
 
     [Title("ReadOnly, modifiche disabilitate.")]
@@ -21,7 +24,7 @@ public class CheckArenaEnemyEnd : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
+        //globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
 
         for (int i = 0; i < spawner.Length; i++)
         {
@@ -78,9 +81,14 @@ public class CheckArenaEnemyEnd : MonoBehaviour
             if(onlyOne)
             {
                 onlyOne = false;
-                globalVariables.closeDoor = false;
+                //globalVariables.closeDoor = false;
+                physicalDoor.SetActive(false);
+
+                foreach(GameObject door in otherDoor)
+                {
+                    door.SendMessage("CloseAndOpen", false);
+                }
             }
-            
             //globalVariables.enemyDead = 0;
             //enemyCountDown = 0;
         }

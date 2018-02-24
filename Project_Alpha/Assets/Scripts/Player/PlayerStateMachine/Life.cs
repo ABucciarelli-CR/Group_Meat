@@ -129,7 +129,7 @@ public class Life : MonoBehaviour
     private void ResetGlobalVariables()
     {
         //globalVariables.enemyDead = 0;
-        globalVariables.closeDoor = false;
+        //globalVariables.closeDoor = false;
     }
 
     IEnumerator Wait()
