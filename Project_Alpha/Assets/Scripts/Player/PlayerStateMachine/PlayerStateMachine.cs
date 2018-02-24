@@ -173,13 +173,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Idle()
     {
+        
         if (isGrounded)
         {
             singleJump = true;
         }
-
         groundRadiusCollision = realGroundRadiusCollision;
-        gameObject.layer = 8;
         //Debug.Log(gameObject.layer);
         //TODO: animation start
     }
@@ -256,8 +255,9 @@ public class PlayerStateMachine : MonoBehaviour
         //Debug.Log(Mathf.Sign(lastMove));
         rb2d.MovePosition(rb2d.position + new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
         playerState = PlayerState.idle;
+        StartCoroutine(WaitForLayer(.1f));
         //TODO: wait 4 animation
-        
+
     }
 
     private void Eat()
@@ -318,6 +318,12 @@ public class PlayerStateMachine : MonoBehaviour
     private void GoJump(bool isJump)
     {
         isGrounded = isJump;
+    }
+
+    IEnumerator WaitForLayer(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        gameObject.layer = 8;
     }
 
     IEnumerator Wait(float sec, bool returnWait = true)
