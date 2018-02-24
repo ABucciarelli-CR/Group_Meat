@@ -22,6 +22,7 @@ public class PlayerStateMachine : MonoBehaviour
     //playerValue
     public bool airControl = true;
     public int lifeIncrement = 25;
+    public int lifeHealWhenEat = 20;
     public float dashSpeed = 500f;
     public float jumpForce = 20000f;
     public float moveForce = 10f;
@@ -272,6 +273,7 @@ public class PlayerStateMachine : MonoBehaviour
                 {
                     Destroy(enemyDeadHitted[i].gameObject);
                     IncrementLife(lifeIncrement);
+                    Heal(lifeHealWhenEat);
                     //globalVariables.enemyDead++;
                     //Debug.Log(globalVariables.enemyDead);
                 }

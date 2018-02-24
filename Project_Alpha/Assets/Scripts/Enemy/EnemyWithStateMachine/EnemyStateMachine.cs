@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Blink))]
 public class EnemyStateMachine : MonoBehaviour
 {
-    
-
     [HideInInspector] public EnemyState enemyState;
 
     [Title("ReadOnly, modifiche disabilitate.")]
@@ -23,10 +21,13 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
     [HideInInspector] public float ttcd;
+    private bool facingRight = true;
     /*[HideInInspector]*/
 
     [ReadOnly]
     public float stunTime = 5f;
+    [ReadOnly]
+    public float waitTimeBeforeFlip = .1f;
     [ReadOnly]
     public int healthRegenAfterStun = 20;//is in %
     [ReadOnly]
@@ -44,6 +45,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     [ReadOnly]
     public GameObject offenseState;//the gameObject that visualize
+
+    [ReadOnly]
+    public GameObject player;
 
     [ReadOnly]
     public ContactFilter2D contactFilter;
@@ -113,6 +117,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         //offenseState = offenseState.GetComponent<GameObject>();
         gameManager = GameObject.Find("GameManager");
+        player = GameObject.FindWithTag("Player");
         gameManager.GetComponent<EnemyManager>().Add(this.gameObject);
         enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);
@@ -143,8 +148,19 @@ public class EnemyStateMachine : MonoBehaviour
         {
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             offenseStateSpriteRenderer = offenseState.GetComponent<SpriteRenderer>();
+        }*/
 
-            
+        //il nemico si gira verso il player
+        /*
+        if(player.transform.position.x < this.transform.position.x && !facingRight)
+        {
+            Debug.Log("Flip1");
+            StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+        }
+        else if (player.transform.position.x > this.transform.position.x && facingRight)
+        {
+            Debug.Log("Flip2");
+            StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
         }*/
 
 
@@ -263,13 +279,26 @@ public class EnemyStateMachine : MonoBehaviour
         list = thisList;
     }
 
+    private void Flip()
+    {
+        Vector3 normalScale = transform.localScale;
+        normalScale.x *= -1;
+        transform.localScale = normalScale;
+    }
+
+    public virtual IEnumerator WaitBeforeFlip(float time)
+    {
+        yield return new WaitForSeconds(time);
+        facingRight = !facingRight;
+        Flip();
+    }
+
     public virtual IEnumerator WaitTime(float time)
     {
         Debug.Log("waiting");
         yield return new WaitForSeconds(time);
         Debug.Log("stop waiting");
     }
-
 }
 
 

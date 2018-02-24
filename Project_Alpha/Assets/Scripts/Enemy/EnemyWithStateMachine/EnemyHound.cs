@@ -19,7 +19,7 @@ public class EnemyHound : EnemyStateMachine
 
     public GameObject attackCollider;
     public GameObject visibleDistanceCollider;
-    public GameObject player;
+    //public GameObject player;
 
 
     private void Awake()
@@ -49,11 +49,11 @@ public class EnemyHound : EnemyStateMachine
             regenerate = false;
             onlyOneDeath = true;
         }
-
+        /*
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
-        }
+        }*/
         
     }
 

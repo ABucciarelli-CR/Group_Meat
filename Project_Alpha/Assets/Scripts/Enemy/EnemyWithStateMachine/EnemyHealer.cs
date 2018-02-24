@@ -24,8 +24,8 @@ public class EnemyHealer : EnemyStateMachine
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
     public GameObject attackCollider;
-    [ReadOnly]
-    public GameObject player;
+    //[ReadOnly]
+    //public GameObject player;
     [ReadOnly]
     public GameObject disappearingPlatform;
     [ReadOnly]
@@ -61,11 +61,11 @@ public class EnemyHealer : EnemyStateMachine
             regenerate = false;
             onlyOneDeath = true;
         }
-
+        /*
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
-        }
+        }*/
 
         onlyHealer = true;
 

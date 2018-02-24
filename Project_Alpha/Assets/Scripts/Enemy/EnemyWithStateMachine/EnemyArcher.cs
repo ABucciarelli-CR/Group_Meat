@@ -22,8 +22,8 @@ public class EnemyArcher : EnemyStateMachine
     public GameObject escapeArea;
     [ReadOnly]
     public GameObject arrowPrefab;
-    [ReadOnly]
-    public GameObject player;
+    //[ReadOnly]
+    //public GameObject player;
 
     public GameObject arrowSpawn;
 
@@ -60,11 +60,11 @@ public class EnemyArcher : EnemyStateMachine
             regenerate = false;
             onlyOneDeath = true;
         }
-
+        /*
         if(player == null)
         {
             player = GameObject.FindWithTag("Player");
-        }
+        }*/
         
     }
 
