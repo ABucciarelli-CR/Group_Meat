@@ -14,9 +14,9 @@ public class Life : MonoBehaviour
     public int actualLife;
     [ReadOnly]
     public int maxLifeBarValue;
-    //[ReadOnly]
+    [ReadOnly]
     public Slider[] lifeBar;
-    //[ReadOnly]
+    [ReadOnly]
     public Slider[] maxLifeBar;
     
     private bool waited = false;

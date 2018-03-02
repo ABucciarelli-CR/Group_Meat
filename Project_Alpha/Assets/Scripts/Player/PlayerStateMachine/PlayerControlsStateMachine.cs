@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerControlsStateMachine : MonoBehaviour
 {
+    [ReadOnly]
+    public DashCount dashCount;
     private PlayerStateMachine stateMachine;
 
     private float leftAndRightMovement;
@@ -12,6 +15,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
     private float axesDash = 0f;
     private bool eat = false;
     private bool canDash = true;
+    private bool havePossibleDash = true;
 
     //attack Type
     //see summary in PlayerStateMachine.cs
@@ -100,17 +104,20 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
     private void Dash()
     {
-        if(inputDash)
+        //4 input
+        if(inputDash && havePossibleDash)
         {
             stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
+            dashCount.SendMessage("RemoveOneCharge");
         }
         
-        if(axesDash == 1 && canDash)
+        //4 gamepad
+        if(axesDash == 1 && canDash && havePossibleDash)
         {
+            dashCount.SendMessage("RemoveOneCharge");
             canDash = false;
             stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
         }
-
         if(axesDash <= 0.2f)
         {
             canDash = true;
@@ -123,5 +130,10 @@ public class PlayerControlsStateMachine : MonoBehaviour
         {
             stateMachine.playerState = PlayerStateMachine.PlayerState.eat;
         }
+    }
+
+    private void HaveSomeDashLeft(bool boolDash)
+    {
+        havePossibleDash = boolDash;
     }
 }
