@@ -21,7 +21,8 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
     [HideInInspector] public float ttcd;
-    private bool facingRight = true;
+    //[ReadOnly]
+    public bool facingRight = false;
     /*[HideInInspector]*/
 
     [ReadOnly]
@@ -149,19 +150,39 @@ public class EnemyStateMachine : MonoBehaviour
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             offenseStateSpriteRenderer = offenseState.GetComponent<SpriteRenderer>();
         }*/
-
-        //il nemico si gira verso il player
-        /*
-        if(player.transform.position.x < this.transform.position.x && !facingRight)
+        if (facingRight)
         {
-            Debug.Log("Flip1");
-            StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+            if (player.transform.position.x < this.transform.position.x - 1000f)
+            {
+                Debug.Log(facingRight);
+                facingRight = false;
+                Flip();
+            }
         }
-        else if (player.transform.position.x > this.transform.position.x && facingRight)
-        {
-            Debug.Log("Flip2");
-            StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
-        }*/
+        else if (player.transform.position.x > this.transform.position.x + 1000f)
+        { 
+            Debug.Log(facingRight);
+        facingRight = true;
+            Flip();
+        }
+        //il nemico si gira verso il player
+        //if (player.transform.position.x < this.transform.position.x && facingRight == true)
+        //{
+        //    Debug.Log("Flip1");
+        //    Debug.Log("ginocchio");
+        //    facingRight = false;
+        //    Flip();
+        //    //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+        //}
+        ////print(facingRight);
+        //if (player.transform.position.x > this.transform.position.x)
+        //    if(false)
+        //{
+        //    Debug.Log("Flip2" + facingRight);
+        //    facingRight = true;
+        //    Flip();
+        //    //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+        //}
 
 
         if (enemyHealth.health <= 0 && onlyOneDeath)
@@ -289,7 +310,6 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual IEnumerator WaitBeforeFlip(float time)
     {
         yield return new WaitForSeconds(time);
-        facingRight = !facingRight;
         Flip();
     }
 

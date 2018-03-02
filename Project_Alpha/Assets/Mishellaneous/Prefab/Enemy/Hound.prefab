@@ -245,7 +245,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -258,6 +260,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1312473939973552}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -346,7 +349,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 20
   activeStunTime: 1
   delay: 0
@@ -359,6 +364,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1312473939973552}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -393,7 +399,6 @@ MonoBehaviour:
   maxVisibleDistance: 10000
   attackCollider: {fileID: 1141315643346728}
   visibleDistanceCollider: {fileID: 1916724179839626}
-  player: {fileID: 0}
 --- !u!212 &212506096533325686
 SpriteRenderer:
   m_ObjectHideFlags: 1

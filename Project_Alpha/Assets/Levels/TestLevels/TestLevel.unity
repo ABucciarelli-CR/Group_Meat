@@ -288,6 +288,21 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1668.6602
       objectReference: {fileID: 0}
+    - target: {fileID: 114512313358788002, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: actualLife
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114512313358788002, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: maxLifeBarValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356690045901092, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: isGrounded
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
   m_IsPrefabParent: 0
@@ -520,6 +535,76 @@ Prefab:
         type: 2}
       propertyPath: frameToBlink
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: stardCountdown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: enemyHealth
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: rb2d
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: deadLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: enemyIsOnAttack.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: enemyIsOnAttack.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: enemyIsOnAttack.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: facingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114931558430136502, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: facingRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: regenerate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467681651091410, guid: a6bc81573fb0281458d5f39ef8b2f2c2,
+        type: 2}
+      propertyPath: onlyOneDeath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6bc81573fb0281458d5f39ef8b2f2c2, type: 2}
