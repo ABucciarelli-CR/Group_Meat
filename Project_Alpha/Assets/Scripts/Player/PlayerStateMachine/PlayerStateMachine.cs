@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /// <attackSummary>
 /// 
 /// 0 = normal Attack
@@ -20,12 +21,19 @@ public class PlayerStateMachine : MonoBehaviour
     [HideInInspector] private float lastMove = 1;
 
     //playerValue
+    [Title("Variabili base del player.")]
     public bool airControl = true;
+    public bool abilitateTimeForQuickTimeEvent = true;
     public int lifeIncrement = 25;
     public int lifeHealWhenEat = 20;
     public float dashSpeed = 500f;
     public float jumpForce = 20000f;
     public float moveForce = 10f;
+    public float QTETime = 5f;
+
+    [Title("Cambiarle anche nell'input, non solo qui.")]
+    public string LeftButtonQTE = "I";
+    public string RightButtonQTE = "O";
 
     [HideInInspector] public float playerMovement;
     [HideInInspector] public int playerAttack;
@@ -37,6 +45,7 @@ public class PlayerStateMachine : MonoBehaviour
     private GlobalVariables globalVariables;
     private Attack attack;
     private Life life;
+    
 
     //other
     [SerializeField] private Transform groundCheck;
@@ -44,6 +53,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     private Rigidbody2D rb2d;
     private Collider2D[] enemyDeadHitted;
+    private bool QTEOnlyone = true;
+    //button 4 QuickTimeEvent
+    private bool QTEButtonLeft = false;
+    private bool QTEButtonRight = false;
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
@@ -54,6 +67,8 @@ public class PlayerStateMachine : MonoBehaviour
     public ContactFilter2D contactFilter;
     [ReadOnly]
     public SpriteRenderer offenseStateSpriteRenderer;
+    [ReadOnly]
+    public Text textQTE;
 
     private float realGroundRadiusCollision = .1f;
     private float groundRadiusCollision = 0f;
@@ -87,6 +102,8 @@ public class PlayerStateMachine : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         groundRadiusCollision = realGroundRadiusCollision;
         enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
+        textQTE.text = LeftButtonQTE.ToUpper() + "                    " + RightButtonQTE.ToUpper();
+        textQTE.enabled = false;
 
         playerOffenseStateStandardColor = Color.white;
         playerOffenseStateAttackColor = Color.red;
@@ -263,28 +280,38 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Eat()
     {
-        eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
-        i = 0;
-        foreach (Collider2D collider in enemyDeadHitted)
+        if (CheckIfAnyoneDead())
         {
-            if (enemyDeadHitted[i] != null)
+            textQTE.enabled = true;
+
+            if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
             {
-                if (enemyDeadHitted[i].CompareTag("Corpse"))
-                {
-                    Destroy(enemyDeadHitted[i].gameObject);
-                    IncrementLife(lifeIncrement);
-                    Heal(lifeHealWhenEat);
-                    //globalVariables.enemyDead++;
-                    //Debug.Log(globalVariables.enemyDead);
-                }
+                StartCoroutine(TimeForQuickTime());
             }
 
-            i++;
+            if (QTEButtonRight && QTEButtonLeft)
+            {
+                textQTE.enabled = false;
+                if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
+                {
+                    EatEnemy();
+                    StopCoroutine(TimeForQuickTime());
+                    QTEOnlyone = true;
+                }
+                else
+                {
+                    EatEnemy();
+                }
+            }
         }
-
-        playerState = PlayerState.idle;
+        else
+        {
+            StopCoroutine(TimeForQuickTime());
+            playerState = PlayerState.idle;
+            textQTE.enabled = false;
+            QTEOnlyone = true;
+        }
     }
-
 
     ///////////////////////////
     //
@@ -300,6 +327,46 @@ public class PlayerStateMachine : MonoBehaviour
         Vector3 normalScale = transform.localScale;
         normalScale.x *= -1;
         transform.localScale = normalScale;
+    }
+
+    private bool CheckIfAnyoneDead()
+    {
+        eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
+        i = 0;
+        foreach (Collider2D collider in enemyDeadHitted)
+        {
+            if (enemyDeadHitted[i] != null)
+            {
+                if (enemyDeadHitted[i].CompareTag("Corpse"))
+                {
+                    return true;
+                }
+            }
+            i++;
+        }
+        return false;
+    }
+
+    private void EatEnemy()
+    {
+        eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
+        i = 0;
+        foreach (Collider2D collider in enemyDeadHitted)
+        {
+            if (enemyDeadHitted[i] != null)
+            {
+                if (enemyDeadHitted[i].CompareTag("Corpse"))
+                {
+                    Destroy(enemyDeadHitted[i].gameObject);
+                    IncrementLife(lifeIncrement);
+                    Heal(lifeHealWhenEat);
+                    //globalVariables.enemyDead++;
+                    //Debug.Log(globalVariables.enemyDead);
+                }
+            }
+            i++;
+        }
+        playerState = PlayerState.idle;
     }
 
     public void Damage(int dmg)
@@ -320,6 +387,24 @@ public class PlayerStateMachine : MonoBehaviour
     private void GoJump(bool isJump)
     {
         isGrounded = isJump;
+    }
+
+    private void QTEButtonLeftIsDown(bool button)
+    {
+        QTEButtonLeft = button;
+    }
+
+    private void QTEButtonRightIsDown(bool button)
+    {
+        QTEButtonRight = button;
+    }
+
+    IEnumerator TimeForQuickTime()
+    {
+        yield return new WaitForSeconds(QTETime);
+        textQTE.enabled = false;
+        QTEOnlyone = true;
+        playerState = PlayerState.idle;
     }
 
     IEnumerator WaitForLayer(float sec)

@@ -14,8 +14,11 @@ public class PlayerControlsStateMachine : MonoBehaviour
     private bool inputDash = false;
     private float axesDash = 0f;
     private bool eat = false;
+    private bool leftQTE = false;//left button 4 quick time event
+    private bool rightQTE = false;//right button 4 quick time event
     private bool canDash = true;
     private bool havePossibleDash = true;
+    
 
     //attack Type
     //see summary in PlayerStateMachine.cs
@@ -36,9 +39,14 @@ public class PlayerControlsStateMachine : MonoBehaviour
         axesDash = Input.GetAxis("DashAxes");
         eat = Input.GetButtonDown("Eat");
         jump = Input.GetButtonDown("Jump");
+        leftQTE = Input.GetButton("LeftEatQTE");
+        rightQTE = Input.GetButton("RightEatQTE");
+
+        stateMachine.SendMessage("QTEButtonLeftIsDown", leftQTE);
+        stateMachine.SendMessage("QTEButtonRightIsDown", rightQTE);
 
         //se in Idle o in Movement
-        if(stateMachine.playerState == PlayerStateMachine.PlayerState.idle)
+        if (stateMachine.playerState == PlayerStateMachine.PlayerState.idle)
         {
             Move();
             CheckAllTheAttack();
@@ -122,6 +130,11 @@ public class PlayerControlsStateMachine : MonoBehaviour
         {
             canDash = true;
         }
+    }
+
+    private void QTEEat()
+    {
+
     }
 
     private void Eat()
