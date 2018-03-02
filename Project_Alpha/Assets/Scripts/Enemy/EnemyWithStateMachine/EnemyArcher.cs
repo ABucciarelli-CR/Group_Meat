@@ -10,6 +10,7 @@ public class EnemyArcher : EnemyStateMachine
     public int archerDamage = 15;
     private float offsetEscape = 50f;
     public int archerHealth = 50;
+    public float flipDelay = .1f;
     
     public float escapeAreaDistance = 2000f;
     public float maxVisibleDistance = 5000f;
@@ -38,6 +39,7 @@ public class EnemyArcher : EnemyStateMachine
     {
         damage = archerDamage;
         attackDelay = archerAttackDelay;
+        waitTimeBeforeFlip = flipDelay;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
@@ -48,7 +50,10 @@ public class EnemyArcher : EnemyStateMachine
 
     private void FixedUpdate()
     {
-        if(healtToSet)
+        //il nemico si gira verso il player
+        CheckForFlip();
+
+        if (healtToSet)
         {
             enemyHealth.SetHealth(archerHealth);
             healtToSet = false;
@@ -65,7 +70,7 @@ public class EnemyArcher : EnemyStateMachine
         {
             player = GameObject.FindWithTag("Player");
         }*/
-        
+
     }
 
     public override void Idle()

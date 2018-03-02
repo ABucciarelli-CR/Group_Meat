@@ -12,6 +12,7 @@ public class EnemyHealer : EnemyStateMachine
     private bool healtToSet = true;
     private bool onlyHealer = false;
     private bool canCheckHealer = false;
+    public float flipDelay = .1f;
 
     public int healerDamage = 5;
     public int healerHeal = 10;
@@ -38,6 +39,7 @@ public class EnemyHealer : EnemyStateMachine
         attackDelay = healerAttackDelay;
         healDelay = healerHealDelay;
         speed = healerSpeed;
+        waitTimeBeforeFlip = flipDelay;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
@@ -49,6 +51,9 @@ public class EnemyHealer : EnemyStateMachine
 
     private void FixedUpdate()
     {
+        //il nemico si gira verso il player
+        CheckForFlip();
+
         if (healtToSet)
         {
             enemyHealth.SetHealth(healerHealth);

@@ -129,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565304783806814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1712.457, y: 287.38892, z: 0}
+  m_LocalPosition: {x: -101.29852, y: 146.52356, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 4381322732663870}
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1849081114460880}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d578d40bbd8aff0449f0129ddaf0d3d2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -253,7 +253,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -266,6 +268,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1713834129059214}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -314,7 +317,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761089791490286}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1aa5b7813c363a4a860760a18e2e770, type: 3}
   m_Name: 
@@ -352,7 +355,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 3
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -365,6 +370,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1713834129059214}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -394,6 +400,7 @@ MonoBehaviour:
   facingleft: 1
   tankDamage: 30
   tankHealth: 100
+  flipDelay: 0.1
   offenceArea: 10
   maxVisibleDistance: 5
   tankAttackDelay: 5

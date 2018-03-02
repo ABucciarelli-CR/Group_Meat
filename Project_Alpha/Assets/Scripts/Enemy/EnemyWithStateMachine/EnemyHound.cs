@@ -9,6 +9,7 @@ public class EnemyHound : EnemyStateMachine
     private bool playerIsInVision = false;
     private bool doPlayerDamage = false;
     private bool healtToSet = true;
+    public float flipDelay = .1f;
 
     public int houndDamage = 10;
     public int houndHealth = 30;
@@ -27,6 +28,7 @@ public class EnemyHound : EnemyStateMachine
         damage = houndDamage;
         attackDelay = houndAttackDelay;
         speed = houndSpeed;
+        waitTimeBeforeFlip = flipDelay;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
@@ -37,6 +39,9 @@ public class EnemyHound : EnemyStateMachine
     
     private void FixedUpdate()
     {
+        //il nemico si gira verso il player
+        CheckForFlip();
+
         if (healtToSet)
         {
             enemyHealth.SetHealth(houndHealth);
@@ -54,7 +59,6 @@ public class EnemyHound : EnemyStateMachine
         {
             player = GameObject.FindWithTag("Player");
         }*/
-        
     }
 
     public override void Idle()

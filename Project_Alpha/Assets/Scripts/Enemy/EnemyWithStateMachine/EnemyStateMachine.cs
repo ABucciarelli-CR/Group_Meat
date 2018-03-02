@@ -144,47 +144,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Update()
     {
-        /*
-        if(spriteRenderer == null && offenseStateSpriteRenderer == null)
-        {
-            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-            offenseStateSpriteRenderer = offenseState.GetComponent<SpriteRenderer>();
-        }*/
-        if (facingRight)
-        {
-            if (player.transform.position.x < this.transform.position.x - 1000f)
-            {
-                Debug.Log(facingRight);
-                facingRight = false;
-                Flip();
-            }
-        }
-        else if (player.transform.position.x > this.transform.position.x + 1000f)
-        { 
-            Debug.Log(facingRight);
-        facingRight = true;
-            Flip();
-        }
-        //il nemico si gira verso il player
-        //if (player.transform.position.x < this.transform.position.x && facingRight == true)
-        //{
-        //    Debug.Log("Flip1");
-        //    Debug.Log("ginocchio");
-        //    facingRight = false;
-        //    Flip();
-        //    //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
-        //}
-        ////print(facingRight);
-        //if (player.transform.position.x > this.transform.position.x)
-        //    if(false)
-        //{
-        //    Debug.Log("Flip2" + facingRight);
-        //    facingRight = true;
-        //    Flip();
-        //    //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
-        //}
-
-
         if (enemyHealth.health <= 0 && onlyOneDeath)
         {
             onlyOneDeath = false;
@@ -300,11 +259,29 @@ public class EnemyStateMachine : MonoBehaviour
         list = thisList;
     }
 
-    private void Flip()
+    public virtual void Flip()
     {
         Vector3 normalScale = transform.localScale;
         normalScale.x *= -1;
         transform.localScale = normalScale;
+    }
+
+    public virtual void CheckForFlip()
+    {
+        //il nemico si gira verso il player
+        if (player.transform.position.x < this.transform.position.x && facingRight)
+        {
+            facingRight = false;
+            Flip();
+            //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+        }
+        //print(facingRight);
+        if (player.transform.position.x > this.transform.position.x && !facingRight)
+        {
+            facingRight = true;
+            Flip();
+            //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+        }
     }
 
     public virtual IEnumerator WaitBeforeFlip(float time)

@@ -12,6 +12,7 @@ public class EnemyTank : EnemyStateMachine
 
     public int tankDamage = 10;
     public int tankHealth = 100;
+    public float flipDelay = .1f;
 
     public float offenceArea = 10f;
     public float maxVisibleDistance = 5f;
@@ -26,12 +27,16 @@ public class EnemyTank : EnemyStateMachine
         damage = tankDamage;
         attackDelay = tankAttackDelay;
         delay = tankAttackDelay;
+        waitTimeBeforeFlip = flipDelay;
 
         hitColliders = new Collider2D[maxArray];
     }
 
     private void FixedUpdate()
     {
+        //il nemico si gira verso il player
+        CheckForFlip();
+
         //Debug.Log("Me update");
         //Debug.Log(delay);
         if (healtToSet)
