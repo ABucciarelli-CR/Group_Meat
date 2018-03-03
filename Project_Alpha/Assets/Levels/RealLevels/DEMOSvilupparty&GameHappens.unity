@@ -1235,12 +1235,12 @@ Prefab:
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 391
+      value: 561
       objectReference: {fileID: 0}
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 211
+      value: 315.5
       objectReference: {fileID: 0}
     - target: {fileID: 224157796922186142, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
@@ -1257,6 +1257,11 @@ Prefab:
       propertyPath: frenzyCanBeUsed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114660445362405922, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: music.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5779e05c5da93be499a95629a5d063dc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
   m_IsPrefabParent: 0
@@ -4911,12 +4916,12 @@ Prefab:
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1662.5
+      value: 3787.5
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2287.5
+      value: 3593.75
       objectReference: {fileID: 0}
     - target: {fileID: 4220223561489816, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4924,11 +4929,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4220223561489816, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2700.001
+      value: 2700.0012
       objectReference: {fileID: 0}
     - target: {fileID: 4220223561489816, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -31.40978
+      value: -29.99978
       objectReference: {fileID: 0}
     - target: {fileID: 4625044586655510, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4936,16 +4941,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4625044586655510, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2700.001
+      value: 2700.0012
       objectReference: {fileID: 0}
     - target: {fileID: 4625044586655510, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -31.40978
+      value: -29.99978
       objectReference: {fileID: 0}
     - target: {fileID: 114018051476272384, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: healForDamage
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114083386690057538, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
@@ -4986,6 +4991,26 @@ Prefab:
         type: 2}
       propertyPath: playerState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224294631829631254, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224439058941838648, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.5025
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356690045901092, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: LeftButtonQTE
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356690045901092, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: RightButtonQTE
+      value: S
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}

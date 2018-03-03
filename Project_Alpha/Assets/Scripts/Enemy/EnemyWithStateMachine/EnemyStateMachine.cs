@@ -79,6 +79,8 @@ public class EnemyStateMachine : MonoBehaviour
     //private Color enemyDamagedColor;
     private Color enemyOffenseStateStandardColor;
 
+    private bool callAlreadyCheckTheFlip = false;
+
     private Coroutine coroutine = null;
 
     private Blink blink;
@@ -263,6 +265,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void Flip()
     {
+        callAlreadyCheckTheFlip = false;
+        facingRight = !facingRight;
         Vector3 normalScale = transform.localScale;
         normalScale.x *= -1;
         transform.localScale = normalScale;
@@ -271,31 +275,33 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual void CheckForFlip()
     {
         //il nemico si gira verso il player
-        if (player.transform.position.x < this.transform.position.x && facingRight)
+        if (!callAlreadyCheckTheFlip)
         {
-            facingRight = false;
-            Flip();
-            coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
-        }
-        //print(facingRight);
-        if (player.transform.position.x > this.transform.position.x && !facingRight)
-        {
-            facingRight = true;
-            Flip();
-            coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+            if (player.transform.position.x < this.transform.position.x && facingRight)
+            {
+                callAlreadyCheckTheFlip = true;
+                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+            }
+            if (player.transform.position.x > this.transform.position.x && !facingRight)
+            {
+                callAlreadyCheckTheFlip = true;
+                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+            }
         }
 
         if(coroutine != null)
         {
             if (player.transform.position.x < this.transform.position.x && !facingRight)
             {
-                coroutine = null;
                 StopCoroutine(coroutine);
+                callAlreadyCheckTheFlip = false;
+                coroutine = null;
             }
             if (player.transform.position.x > this.transform.position.x && facingRight)
             {
-                coroutine = null;
                 StopCoroutine(coroutine);
+                callAlreadyCheckTheFlip = false;
+                coroutine = null;
             }
         }
     }
@@ -303,7 +309,6 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual IEnumerator WaitBeforeFlip(float time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("Arco");
         Flip();
     }
 
