@@ -27,7 +27,7 @@ public class Attack : MonoBehaviour
     [Title("Modifiche abilitate.")]
     [InfoBox("Valori standard")]
     public int standardDamage = 20;
-    public int healForDamage = 2;
+    public int healForDamage = 5;
 
     [Title("Valori della frenzy.")]
     [InfoBox("Consumo vita al secondo(valore massimo 10)")]

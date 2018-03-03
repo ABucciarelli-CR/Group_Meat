@@ -274,7 +274,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 3
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -287,6 +289,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1986522584074868}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -313,8 +316,9 @@ MonoBehaviour:
     m_Bits: 0
   enemyIsOnAttack: {r: 1, g: 0, b: 1, a: 1}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
-  archerDamage: 15
-  archerHealth: 50
+  archerDamage: 30
+  archerHealth: 100
+  flipDelay: 0.1
   escapeAreaDistance: 2000
   maxVisibleDistance: 8000
   archerAttackDelay: 4
@@ -322,7 +326,6 @@ MonoBehaviour:
   escapeArea: {fileID: 1015236457583740}
   arrowPrefab: {fileID: 1389375353478948, guid: 61e5cc062fa9eec4d95e91eab99cbb93,
     type: 2}
-  player: {fileID: 0}
   arrowSpawn: {fileID: 1601583169834318}
 --- !u!114 &114297171087717318
 MonoBehaviour:
@@ -335,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09780c204629eaf4cace1b860e880f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   maxHealth: 50
   playerAndShieldsLayerMask:
     serializedVersion: 2
@@ -373,7 +376,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -386,6 +391,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1986522584074868}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0

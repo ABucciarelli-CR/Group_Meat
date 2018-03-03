@@ -78,7 +78,9 @@ public class EnemyStateMachine : MonoBehaviour
     private Color enemyStunnedColor;
     //private Color enemyDamagedColor;
     private Color enemyOffenseStateStandardColor;
-    
+
+    private Coroutine coroutine = null;
+
     private Blink blink;
 
     private List<GameObject> list;
@@ -273,20 +275,35 @@ public class EnemyStateMachine : MonoBehaviour
         {
             facingRight = false;
             Flip();
-            //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+            coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
         }
         //print(facingRight);
         if (player.transform.position.x > this.transform.position.x && !facingRight)
         {
             facingRight = true;
             Flip();
-            //StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+            coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+        }
+
+        if(coroutine != null)
+        {
+            if (player.transform.position.x < this.transform.position.x && !facingRight)
+            {
+                coroutine = null;
+                StopCoroutine(coroutine);
+            }
+            if (player.transform.position.x > this.transform.position.x && facingRight)
+            {
+                coroutine = null;
+                StopCoroutine(coroutine);
+            }
         }
     }
 
     public virtual IEnumerator WaitBeforeFlip(float time)
     {
         yield return new WaitForSeconds(time);
+        Debug.Log("Arco");
         Flip();
     }
 

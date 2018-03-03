@@ -391,9 +391,10 @@ MonoBehaviour:
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
-  houndDamage: 20
-  houndHealth: 30
-  houndSpeed: 1
+  flipDelay: 0.1
+  houndDamage: 40
+  houndHealth: 60
+  houndSpeed: 3
   houndAttackDelay: 5
   maxAttackDistance: 2000
   maxVisibleDistance: 10000

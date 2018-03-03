@@ -187,7 +187,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -200,6 +202,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1165572135224646}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -225,6 +228,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
 --- !u!114 &114230069088653298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +249,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 20
   activeStunTime: 1
   delay: 0
@@ -258,6 +264,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1165572135224646}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -283,15 +290,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
+  flipDelay: 0.1
   healerDamage: 5
   healerHeal: 10
-  healerHealth: 60
-  healerSpeed: 0.5
+  healerHealth: 120
+  healerSpeed: 1
   healerAttackDelay: 5
   healerHealDelay: 3
   maxAttackDistance: 3000
   attackCollider: {fileID: 1408642077573574}
-  player: {fileID: 0}
   disappearingPlatform: {fileID: 0}
   healingAnimation: {fileID: 1629729227346954, guid: e684a5a9ec48a3f48a6f415fe3b7c9e5,
     type: 2}

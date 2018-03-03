@@ -274,7 +274,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
   activeStunTime: 1
   delay: 0
@@ -287,6 +289,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1667461747402548}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -346,7 +349,9 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  facingRight: 0
   stunTime: 5
+  waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 20
   activeStunTime: 1
   delay: 0
@@ -359,6 +364,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   stunnedTime: 0
   offenseState: {fileID: 1667461747402548}
+  player: {fileID: 0}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -385,15 +391,15 @@ MonoBehaviour:
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
-  houndDamage: 40
-  houndHealth: 60
-  houndSpeed: 1
+  flipDelay: 0.1
+  houndDamage: 80
+  houndHealth: 120
+  houndSpeed: 2
   houndAttackDelay: 5
   maxAttackDistance: 4000
   maxVisibleDistance: 10000
   attackCollider: {fileID: 1518298284584094}
   visibleDistanceCollider: {fileID: 1410888497948050}
-  player: {fileID: 0}
 --- !u!212 &212132286188467296
 SpriteRenderer:
   m_ObjectHideFlags: 1

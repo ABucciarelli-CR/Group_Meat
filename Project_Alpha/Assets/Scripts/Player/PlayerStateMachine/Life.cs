@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 public class Life : MonoBehaviour
 {
     public int maxLife = 1000;
-    public int startLife = 100;
+    public int startLife = 200;
 
     [ReadOnly]
     public int actualLife;
