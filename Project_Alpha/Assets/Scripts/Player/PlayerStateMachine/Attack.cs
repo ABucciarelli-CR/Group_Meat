@@ -14,9 +14,11 @@ public class Attack : MonoBehaviour
     [ReadOnly]
     public GameObject playerLife;
     [ReadOnly]
-    [SerializeField] private GameObject damageAreaGameObject;
+    [SerializeField]
+    private GameObject damageAreaGameObject;
     [ReadOnly]
-    [SerializeField] private GameObject frenzyAnimation;
+    [SerializeField]
+    private GameObject frenzyAnimation;
     [ReadOnly]
     public bool frenzyActive = false;
     [ReadOnly]
@@ -48,12 +50,17 @@ public class Attack : MonoBehaviour
     public float standardAttackModifier = 1.5f;
     [MinValue(1)]
     public float standardHealthModifier = 1.5f;
+    [InfoBox("Se puoi essere ucciso dalla frenzy")]
+    public bool frenzyCanKill = true;
+    [DisableIf("frenzyCanKill")]
+    [InfoBox("Nel caso non tu possa essere ucciso, a quanta vita rimani minimo?")]
+    public int remainingLife = 10;
 
     private Life life;
     private DamageAreaCollider damageAreaCollider;
     private GameObject frenziPlaceholder;
     private float damageDeltaTime = 0;
-    
+
     private bool endWaitMusic = false;
     private GlobalVariables globalVariables;
     //private Animator anim;
@@ -81,6 +88,11 @@ public class Attack : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!frenzyCanKill && life.actualLife <= remainingLife)
+        {
+            StartCoroutine(EndAbility(0));
+        }
+
         if (frenzyActive)
         {
             if (frenzyAudioOn)
@@ -111,7 +123,7 @@ public class Attack : MonoBehaviour
     void Update()
     {
         //disattivo la frenzy se è passato il tempo
-        if(abilityEnded && frenzyActive)
+        if (abilityEnded && frenzyActive)
         {
             frenzyActive = false;
             abilityEnded = false;
@@ -154,7 +166,7 @@ public class Attack : MonoBehaviour
                         //Debug.Log(damageAreaCollider.enemyHitted[i].name + " " + damageAreaCollider.enemyHitted[i].gameObject.layer.ToString());
                         if (damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
                         {
-                            if(frenzyActive)
+                            if (frenzyActive)
                             {
                                 damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", (int)(standardDamage * standardAttackModifier));
                                 life.Heal((int)(healForDamage * standardHealthModifier));
@@ -181,27 +193,30 @@ public class Attack : MonoBehaviour
 
     private void FrenzyState()
     {
-        if(!frenzyActive && globalVariables.frenzyCanBeUsed)
+        if ((!frenzyCanKill && life.actualLife > remainingLife) || frenzyCanKill)
         {
-            //int[] startAndEnd = new int[2];
-            //startAndEnd[0] = 4;
-            //startAndEnd[0] = 10;
+            if (!frenzyActive && globalVariables.frenzyCanBeUsed)
+            {
+                //int[] startAndEnd = new int[2];
+                //startAndEnd[0] = 4;
+                //startAndEnd[0] = 10;
 
-            if(frenzyAudioOn)
-            {
-                StartCoroutine(StartingMusic(waitTimeToStartFrenzy));
+                if (frenzyAudioOn)
+                {
+                    StartCoroutine(StartingMusic(waitTimeToStartFrenzy));
+                }
+                else
+                {
+                    CreateAndActivateFrenzyPlaceholder();
+                    frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
+                    StartCoroutine(EndAbility(maxFrenzyTime));
+                }
+                frenzyActive = true;
             }
-            else
-            {
-                CreateAndActivateFrenzyPlaeholder();
-                frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
-                StartCoroutine(EndAbility(maxFrenzyTime));
-            }
-            frenzyActive = true;
         }
     }
 
-    private void CreateAndActivateFrenzyPlaeholder()
+    private void CreateAndActivateFrenzyPlaceholder()
     {
         frenziPlaceholder = Instantiate(frenzyAnimation, this.transform.position + new Vector3(0, 30, 0), Quaternion.identity, this.gameObject.transform);
         frenziPlaceholder.gameObject.transform.localScale = new Vector3(10, 25, 0);
@@ -214,7 +229,7 @@ public class Attack : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(sec);
         endWaitMusic = true;
-        CreateAndActivateFrenzyPlaeholder();
+        CreateAndActivateFrenzyPlaceholder();
         frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
         StartCoroutine(EndAbility(maxFrenzyTime));
     }
