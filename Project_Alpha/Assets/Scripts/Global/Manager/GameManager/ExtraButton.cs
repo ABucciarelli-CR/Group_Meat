@@ -32,13 +32,11 @@ public class ExtraButton : MonoBehaviour
 
         if(!pause && Input.GetButtonDown("Pause"))
         {
-            Debug.Log("01");
             gameManager.PauseLevel(Input.GetButtonDown("Pause"));
             pause = true;
         }
         else if(pause && Input.GetButtonDown("Pause"))
         {
-            Debug.Log("02");
             gameManager.ExitPauseLevel(Input.GetButtonDown("Pause"));
             pause = false;
         }

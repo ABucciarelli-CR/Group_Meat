@@ -9,6 +9,7 @@ public class GameManagerAction : MonoBehaviour
 
     private GlobalVariables globalVariables;
     private int actualLevel;
+    [HideInInspector] public GameObject mainCamera;
 
     private void Awake()
     {
@@ -19,6 +20,10 @@ public class GameManagerAction : MonoBehaviour
 
     private void Update()
     {
+        if(mainCamera == null)
+        {
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
         if(actualLevel != SceneManager.GetActiveScene().buildIndex)
         {
             canvas.SetActive(false);
@@ -41,6 +46,7 @@ public class GameManagerAction : MonoBehaviour
     {
         if(pause && SceneManager.GetActiveScene().buildIndex != 0)
         {
+            mainCamera.GetComponent<Cinemachine.CinemachineBrain>().m_UpdateMethod = mainCamera.GetComponent<Cinemachine.CinemachineBrain>().updateFixed;
             Time.timeScale = 0;
             canvas.SetActive(true);
         }
@@ -50,8 +56,15 @@ public class GameManagerAction : MonoBehaviour
     {
         if (pause)
         {
+            StartCoroutine(WaitForCamera());
             Time.timeScale = 1;
             canvas.SetActive(false);
         }
+    }
+
+    IEnumerator WaitForCamera()
+    {
+        yield return new WaitForSeconds(.1f);
+        mainCamera.GetComponent<Cinemachine.CinemachineBrain>().m_UpdateMethod = mainCamera.GetComponent<Cinemachine.CinemachineBrain>().updateSmart;
     }
 }

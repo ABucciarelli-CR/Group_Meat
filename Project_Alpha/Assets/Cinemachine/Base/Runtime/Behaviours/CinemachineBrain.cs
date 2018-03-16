@@ -65,6 +65,10 @@ namespace Cinemachine
             SmartUpdate
         };
 
+        [HideInInspector] public UpdateMethod updateFixed = UpdateMethod.FixedUpdate;
+        [HideInInspector] public UpdateMethod updateLate = UpdateMethod.LateUpdate;
+        [HideInInspector] public UpdateMethod updateSmart = UpdateMethod.SmartUpdate;
+
         /// <summary>Depending on how the target objects are animated, adjust the update method to
         /// minimize the potential jitter.  Use FixedUpdate if all your targets are animated with for RigidBody animation.
         /// SmartUpdate will choose the best method for each virtual camera, depending

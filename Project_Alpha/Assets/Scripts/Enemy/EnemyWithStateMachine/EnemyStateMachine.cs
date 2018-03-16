@@ -75,7 +75,7 @@ public class EnemyStateMachine : MonoBehaviour
     [ReadOnly]
     public Color enemyIsOnAttack;
 
-    [ReadOnly]
+    //[ReadOnly]
     public GameObject attackAnimation;
     
     private Color enemyStandardColor;
