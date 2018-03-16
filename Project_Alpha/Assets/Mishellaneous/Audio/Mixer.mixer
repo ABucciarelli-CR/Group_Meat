@@ -14,7 +14,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: d329d00c7d4dd1340930aef4862a763e
+    name: BGVolume
+  - guid: 8197bdc77bd1a244cb680166d53169e1
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - 8d5842f7f2b321b48818935a7d0cdb0a
@@ -38,7 +42,7 @@ AudioMixerGroupController:
   m_Pitch: a2aeff82557174e4bb77c9fe28ba3fa6
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -64,7 +68,33 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 97a768a34f8eef946a9c77f9ac4e9d5a
   m_FloatValues:
+    9072c720fb257e34fb438dad23aefcc1: 10000
+    c5ca2b80c56f89f4f87892b70d72c3a3: 0.1
+    ce991a313b3a62f438d27c504d6fa63c: 0
+    8ebd2fa2b57b529438ad1466fef58665: 20
     2a8829b28209b4242a46700db1c795f5: -9.833286
+    763bf8e269ca0a24480fac34ea1bb222: 32
+    48161c0340320074086a5218936cb764: 0.79
+    cffd5d93a0f532d40b7c310733108252: 0.3
+    fff81b4442eee1b4292d160f2ba129b5: 10000
+    b463c7d4949f14a46a41dc79667208c4: 0
+    b626fde404a061d46a9fae5eac5d3b1f: 1000
+    1cf5e0d5fe573f0458e9e1df63f8e55f: 2015
+    cd80df1696ce277478750fccc6d71b9d: 0.89
+    2efd4fe6adc90e04abafbbe0600495ce: 0.71
+    caa2c8279b92b3249a6f48e75e5234c5: 0.38
+    d23a33572a5e50d4d9cd2f405f3a1ca4: 20000
+    8ed1e2b71a6d4314b865550587073a89: 16
+    75f6bc791ecd8bd4e8bf0d13da4dca7d: 0.67
+    2e0958f970a544241a0f398452c200c9: 143
+    8bfc6d8b464ec3140ba9a31b594ab6e2: 10000
+    624582abf56b8214aa8fd02d3eca5d76: 2000
+    d329d00c7d4dd1340930aef4862a763e: 0
+    0189ae1c9202aad49bbebff42273ab86: 2
+    39dc998c576a1f24fa7bacbb4a538ad3: 5000
+    bc08ebfdcac7994438ff406fd0dc3344: 1000
+    2686e52e0eb461f4ab14bb382ba7949e: 16
+    26ae936f9fa1a7645b1dfa4432f9188b: 1
   m_TransitionOverrides: {}
 --- !u!243 &243086765652371142
 AudioMixerGroupController:
@@ -79,7 +109,7 @@ AudioMixerGroupController:
   m_Pitch: 0a056de3463035f47a587f5a1bbcee86
   m_Effects:
   - {fileID: 244645885060734480}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -96,7 +126,7 @@ AudioMixerGroupController:
   m_Pitch: 960e30caa68955640bf3ce0373117aa2
   m_Effects:
   - {fileID: 244775727477543018}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

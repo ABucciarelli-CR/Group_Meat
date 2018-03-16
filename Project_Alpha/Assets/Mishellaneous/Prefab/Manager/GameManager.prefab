@@ -244,7 +244,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.708
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -438,6 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1402894668237080}
+  generalAudio: {fileID: 24300002, guid: 0d6e37815b90cff4982fea45ceb6422e, type: 2}
+  mainCamera: {fileID: 0}
 --- !u!114 &114332088145101298
 MonoBehaviour:
   m_ObjectHideFlags: 1

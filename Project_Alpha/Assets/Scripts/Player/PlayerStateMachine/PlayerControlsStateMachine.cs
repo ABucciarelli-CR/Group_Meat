@@ -32,7 +32,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         leftAndRightMovement = Input.GetAxis("Horizontal");
         inputDash = Input.GetButtonDown("DashInput");
