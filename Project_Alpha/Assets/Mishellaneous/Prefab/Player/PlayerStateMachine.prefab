@@ -1036,7 +1036,8 @@ AudioSource:
   m_GameObject: {fileID: 1459610301309766}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243086765652371142, guid: 0d6e37815b90cff4982fea45ceb6422e,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 743a1f73cb9b2d04b86448b1da64d4a1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1166,6 +1167,8 @@ MonoBehaviour:
   waitTimeToStartFrenzy: 6.7
   standardAttackModifier: 5
   standardHealthModifier: 5
+  frenzyCanKill: 1
+  remainingLife: 10
 --- !u!114 &114026052921751158
 MonoBehaviour:
   m_ObjectHideFlags: 1

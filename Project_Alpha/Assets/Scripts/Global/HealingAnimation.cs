@@ -6,11 +6,11 @@ public class HealingAnimation : MonoBehaviour
 {
     public Sprite[] healing;
     public SpriteRenderer sprtRenderer;
-    private float fps = .01f;
+    public float fps = .01f;
     private float deltaTime = 0;
     private float frame = 0;
     private int lastFrame;
-    private bool loop = false;
+    public bool loop = false;
     private int startingFrameForLoop = 0;
     
 

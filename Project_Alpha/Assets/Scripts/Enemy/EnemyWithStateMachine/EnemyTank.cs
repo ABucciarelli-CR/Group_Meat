@@ -17,6 +17,8 @@ public class EnemyTank : EnemyStateMachine
     public float offenceArea = 10f;
     public float maxVisibleDistance = 5f;
     public float tankAttackDelay = 2f;
+
+    public GameObject atkCollider;
     
     private int i = 0;
 
@@ -29,7 +31,8 @@ public class EnemyTank : EnemyStateMachine
         delay = tankAttackDelay;
         waitTimeBeforeFlip = flipDelay;
 
-        hitColliders = new Collider2D[maxArray];
+        hitColliders = atkCollider.GetComponents<Collider2D>();
+        //hitColliders = new Collider2D[maxArray];
     }
 
     private void FixedUpdate()
@@ -83,63 +86,37 @@ public class EnemyTank : EnemyStateMachine
     {
         base.Attack();
 
-        //Debug.Log("damaging");
-        hitColliders[i].gameObject.SendMessage("Damage", damage);
-        i = 0;
-        delay = attackDelay;
-        //WaitTime(tankAttackDelay);
-
-        System.Array.Clear(hitColliders, 0, maxArray);
-        enemyState = EnemyState.searchPlayer;
+        if (waited)
+        {
+            GameObject atk = Instantiate(attackAnimation, this.transform);
+            atk.transform.localScale = new Vector2((atk.transform.localScale.x * 10) / 2, (atk.transform.localScale.y * 10) / 2);
+            if(doPlayerDamage)
+            {
+                player.SendMessage("Damage", damage);
+            }
+            waited = false;
+        }
+        
+        if(!alreadyInAttack)
+        {
+            enemyState = EnemyState.searchPlayer;
+        }
     }
 
     public override void SearchPlayer()
     {
         base.SearchPlayer();
-
-        Physics2D.OverlapCircle(transform.position, maxVisibleDistance, contactFilter, hitColliders);
-        //Debug.DrawRay(transform.position, Vector2.left, Color.green, maxVisibleDistance);
-        //Debug.Log("Me collide");
-        foreach (Collider2D collider in hitColliders)
+        /*
+        if (doPlayerDamage)
         {
-            if (hitColliders[i] != null)
+            if(!alreadyInAttack)
             {
-                //Debug.Log("Hitted" + i);
-                if (hitColliders[i].CompareTag("Player") && !stardCountdown)
-                {
-                    stardCountdown = true;
-                }
-                else if(hitColliders[i].CompareTag("Player") && delay <= (attackDelay / 2))
-                {
-                    offenseStateSpriteRenderer.color = enemyIsOnAttack;
-                }
-
-                if (hitColliders[i].CompareTag("Player") && delay == 0)
-                {
-                    enemyState = EnemyState.attack;
-                    break;
-                }
-                else
-                {
-                    i++;
-                }
+                StartCoroutine(Wait(attackDelay));
             }
-            else
-            {
-                break;
-            }
-        }
-        //Debug.Log("Exit");
-        if (enemyState == EnemyState.searchPlayer)
-        {
-            enemyState = EnemyState.idle;
-            i = 0;
-            System.Array.Clear(hitColliders, 0, maxArray);
-        }
+            enemyState = EnemyState.attack;
+        }*/
     }
-
-
-
+    /*
 	public void Flip()
 	{
 		//Debug.Log("Do Flip");
@@ -147,6 +124,6 @@ public class EnemyTank : EnemyStateMachine
 		Vector3 normalScale = transform.localScale;
 		normalScale.x *= -1;
 		transform.localScale = normalScale;
-	}
+	}*/
 }
 

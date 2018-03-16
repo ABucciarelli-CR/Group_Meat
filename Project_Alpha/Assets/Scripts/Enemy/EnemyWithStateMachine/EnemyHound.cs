@@ -7,7 +7,6 @@ using UnityEngine;
 public class EnemyHound : EnemyStateMachine
 {
     private bool playerIsInVision = false;
-    private bool doPlayerDamage = false;
     private bool healtToSet = true;
     public float flipDelay = .1f;
 
@@ -76,9 +75,13 @@ public class EnemyHound : EnemyStateMachine
         
         if (waited)
         {
-            player.SendMessage("Damage", damage);
+            GameObject atk = Instantiate(attackAnimation, this.transform);
+            atk.transform.localScale = new Vector2((atk.transform.localScale.x * 10) / 2, (atk.transform.localScale.y * 10) / 2);
+            if (doPlayerDamage)
+            {
+                player.SendMessage("Damage", damage);
+            }
             waited = false;
-            StartCoroutine(Wait(attackDelay));
         }
 
         enemyState = EnemyState.idle;
@@ -87,11 +90,15 @@ public class EnemyHound : EnemyStateMachine
     public override void SearchPlayer()
     {
         base.SearchPlayer();
-
+        /*
         if (doPlayerDamage)
         {
+            if (!alreadyInAttack)
+            {
+                StartCoroutine(Wait(attackDelay));
+            }
             enemyState = EnemyState.attack;
-        }
+        }*/
 
         if (playerIsInVision)
         {
@@ -105,18 +112,5 @@ public class EnemyHound : EnemyStateMachine
     private void IsPlayerIn(bool isIn)
     {
         playerIsInVision = isIn;
-    }
-
-    private void IsPlayerdamageable(bool isDamageable)
-    {
-        //Debug.Log("canDamagePlayer");
-        doPlayerDamage = isDamageable;
-    }
-
-    IEnumerator Wait(float sec)
-    {
-        //Debug.Log("waiting");
-        yield return new WaitForSeconds(sec);
-        waited = true;
     }
 }

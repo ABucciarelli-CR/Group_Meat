@@ -21,6 +21,7 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
     [HideInInspector] public float ttcd;
+    [HideInInspector] public bool doPlayerDamage = false;
     //[ReadOnly]
     public bool facingRight = false;
     /*[HideInInspector]*/
@@ -35,10 +36,11 @@ public class EnemyStateMachine : MonoBehaviour
     public bool activeStunTime = true;
     [HideInInspector] public float delay;
     [HideInInspector] public int maxArray = 100;
-    [HideInInspector] public bool stardCountdown = true;
+    [HideInInspector] private bool stardCountdown = false;
     [HideInInspector] public bool regenerate = false;//to abilitate the enemy regeneration afrer stun
     [HideInInspector] public bool onlyOneDeath = true; //ceck to not die several times
-    [HideInInspector] public bool waited = true;
+    [HideInInspector] public bool waited = false;
+    [HideInInspector] public bool alreadyInAttack = false;
 
     [HideInInspector] public EnemyHealth enemyHealth;
     [HideInInspector] public GameObject gameManager;
@@ -72,6 +74,9 @@ public class EnemyStateMachine : MonoBehaviour
     
     [ReadOnly]
     public Color enemyIsOnAttack;
+
+    [ReadOnly]
+    public GameObject attackAnimation;
     
     private Color enemyStandardColor;
     private Color enemyAttackColor;
@@ -148,6 +153,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log("waited: " + waited);
         if (enemyHealth.health <= 0 && onlyOneDeath)
         {
             onlyOneDeath = false;
@@ -171,7 +177,7 @@ public class EnemyStateMachine : MonoBehaviour
                 stunnedTime = 0;
             }
         }
-
+        /*
         if (stardCountdown)
         {
             if (delay >= 0)
@@ -183,7 +189,7 @@ public class EnemyStateMachine : MonoBehaviour
                 delay = 0;
                 stardCountdown = false;
             }
-        }
+        }*/
 
 
         switch (enemyState)
@@ -241,6 +247,14 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual void SearchPlayer()
     {
         //offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
+        if (doPlayerDamage)
+        {
+            if (!alreadyInAttack)
+            {
+                StartCoroutine(Wait(attackDelay));
+            }
+            enemyState = EnemyState.attack;
+        }
     }
 
     public virtual void Escape()
@@ -265,6 +279,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void Flip()
     {
+        //Debug.Log("Terno");
         callAlreadyCheckTheFlip = false;
         facingRight = !facingRight;
         Vector3 normalScale = transform.localScale;
@@ -306,6 +321,12 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
+    private void IsPlayerdamageable(bool isDamageable)
+    {
+        //Debug.Log("canDamagePlayer");
+        doPlayerDamage = isDamageable;
+    }
+
     public virtual IEnumerator WaitBeforeFlip(float time)
     {
         yield return new WaitForSeconds(time);
@@ -317,6 +338,15 @@ public class EnemyStateMachine : MonoBehaviour
         Debug.Log("waiting");
         yield return new WaitForSeconds(time);
         Debug.Log("stop waiting");
+    }
+
+    public IEnumerator Wait(float sec)
+    {
+        //Debug.Log("waiting");
+        alreadyInAttack = true;
+        yield return new WaitForSeconds(sec);
+        alreadyInAttack = false;
+        waited = true;
     }
 }
 

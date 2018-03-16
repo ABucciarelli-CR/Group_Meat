@@ -65,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1849081114460880
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +79,23 @@ GameObject:
   m_Layer: 14
   m_Name: Shield
   m_TagString: Shield
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1953243278309368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4461718129039172}
+  - component: {fileID: 61798371799546510}
+  - component: {fileID: 114788515022027476}
+  m_Layer: 18
+  m_Name: AttackCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,14 +146,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565304783806814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101.29852, y: 146.52356, z: 0}
+  m_LocalPosition: {x: -66.33331, y: 127.92508, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 4381322732663870}
   - {fileID: 4422422847758726}
   - {fileID: 4093151332206332}
+  - {fileID: 4461718129039172}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4461718129039172
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953243278309368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4449434063787410}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50662830999255336
 Rigidbody2D:
@@ -233,6 +264,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 547.0785, y: 1501.613}
   m_EdgeRadius: 0
+--- !u!61 &61798371799546510
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953243278309368}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -431.21048, y: 11.624634}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 861.4211, y: 1678.5117}
+  m_EdgeRadius: 0
 --- !u!114 &114061713322061766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +309,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  doPlayerDamage: 0
   facingRight: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
@@ -260,10 +317,10 @@ MonoBehaviour:
   activeStunTime: 1
   delay: 0
   maxArray: 100
-  stardCountdown: 1
   regenerate: 0
   onlyOneDeath: 1
   waited: 1
+  alreadyInAttack: 0
   enemyHealth: {fileID: 0}
   gameManager: {fileID: 0}
   stunnedTime: 0
@@ -294,6 +351,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  attackAnimation: {fileID: 0}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
 --- !u!114 &114394838672791466
 MonoBehaviour:
@@ -322,6 +380,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1aa5b7813c363a4a860760a18e2e770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114788515022027476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953243278309368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4740676a272d2b3438a3e2937943a3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisEnemy: {fileID: 1565304783806814}
 --- !u!114 &114866805758070964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,6 +425,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  doPlayerDamage: 0
   facingRight: 0
   stunTime: 3
   waitTimeBeforeFlip: 0.1
@@ -362,10 +433,10 @@ MonoBehaviour:
   activeStunTime: 1
   delay: 0
   maxArray: 100
-  stardCountdown: 1
   regenerate: 0
   onlyOneDeath: 1
-  waited: 1
+  waited: 0
+  alreadyInAttack: 0
   enemyHealth: {fileID: 0}
   gameManager: {fileID: 0}
   stunnedTime: 0
@@ -396,6 +467,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
+    type: 2}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   facingleft: 1
   tankDamage: 60
@@ -404,6 +477,7 @@ MonoBehaviour:
   offenceArea: 10
   maxVisibleDistance: 5
   tankAttackDelay: 5
+  atkCollider: {fileID: 1953243278309368}
 --- !u!212 &212574381763806218
 SpriteRenderer:
   m_ObjectHideFlags: 1
