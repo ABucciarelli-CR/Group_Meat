@@ -98,24 +98,30 @@ public class GameManagerAction : MonoBehaviour
 
     public void PauseAllAudio()
     {
-        for (int i = 0; i < allAudioOfTheLevel.Count; i++)
+        if(allAudioOfTheLevel != null)
         {
-            if (allAudioOfTheLevel[i].isPlaying)
+            for (int i = 0; i < allAudioOfTheLevel.Count; i++)
             {
-                allAudioOfTheLevel[i].Pause();
-                allAudioPaused[i] = true;
+                if (allAudioOfTheLevel[i].isPlaying)
+                {
+                    allAudioOfTheLevel[i].Pause();
+                    allAudioPaused[i] = true;
+                }
             }
         }
     }
 
     public void RemovePauseAllAudio()
     {
-        for (int i = 0; i < allAudioOfTheLevel.Count; i++)
+        if (allAudioOfTheLevel != null)
         {
-            if (allAudioPaused[i] == true)
+            for (int i = 0; i < allAudioOfTheLevel.Count; i++)
             {
-                allAudioOfTheLevel[i].Play();
-                allAudioPaused[i] = false;
+                if (allAudioPaused[i] == true)
+                {
+                    allAudioOfTheLevel[i].Play();
+                    allAudioPaused[i] = false;
+                }
             }
         }
     }

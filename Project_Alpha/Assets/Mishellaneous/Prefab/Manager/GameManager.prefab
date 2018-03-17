@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music:
-  - {fileID: 8300000, guid: 5779e05c5da93be499a95629a5d063dc, type: 3}
+  - {fileID: 8300000, guid: 5211b5ec4429308409b2318a960ab678, type: 3}
 --- !u!114 &114721213262292568
 MonoBehaviour:
   m_ObjectHideFlags: 1

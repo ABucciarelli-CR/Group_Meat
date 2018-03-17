@@ -473,7 +473,7 @@ MonoBehaviour:
   facingleft: 1
   tankDamage: 60
   tankHealth: 200
-  flipDelay: 0.1
+  flipDelay: 3
   offenceArea: 10
   maxVisibleDistance: 5
   tankAttackDelay: 5

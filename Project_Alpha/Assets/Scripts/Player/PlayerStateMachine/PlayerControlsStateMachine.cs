@@ -41,9 +41,11 @@ public class PlayerControlsStateMachine : MonoBehaviour
         jump = Input.GetButtonDown("Jump");
         leftQTE = Input.GetButton("LeftEatQTE");
         rightQTE = Input.GetButton("RightEatQTE");
-
+        
         stateMachine.SendMessage("QTEButtonLeftIsDown", leftQTE);
         stateMachine.SendMessage("QTEButtonRightIsDown", rightQTE);
+
+        print(inputDash);
 
         //se in Idle o in Movement
         if (stateMachine.playerState == PlayerStateMachine.PlayerState.idle)

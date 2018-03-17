@@ -1161,9 +1161,9 @@ MonoBehaviour:
   audioSource: {fileID: 82090149285757014}
   standardDamage: 20
   healForDamage: 5
-  maxHealthConsume: 1
-  maxFrenzyTime: 90
-  frenzyAudioOn: 1
+  maxHealthConsume: 10
+  maxFrenzyTime: 10
+  frenzyAudioOn: 0
   waitTimeToStartFrenzy: 6.7
   standardAttackModifier: 5
   standardHealthModifier: 5
@@ -1250,6 +1250,9 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 1
   m_WorldUpOverride: {fileID: 0}
+  updateFixed: 0
+  updateLate: 1
+  updateSmart: 2
   m_UpdateMethod: 2
   m_DefaultBlend:
     m_Style: 1
