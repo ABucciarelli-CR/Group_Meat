@@ -26,10 +26,10 @@ public class GameManagerAction : MonoBehaviour
 
     private void Update()
     {
-        /*if(mainCamera == null)
+        if(mainCamera == null)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }*/
+        }
         if(actualLevel != SceneManager.GetActiveScene().buildIndex)
         {
             ClearAllAudio();

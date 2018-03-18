@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601583169834318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -527, y: -42, z: 0}
+  m_LocalPosition: {x: -455, y: 179, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4947244010513676}
@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986522584074868}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -48, y: 379, z: 0}
+  m_LocalPosition: {x: 59, y: 648, z: 0}
   m_LocalScale: {x: 600, y: 600, z: 1}
   m_Children: []
   m_Father: {fileID: 4947244010513676}
@@ -144,7 +144,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811349277448878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1437.3599, y: 216.9462, z: 0}
+  m_LocalPosition: {x: -2723, y: 107.97087, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4691547086682294}
@@ -229,18 +229,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 41, y: -289.10712}
+  m_Offset: {x: 110.02991, y: -16.99878}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.7, y: 0.5}
-    oldSize: {x: 4000, y: 4500}
+    border: {x: 158, y: 24.666666, z: 321, w: 281.33334}
+    pivot: {x: 0.42824927, y: 0.42803255}
+    oldSize: {x: 1500.0001, y: 1623.6667}
     newSize: {x: 40, y: 45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 463.05518, y: 1162.9772}
+  m_Size: {x: 447.7234, y: 1277.9526}
   m_EdgeRadius: 0
 --- !u!114 &114045451954919124
 MonoBehaviour:
@@ -274,6 +274,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  doPlayerDamage: 0
   facingRight: 0
   stunTime: 3
   waitTimeBeforeFlip: 0.1
@@ -281,10 +282,10 @@ MonoBehaviour:
   activeStunTime: 1
   delay: 0
   maxArray: 100
-  stardCountdown: 0
   regenerate: 0
   onlyOneDeath: 1
   waited: 1
+  alreadyInAttack: 0
   enemyHealth: {fileID: 114297171087717318}
   gameManager: {fileID: 0}
   stunnedTime: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyIsOnAttack: {r: 1, g: 0, b: 1, a: 1}
+  attackAnimation: {fileID: 0}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   archerDamage: 30
   archerHealth: 100
@@ -376,6 +378,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  doPlayerDamage: 0
   facingRight: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
@@ -383,10 +386,10 @@ MonoBehaviour:
   activeStunTime: 1
   delay: 0
   maxArray: 100
-  stardCountdown: 0
   regenerate: 0
   onlyOneDeath: 1
   waited: 1
+  alreadyInAttack: 0
   enemyHealth: {fileID: 114297171087717318}
   gameManager: {fileID: 0}
   stunnedTime: 0
@@ -417,6 +420,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 1, g: 0, b: 1, a: 1}
+  attackAnimation: {fileID: 0}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
 --- !u!114 &114977904435695790
 MonoBehaviour:
@@ -508,7 +512,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 11981b6a0e76772489fd42ac38f1b3f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6af26e9e5ba175545880dea6cbc6688a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

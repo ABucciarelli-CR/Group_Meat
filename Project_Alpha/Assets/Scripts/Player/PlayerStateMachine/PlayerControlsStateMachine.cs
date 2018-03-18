@@ -45,7 +45,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
         stateMachine.SendMessage("QTEButtonLeftIsDown", leftQTE);
         stateMachine.SendMessage("QTEButtonRightIsDown", rightQTE);
 
-        print(inputDash);
+        //print(inputDash);
 
         //se in Idle o in Movement
         if (stateMachine.playerState == PlayerStateMachine.PlayerState.idle)

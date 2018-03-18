@@ -67,8 +67,8 @@ public class PlayerStateMachine : MonoBehaviour
     public ContactFilter2D contactFilter;
     [ReadOnly]
     public SpriteRenderer offenseStateSpriteRenderer;
-    [ReadOnly]
-    public Text textQTE;
+    //[ReadOnly]
+    public GameObject textQTE;
 
     private float realGroundRadiusCollision = .1f;
     private float groundRadiusCollision = 0f;
@@ -102,8 +102,8 @@ public class PlayerStateMachine : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         groundRadiusCollision = realGroundRadiusCollision;
         enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
-        textQTE.text = LeftButtonQTE.ToUpper() + "                    " + RightButtonQTE.ToUpper();
-        textQTE.enabled = false;
+        //textQTE.text = LeftButtonQTE.ToUpper() + "                    " + RightButtonQTE.ToUpper();
+        textQTE.SetActive(false);
 
         playerOffenseStateStandardColor = Color.white;
         playerOffenseStateAttackColor = Color.red;
@@ -282,7 +282,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (CheckIfAnyoneDead())
         {
-            textQTE.enabled = true;
+            textQTE.SetActive(true);
 
             if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
             {
@@ -291,7 +291,7 @@ public class PlayerStateMachine : MonoBehaviour
 
             if (QTEButtonRight && QTEButtonLeft)
             {
-                textQTE.enabled = false;
+                textQTE.SetActive(false);
                 if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
                 {
                     EatEnemy();
@@ -308,7 +308,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             StopCoroutine(TimeForQuickTime());
             playerState = PlayerState.idle;
-            textQTE.enabled = false;
+            textQTE.SetActive(false);
             QTEOnlyone = true;
         }
     }
@@ -402,7 +402,7 @@ public class PlayerStateMachine : MonoBehaviour
     IEnumerator TimeForQuickTime()
     {
         yield return new WaitForSeconds(QTETime);
-        textQTE.enabled = false;
+        textQTE.SetActive(false);
         QTEOnlyone = true;
         playerState = PlayerState.idle;
     }

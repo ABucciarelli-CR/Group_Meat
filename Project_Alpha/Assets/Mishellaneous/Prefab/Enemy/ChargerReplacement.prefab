@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499659360003460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3163, y: 332.09552, z: 0}
+  m_LocalPosition: {x: -2008.8177, y: 113, z: 0}
   m_LocalScale: {x: 0.1289136, y: 0.1289136, z: 0.1289136}
   m_Children:
   - {fileID: 4896029722094882}
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667461747402548}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -514, y: 745, z: 0}
+  m_LocalPosition: {x: 17, y: 854, z: 0}
   m_LocalScale: {x: 600, y: 600, z: 1}
   m_Children: []
   m_Father: {fileID: 4681141103866890}
@@ -185,9 +185,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1734, y: 0}
+  m_Offset: {x: -1734, y: -403.45023}
   serializedVersion: 2
-  m_Radius: 2000
+  m_Radius: 3694.2874
 --- !u!61 &61222339844499280
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -200,18 +200,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -55.81308, y: 5.7592773}
+  m_Offset: {x: 201.65018, y: -189.38184}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2100, y: 1500}
+    border: {x: 510.5, y: 73.5, z: 177.5, w: 89.99999}
+    pivot: {x: 0.4790572, y: 0.50000006}
+    oldSize: {x: 2250, y: 2435.5}
     newSize: {x: 40, y: 45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1365.9485, y: 1277.5488}
+  m_Size: {x: 851.0219, y: 1855.165}
   m_EdgeRadius: 0
 --- !u!114 &114176169373472200
 MonoBehaviour:
@@ -483,9 +483,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b4f89a0aadc4a9c4eb93bb0ecf89b1e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a983b33ecc5db244c98ff02cce3a8091, type: 3}
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 40, y: 45}
