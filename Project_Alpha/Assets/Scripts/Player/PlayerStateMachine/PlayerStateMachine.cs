@@ -203,7 +203,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Attack(int attackType)
     {
-        attack.DoAttack(attackType);
+        attack.DoAttack(attackType, facingRight);
 
         playerState = PlayerState.idle;
     }

@@ -6,6 +6,7 @@ public class HealingAnimation : MonoBehaviour
 {
     public Sprite[] healing;
     public SpriteRenderer sprtRenderer;
+    public Shader shader;
     public float fps = .01f;
     private float deltaTime = 0;
     private float frame = 0;
@@ -30,6 +31,11 @@ public class HealingAnimation : MonoBehaviour
             frame++;
 
             sprtRenderer.sprite = healing[(int)frame];
+            if(shader != null)
+            {
+                sprtRenderer.material.shader = shader;
+            }
+            //sprtRenderer.material.color = Color.black;
         }
 
         if(frame >= lastFrame)

@@ -240,7 +240,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1260515304424210
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -801,7 +801,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4468680440718154
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260515304424210}
@@ -1159,6 +1159,8 @@ MonoBehaviour:
   frenzyActive: 0
   abilityEnded: 0
   audioSource: {fileID: 82090149285757014}
+  attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
+    type: 2}
   standardDamage: 20
   healForDamage: 5
   maxHealthConsume: 10
@@ -1487,7 +1489,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!114 &114407803594552206
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260515304424210}
@@ -1648,7 +1650,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!114 &114486434406813788
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260515304424210}
@@ -2195,7 +2197,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385838484494572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

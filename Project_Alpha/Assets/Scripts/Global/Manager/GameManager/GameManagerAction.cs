@@ -13,7 +13,7 @@ public class GameManagerAction : MonoBehaviour
     private List<AudioSource> allAudioOfTheLevel = new List<AudioSource>();
     private List<bool> allAudioPaused = new List<bool>();//se true era in pausa prima del menu, quindi va fatto ripartire
     public AudioMixerGroup generalAudio;
-    [HideInInspector] public GameObject mainCamera;
+    /*[HideInInspector]*/ public GameObject mainCamera;
 
     private void Awake()
     {
@@ -26,10 +26,10 @@ public class GameManagerAction : MonoBehaviour
 
     private void Update()
     {
-        if(mainCamera == null)
+        /*if(mainCamera == null)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }
+        }*/
         if(actualLevel != SceneManager.GetActiveScene().buildIndex)
         {
             ClearAllAudio();
@@ -54,6 +54,7 @@ public class GameManagerAction : MonoBehaviour
     {
         if(pause && SceneManager.GetActiveScene().buildIndex != 0)
         {
+            
             mainCamera.GetComponent<Cinemachine.CinemachineBrain>().m_UpdateMethod = mainCamera.GetComponent<Cinemachine.CinemachineBrain>().updateFixed;
             //generalAudio.audioMixer.SetFloat("BGVolume", -80f);
             PauseAllAudio();

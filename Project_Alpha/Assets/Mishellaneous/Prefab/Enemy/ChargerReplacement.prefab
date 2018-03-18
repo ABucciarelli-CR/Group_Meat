@@ -274,6 +274,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  doPlayerDamage: 0
   facingRight: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
@@ -281,10 +282,10 @@ MonoBehaviour:
   activeStunTime: 1
   delay: 0
   maxArray: 100
-  stardCountdown: 1
   regenerate: 0
   onlyOneDeath: 1
   waited: 1
+  alreadyInAttack: 0
   enemyHealth: {fileID: 0}
   gameManager: {fileID: 0}
   stunnedTime: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  attackAnimation: {fileID: 0}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
 --- !u!114 &114973157682605710
 MonoBehaviour:
@@ -349,6 +351,7 @@ MonoBehaviour:
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
+  doPlayerDamage: 0
   facingRight: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
@@ -356,10 +359,10 @@ MonoBehaviour:
   activeStunTime: 1
   delay: 0
   maxArray: 100
-  stardCountdown: 1
   regenerate: 0
   onlyOneDeath: 1
   waited: 1
+  alreadyInAttack: 0
   enemyHealth: {fileID: 0}
   gameManager: {fileID: 0}
   stunnedTime: 0
@@ -390,6 +393,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
+    type: 2}
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   flipDelay: 0.1
   houndDamage: 80

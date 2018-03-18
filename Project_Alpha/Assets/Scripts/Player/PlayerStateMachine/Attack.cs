@@ -25,6 +25,8 @@ public class Attack : MonoBehaviour
     public bool abilityEnded = false;
     [ReadOnly]
     public AudioSource audioSource;
+    //[ReadOnly]
+    public GameObject attackAnimation;
 
     [Title("Modifiche abilitate.")]
     [InfoBox("Valori standard")]
@@ -131,12 +133,12 @@ public class Attack : MonoBehaviour
     }
 
     //see summary in PlayerStateMachine.cs
-    public void DoAttack(int attack)
+    public void DoAttack(int attack, bool atkDir)
     {
         switch (attack)
         {
             case 0:
-                NormalAttack();
+                NormalAttack(atkDir);
                 break;
 
             case 1:
@@ -148,9 +150,22 @@ public class Attack : MonoBehaviour
         }
     }
 
-    private void NormalAttack()
+    private void NormalAttack(bool atkDir)
     {
         //Todo: Animation Start
+        GameObject atk = Instantiate(attackAnimation, this.transform);
+        atk.transform.localScale = new Vector2(-((atk.transform.localScale.x * 10) / 2.5f), ((atk.transform.localScale.y * 10)));
+        if (atkDir)
+        {
+            atk.transform.eulerAngles = new Vector3(0f, 0f, -36f);
+        }
+        else
+        {
+            atk.transform.eulerAngles = new Vector3(0f, 0f, 36f);
+        }
+        atk.transform.localPosition = new Vector2(atk.transform.localPosition.x + 700, atk.transform.localPosition.y + 500);
+
+
         damageAreaCollider.CeckHit();
 
         i = 0;

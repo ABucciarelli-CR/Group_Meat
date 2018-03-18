@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2abd5acb5bff3e04d93929ce3a132d52
-timeCreated: 1520674855
+timeCreated: 1521284491
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -89,10 +89,10 @@ TextureImporter:
       name: Sword_slash_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 97
-        width: 105
-        height: 97
+        x: 10
+        y: 106
+        width: 95
+        height: 80
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

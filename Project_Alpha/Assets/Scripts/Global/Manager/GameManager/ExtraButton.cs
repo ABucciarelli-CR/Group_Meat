@@ -8,7 +8,7 @@ public class ExtraButton : MonoBehaviour
 {
     private GameManagerAction gameManager;
 
-    private bool pause = false;
+    [HideInInspector]public bool pause = false;
     private int actualLevel;
 
     // Use this for initialization

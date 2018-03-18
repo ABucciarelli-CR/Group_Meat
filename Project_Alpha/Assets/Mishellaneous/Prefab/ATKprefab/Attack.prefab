@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 2abd5acb5bff3e04d93929ce3a132d52, type: 3}
   - {fileID: 21300006, guid: 2abd5acb5bff3e04d93929ce3a132d52, type: 3}
   sprtRenderer: {fileID: 212748282232250270}
+  shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   fps: 0.1
   loop: 0
 --- !u!212 &212748282232250270
