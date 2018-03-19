@@ -25,7 +25,7 @@ public class Attack : MonoBehaviour
     public bool abilityEnded = false;
     [ReadOnly]
     public AudioSource audioSource;
-    //[ReadOnly]
+    [ReadOnly]
     public GameObject attackAnimation;
 
     [Title("Modifiche abilitate.")]
@@ -163,7 +163,7 @@ public class Attack : MonoBehaviour
         {
             atk.transform.eulerAngles = new Vector3(0f, 0f, 36f);
         }
-        atk.transform.localPosition = new Vector2(atk.transform.localPosition.x + 700, atk.transform.localPosition.y + 500);
+        atk.transform.localPosition = new Vector2(atk.transform.localPosition.x + 700, atk.transform.localPosition.y + 1500);
 
 
         damageAreaCollider.CeckHit();

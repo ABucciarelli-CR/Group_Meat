@@ -128,10 +128,10 @@ public class PlayerControlsStateMachine : MonoBehaviour
             canDash = false;
             stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
         }
-        if(axesDash <= 0.2f)
+        /*if(axesDash <= 0.2f)
         {
             canDash = true;
-        }
+        }*/
     }
 
     private void QTEEat()

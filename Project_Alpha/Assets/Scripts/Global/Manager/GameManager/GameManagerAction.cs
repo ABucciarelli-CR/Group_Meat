@@ -13,15 +13,15 @@ public class GameManagerAction : MonoBehaviour
     private List<AudioSource> allAudioOfTheLevel = new List<AudioSource>();
     private List<bool> allAudioPaused = new List<bool>();//se true era in pausa prima del menu, quindi va fatto ripartire
     public AudioMixerGroup generalAudio;
-    /*[HideInInspector]*/ public GameObject mainCamera;
+    [HideInInspector] public GameObject mainCamera;
 
     private void Awake()
     {
+        StartCoroutine(WaitForStartingMenu());
         actualLevel = SceneManager.GetActiveScene().buildIndex;
         FillAudioList();
         FillTheAudioControlList();
         globalVariables = GetComponent<GlobalVariables>();
-        canvas.SetActive(false);
     }
 
     private void Update()
@@ -139,5 +139,11 @@ public class GameManagerAction : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         mainCamera.GetComponent<Cinemachine.CinemachineBrain>().m_UpdateMethod = mainCamera.GetComponent<Cinemachine.CinemachineBrain>().updateSmart;
+    }
+
+    IEnumerator WaitForStartingMenu()
+    {
+        yield return new WaitForSeconds(.01f);
+        canvas.SetActive(false);
     }
 }
