@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyStateMachine))]
+//[RequireComponent(typeof(EnemyStateMachine))]
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyHealer : EnemyStateMachine
 {
     private int maxEnemyInList = 20;
-    private bool doPlayerDamage = false;
     private bool healtToSet = true;
     private bool onlyHealer = false;
     private bool canCheckHealer = false;
@@ -87,6 +86,7 @@ public class EnemyHealer : EnemyStateMachine
         {
             disappearingPlatform.SetActive(false);
         }
+
     }
 
     public override void Idle()
@@ -162,7 +162,7 @@ public class EnemyHealer : EnemyStateMachine
             rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
         }
     }
-    
+
     private void IsPlayerdamageable(bool isDamageable)
     {
         //Debug.Log("canDamagePlayer");
@@ -176,7 +176,7 @@ public class EnemyHealer : EnemyStateMachine
         canCheckHealer = true;
     }
 
-    IEnumerator Wait(float sec)
+    new IEnumerator Wait(float sec)
     {
         //Debug.Log("waiting");
         yield return new WaitForSeconds(sec);

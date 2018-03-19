@@ -7,6 +7,8 @@ using UnityEngine;
 public class EnemyStateMachine : MonoBehaviour
 {
     [HideInInspector] public EnemyState enemyState;
+    /*[HideInInspector]*/public GameObject stun;
+
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
@@ -91,6 +93,8 @@ public class EnemyStateMachine : MonoBehaviour
     private Blink blink;
 
     private List<GameObject> list;
+    
+    [HideInInspector]public bool instantiateOnlyOne = false;
 
     [Title("Modifiche abilitate.", "$MyTitle")]
     public string MyTitle = "piccolo test, puoi scriverci quello che vuoi :D";
@@ -145,6 +149,19 @@ public class EnemyStateMachine : MonoBehaviour
 
         rb2d = gameObject.GetComponent<Rigidbody2D>();
 
+        //stun.SetActive(false);
+        //search the stun gameobject
+        /*
+        GameObject[] childList;
+        childList = this.transform.GetComponentsInChildren<GameObject>();
+        foreach(GameObject child in childList)
+        {
+            if(child.name == "Stun")
+            {
+                stun = child;
+            }
+        }*/
+
         deadLayer = (LayerMask.NameToLayer("corpse"));
         enemyHealth = GetComponent<EnemyHealth>();
         enemyState = EnemyState.idle;
@@ -177,6 +194,12 @@ public class EnemyStateMachine : MonoBehaviour
                 stunnedTime = 0;
             }
         }
+
+        if (enemyState != EnemyState.stun && instantiateOnlyOne)
+        {
+            DeactivateStun();
+        }
+
         /*
         if (stardCountdown)
         {
@@ -266,6 +289,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void Stun()
     {
+        //animazione stun
+        ActivateStun(stun, 3, 3);
+
         //Debug.Log("name:" + spriteRenderer.name);
         spriteRenderer.color = enemyStunnedColor;
         gameObject.tag = "Corpse";
@@ -325,6 +351,21 @@ public class EnemyStateMachine : MonoBehaviour
     {
         //Debug.Log("canDamagePlayer");
         doPlayerDamage = isDamageable;
+    }
+
+    public void ActivateStun(GameObject obj, float x, float y)
+    {
+        if(!instantiateOnlyOne)
+        {
+            instantiateOnlyOne = true;
+            stun.SetActive(true);
+        }
+    }
+
+    public void DeactivateStun()
+    {
+        instantiateOnlyOne = false;
+        stun.SetActive(false);
     }
 
     public virtual IEnumerator WaitBeforeFlip(float time)

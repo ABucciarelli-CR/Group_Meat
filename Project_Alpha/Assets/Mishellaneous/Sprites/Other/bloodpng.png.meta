@@ -1,0 +1,439 @@
+fileFormatVersion: 2
+guid: fe6a6c5dcdcc41e49a83eef2293d9402
+timeCreated: 1521422907
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bloodpng_0
+    21300002: bloodpng_1
+    21300004: bloodpng_2
+    21300006: bloodpng_3
+    21300008: bloodpng_4
+    21300010: bloodpng_5
+    21300012: bloodpng_6
+    21300014: bloodpng_7
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 0.4
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bloodpng_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 134
+        width: 134
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47, y: 52}
+        - {x: 10, y: 52}
+        - {x: -5, y: 49}
+        - {x: -7, y: 36}
+        - {x: -15.416183, y: -31.9422}
+        - {x: 30.942192, y: -41.005783}
+        - {x: 59, y: -9}
+        - {x: 63, y: 5}
+        - {x: 63, y: 40}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 128
+        width: 96
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 56}
+        - {x: -51, y: 43}
+        - {x: -51, y: -26}
+        - {x: -35, y: -37}
+        - {x: 3, y: -37}
+        - {x: 20, y: -26}
+        - {x: 42, y: 12}
+        - {x: 42, y: 45}
+        - {x: 29, y: 56}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_2
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 131
+        width: 118
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 58}
+        - {x: -51, y: 58}
+        - {x: -53.612717, y: 46.0867}
+        - {x: -47.462418, y: -41.3237}
+        - {x: -34.381516, y: -50.710983}
+        - {x: 48.312134, y: -45.138718}
+        - {x: 51.514465, y: 23.5318}
+        - {x: 40.832367, y: 44.3873}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_3
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 130
+        width: 166
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 58}
+        - {x: -63, y: 53}
+        - {x: -79.9361, y: 8.53363}
+        - {x: -76.35568, y: -37.55658}
+        - {x: -63.9711, y: -50.237}
+        - {x: -37, y: -53.5}
+        - {x: -20.7919, y: -51.1503}
+        - {x: 30.421967, y: -10.624283}
+        - {x: 31.393066, y: 28.3237}
+        - {x: -2.3237, y: 53.5}
+      - - {x: -34.988434, y: -52.861267}
+        - {x: -34.988434, y: -47.682068}
+        - {x: -34.341034, y: -47.682068}
+        - {x: -34.341034, y: -52.861267}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 117
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0.46749496, y: 6.5336533}
+        - {x: 21, y: -5}
+        - {x: 34, y: 2}
+        - {x: 50, y: 19}
+        - {x: 52, y: 22}
+        - {x: 52, y: 33}
+        - {x: 38, y: 59}
+        - {x: -40, y: 59}
+        - {x: -58, y: 41}
+        - {x: -63, y: 25}
+        - {x: -63, y: -8}
+        - {x: -61, y: -10}
+        - {x: -60, y: -10}
+        - {x: -62, y: -22}
+        - {x: -53, y: -36}
+        - {x: -41, y: -46}
+        - {x: -26, y: -46}
+        - {x: -9, y: -41}
+        - {x: -6, y: -30}
+        - {x: -8, y: -16}
+        - {x: -10, y: -13}
+      - - {x: 59, y: -27}
+        - {x: 60, y: -30}
+        - {x: 63, y: -30}
+        - {x: 63, y: -25}
+        - {x: 61, y: -25}
+      - - {x: 58, y: -8}
+        - {x: 60, y: -10}
+        - {x: 63, y: -10}
+        - {x: 63, y: -2}
+        - {x: 60, y: -3}
+      - - {x: 59, y: 4}
+        - {x: 59, y: 2}
+        - {x: 61, y: 0}
+        - {x: 63, y: 0}
+        - {x: 63, y: 6}
+        - {x: 61, y: 6}
+      - - {x: 58, y: 19}
+        - {x: 57, y: 15}
+        - {x: 57, y: 13}
+        - {x: 61, y: 9}
+        - {x: 63, y: 9}
+        - {x: 63, y: 21}
+        - {x: 60, y: 21}
+      - - {x: 59, y: 28}
+        - {x: 61, y: 25}
+        - {x: 63, y: 26}
+        - {x: 63, y: 29}
+        - {x: 61, y: 30}
+      - - {x: 60, y: 34}
+        - {x: 62, y: 32}
+        - {x: 63, y: 32}
+        - {x: 63, y: 37}
+        - {x: 61, y: 37}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1
+        width: 126
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 0}
+        - {x: -17, y: 1}
+        - {x: 33, y: -10}
+        - {x: 53, y: 13}
+        - {x: 53, y: 35}
+        - {x: 47, y: 54}
+        - {x: 22, y: 59.25}
+        - {x: -41, y: 59.25}
+        - {x: -63, y: 38}
+        - {x: -63, y: -44}
+        - {x: -55, y: -52}
+        - {x: -21, y: -52}
+        - {x: 3, y: -27}
+        - {x: -10, y: -7}
+        - {x: -19, y: -3}
+        - {x: -18, y: 1}
+      - - {x: -12.24855, y: 10.754341}
+        - {x: -12.24855, y: 20.465324}
+        - {x: 16.5607, y: 20.465324}
+        - {x: 16.5607, y: 10.754341}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_6
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0.5
+        width: 126
+        height: 118.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 44, y: 47}
+        - {x: 42, y: 54}
+        - {x: 32, y: 59}
+        - {x: -23, y: 59}
+        - {x: -63, y: 38}
+        - {x: -63, y: -51}
+        - {x: 59, y: -51}
+        - {x: 59, y: 38}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bloodpng_7
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0.5
+        width: 126
+        height: 118.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: -40}
+        - {x: -14, y: -38}
+        - {x: -14, y: -36}
+        - {x: -32, y: -6}
+        - {x: -35, y: -6}
+        - {x: -36, y: -9}
+        - {x: -36, y: -8}
+        - {x: -34, y: -5}
+        - {x: -21, y: -2}
+        - {x: -20, y: 7}
+        - {x: -25, y: 25}
+        - {x: -29, y: 22}
+        - {x: -30, y: 18}
+        - {x: -33, y: 20}
+        - {x: -35, y: 21}
+        - {x: -32, y: 20}
+        - {x: -30, y: 22}
+        - {x: -28, y: 28}
+        - {x: -36, y: 36}
+        - {x: -43, y: 38}
+        - {x: -46, y: 38}
+        - {x: -61, y: 18}
+        - {x: -61, y: -24}
+        - {x: -53, y: -34}
+        - {x: -47, y: -37}
+        - {x: -53, y: -44}
+        - {x: -52, y: -48}
+        - {x: -20, y: -55}
+        - {x: -11, y: -54}
+        - {x: -11, y: -42}
+        - {x: -15, y: -40}
+      - - {x: -27, y: -30}
+        - {x: -29, y: -31}
+        - {x: -30, y: -36}
+        - {x: -28, y: -38}
+        - {x: -27, y: -38}
+      - - {x: -27, y: -17}
+        - {x: -24, y: -16}
+        - {x: -24, y: -13}
+        - {x: -27, y: -12}
+        - {x: -29, y: -14}
+      - - {x: -47, y: -6}
+        - {x: -46, y: -7}
+        - {x: -46, y: -6}
+        - {x: -47, y: -7}
+      - - {x: 57, y: 27}
+        - {x: 55, y: 25}
+        - {x: 59, y: 30}
+        - {x: 63, y: 33}
+        - {x: 63, y: 42}
+        - {x: 40, y: 56}
+        - {x: 31, y: 56}
+        - {x: 27, y: 48}
+        - {x: 27, y: 45}
+        - {x: 27, y: 51}
+        - {x: 18, y: 56}
+        - {x: 11, y: 56}
+        - {x: 5, y: 50}
+        - {x: 5, y: 29}
+        - {x: 9, y: 11}
+        - {x: 38, y: 4}
+        - {x: 63, y: 4}
+        - {x: 63, y: 26}
+        - {x: 60, y: 27}
+      - - {x: -19, y: 13}
+        - {x: -16, y: 14}
+        - {x: -16, y: 17}
+        - {x: -19, y: 18}
+        - {x: -21, y: 16}
+      - - {x: 54, y: 18}
+        - {x: 55, y: 17}
+        - {x: 56, y: 18}
+        - {x: 55, y: 16}
+        - {x: 56, y: 16}
+        - {x: 56, y: 17}
+      - - {x: -36, y: 39}
+        - {x: -36, y: 32}
+        - {x: -23, y: 20}
+        - {x: -18, y: 18}
+        - {x: -15, y: 19}
+        - {x: -15, y: 39}
+      - - {x: -8, y: 19}
+        - {x: -5, y: 20}
+        - {x: -5, y: 23}
+        - {x: -8, y: 24}
+        - {x: -10, y: 22}
+      - - {x: 8, y: 35}
+        - {x: 3, y: 48}
+        - {x: -6, y: 48}
+        - {x: -6, y: 22}
+        - {x: -3, y: 21}
+        - {x: 0, y: 23}
+        - {x: 7, y: 24}
+        - {x: 9, y: 26}
+        - {x: 8, y: 29}
+      - - {x: 20, y: 21}
+        - {x: 23, y: 22}
+        - {x: 23, y: 25}
+        - {x: 20, y: 26}
+        - {x: 18, y: 24}
+      - - {x: -22, y: 39}
+        - {x: -13, y: 31}
+        - {x: -5, y: 31}
+        - {x: -5, y: 47}
+        - {x: -9, y: 58}
+        - {x: -19, y: 58}
+        - {x: -22, y: 51}
+      - - {x: 27, y: 37}
+        - {x: 38, y: 43}
+        - {x: 39, y: 47}
+        - {x: 24, y: 44}
+        - {x: 25, y: 41}
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

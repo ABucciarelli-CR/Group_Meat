@@ -6,6 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     /*[HideInInspector]*/public int health;
     [HideInInspector]public int maxHealth;
+    /*[HideInInspector]*/public GameObject bloodDamaged;
+
     public LayerMask playerAndShieldsLayerMask;
 
     private float maxDistance;
@@ -48,6 +50,9 @@ public class EnemyHealth : MonoBehaviour
                 //Debug.Log("Here1!");
                 if (hitLeft.collider.CompareTag("Player"))
                 {
+                    //damaged animation
+                    DoInstantiate(bloodDamaged, 3, 3);
+
                     spriteRenderer.color = enemyDamagedColor;
                     health -= dmg;
                     //Debug.Log("Damaged");
@@ -59,6 +64,9 @@ public class EnemyHealth : MonoBehaviour
                 //Debug.Log("Here2!");
                 if (hitRight.collider.CompareTag("Player"))
                 {
+                    //damaged animation
+                    DoInstantiate(bloodDamaged, 3, 3);
+
                     spriteRenderer.color = enemyDamagedColor;
                     health -= dmg;
                     //Debug.Log("Damaged");
@@ -89,6 +97,12 @@ public class EnemyHealth : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+
+    public void DoInstantiate(GameObject obj, float x, float y)
+    {
+        GameObject objPlaceholder = Instantiate(obj, this.transform.position + new Vector3(0, 30, 0), Quaternion.identity, this.gameObject.transform);
+        objPlaceholder.gameObject.transform.localScale = new Vector3(x, y, 0);
     }
 
     void Update()

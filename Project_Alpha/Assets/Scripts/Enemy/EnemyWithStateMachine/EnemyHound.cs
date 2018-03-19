@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyStateMachine))]
+//[RequireComponent(typeof(EnemyStateMachine))]
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyHound : EnemyStateMachine
 {

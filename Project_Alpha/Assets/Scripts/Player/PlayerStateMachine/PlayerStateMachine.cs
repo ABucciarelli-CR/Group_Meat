@@ -30,10 +30,10 @@ public class PlayerStateMachine : MonoBehaviour
     public float jumpForce = 20000f;
     public float moveForce = 10f;
     public float QTETime = 5f;
-
+    /*
     [Title("Cambiarle anche nell'input, non solo qui.")]
     public string LeftButtonQTE = "I";
-    public string RightButtonQTE = "O";
+    public string RightButtonQTE = "O";*/
 
     [HideInInspector] public float playerMovement;
     [HideInInspector] public int playerAttack;
@@ -103,7 +103,7 @@ public class PlayerStateMachine : MonoBehaviour
         groundRadiusCollision = realGroundRadiusCollision;
         enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
         //textQTE.text = LeftButtonQTE.ToUpper() + "                    " + RightButtonQTE.ToUpper();
-        textQTE.SetActive(false);
+        textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
 
         playerOffenseStateStandardColor = Color.white;
         playerOffenseStateAttackColor = Color.red;
@@ -282,7 +282,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (CheckIfAnyoneDead())
         {
-            textQTE.SetActive(true);
+            textQTE.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
             if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
             {
@@ -291,7 +291,7 @@ public class PlayerStateMachine : MonoBehaviour
 
             if (QTEButtonRight && QTEButtonLeft)
             {
-                textQTE.SetActive(false);
+                textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
                 {
                     EatEnemy();
@@ -308,7 +308,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             StopCoroutine(TimeForQuickTime());
             playerState = PlayerState.idle;
-            textQTE.SetActive(false);
+            textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
             QTEOnlyone = true;
         }
     }

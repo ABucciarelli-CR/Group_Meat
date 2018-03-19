@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyStateMachine))]
+//[RequireComponent(typeof(EnemyStateMachine))]
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyArcher : EnemyStateMachine
 {
@@ -40,8 +40,9 @@ public class EnemyArcher : EnemyStateMachine
         damage = archerDamage;
         attackDelay = archerAttackDelay;
         waitTimeBeforeFlip = flipDelay;
-        //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
+        //stun = stun.GetComponent<GameObject>();
 
+        //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
         attackCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
         escapeArea.GetComponent<CircleCollider2D>().radius = escapeAreaDistance;
 
@@ -65,6 +66,11 @@ public class EnemyArcher : EnemyStateMachine
             regenerate = false;
             onlyOneDeath = true;
         }
+        /*
+        if (enemyState != EnemyState.stun && instantiateOnlyOne)
+        {
+            DeactivateStun();
+        }*/
         /*
         if(player == null)
         {
@@ -130,6 +136,14 @@ public class EnemyArcher : EnemyStateMachine
 
         enemyState = EnemyState.searchPlayer;
         
+    }
+
+    public override void Stun()
+    {
+        base.Stun();
+        /*
+        //animazione stun
+        ActivateStun(stun, 3, 3);*/
     }
 
     private void IsPlayerIn(bool isIn)

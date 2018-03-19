@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 09780c204629eaf4cace1b860e880f01
-timeCreated: 1521424972
+guid: e934ff2dd1e6fd94ab1946c2d72b2494
+timeCreated: 1521424077
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - bloodDamaged: {instanceID: 0}
-  - stun: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
