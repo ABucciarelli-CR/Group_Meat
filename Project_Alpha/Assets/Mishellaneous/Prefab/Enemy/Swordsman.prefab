@@ -480,7 +480,7 @@ MonoBehaviour:
   houndDamage: 80
   houndHealth: 120
   houndSpeed: 2
-  houndAttackDelay: 5
+  houndAttackDelay: 1.5
   maxAttackDistance: 4000
   maxVisibleDistance: 10000
   attackCollider: {fileID: 1518298284584094}

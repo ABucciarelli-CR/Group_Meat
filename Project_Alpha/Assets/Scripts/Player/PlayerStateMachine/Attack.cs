@@ -61,6 +61,7 @@ public class Attack : MonoBehaviour
     private Life life;
     private DamageAreaCollider damageAreaCollider;
     private GameObject frenziPlaceholder;
+    private GameObject atk;
     private float damageDeltaTime = 0;
 
     private bool endWaitMusic = false;
@@ -153,55 +154,58 @@ public class Attack : MonoBehaviour
     private void NormalAttack(bool atkDir)
     {
         //Todo: Animation Start
-        GameObject atk = Instantiate(attackAnimation, this.transform);
-        atk.transform.localScale = new Vector2(-((atk.transform.localScale.x * 10) / 2.5f), ((atk.transform.localScale.y * 10)));
-        if (atkDir)
+        if(atk == null)
         {
-            atk.transform.eulerAngles = new Vector3(0f, 0f, -36f);
-        }
-        else
-        {
-            atk.transform.eulerAngles = new Vector3(0f, 0f, 36f);
-        }
-        atk.transform.localPosition = new Vector2(atk.transform.localPosition.x + 700, atk.transform.localPosition.y + 1500);
-
-
-        damageAreaCollider.CeckHit();
-
-        i = 0;
-
-        if (damageAreaCollider.enemyHitted != null)
-        {
-            if (damageAreaCollider.enemyHitted[0] != null)
+            atk = Instantiate(attackAnimation, this.transform);
+            atk.transform.localScale = new Vector2(-((atk.transform.localScale.x * 10) / 2.5f), ((atk.transform.localScale.y * 10)));
+            if (atkDir)
             {
-                foreach (Collider2D enemy in damageAreaCollider.enemyHitted)
-                {
-                    if (damageAreaCollider.enemyHitted[i] != null)
-                    {
-                        //Debug.Log(damageAreaCollider.enemyHitted[i].name + " " + damageAreaCollider.enemyHitted[i].gameObject.layer.ToString());
-                        if (damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
-                        {
-                            if (frenzyActive)
-                            {
-                                damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", (int)(standardDamage * standardAttackModifier));
-                                life.Heal((int)(healForDamage * standardHealthModifier));
-                            }
-                            else
-                            {
-                                damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", standardDamage);
-                                life.Heal(healForDamage);
-                            }
-                        }
-                        i++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                //Debug.Log("Exit");
+                atk.transform.eulerAngles = new Vector3(0f, 0f, -36f);
+            }
+            else
+            {
+                atk.transform.eulerAngles = new Vector3(0f, 0f, 36f);
+            }
+            atk.transform.localPosition = new Vector2(atk.transform.localPosition.x + 700, atk.transform.localPosition.y + 1500);
 
-                System.Array.Clear(damageAreaCollider.enemyHitted, 0, damageAreaCollider.maxArrayEnemy);
+
+            damageAreaCollider.CeckHit();
+
+            i = 0;
+
+            if (damageAreaCollider.enemyHitted != null)
+            {
+                if (damageAreaCollider.enemyHitted[0] != null)
+                {
+                    foreach (Collider2D enemy in damageAreaCollider.enemyHitted)
+                    {
+                        if (damageAreaCollider.enemyHitted[i] != null)
+                        {
+                            //Debug.Log(damageAreaCollider.enemyHitted[i].name + " " + damageAreaCollider.enemyHitted[i].gameObject.layer.ToString());
+                            if (damageAreaCollider.enemyHitted[i].gameObject.CompareTag("Enemy"))
+                            {
+                                if (frenzyActive)
+                                {
+                                    damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", (int)(standardDamage * standardAttackModifier));
+                                    life.Heal((int)(healForDamage * standardHealthModifier));
+                                }
+                                else
+                                {
+                                    damageAreaCollider.enemyHitted[i].gameObject.SendMessage("Damage", standardDamage);
+                                    life.Heal(healForDamage);
+                                }
+                            }
+                            i++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    //Debug.Log("Exit");
+
+                    System.Array.Clear(damageAreaCollider.enemyHitted, 0, damageAreaCollider.maxArrayEnemy);
+                }
             }
         }
     }

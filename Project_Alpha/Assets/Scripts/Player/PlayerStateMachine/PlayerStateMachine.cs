@@ -130,6 +130,7 @@ public class PlayerStateMachine : MonoBehaviour
         jumpAudio.clip = jump;
         jumpAudio.playOnAwake = false;
         walkAudio = gameObject.AddComponent<AudioSource>();
+        walkAudio.volume = .05f;
         walkAudio.clip = walk;
         walkAudio.playOnAwake = false;
         walkAudio.loop = true;

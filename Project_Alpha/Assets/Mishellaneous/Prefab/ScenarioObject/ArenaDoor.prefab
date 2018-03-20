@@ -71,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620792954627550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0, z: 0}
-  m_LocalScale: {x: 0.86, y: 1.04, z: 1}
+  m_LocalPosition: {x: 2.5786, y: 0.1484, z: 0}
+  m_LocalScale: {x: 22.645752, y: 2.5242765, z: 1}
   m_Children: []
   m_Father: {fileID: 4723973966108560}
   m_RootOrder: 1
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1232842294281738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1233.9991, y: 2629.211, z: -0.29296875}
+  m_LocalPosition: {x: -17818.367, y: -1981.73, z: 19.5}
   m_LocalScale: {x: 500, y: 2000, z: 5}
   m_Children:
   - {fileID: 4248710983604146}
@@ -215,10 +215,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb307c9e4c6dde48a6572b3003d9e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: []
+  spawner:
+  - {fileID: 0}
+  - {fileID: 0}
   singleEnemy: []
   physicalDoor: {fileID: 1138705406981460}
-  otherDoor: []
+  otherDoor:
+  - {fileID: 0}
   enemyCountDown: 0
   enemyEnd: 1
 --- !u!212 &212630584460566662
@@ -256,7 +259,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f5a7ccebd485b6c42b73e4a03340caa1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

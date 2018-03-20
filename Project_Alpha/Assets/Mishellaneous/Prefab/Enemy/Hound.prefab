@@ -256,7 +256,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.288
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -265,9 +265,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1000
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -312,7 +312,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -470,17 +470,16 @@ MonoBehaviour:
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   atkClip: []
-  idleClip:
-  - {fileID: 8300000, guid: 5e052900e61c9374da97d8618a760d06, type: 3}
+  idleClip: []
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
   instantiateOnlyOne: 0
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   flipDelay: 0.1
-  houndDamage: 40
-  houndHealth: 60
+  houndDamage: 45
+  houndHealth: 80
   houndSpeed: 3
-  houndAttackDelay: 5
+  houndAttackDelay: 3.5
   maxAttackDistance: 2000
   maxVisibleDistance: 10000
   attackCollider: {fileID: 1141315643346728}

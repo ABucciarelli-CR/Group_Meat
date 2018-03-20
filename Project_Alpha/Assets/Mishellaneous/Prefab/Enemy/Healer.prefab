@@ -351,11 +351,11 @@ MonoBehaviour:
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   flipDelay: 0.1
   healerDamage: 5
-  healerHeal: 10
+  healerHeal: 15
   healerHealth: 120
   healerSpeed: 1
   healerAttackDelay: 5
-  healerHealDelay: 3
+  healerHealDelay: 2
   maxAttackDistance: 3000
   attackCollider: {fileID: 1408642077573574}
   disappearingPlatform: {fileID: 0}

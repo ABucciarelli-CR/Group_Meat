@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 114018051476272384}
   - component: {fileID: 114026052921751158}
   - component: {fileID: 82090149285757014}
+  - component: {fileID: 81372524666397210}
   m_Layer: 8
   m_Name: PlayerStateMachine
   m_TagString: Player
@@ -775,7 +776,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350652960365124}
   m_LocalRotation: {x: 0.0000005088771, y: 0.0000012090768, z: -6.152714e-13, w: 1}
-  m_LocalPosition: {x: -0.0015258789, y: 2700.0002, z: -29.999779}
+  m_LocalPosition: {x: 0, y: 2700.0005, z: -29.99978}
   m_LocalScale: {x: 12.5, y: 12.5, z: 1}
   m_Children:
   - {fileID: 4468680440718154}
@@ -802,7 +803,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459610301309766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1978, y: 21, z: 0}
+  m_LocalPosition: {x: -9817, y: -683, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 1}
   m_Children:
   - {fileID: 224878816286581792}
@@ -849,7 +850,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491968176428530}
   m_LocalRotation: {x: 0.0000005088771, y: 0.0000012090768, z: -6.152714e-13, w: 1}
-  m_LocalPosition: {x: -0.0015258789, y: 2700.0002, z: -29.999779}
+  m_LocalPosition: {x: 0, y: 2700.0005, z: -29.99978}
   m_LocalScale: {x: 9.858241, y: 9.831326, z: 0}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
@@ -877,7 +878,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.4852941, g: 0.4852941, b: 0.4852941, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1038,6 +1039,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5623.987, y: 3736.3076}
   m_EdgeRadius: 0
+--- !u!81 &81372524666397210
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1459610301309766}
+  m_Enabled: 1
 --- !u!81 &81676978082146218
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1179,7 +1187,7 @@ MonoBehaviour:
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
   standardDamage: 20
-  healForDamage: 5
+  healForDamage: 4
   maxHealthConsume: 10
   maxFrenzyTime: 10
   frenzyAudioOn: 0
@@ -1456,7 +1464,7 @@ MonoBehaviour:
   facingRight: 1
   airControl: 1
   abilitateTimeForQuickTimeEvent: 0
-  lifeIncrement: 25
+  lifeIncrement: 15
   lifeHealWhenEat: 20
   dashSpeed: 500
   jumpForce: 2000

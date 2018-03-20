@@ -553,10 +553,10 @@ MonoBehaviour:
   facingleft: 1
   tankDamage: 60
   tankHealth: 200
-  flipDelay: 2
+  flipDelay: 1
   offenceArea: 10
   maxVisibleDistance: 5
-  tankAttackDelay: 5
+  tankAttackDelay: 4
   atkCollider: {fileID: 1953243278309368}
 --- !u!212 &212574381763806218
 SpriteRenderer:
