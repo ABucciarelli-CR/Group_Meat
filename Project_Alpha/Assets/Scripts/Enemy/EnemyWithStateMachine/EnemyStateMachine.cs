@@ -77,6 +77,9 @@ public class EnemyStateMachine : MonoBehaviour
     [ReadOnly]
     public Color enemyIsOnAttack;
 
+    public AudioClip[] atkClip;
+    public AudioClip[] idleClip;
+
     //[ReadOnly]
     public GameObject attackAnimation;
     
@@ -213,7 +216,20 @@ public class EnemyStateMachine : MonoBehaviour
                 stardCountdown = false;
             }
         }*/
-
+        if(idleClip.Length > 0 && Time.timeScale != 0)
+        {
+            if (enemyState == EnemyState.idle || enemyState == EnemyState.searchPlayer || enemyState == EnemyState.escape || enemyState == EnemyState.stun)
+            {
+                if (gameObject.GetComponent<AudioSource>().name != idleClip[0].name)
+                {
+                    if (!gameObject.GetComponent<AudioSource>().isPlaying)
+                    {
+                        gameObject.GetComponent<AudioSource>().clip = idleClip[0];
+                        gameObject.GetComponent<AudioSource>().Play();
+                    }
+                }
+            }
+        }
 
         switch (enemyState)
         {
@@ -385,10 +401,18 @@ public class EnemyStateMachine : MonoBehaviour
     {
         //Debug.Log("waiting");
         alreadyInAttack = true;
+        if (atkClip.Length > 1)
+        {
+            gameObject.GetComponent<AudioSource>().clip = atkClip[1];
+            gameObject.GetComponent<AudioSource>().Play();
+        }
         yield return new WaitForSeconds(sec);
+        if (atkClip.Length > 0)
+        {
+            gameObject.GetComponent<AudioSource>().clip = atkClip[0];
+            gameObject.GetComponent<AudioSource>().Play();
+        }
         alreadyInAttack = false;
         waited = true;
     }
 }
-
-

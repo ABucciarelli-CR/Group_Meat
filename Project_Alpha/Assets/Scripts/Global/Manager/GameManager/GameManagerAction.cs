@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManagerAction : MonoBehaviour
 {
     public GameObject canvas;
+    public EventSystem eventSystem;
+    public List<GameObject> menuParts;
 
     private GlobalVariables globalVariables;
     private int actualLevel = 0;
-    private List<AudioSource> allAudioOfTheLevel = new List<AudioSource>();
-    private List<bool> allAudioPaused = new List<bool>();//se true era in pausa prima del menu, quindi va fatto ripartire
+    public List<AudioSource> allAudioOfTheLevel = new List<AudioSource>();
+    public List<bool> allAudioPaused = new List<bool>();//se true era in pausa prima del menu, quindi va fatto ripartire
     public AudioMixerGroup generalAudio;
     [HideInInspector] public GameObject mainCamera;
 
@@ -33,9 +36,22 @@ public class GameManagerAction : MonoBehaviour
         if(actualLevel != SceneManager.GetActiveScene().buildIndex)
         {
             ClearAllAudio();
-            canvas.SetActive(false);
+            //canvas.SetActive(false);
+            foreach (GameObject go in menuParts)
+            {
+                go.SetActive(false);
+            }
             Time.timeScale = 1;
             actualLevel = SceneManager.GetActiveScene().buildIndex;
+        }
+
+        foreach(AudioSource audSource in allAudioOfTheLevel)
+        {
+            if(audSource == null)
+            {
+                ClearAllAudio();
+                break;
+            }
         }
     }
 
@@ -54,12 +70,16 @@ public class GameManagerAction : MonoBehaviour
     {
         if(pause && SceneManager.GetActiveScene().buildIndex != 0)
         {
-            
             mainCamera.GetComponent<Cinemachine.CinemachineBrain>().m_UpdateMethod = mainCamera.GetComponent<Cinemachine.CinemachineBrain>().updateFixed;
             //generalAudio.audioMixer.SetFloat("BGVolume", -80f);
             PauseAllAudio();
             Time.timeScale = 0;
-            canvas.SetActive(true);
+            //canvas.SetActive(true);
+            foreach (GameObject go in menuParts)
+            {
+                go.SetActive(true);
+            }
+            eventSystem.firstSelectedGameObject = menuParts[1];
         }
     }
 
@@ -71,13 +91,19 @@ public class GameManagerAction : MonoBehaviour
             RemovePauseAllAudio();
             StartCoroutine(WaitForCamera());
             Time.timeScale = 1;
-            canvas.SetActive(false);
+            //canvas.SetActive(false);
+            foreach (GameObject go in menuParts)
+            {
+                go.SetActive(false);
+            }
         }
     }
 
     public void FillAudioList()
     {
-        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        //foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        GameObject[] allObjInScene = FindObjectsOfType<GameObject>() as GameObject[];
+        foreach (GameObject go in allObjInScene)
         {
             if (go.GetComponent<AudioSource>() != null)
             {
@@ -106,6 +132,7 @@ public class GameManagerAction : MonoBehaviour
                 if (allAudioOfTheLevel[i].isPlaying)
                 {
                     allAudioOfTheLevel[i].Pause();
+                    //allAudioOfTheLevel[i].enabled = false;
                     allAudioPaused[i] = true;
                 }
             }
@@ -120,7 +147,8 @@ public class GameManagerAction : MonoBehaviour
             {
                 if (allAudioPaused[i] == true)
                 {
-                    allAudioOfTheLevel[i].Play();
+                    allAudioOfTheLevel[i].UnPause();
+                    //allAudioOfTheLevel[i].enabled = true;
                     allAudioPaused[i] = false;
                 }
             }
@@ -144,6 +172,10 @@ public class GameManagerAction : MonoBehaviour
     IEnumerator WaitForStartingMenu()
     {
         yield return new WaitForSeconds(.01f);
-        canvas.SetActive(false);
+        //canvas.SetActive(false);
+        foreach (GameObject go in menuParts)
+        {
+            go.SetActive(false);
+        }
     }
 }

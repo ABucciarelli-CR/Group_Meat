@@ -71,11 +71,11 @@ GameObject:
   - component: {fileID: 4085210934015252}
   - component: {fileID: 212825497605019200}
   - component: {fileID: 114871957705361084}
-  - component: {fileID: 114198138215173728}
   - component: {fileID: 114230069088653298}
   - component: {fileID: 114307823924633202}
   - component: {fileID: 61264036119799734}
   - component: {fileID: 50212223166589590}
+  - component: {fileID: 82185794780003494}
   m_Layer: 19
   m_Name: Healer
   m_TagString: Enemy
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794234805142404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2363.797, y: 123, z: 17}
+  m_LocalPosition: {x: -384.09265, y: 144.56085, z: 17}
   m_LocalScale: {x: 0.22013965, y: 0.21824706, z: 0.38103327}
   m_Children:
   - {fileID: 4556316326528736}
@@ -198,72 +198,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 605.3042, y: 1258.4978}
   m_EdgeRadius: 0
---- !u!114 &114198138215173728
-MonoBehaviour:
+--- !u!82 &82185794780003494
+AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794234805142404}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c91bac106766a84792b16333abd51b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyState: 0
-  stun: {fileID: 1292662764827566}
-  speed: 500000000
-  damage: 0
-  attackDelay: 0
-  healDelay: 0
-  movement: {x: 0, y: 0}
-  direction: 1
-  timeToChangeDirection: 5
-  ttcd: 0
-  doPlayerDamage: 0
-  facingRight: 0
-  stunTime: 5
-  waitTimeBeforeFlip: 0.1
-  healthRegenAfterStun: 50
-  activeStunTime: 1
-  delay: 0
-  maxArray: 100
-  regenerate: 0
-  onlyOneDeath: 1
-  waited: 1
-  alreadyInAttack: 0
-  enemyHealth: {fileID: 0}
-  gameManager: {fileID: 0}
-  stunnedTime: 0
-  offenseState: {fileID: 1165572135224646}
-  player: {fileID: 0}
-  contactFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  hitColliders: []
-  rb2d: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  offenseStateSpriteRenderer: {fileID: 212433497850779016}
-  deadLayer:
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243086765652371142, guid: 0d6e37815b90cff4982fea45ceb6422e,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.17
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
     serializedVersion: 2
-    m_Bits: 2048
-  liveLayer:
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
     serializedVersion: 2
-    m_Bits: 512
-  enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
-  attackAnimation: {fileID: 0}
-  instantiateOnlyOne: 0
-  MyTitle: piccolo test, puoi scriverci quello che vuoi :D
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114230069088653298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,6 +342,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  atkClip:
+  - {fileID: 8300000, guid: cc3f4ab3facc7684fb225bd9c1b8c36a, type: 3}
+  idleClip: []
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
   instantiateOnlyOne: 0

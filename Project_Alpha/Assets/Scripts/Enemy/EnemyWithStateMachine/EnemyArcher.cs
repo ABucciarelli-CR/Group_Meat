@@ -155,12 +155,12 @@ public class EnemyArcher : EnemyStateMachine
     {
         thereIsAPlayer = isIn;
     }
-
-    IEnumerator Wait(float sec)
+    /*
+    new IEnumerator Wait(float sec)
     {
         //Debug.Log("waiting");
         yield return new WaitForSeconds(sec);
         waited = true;
-    }
+    }*/
 }
 

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114657641949431488}
   - component: {fileID: 61177893857642696}
   - component: {fileID: 50212715380343408}
+  - component: {fileID: 82039030552995974}
   m_Layer: 9
   m_Name: Hound
   m_TagString: Enemy
@@ -158,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553377036661140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1672, y: 27.266357, z: 0}
+  m_LocalPosition: {x: -1332, y: 89.31708, z: 0}
   m_LocalScale: {x: 0.1289136, y: 0.1289136, z: 0.1289136}
   m_Children:
   - {fileID: 4127934967399122}
@@ -243,6 +244,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1365.9485, y: 1277.5488}
   m_EdgeRadius: 0
+--- !u!82 &82039030552995974
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1553377036661140}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243086765652371142, guid: 0d6e37815b90cff4982fea45ceb6422e,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.288
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114396389526216300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,6 +469,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  atkClip: []
+  idleClip:
+  - {fileID: 8300000, guid: 5e052900e61c9374da97d8618a760d06, type: 3}
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
   instantiateOnlyOne: 0

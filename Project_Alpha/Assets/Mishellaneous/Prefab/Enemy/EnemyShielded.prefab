@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114866805758070964}
   - component: {fileID: 61764637716919762}
   - component: {fileID: 50662830999255336}
+  - component: {fileID: 82291100832386232}
   m_Layer: 9
   m_Name: EnemyShielded
   m_TagString: Enemy
@@ -162,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565304783806814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1276, y: 127.92508, z: 0}
+  m_LocalPosition: {x: -1399.1565, y: 191.37238, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 4742174450481172}
@@ -319,6 +320,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 861.4211, y: 1678.5117}
   m_EdgeRadius: 0
+--- !u!82 &82291100832386232
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565304783806814}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243086765652371142, guid: 0d6e37815b90cff4982fea45ceb6422e,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114394838672791466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,6 +543,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
+  atkClip:
+  - {fileID: 8300000, guid: de76a28e7fbcafa48a1f1ea063c80ff8, type: 3}
+  idleClip: []
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
   instantiateOnlyOne: 0
@@ -468,7 +553,7 @@ MonoBehaviour:
   facingleft: 1
   tankDamage: 60
   tankHealth: 200
-  flipDelay: 3
+  flipDelay: 2
   offenceArea: 10
   maxVisibleDistance: 5
   tankAttackDelay: 5

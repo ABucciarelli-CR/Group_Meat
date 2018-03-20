@@ -140,7 +140,7 @@ public class EnemyHealer : EnemyStateMachine
                 Instantiate(healingAnimation, thisEnemy.gameObject.transform.position, Quaternion.identity);
             }
             waited = false;
-            StartCoroutine(Wait(healDelay));
+            StartCoroutine(Wait(healDelay, true));
         }
 
         enemyState = EnemyState.idle;
@@ -176,10 +176,15 @@ public class EnemyHealer : EnemyStateMachine
         canCheckHealer = true;
     }
 
-    new IEnumerator Wait(float sec)
+    new IEnumerator Wait(float sec, bool isHeal = false)
     {
         //Debug.Log("waiting");
         yield return new WaitForSeconds(sec);
+        if (atkClip.Length > 0 && isHeal)
+        {
+            gameObject.GetComponent<AudioSource>().clip = atkClip[0];
+            gameObject.GetComponent<AudioSource>().Play();
+        }
         waited = true;
     }
 }

@@ -1462,8 +1462,9 @@ MonoBehaviour:
   jumpForce: 2000
   moveForce: 500
   QTETime: 5
-  LeftButtonQTE: S
-  RightButtonQTE: D
+  jump: {fileID: 8300000, guid: fcc1c9f8ab136944789fb29580fbfdad, type: 3}
+  walk: {fileID: 8300000, guid: 19adbdd56f028504b97f2abb5d4b2dc1, type: 3}
+  devour: {fileID: 8300000, guid: a53086ee108acd242bd86fed2eec496e, type: 3}
   playerMovement: 0
   playerAttack: 0
   groundCheck: {fileID: 4235922149452398}

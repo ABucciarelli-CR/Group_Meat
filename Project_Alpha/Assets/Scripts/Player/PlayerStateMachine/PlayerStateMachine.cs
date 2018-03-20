@@ -30,6 +30,14 @@ public class PlayerStateMachine : MonoBehaviour
     public float jumpForce = 20000f;
     public float moveForce = 10f;
     public float QTETime = 5f;
+    [Title("Audio del player.")]
+    public AudioClip jump;
+    public AudioClip walk;
+    public AudioClip devour;
+
+    private AudioSource eatAudio;
+    private AudioSource jumpAudio;
+    private AudioSource walkAudio;
     /*
     [Title("Cambiarle anche nell'input, non solo qui.")]
     public string LeftButtonQTE = "I";
@@ -114,6 +122,18 @@ public class PlayerStateMachine : MonoBehaviour
     // Use this for initialization
     private void Start ()
     {
+        //instantiate all the audio
+        eatAudio = gameObject.AddComponent<AudioSource>();
+        eatAudio.clip = devour;
+        eatAudio.playOnAwake = false;
+        jumpAudio = gameObject.AddComponent<AudioSource>();
+        jumpAudio.clip = jump;
+        jumpAudio.playOnAwake = false;
+        walkAudio = gameObject.AddComponent<AudioSource>();
+        walkAudio.clip = walk;
+        walkAudio.playOnAwake = false;
+        walkAudio.loop = true;
+
         globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables>();
         attack = GetComponent<Attack>();
     }
@@ -144,6 +164,21 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     private void Update ()
     {
+        if(playerState == PlayerState.movement)
+        {
+            if(!walkAudio.isPlaying)
+            {
+                walkAudio.Play();
+            }
+        }
+        else
+        {
+            if (walkAudio.isPlaying)
+            {
+                walkAudio.Pause();
+            }
+        }
+
         //Debug.Log(playerState);
         switch (playerState)
         {
@@ -249,6 +284,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(singleJump)
         {
+            jumpAudio.Play();
             rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             waited = false;
             StartCoroutine(Wait(.1f));
@@ -357,6 +393,7 @@ public class PlayerStateMachine : MonoBehaviour
             {
                 if (enemyDeadHitted[i].CompareTag("Corpse"))
                 {
+                    eatAudio.Play();
                     Destroy(enemyDeadHitted[i].gameObject);
                     IncrementLife(lifeIncrement);
                     Heal(lifeHealWhenEat);
