@@ -552,8 +552,8 @@ MonoBehaviour:
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   facingleft: 1
   tankDamage: 60
-  tankHealth: 200
-  flipDelay: 3
+  tankHealth: 160
+  flipDelay: 1.5
   offenceArea: 10
   maxVisibleDistance: 5
   tankAttackDelay: 2
