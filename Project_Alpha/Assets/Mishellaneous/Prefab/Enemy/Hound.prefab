@@ -476,10 +476,10 @@ MonoBehaviour:
   instantiateOnlyOne: 0
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   flipDelay: 0.1
-  houndDamage: 45
-  houndHealth: 80
+  houndDamage: 30
+  houndHealth: 60
   houndSpeed: 3
-  houndAttackDelay: 3.5
+  houndAttackDelay: 0.5
   maxAttackDistance: 2000
   maxVisibleDistance: 10000
   attackCollider: {fileID: 1141315643346728}
