@@ -16,6 +16,7 @@ public class EnemyHound : EnemyStateMachine
     public float houndAttackDelay = 5f;
     public float maxAttackDistance = 3000f;
     public float maxVisibleDistance = 4000f;
+    public float stunned = 50f;
 
     public GameObject attackCollider;
     public GameObject visibleDistanceCollider;
@@ -28,6 +29,7 @@ public class EnemyHound : EnemyStateMachine
         attackDelay = houndAttackDelay;
         speed = houndSpeed;
         waitTimeBeforeFlip = flipDelay;
+        stunTime = stunned;
         //areaAttack.SendMessage("SetWaitTime", archerAttackDelay);
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;

@@ -26,6 +26,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool abilitateTimeForQuickTimeEvent = true;
     public int lifeIncrement = 25;
     public int lifeHealWhenEat = 20;
+    public int clickForEat = 4;
     public float dashSpeed = 500f;
     public float jumpForce = 20000f;
     public float moveForce = 10f;
@@ -88,6 +89,7 @@ public class PlayerStateMachine : MonoBehaviour
     [Title("Modifiche abilitate.")]
     [SerializeField] private bool isGrounded = true;
     private int i = 0; //counter
+    private int eatCountdown = 0;//the eat countown support variable forchè yes
     private Color playerOffenseStateStandardColor;
     private Color playerOffenseStateAttackColor;
     private Color playerOffenseStateEatColor;
@@ -111,7 +113,8 @@ public class PlayerStateMachine : MonoBehaviour
         groundRadiusCollision = realGroundRadiusCollision;
         enemyDeadHitted = new Collider2D[maxEnemyDeadHittedArray];
         //textQTE.text = LeftButtonQTE.ToUpper() + "                    " + RightButtonQTE.ToUpper();
-        textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        EnableDisableQTEIcon(false);
+        //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
 
         playerOffenseStateStandardColor = Color.white;
         playerOffenseStateAttackColor = Color.red;
@@ -155,7 +158,7 @@ public class PlayerStateMachine : MonoBehaviour
                 }
             }
         }*/
-        
+
         /*
         anim.SetBool("Ground", isGrounded);
         // Set the vertical animation
@@ -165,7 +168,20 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     private void Update ()
     {
-        if(playerState == PlayerState.movement)
+        Debug.Log("CD" + eatCountdown);
+
+        if (CheckIfAnyoneDead())
+        {
+            EnableDisableQTEIcon(true);
+            Eat();
+        }
+        else
+        {
+            eatCountdown = 0;
+            EnableDisableQTEIcon(false);
+        }
+
+        if (playerState == PlayerState.movement)
         {
             if(!walkAudio.isPlaying)
             {
@@ -179,6 +195,8 @@ public class PlayerStateMachine : MonoBehaviour
                 walkAudio.Pause();
             }
         }
+
+        
 
         //Debug.Log(playerState);
         switch (playerState)
@@ -207,12 +225,12 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerState.dash:
                 Dash();
                 break;
-
+                /*
             case PlayerState.eat:
                 offenseStateSpriteRenderer.color = playerOffenseStateEatColor;
                 StartCoroutine(Wait(.1f, false));
                 Eat();
-                break;
+                break;*/
 
             default:
                 break;
@@ -317,22 +335,25 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Eat()
     {
-        if (CheckIfAnyoneDead())
+        //if (CheckIfAnyoneDead())
+        //{
+        //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        /*
+        if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
         {
-            textQTE.GetComponentInChildren<SpriteRenderer>().enabled = true;
-
-            if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
+            StartCoroutine(TimeForQuickTime());
+        }*/
+        if (QTEButtonRight && QTEButtonLeft)
+        {
+            eatCountdown++;
+            if(eatCountdown == clickForEat)
             {
-                StartCoroutine(TimeForQuickTime());
-            }
-
-            if (QTEButtonRight && QTEButtonLeft)
-            {
-                textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                eatCountdown = 0;
+                //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
                 {
                     EatEnemy();
-                    StopCoroutine(TimeForQuickTime());
+                    //StopCoroutine(TimeForQuickTime());
                     QTEOnlyone = true;
                 }
                 else
@@ -340,14 +361,17 @@ public class PlayerStateMachine : MonoBehaviour
                     EatEnemy();
                 }
             }
+                
         }
+        //}
+        /*
         else
         {
             StopCoroutine(TimeForQuickTime());
             playerState = PlayerState.idle;
-            textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            EnableDisableQTEIcon(false);
             QTEOnlyone = true;
-        }
+        }*/
     }
 
     ///////////////////////////
@@ -368,6 +392,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     private bool CheckIfAnyoneDead()
     {
+        for(int i=0; i< enemyDeadHitted.Length; i++)
+        {
+            enemyDeadHitted[i] = null;
+        }
+
         eatCollider.OverlapCollider(contactFilter, enemyDeadHitted);
         i = 0;
         foreach (Collider2D collider in enemyDeadHitted)
@@ -437,10 +466,23 @@ public class PlayerStateMachine : MonoBehaviour
         QTEButtonRight = button;
     }
 
+    private void EnableDisableQTEIcon(bool enableDisable)
+    {
+        foreach (SpriteRenderer sr in textQTE.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.enabled = enableDisable;
+        }
+        foreach (MeshRenderer me in textQTE.GetComponentsInChildren<MeshRenderer>())
+        {
+            me.enabled = enableDisable;
+        }
+    }
+
     IEnumerator TimeForQuickTime()
     {
         yield return new WaitForSeconds(QTETime);
-        textQTE.SetActive(false);
+        EnableDisableQTEIcon(false);
+        //textQTE.SetActive(false);
         QTEOnlyone = true;
         playerState = PlayerState.idle;
     }
