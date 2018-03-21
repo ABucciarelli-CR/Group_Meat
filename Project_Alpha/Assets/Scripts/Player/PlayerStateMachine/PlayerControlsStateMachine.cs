@@ -19,13 +19,6 @@ public class PlayerControlsStateMachine : MonoBehaviour
     private bool canDash = true;
     private bool havePossibleDash = true;
 
-    private bool buttonLeftLifted = false;
-    private bool buttonRightLifted = false;
-
-    private bool realLeftButton = false;
-    private bool realRightButton = false;
-
-
     //attack Type
     //see summary in PlayerStateMachine.cs
     private int  normalAttack = 0;
@@ -45,8 +38,8 @@ public class PlayerControlsStateMachine : MonoBehaviour
         axesDash = Input.GetAxis("DashAxes");
         eat = Input.GetButtonDown("Eat");
         jump = Input.GetButtonDown("Jump");
-        leftQTE = Input.GetButtonDown("LeftEatQTE");
-        rightQTE = Input.GetButtonDown("RightEatQTE");
+        leftQTE = Input.GetButton("LeftEatQTE");
+        rightQTE = Input.GetButton("RightEatQTE");
         
         stateMachine.SendMessage("QTEButtonLeftIsDown", leftQTE);
         stateMachine.SendMessage("QTEButtonRightIsDown", rightQTE);

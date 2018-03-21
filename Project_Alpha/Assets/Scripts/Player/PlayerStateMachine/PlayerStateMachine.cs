@@ -63,6 +63,7 @@ public class PlayerStateMachine : MonoBehaviour
     private Rigidbody2D rb2d;
     private Collider2D[] enemyDeadHitted;
     private bool QTEOnlyone = true;
+    private bool QTEButtonAlreadyDown = false;
     //button 4 QuickTimeEvent
     private bool QTEButtonLeft = false;
     private bool QTEButtonRight = false;
@@ -168,7 +169,7 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     private void Update ()
     {
-        Debug.Log("CD" + eatCountdown);
+        //Debug.Log("CD" + eatCountdown);
 
         if (CheckIfAnyoneDead())
         {
@@ -343,8 +344,9 @@ public class PlayerStateMachine : MonoBehaviour
         {
             StartCoroutine(TimeForQuickTime());
         }*/
-        if (QTEButtonRight && QTEButtonLeft)
+        if (QTEButtonRight && QTEButtonLeft && !QTEButtonAlreadyDown)
         {
+            QTEButtonAlreadyDown = true;
             eatCountdown++;
             if(eatCountdown == clickForEat)
             {
@@ -362,6 +364,11 @@ public class PlayerStateMachine : MonoBehaviour
                 }
             }
                 
+        }
+
+        if(QTEButtonAlreadyDown && !QTEButtonRight && !QTEButtonLeft)
+        {
+            QTEButtonAlreadyDown = false;
         }
         //}
         /*
