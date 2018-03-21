@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlipVisualizedButtons : MonoBehaviour
 {
-    [HideInInspector]public PlayerStateMachine plyrSttMcn;
+    /*[HideInInspector]*/public PlayerStateMachine plyrSttMcn;
     private bool facingRight = true;
     
 	void Update ()

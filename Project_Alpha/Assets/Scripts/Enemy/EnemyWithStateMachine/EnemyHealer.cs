@@ -10,6 +10,7 @@ public class EnemyHealer : EnemyStateMachine
     private int maxEnemyInList = 20;
     private bool healtToSet = true;
     private bool onlyHealer = false;
+    [HideInInspector] public bool callForTheEnd = false;
     private bool canCheckHealer = false;
     public float flipDelay = .1f;
 
@@ -83,7 +84,7 @@ public class EnemyHealer : EnemyStateMachine
             }
         }
 
-        if(onlyHealer && disappearingPlatform != null && canCheckHealer)
+        if((onlyHealer && disappearingPlatform != null && canCheckHealer) || (callForTheEnd && disappearingPlatform != null && canCheckHealer))
         {
             disappearingPlatform.SetActive(false);
             if(callFinalOnlyone)
@@ -92,7 +93,7 @@ public class EnemyHealer : EnemyStateMachine
                 StartCoroutine(WaitForFinal());
             }
         }
-        else if(onlyHealer && disappearingPlatform == null && canCheckHealer)
+        else if((onlyHealer && disappearingPlatform == null && canCheckHealer) || (callForTheEnd && disappearingPlatform == null && canCheckHealer))
         {
             if (callFinalOnlyone)
             {

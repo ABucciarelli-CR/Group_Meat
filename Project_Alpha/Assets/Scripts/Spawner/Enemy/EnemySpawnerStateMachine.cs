@@ -86,6 +86,11 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             waited = false;
             enemyNumber--;
             spawnerState = SpawnerState.check;
+
+            if(gameObject.name == "Spawner_Healer")
+            {
+                gameObject.GetComponent<HealerSpawnerArena>().myHealer.Add(_enemy);
+            }
         }
     }
 

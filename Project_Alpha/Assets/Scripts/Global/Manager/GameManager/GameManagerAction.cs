@@ -17,6 +17,7 @@ public class GameManagerAction : MonoBehaviour
     public List<AudioSource> allAudioOfTheLevel = new List<AudioSource>();
     public List<bool> allAudioPaused = new List<bool>();//se true era in pausa prima del menu, quindi va fatto ripartire
     public AudioMixerGroup generalAudio;
+    public GameObject JOJO_END;
     [HideInInspector] public GameObject mainCamera;
 
     private bool externalCall = false;
@@ -93,6 +94,8 @@ public class GameManagerAction : MonoBehaviour
                 }
                 menuParts[3].SetActive(false);
                 menuParts[4].SetActive(true);
+                JOJO_END.SetActive(true);
+                StartCoroutine(Wait4JoJo());
             }
             else
             {
@@ -195,6 +198,12 @@ public class GameManagerAction : MonoBehaviour
     private void ShowDialog(int dialogNumber)
     {
         dialogs[dialogNumber].SendMessage("Activation");
+    }
+
+    IEnumerator Wait4JoJo()
+    {
+        yield return new WaitForSecondsRealtime(4f);
+        JOJO_END.SendMessage("Activation");
     }
 
     IEnumerator WaitForCamera()
