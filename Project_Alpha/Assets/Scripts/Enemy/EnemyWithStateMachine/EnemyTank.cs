@@ -21,6 +21,7 @@ public class EnemyTank : EnemyStateMachine
     public GameObject atkCollider;
     
     private int i = 0;
+    private bool playerIsInVision;
 
     private bool healtToSet = true;
 
@@ -67,17 +68,6 @@ public class EnemyTank : EnemyStateMachine
     {
         base.Idle();
 
-        ttcd += Time.deltaTime;
-        //Debug.Log("Me idle");
-        if (ttcd >= timeToChangeDirection)
-        {
-            ttcd = 0;
-            direction *= -1;
-        }
-        movement = new Vector2(direction * speed * 2, 0);
-        //gameObject.transform.Translate(movement);
-        rb2d.MovePosition(rb2d.position + movement);
-
         enemyState = EnemyState.searchPlayer;
 
     }
@@ -106,6 +96,14 @@ public class EnemyTank : EnemyStateMachine
     public override void SearchPlayer()
     {
         base.SearchPlayer();
+
+        if (playerIsInVision)
+        {
+            Debug.Log("Leeeeeeeeeeeeroooooooy JENKINS!!!!");
+            direction = gameObject.transform.position.x - player.transform.position.x;
+
+            rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
+        }
         /*
         if (doPlayerDamage)
         {
@@ -115,6 +113,11 @@ public class EnemyTank : EnemyStateMachine
             }
             enemyState = EnemyState.attack;
         }*/
+    }
+
+    private void IsPlayerIn(bool isIn)
+    {
+        playerIsInVision = isIn;
     }
     /*
 	public void Flip()
