@@ -6,8 +6,16 @@ public class FlipVisualizedButtons : MonoBehaviour
 {
     /*[HideInInspector]*/public PlayerStateMachine plyrSttMcn;
     private bool facingRight = true;
-    
-	void Update ()
+
+    private void Awake()
+    {
+        if(gameObject.GetComponent<MeshRenderer>() != null)
+        {
+            gameObject.GetComponent<MeshRenderer>().sortingOrder = 4;
+        }
+    }
+
+    void Update ()
     {
 		if(plyrSttMcn.facingRight != facingRight)
         {
