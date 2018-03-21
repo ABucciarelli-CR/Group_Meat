@@ -20,7 +20,7 @@ namespace TheArenaDoor
         private RaycastHit2D hitRight;
         private float maxDistance = 5;
 
-        private bool isPlayer = false;
+        [HideInInspector]public bool isPlayer = false;
         private bool onlyOne = true;
 
         void Start()

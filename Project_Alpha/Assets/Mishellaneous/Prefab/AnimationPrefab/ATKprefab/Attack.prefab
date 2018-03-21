@@ -62,7 +62,7 @@ MonoBehaviour:
   sprtRenderer: {fileID: 212748282232250270}
   image: {fileID: 0}
   shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
-  fpsMin: 0.05
+  fpsMin: 0.08
   loop: 0
   ignorePause: 0
   useImage: 0

@@ -10,6 +10,7 @@ public class GameManagerAction : MonoBehaviour
     public GameObject canvas;
     public EventSystem eventSystem;
     public List<GameObject> menuParts;
+    public List<GameObject> dialogs;
 
     private GlobalVariables globalVariables;
     private int actualLevel = 0;
@@ -17,6 +18,8 @@ public class GameManagerAction : MonoBehaviour
     public List<bool> allAudioPaused = new List<bool>();//se true era in pausa prima del menu, quindi va fatto ripartire
     public AudioMixerGroup generalAudio;
     [HideInInspector] public GameObject mainCamera;
+
+    private bool externalCall = false;
 
     private void Awake()
     {
@@ -63,29 +66,49 @@ public class GameManagerAction : MonoBehaviour
             //globalVariables.enemyDead = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             ClearAllAudio();
+            externalCall = false;
+            if (Time.timeScale == 0)
+            {
+                ExitPauseLevel(true);
+            }
+            
         }
     }
 
     public void PauseLevel(bool pause)
     {
-        if(pause && SceneManager.GetActiveScene().buildIndex != 0)
+        if((pause && SceneManager.GetActiveScene().buildIndex != 0) || externalCall)
         {
             mainCamera.GetComponent<Cinemachine.CinemachineBrain>().m_UpdateMethod = mainCamera.GetComponent<Cinemachine.CinemachineBrain>().updateFixed;
             //generalAudio.audioMixer.SetFloat("BGVolume", -80f);
             PauseAllAudio();
             Time.timeScale = 0;
             //canvas.SetActive(true);
-            foreach (GameObject go in menuParts)
+            
+            if(externalCall)
             {
-                go.SetActive(true);
+                for(int i=0; i<menuParts.Count - 2; i++)
+                {
+                    menuParts[i].SetActive(true);
+                }
+                menuParts[3].SetActive(false);
+                menuParts[4].SetActive(true);
             }
+            else
+            {
+                for (int i = 0; i < menuParts.Count - 1; i++)
+                {
+                    menuParts[i].SetActive(true);
+                }
+            }
+            
             eventSystem.firstSelectedGameObject = menuParts[1];
         }
     }
 
     public void ExitPauseLevel(bool pause)
     {
-        if (pause)
+        if (pause && !externalCall)
         {
             //generalAudio.audioMixer.SetFloat("BGVolume", 0f);
             RemovePauseAllAudio();
@@ -161,6 +184,17 @@ public class GameManagerAction : MonoBehaviour
         allAudioPaused.Clear();
         FillAudioList();
         FillTheAudioControlList();
+    }
+
+    private void FinalPause()
+    {
+        externalCall = true;
+        PauseLevel(true);
+    }
+
+    private void ShowDialog(int dialogNumber)
+    {
+        dialogs[dialogNumber].SendMessage("Activation");
     }
 
     IEnumerator WaitForCamera()

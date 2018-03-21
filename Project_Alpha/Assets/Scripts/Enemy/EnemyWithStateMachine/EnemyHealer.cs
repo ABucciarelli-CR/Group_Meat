@@ -31,6 +31,7 @@ public class EnemyHealer : EnemyStateMachine
     [ReadOnly]
     public GameObject healingAnimation;
 
+    private bool callFinalOnlyone = true;
 
     private void Awake()
     {
@@ -85,6 +86,19 @@ public class EnemyHealer : EnemyStateMachine
         if(onlyHealer && disappearingPlatform != null && canCheckHealer)
         {
             disappearingPlatform.SetActive(false);
+            if(callFinalOnlyone)
+            {
+                callFinalOnlyone = false;
+                StartCoroutine(WaitForFinal());
+            }
+        }
+        else if(onlyHealer && disappearingPlatform == null && canCheckHealer)
+        {
+            if (callFinalOnlyone)
+            {
+                callFinalOnlyone = false;
+                StartCoroutine(WaitForFinal());
+            }
         }
 
     }
@@ -176,7 +190,13 @@ public class EnemyHealer : EnemyStateMachine
         canCheckHealer = true;
     }
 
-    new IEnumerator Wait(float sec, bool isHeal = false)
+    IEnumerator WaitForFinal()
+    {
+        yield return new WaitForSeconds(1f);
+        gameManager.GetComponent<GameManagerAction>().SendMessage("FinalPause");
+    }
+
+    IEnumerator Wait(float sec, bool isHeal = false)
     {
         //Debug.Log("waiting");
         yield return new WaitForSeconds(sec);

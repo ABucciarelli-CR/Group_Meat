@@ -11,6 +11,7 @@ public class TextAppear : MonoBehaviour
     public float textPause = .5f;
 
     public bool active = false;
+    public bool textInDoing = false;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class TextAppear : MonoBehaviour
 		if(active)
         {
             active = false;
+            textInDoing = true;
             StartCoroutine(TextAppearing());
         }
 	}
