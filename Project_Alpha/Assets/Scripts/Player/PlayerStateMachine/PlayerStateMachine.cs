@@ -79,6 +79,8 @@ public class PlayerStateMachine : MonoBehaviour
     public SpriteRenderer offenseStateSpriteRenderer;
     //[ReadOnly]
     public GameObject textQTE;
+    //[ReadOnly]
+    public TextMesh textCountdownQTE;
 
     private float realGroundRadiusCollision = .1f;
     private float groundRadiusCollision = 0f;
@@ -102,8 +104,8 @@ public class PlayerStateMachine : MonoBehaviour
         attack,
         movement,
         jump,
-        dash,
-        eat
+        dash//,
+        //eat
     }
 
     private void Awake()
@@ -165,11 +167,12 @@ public class PlayerStateMachine : MonoBehaviour
         // Set the vertical animation
         anim.SetFloat("vSpeed", rb2d.velocity.y);*/
     }
-
-    // Update is called once per frame
+    
     private void Update ()
     {
         //Debug.Log("CD" + eatCountdown);
+
+        textCountdownQTE.text = eatCountdown.ToString();
 
         if (CheckIfAnyoneDead())
         {
@@ -178,7 +181,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
         else
         {
-            eatCountdown = 0;
+            eatCountdown = clickForEat;
             EnableDisableQTEIcon(false);
         }
 
@@ -196,9 +199,7 @@ public class PlayerStateMachine : MonoBehaviour
                 walkAudio.Pause();
             }
         }
-
         
-
         //Debug.Log(playerState);
         switch (playerState)
         {
@@ -347,10 +348,10 @@ public class PlayerStateMachine : MonoBehaviour
         if (QTEButtonRight && QTEButtonLeft && !QTEButtonAlreadyDown)
         {
             QTEButtonAlreadyDown = true;
-            eatCountdown++;
-            if(eatCountdown == clickForEat)
+            eatCountdown--;
+            if(eatCountdown <= 0)
             {
-                eatCountdown = 0;
+                eatCountdown = clickForEat;
                 //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
                 {

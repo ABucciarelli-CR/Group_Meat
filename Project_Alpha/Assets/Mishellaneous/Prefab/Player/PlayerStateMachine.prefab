@@ -1515,6 +1515,7 @@ MonoBehaviour:
   abilitateTimeForQuickTimeEvent: 0
   lifeIncrement: 20
   lifeHealWhenEat: 25
+  clickForEat: 4
   dashSpeed: 500
   jumpForce: 2000
   moveForce: 500
@@ -1546,6 +1547,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   offenseStateSpriteRenderer: {fileID: 212475299580733758}
   textQTE: {fileID: 1403801239676372}
+  textCountdownQTE: {fileID: 102614977783850188}
   isGrounded: 0
 --- !u!114 &114391084213801656
 MonoBehaviour:

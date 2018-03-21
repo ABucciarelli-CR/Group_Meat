@@ -13,7 +13,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
     private bool jump = false;
     private bool inputDash = false;
     private float axesDash = 0f;
-    private bool eat = false;
+    //private bool eat = false;
     private bool leftQTE = false;//left button 4 quick time event
     private bool rightQTE = false;//right button 4 quick time event
     private bool canDash = true;
@@ -36,7 +36,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
         leftAndRightMovement = Input.GetAxis("Horizontal");
         inputDash = Input.GetButtonDown("DashInput");
         axesDash = Input.GetAxis("DashAxes");
-        eat = Input.GetButtonDown("Eat");
+        //eat = Input.GetButtonDown("Eat");
         jump = Input.GetButtonDown("Jump");
         leftQTE = Input.GetButton("LeftEatQTE");
         rightQTE = Input.GetButton("RightEatQTE");
@@ -53,7 +53,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
             CheckAllTheAttack();
             Jump();
             Dash();
-            Eat();
+            //Eat();
 
             jump = false;
         }
@@ -72,7 +72,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
             CheckAllTheAttack();
             Jump();
             Dash();
-            Eat();
+            //Eat();
 
             jump = false;
         }
@@ -132,19 +132,15 @@ public class PlayerControlsStateMachine : MonoBehaviour
             canDash = true;
         }*/
     }
-
-    private void QTEEat()
-    {
-
-    }
-
+    
+    /*
     private void Eat()
     {
         if(eat)
         {
-            stateMachine.playerState = PlayerStateMachine.PlayerState.eat;
+            //stateMachine.playerState = PlayerStateMachine.PlayerState.eat;
         }
-    }
+    }*/
 
     private void HaveSomeDashLeft(bool boolDash)
     {
