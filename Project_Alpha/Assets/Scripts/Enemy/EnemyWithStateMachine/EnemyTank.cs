@@ -18,8 +18,9 @@ public class EnemyTank : EnemyStateMachine
     public float maxVisibleDistance = 5f;
     public float tankAttackDelay = 2f;
 
+    public Collider2D shieldCollider;
     public GameObject atkCollider;
-    
+
     private int i = 0;
     private bool playerIsInVision;
 
@@ -57,10 +58,10 @@ public class EnemyTank : EnemyStateMachine
             onlyOneDeath = true;
         }
 
-		if (facingleft == false)
+        if (facingleft == false)
         {
-			Flip ();
-		}
+            Flip();
+        }
 
     }
 
@@ -80,14 +81,17 @@ public class EnemyTank : EnemyStateMachine
         {
             GameObject atk = Instantiate(attackAnimation, this.transform);
             atk.transform.localScale = new Vector2((atk.transform.localScale.x * 10) / 2, (atk.transform.localScale.y * 10) / 2);
-            if(doPlayerDamage)
+            if (doPlayerDamage)
             {
                 player.SendMessage("Damage", damage);
+                shieldCollider.enabled = false;
+                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-(Mathf.Sign(gameObject.transform.position.x - player.transform.position.x)) * 1000, 0), ForceMode2D.Impulse);
+                StartCoroutine(WaitToReactivateShieldCollider());
             }
             waited = false;
         }
-        
-        if(!alreadyInAttack)
+
+        if (!alreadyInAttack)
         {
             enemyState = EnemyState.searchPlayer;
         }
@@ -99,7 +103,6 @@ public class EnemyTank : EnemyStateMachine
 
         if (playerIsInVision)
         {
-            Debug.Log("Leeeeeeeeeeeeroooooooy JENKINS!!!!");
             direction = gameObject.transform.position.x - player.transform.position.x;
 
             rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
@@ -128,5 +131,11 @@ public class EnemyTank : EnemyStateMachine
 		normalScale.x *= -1;
 		transform.localScale = normalScale;
 	}*/
+
+    IEnumerator WaitToReactivateShieldCollider()
+    {
+        yield return new WaitForSeconds(.5f);
+        shieldCollider.enabled = true;
+    }
 }
 
