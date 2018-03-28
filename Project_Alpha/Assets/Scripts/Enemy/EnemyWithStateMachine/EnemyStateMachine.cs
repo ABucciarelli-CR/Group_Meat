@@ -308,6 +308,7 @@ public class EnemyStateMachine : MonoBehaviour
         //animazione stun
         ActivateStun(stun, 3, 3);
 
+        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         //Debug.Log("name:" + spriteRenderer.name);
         spriteRenderer.color = enemyStunnedColor;
         gameObject.tag = "Corpse";

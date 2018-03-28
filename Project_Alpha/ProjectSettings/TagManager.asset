@@ -29,10 +29,10 @@ TagManager:
   - blockPlayer
   - eatingLayer
   - arrow
-  - flank
+  - collidePlayerAndGhost
   - collideWithPlayer
   - enemyHealer
-  - 
+  - groundCheck
   - 
   - 
   - 

@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class EnemySpawnerStateMachine : MonoBehaviour
 {
+    public bool multiTypeSpawn = false;
+    [EnableIf("multiTypeSpawn")]
+    public List<GameObject> enemies = new List<GameObject>();
+
+    [DisableIf("multiTypeSpawn")]
     [Title("Nemico da far spawnare.")]
     public GameObject enemy;
 
+    [DisableIf("multiTypeSpawn")]
     [Title("Spawn Nemici.")]
     public int enemyNumber = 1;
     public int spawnAtStart = 1;
@@ -18,12 +24,13 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     //public float spawnDelayAtAllSpawnedDeath = 1f;    //TODO: spawn di più nemici
     public float spawnDelayBetweenEnemy = 1f;
 
+    [Title("Inizio spawn manuale.")]
+    public bool startSpawning = false;
+
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
     public List<GameObject> enemyList;
-    [ReadOnly]
-    public bool startSpawning = false;
-    [HideInInspector] public bool endSpawn = false;
+    /*[HideInInspector] */public bool endSpawn = false;
 
     private GlobalVariables globalVariables;
 
@@ -33,6 +40,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     private bool initialSpawn = false;
     
     private List<GameObject> whoExternalEntity;
+    private int i = 0;
     [HideInInspector] public SpawnerState spawnerState;
 
     public enum SpawnerState
@@ -77,7 +85,18 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     {
         if (waited)
         {
-            GameObject _enemy = Instantiate(enemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            GameObject thisEnemy;
+            if(multiTypeSpawn)
+            {
+                thisEnemy = enemies[i];
+                i++;
+            }
+            else
+            {
+                thisEnemy = enemy;
+            }
+
+            GameObject _enemy = Instantiate(thisEnemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             enemyList.Add(_enemy);
             if (AddEnemyAtExternal)
             {
@@ -109,24 +128,49 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             }
         }
 
-        if(enemyNumber > 0 && enemyList.Count <= 0)
+        if(multiTypeSpawn)
         {
-            if (initialSpawn)
+            if (enemies.Count > i && enemyList.Count <= 0)
             {
-                StartCoroutine(Delay(spawnDelayAtStart));
+                if (initialSpawn)
+                {
+                    StartCoroutine(Delay(spawnDelayAtStart));
+                }
+                else
+                {
+                    StartCoroutine(Delay(spawnDelayBetweenEnemy));
+                }
+
+                spawnerState = SpawnerState.spawn;
+
             }
-            else
+            else if(enemyList.Count <= 0)
             {
-                StartCoroutine(Delay(spawnDelayBetweenEnemy));
+                spawnerState = SpawnerState.inert;
+                endSpawn = true;
             }
-
-            spawnerState = SpawnerState.spawn;
-
         }
-        else if(enemyList.Count <= 0)
+        else
         {
-            spawnerState = SpawnerState.inert;
-            endSpawn = true;
+            if (enemyNumber > 0 && enemyList.Count <= 0)
+            {
+                if (initialSpawn)
+                {
+                    StartCoroutine(Delay(spawnDelayAtStart));
+                }
+                else
+                {
+                    StartCoroutine(Delay(spawnDelayBetweenEnemy));
+                }
+
+                spawnerState = SpawnerState.spawn;
+
+            }
+            else if (enemyList.Count <= 0)
+            {
+                spawnerState = SpawnerState.inert;
+                endSpawn = true;
+            }
         }
     }
 
