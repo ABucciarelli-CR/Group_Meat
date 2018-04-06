@@ -78,7 +78,6 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             }
         }
     }
-
     //__________________________state machine things____________________________________________//
 
     public void Spawn()
@@ -198,5 +197,4 @@ public class EnemySpawnerStateMachine : MonoBehaviour
         yield return new WaitForSeconds(wait);
         waited = true;
     }
-
 }
