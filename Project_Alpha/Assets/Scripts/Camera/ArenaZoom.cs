@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class ArenaZoom : MonoBehaviour
 {
-    public float variable = 0f;
-    public float zoomSpeed = 1f;
-    public float targetOrtho;
+    [HideInInspector]public float variable = 0f;
+    [HideInInspector]public float zoomSpeed = 1f;
+    [HideInInspector]public float targetOrtho;
     public float smoothSpeed = 2.0f;
-    public float minOrtho = 1.0f;
-    public float maxOrtho = 20.0f;
+    public float changeCameraSpeed = 50f;
+    public bool detachCameraFromPlayerInArena = false;
+    [HideInInspector]public float minOrtho = 1.0f;
+    [HideInInspector]public float maxOrtho = 20.0f;
 
     void Start()
     {
+        gameObject.GetComponent<CinemachineVirtualCamera>().m_Follow = GameObject.Find("PlayerStateMachine").transform;
         targetOrtho = gameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize;
     }
 

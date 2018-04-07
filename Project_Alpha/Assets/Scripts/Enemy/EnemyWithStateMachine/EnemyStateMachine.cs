@@ -26,10 +26,13 @@ public class EnemyStateMachine : MonoBehaviour
     [HideInInspector] public bool doPlayerDamage = false;
     //[ReadOnly]
     public bool facingRight = false;
+    public bool dontResetFlipCountdown = false;
     /*[HideInInspector]*/
 
     [ReadOnly]
     public float stunTime = 5f;
+
+    private float timeBeforeStoppedCoroutine = 0f;
     [ReadOnly]
     public float waitTimeBeforeFlip = .1f;
     [ReadOnly]
@@ -338,12 +341,12 @@ public class EnemyStateMachine : MonoBehaviour
             if (player.transform.position.x < this.transform.position.x && facingRight)
             {
                 callAlreadyCheckTheFlip = true;
-                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip, timeBeforeStoppedCoroutine));
             }
             if (player.transform.position.x > this.transform.position.x && !facingRight)
             {
                 callAlreadyCheckTheFlip = true;
-                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip));
+                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip, timeBeforeStoppedCoroutine));
             }
         }
 
@@ -385,9 +388,14 @@ public class EnemyStateMachine : MonoBehaviour
         stun.SetActive(false);
     }
 
-    public virtual IEnumerator WaitBeforeFlip(float time)
+    public virtual IEnumerator WaitBeforeFlip(float time, float timeBeforeStop)
     {
-        yield return new WaitForSeconds(time);
+        if(dontResetFlipCountdown)
+        {
+            timeBeforeStoppedCoroutine += Time.deltaTime;
+        }
+        yield return new WaitForSeconds(time - timeBeforeStop);
+        timeBeforeStoppedCoroutine = 0f;
         Flip();
     }
 
