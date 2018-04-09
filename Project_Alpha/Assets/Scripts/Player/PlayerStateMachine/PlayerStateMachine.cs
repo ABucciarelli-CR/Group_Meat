@@ -65,8 +65,11 @@ public class PlayerStateMachine : MonoBehaviour
     private bool QTEOnlyone = true;
     private bool QTEButtonAlreadyDown = false;
     //button 4 QuickTimeEvent
-    private bool QTEButtonLeft = false;
-    private bool QTEButtonRight = false;
+    //private bool QTEButtonLeft = false;
+    //private bool QTEButtonRight = false;
+    private float QTEButtonLeft;
+    private float QTEButtonRight;
+    private float QTEIsPressedForFloat = .8f;
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
@@ -82,6 +85,7 @@ public class PlayerStateMachine : MonoBehaviour
     //[ReadOnly]
     public TextMesh textCountdownQTE;
 
+    //private float 
     private float realGroundRadiusCollision = .1f;
     private float groundRadiusCollision = 0f;
     private int maxEnemyDeadHittedArray = 100;
@@ -345,7 +349,8 @@ public class PlayerStateMachine : MonoBehaviour
         {
             StartCoroutine(TimeForQuickTime());
         }*/
-        if (QTEButtonRight && QTEButtonLeft && !QTEButtonAlreadyDown)
+        //if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
+        if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
         {
             QTEButtonAlreadyDown = true;
             eatCountdown--;
@@ -367,7 +372,7 @@ public class PlayerStateMachine : MonoBehaviour
                 
         }
 
-        if(QTEButtonAlreadyDown && !QTEButtonRight && !QTEButtonLeft)
+        if(QTEButtonAlreadyDown && QTEButtonRight > -QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
         {
             QTEButtonAlreadyDown = false;
         }
@@ -464,14 +469,16 @@ public class PlayerStateMachine : MonoBehaviour
         isGrounded = isJump;
     }
 
-    private void QTEButtonLeftIsDown(bool button)
+    private void QTEButtonLeftIsDown(float button)
     {
         QTEButtonLeft = button;
+        Debug.Log("LEFT " + button);
     }
 
-    private void QTEButtonRightIsDown(bool button)
+    private void QTEButtonRightIsDown(float button)
     {
         QTEButtonRight = button;
+        Debug.Log("RIGHT " + button);
     }
 
     private void EnableDisableQTEIcon(bool enableDisable)

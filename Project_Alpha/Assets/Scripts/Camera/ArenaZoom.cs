@@ -16,12 +16,17 @@ public class ArenaZoom : MonoBehaviour
 
     void Start()
     {
-        gameObject.GetComponent<CinemachineVirtualCamera>().m_Follow = GameObject.Find("PlayerStateMachine").transform;
         targetOrtho = gameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize;
     }
 
     void Update()
     {
+
+        if(gameObject.GetComponent<CinemachineVirtualCamera>().m_Follow == null)
+        {
+            gameObject.GetComponent<CinemachineVirtualCamera>().m_Follow = GameObject.Find("PlayerStateMachine").transform;
+        }
+
         float scroll = variable;
         if (scroll != 0.0f)
         {

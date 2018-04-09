@@ -33,7 +33,7 @@ public class Activator : MonoBehaviour
         cmVcam = GameObject.Find("CM vcam1");
         player = GameObject.Find("PlayerStateMachine");
 
-        arenaOrtho = (upPoint.transform.position.y - downPoint.transform.position.y) - standardCameraOrtho;
+        arenaOrtho = (upPoint.transform.position.y - downPoint.transform.position.y)/* - standardCameraOrtho*/;
 
 
     }
@@ -48,9 +48,9 @@ public class Activator : MonoBehaviour
 
             //t += Time.deltaTime / 9000000000;
 
-            passageGameObject.position = Vector3.Lerp(passageGameObject.position, pos2.position, .2f);
+            passageGameObject.position = Vector3.Lerp(passageGameObject.position, pos2.position, .01f);
 
-            if (passageGameObject.position.x < pos2.position.x)
+            if (passageGameObject.position == pos2.position)
             {
                 Debug.Log("End");
                 doTheTranslate = false;
