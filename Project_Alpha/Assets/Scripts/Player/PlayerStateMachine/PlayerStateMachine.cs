@@ -350,7 +350,7 @@ public class PlayerStateMachine : MonoBehaviour
             StartCoroutine(TimeForQuickTime());
         }*/
         //if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
-        if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
+        if (QTEButtonRight < QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
         {
             QTEButtonAlreadyDown = true;
             eatCountdown--;
@@ -372,7 +372,7 @@ public class PlayerStateMachine : MonoBehaviour
                 
         }
 
-        if(QTEButtonAlreadyDown && QTEButtonRight > -QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
+        if(QTEButtonAlreadyDown && QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
         {
             QTEButtonAlreadyDown = false;
         }
