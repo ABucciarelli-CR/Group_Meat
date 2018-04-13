@@ -31,6 +31,7 @@ public class PlayerStateMachine : MonoBehaviour
     public float jumpForce = 20000f;
     public float moveForce = 10f;
     public float QTETime = 5f;
+    
     [Title("Audio del player.")]
     public AudioClip jump;
     public AudioClip walk;

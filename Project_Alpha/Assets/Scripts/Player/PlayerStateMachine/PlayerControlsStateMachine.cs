@@ -7,6 +7,13 @@ public class PlayerControlsStateMachine : MonoBehaviour
 {
     [ReadOnly]
     public DashCount dashCount;
+    [ReadOnly]
+    public Life life;
+
+    [Title("in percentuale, la vita che vienet tolta al player se non ha dash disponibili")]
+    public float dashHealthConsume = 5f;
+    public bool canDashRemovingLife = true;
+
     private PlayerStateMachine stateMachine;
 
     private float leftAndRightMovement;
@@ -131,6 +138,17 @@ public class PlayerControlsStateMachine : MonoBehaviour
             dashCount.SendMessage("RemoveOneCharge");
             canDash = false;
             stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
+        }
+
+        if(((axesDash == 1 && canDash) || inputDash) && !havePossibleDash && canDashRemovingLife)
+        {
+            //life.SendMessage("Damage", (int)((life.actualLife / 100) * dashHealthConsume));
+            stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
+            life.actualLife -= (int)((life.actualLife / 100) * dashHealthConsume);
+            if((int)((life.actualLife / 100) * dashHealthConsume) <= 0)
+            {
+                life.actualLife -= 1;
+            }
         }
         /*if(axesDash <= 0.2f)
         {

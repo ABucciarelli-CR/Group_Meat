@@ -267,6 +267,10 @@ Prefab:
       propertyPath: enemyList.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1868199506874168, guid: c16d686438635ca48a662f9cbaf09144, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c16d686438635ca48a662f9cbaf09144, type: 2}
   m_IsPrefabParent: 0
@@ -1120,21 +1124,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 224439058941838648, guid: 519712f95f6a28b49848d5a2c7e5a46c,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5.5025
-      objectReference: {fileID: 0}
-    - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -724.28296
-      objectReference: {fileID: 0}
-    - target: {fileID: 224294631829631254, guid: 519712f95f6a28b49848d5a2c7e5a46c,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1145,17 +1134,20 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 492.80338
       objectReference: {fileID: 0}
-    - target: {fileID: 4625044586655510, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
+    - target: {fileID: 224294631829631254, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12037.548
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4625044586655510, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
+    - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3600.0007
+      value: -1054.4379
       objectReference: {fileID: 0}
-    - target: {fileID: 4625044586655510, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -29.999708
+    - target: {fileID: 224439058941838648, guid: 519712f95f6a28b49848d5a2c7e5a46c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.5025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}

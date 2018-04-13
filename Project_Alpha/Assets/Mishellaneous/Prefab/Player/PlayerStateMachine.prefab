@@ -760,7 +760,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459610301309766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9534, y: -696.1, z: 0}
+  m_LocalPosition: {x: 1051, y: 88.07573, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 1}
   m_Children:
   - {fileID: 224878816286581792}
@@ -793,7 +793,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491968176428530}
   m_LocalRotation: {x: 0.0000005088771, y: 0.0000012090768, z: -6.152714e-13, w: 1}
-  m_LocalPosition: {x: 0, y: 3600.0005, z: -29.999706}
+  m_LocalPosition: {x: -12037.548, y: 3600.0007, z: -29.999708}
   m_LocalScale: {x: 9.858241, y: 9.831326, z: 0}
   m_Children: []
   m_Father: {fileID: 4429737013254770}
@@ -1214,6 +1214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashCount: {fileID: 114819305197222620}
+  life: {fileID: 114512313358788002}
+  dashHealthConsume: 5
 --- !u!114 &114055610903834552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2057,7 +2059,7 @@ MonoBehaviour:
   plrCntrlStateMcn: {fileID: 114026052921751158}
   countDownDashBar: {fileID: 114710991466650698}
   textDashBar: {fileID: 114595835332814052}
-  maxNumberOfDash: 4
+  maxNumberOfDash: 2
   dashRechargeTime: 2
   actualNumberOfDash: 0
 --- !u!114 &114821255288635758

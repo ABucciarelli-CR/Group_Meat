@@ -43,6 +43,11 @@ public class DashCount : MonoBehaviour
             }
         }
 
+        if(plrCntrlStateMcn.canDashRemovingLife)
+        {
+
+        }
+
         if(actualNumberOfDash <= 0)
         {
             //player can't dash
