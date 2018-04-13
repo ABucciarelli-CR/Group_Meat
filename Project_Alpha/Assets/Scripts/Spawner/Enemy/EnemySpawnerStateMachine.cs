@@ -42,6 +42,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     private List<GameObject> whoExternalEntity;
     private int i = 0;
     [HideInInspector] public SpawnerState spawnerState;
+    private bool isPlayerInside = false;
 
     public enum SpawnerState
     {
@@ -57,7 +58,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
 
     void Update ()
     {
-        if (startSpawning)
+        if (startSpawning && !isPlayerInside)
         {
             switch (spawnerState)
             {
@@ -190,6 +191,30 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     {
         AddEnemyAtExternal = true;
         whoExternalEntity = externalEntity;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            isPlayerInside = true;
+        }
+        else
+        {
+            isPlayerInside = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            isPlayerInside = true;
+        }
+        else
+        {
+            isPlayerInside = false;
+        }
     }
 
     IEnumerator Delay(float wait)
