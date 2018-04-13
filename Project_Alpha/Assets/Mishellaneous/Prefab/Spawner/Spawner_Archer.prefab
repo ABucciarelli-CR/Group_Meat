@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4007564877038534}
   - component: {fileID: 114824339311486134}
   - component: {fileID: 114502891700547062}
-  m_Layer: 0
+  - component: {fileID: 61232462702916984}
+  m_Layer: 17
   m_Name: Spawner_Archer
   m_TagString: Untagged
   m_Icon: {fileID: 7707008975528953803, guid: 0000000000000000d000000000000000, type: 0}
@@ -35,12 +36,37 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202592456498434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.111536, y: 9.417064, z: -0.30699676}
+  m_LocalPosition: {x: 1469.5992, y: 6.067322, z: -0.30699676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61232462702916984
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202592456498434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 500, y: 600}
+  m_EdgeRadius: 0
 --- !u!114 &114502891700547062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,13 +78,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb5f5a631dd02944842c9b7d7a2fa6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiTypeSpawn: 0
+  enemies: []
   enemy: {fileID: 1811349277448878, guid: 4ccb441af51938448a63f3bb12caa240, type: 2}
   enemyNumber: 1
   spawnAtStart: 1
   spawnDelayAtStart: 1
   spawnDelayBetweenEnemy: 1
-  enemyList: []
   startSpawning: 0
+  enemyList: []
+  endSpawn: 0
   spawnerState: 0
 --- !u!114 &114824339311486134
 MonoBehaviour:

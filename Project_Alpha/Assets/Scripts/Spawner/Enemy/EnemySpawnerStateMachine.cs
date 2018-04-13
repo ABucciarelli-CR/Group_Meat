@@ -217,6 +217,14 @@ public class EnemySpawnerStateMachine : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            isPlayerInside = false;
+        }
+    }
+
     IEnumerator Delay(float wait)
     {
         yield return new WaitForSeconds(wait);
