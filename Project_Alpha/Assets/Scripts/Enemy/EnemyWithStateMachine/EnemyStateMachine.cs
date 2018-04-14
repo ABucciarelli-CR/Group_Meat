@@ -82,7 +82,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public AudioClip[] atkClip;
     public AudioClip[] idleClip;
-
+    
     //[ReadOnly]
     public GameObject attackAnimation;
     
@@ -172,6 +172,7 @@ public class EnemyStateMachine : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         enemyState = EnemyState.idle;
         //Debug.Log(deadLayer.value);
+        waited = false;
     }
 
     void Update()
@@ -277,6 +278,11 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void Attack()
     {
+        if(!alreadyInAttack)
+        {
+            waited = false;
+            StartCoroutine(Wait(attackDelay));
+        }
         blink.DoBlink(enemyAttackColor, enemyOffenseStateStandardColor, 10, offenseState);
         //offenseStateSpriteRenderer.color = enemyAttackColor;
     }
@@ -291,10 +297,11 @@ public class EnemyStateMachine : MonoBehaviour
         //offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
         if (doPlayerDamage)
         {
+            /*
             if (!alreadyInAttack)
             {
                 StartCoroutine(Wait(attackDelay));
-            }
+            }*/
             enemyState = EnemyState.attack;
         }
     }

@@ -73,8 +73,6 @@ public class EnemyHound : EnemyStateMachine
 
     public override void Attack()
     {
-        base.Attack();
-        
         if (waited)
         {
             GameObject atk = Instantiate(attackAnimation, this.transform);
@@ -85,6 +83,8 @@ public class EnemyHound : EnemyStateMachine
             }
             waited = false;
         }
+
+        base.Attack();
 
         enemyState = EnemyState.idle;
     }

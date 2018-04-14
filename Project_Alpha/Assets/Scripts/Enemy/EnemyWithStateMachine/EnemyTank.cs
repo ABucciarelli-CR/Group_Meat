@@ -86,7 +86,7 @@ public class EnemyTank : EnemyStateMachine
                 player.SendMessage("Damage", damage);
                 shieldCollider.enabled = false;
                 player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-(Mathf.Sign(gameObject.transform.position.x - player.transform.position.x)) * 1000, 0), ForceMode2D.Impulse);
-                StartCoroutine(WaitToReactivateShieldCollider());
+                //StartCoroutine(WaitToReactivateShieldCollider());
             }
             waited = false;
         }

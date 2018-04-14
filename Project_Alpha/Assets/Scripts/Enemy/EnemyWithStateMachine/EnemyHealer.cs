@@ -136,7 +136,7 @@ public class EnemyHealer : EnemyStateMachine
         {
             player.SendMessage("Damage", damage);
             waited = false;
-            StartCoroutine(Wait(attackDelay));
+            //StartCoroutine(Wait(attackDelay));
         }
 
         enemyState = EnemyState.idle;

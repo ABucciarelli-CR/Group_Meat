@@ -90,18 +90,18 @@ public class EnemyArcher : EnemyStateMachine
 
     public override void Attack()
     {
-        base.Attack();
-
         //create and shoot arrow
         if(waited)
         {
             waited = false;
-            StartCoroutine(Wait(attackDelay));
+            //StartCoroutine(Wait(attackDelay));
             //creare successivamente la parabola della freccia
             GameObject arrow = Instantiate(arrowPrefab, arrowSpawn.transform.position, Quaternion.identity);
             arrow.SendMessage("AtkSet", damage);
 
         }
+
+        base.Attack();
 
         enemyState = EnemyState.idle;
     }
