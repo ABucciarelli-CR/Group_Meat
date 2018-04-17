@@ -32,6 +32,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
     //see summary in PlayerStateMachine.cs
     private int  normalAttack = 0;
     private int frenzyState = 1;
+    private int warcry = 2;
 
     // Use this for initialization
     void Start ()
@@ -103,6 +104,12 @@ public class PlayerControlsStateMachine : MonoBehaviour
         if (Input.GetButtonDown("Frenzy"))
         {
             stateMachine.playerAttack = frenzyState;
+            stateMachine.playerState = PlayerStateMachine.PlayerState.attack;
+        }
+
+        if (Input.GetButtonDown("Warcry"))
+        {
+            stateMachine.playerAttack = warcry;
             stateMachine.playerState = PlayerStateMachine.PlayerState.attack;
         }
     }

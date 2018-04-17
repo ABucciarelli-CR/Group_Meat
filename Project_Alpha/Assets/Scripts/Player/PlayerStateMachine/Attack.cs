@@ -27,6 +27,8 @@ public class Attack : MonoBehaviour
     public AudioSource audioSource;
     [ReadOnly]
     public GameObject attackAnimation;
+    [ReadOnly]
+    public GameObject frenzyAOECollider;
 
     [Title("Modifiche abilitate.")]
     [InfoBox("Valori standard")]
@@ -73,7 +75,8 @@ public class Attack : MonoBehaviour
     public enum AttackType
     {
         normalAttack,
-        frenzy
+        frenzy,
+        warcry
     }
 
     private void Awake()
@@ -144,6 +147,10 @@ public class Attack : MonoBehaviour
 
             case 1:
                 FrenzyState();
+                break;
+
+            case 2:
+                WarcryAOE();
                 break;
 
             default:
@@ -235,6 +242,11 @@ public class Attack : MonoBehaviour
         }
     }
 
+    private void WarcryAOE()
+    {
+        StartCoroutine(AOEDamaging());
+    }
+
     private void CreateAndActivateFrenzyPlaceholder()
     {
         frenziPlaceholder = Instantiate(frenzyAnimation, this.transform.position + new Vector3(0, 30, 0), Quaternion.identity, this.gameObject.transform);
@@ -251,6 +263,13 @@ public class Attack : MonoBehaviour
         CreateAndActivateFrenzyPlaceholder();
         frenziPlaceholder.SendMessage("Loop"/*, startAndEnd*/);
         StartCoroutine(EndAbility(maxFrenzyTime));
+    }
+
+    IEnumerator AOEDamaging()
+    {
+        frenzyAOECollider.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        frenzyAOECollider.SetActive(false);
     }
 
     IEnumerator EndAbility(float sec)
