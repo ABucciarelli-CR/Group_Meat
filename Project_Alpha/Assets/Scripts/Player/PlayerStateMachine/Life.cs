@@ -17,6 +17,8 @@ public class Life : MonoBehaviour
     [ReadOnly]
     public Slider[] lifeBar;
     [ReadOnly]
+    public Slider[] secondLifeBar;
+    [ReadOnly]
     public Slider[] maxLifeBar;
     
     private bool waited = false;
@@ -29,6 +31,7 @@ public class Life : MonoBehaviour
     private Color playerOffenseStateDamagedColor;
 
     private GlobalVariables globalVariables;
+    private bool inDecrementation = false;
 
     // Use this for initialization
     void Awake()
@@ -45,16 +48,19 @@ public class Life : MonoBehaviour
         //Defining the starting life
         lifeBar[0].maxValue = maxLife;
         lifeBar[1].maxValue = maxLife;
+        secondLifeBar[0].maxValue = maxLife;
+        secondLifeBar[1].maxValue = maxLife;
         maxLifeBar[0].maxValue = maxLife;
         maxLifeBar[1].maxValue = maxLife;
 
         lifeBar[0].value = startLife;
         lifeBar[1].value = startLife;
+        secondLifeBar[0].value = startLife;
+        secondLifeBar[1].value = startLife;
         maxLifeBar[0].value = startLife;
         maxLifeBar[1].value = startLife;
 
         actualLife = startLife;
-
     }
 
     public void Damage(int dmg)
@@ -124,12 +130,30 @@ public class Life : MonoBehaviour
             ResetGlobalVariables();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if(secondLifeBar[0].value > lifeBar[0].value)
+        {
+            if(!inDecrementation)
+            {
+                inDecrementation = true;
+                StartCoroutine(GraduallyDecrementLife());
+            }
+        }
     }
 
     private void ResetGlobalVariables()
     {
         //globalVariables.enemyDead = 0;
         //globalVariables.closeDoor = false;
+    }
+
+    IEnumerator GraduallyDecrementLife()
+    {
+        for(;secondLifeBar[0].value > lifeBar[0].value; secondLifeBar[0].value -= 1.5f)
+        {
+            yield return new WaitForSeconds(.1f);
+        }
+        inDecrementation = false;
     }
 
     IEnumerator Wait()
