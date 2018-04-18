@@ -47,6 +47,7 @@ public class EnemyHealer : EnemyStateMachine
         gameManager = GameObject.Find("GameManager");
         disappearingPlatform = GameObject.Find("DisapperingFloor"); ;
         StartCoroutine(WaitForSpawn(5f));
+        StartCoroutine(Wait(healDelay));
         //hitColliders = new Collider2D[maxArray];
     }
 
@@ -145,9 +146,10 @@ public class EnemyHealer : EnemyStateMachine
     public override void Healing()
     {
         base.Healing();
-        
+
         if (waited)
         {
+            //Debug.Log("Healing Madaffukka!");
             foreach (GameObject thisEnemy in gameManager.GetComponent<EnemyManager>().enemy)
             {
                 //Debug.Log("Healing: " + thisEnemy.name);

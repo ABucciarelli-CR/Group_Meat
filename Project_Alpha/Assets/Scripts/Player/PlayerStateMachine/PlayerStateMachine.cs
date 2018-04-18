@@ -473,13 +473,13 @@ public class PlayerStateMachine : MonoBehaviour
     private void QTEButtonLeftIsDown(float button)
     {
         QTEButtonLeft = button;
-        Debug.Log("LEFT " + button);
+        //Debug.Log("LEFT " + button);
     }
 
     private void QTEButtonRightIsDown(float button)
     {
         QTEButtonRight = button;
-        Debug.Log("RIGHT " + button);
+        //Debug.Log("RIGHT " + button);
     }
 
     private void EnableDisableQTEIcon(bool enableDisable)

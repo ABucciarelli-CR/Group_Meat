@@ -81,6 +81,7 @@ public class EnemyStateMachine : MonoBehaviour
     public Color enemyIsOnAttack;
 
     public AudioClip[] atkClip;
+    public AudioClip[] healClip;
     public AudioClip[] idleClip;
     
     //[ReadOnly]
@@ -289,7 +290,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void Healing()
     {
-
     }
 
     public virtual void SearchPlayer()

@@ -302,6 +302,7 @@ MonoBehaviour:
   ttcd: 0
   doPlayerDamage: 0
   facingRight: 0
+  dontResetFlipCountdown: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 20
@@ -344,11 +345,14 @@ MonoBehaviour:
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   atkClip:
   - {fileID: 8300000, guid: cc3f4ab3facc7684fb225bd9c1b8c36a, type: 3}
+  healClip:
+  - {fileID: 8300000, guid: cc3f4ab3facc7684fb225bd9c1b8c36a, type: 3}
   idleClip: []
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
   instantiateOnlyOne: 0
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
+  callForTheEnd: 0
   flipDelay: 0.1
   healerDamage: 5
   healerHeal: 15
