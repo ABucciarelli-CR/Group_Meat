@@ -19,6 +19,8 @@ public class EnemyStateMachine : MonoBehaviour
     public float attackDelay;
     [ReadOnly]
     public float healDelay;
+
+    public int TimeCanDeath = 2;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public float direction = 1;
     [HideInInspector] public float timeToChangeDirection = 5f;
@@ -182,6 +184,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (enemyHealth.health <= 0 && onlyOneDeath)
         {
             onlyOneDeath = false;
+            CheckIfCanStunAnotherTime();
             enemyState = EnemyState.stun;
         }
 
@@ -290,6 +293,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public virtual void Healing()
     {
+
     }
 
     public virtual void SearchPlayer()
@@ -393,6 +397,19 @@ public class EnemyStateMachine : MonoBehaviour
     {
         instantiateOnlyOne = false;
         stun.SetActive(false);
+    }
+
+    public void CheckIfCanStunAnotherTime()
+    {
+        if(TimeCanDeath <= 0)
+        {
+            //DeathAnimation------------------------------------------------------------------------------------------------------------------
+            Destroy(gameObject);
+        }
+        else
+        {
+            TimeCanDeath -= 1;
+        }
     }
 
     public virtual IEnumerator WaitBeforeFlip(float time, float timeBeforeStop)

@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
 
     public LayerMask playerAndShieldsLayerMask;
 
+    public int maxDead = 2;
+
     private float maxDistance;
     //private float minDepth;
     //private float maxDepth;
