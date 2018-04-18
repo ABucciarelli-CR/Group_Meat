@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 4235922149452398}
   - component: {fileID: 61000876573311042}
   - component: {fileID: 114303800225281382}
-  m_Layer: 13
+  m_Layer: 20
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
