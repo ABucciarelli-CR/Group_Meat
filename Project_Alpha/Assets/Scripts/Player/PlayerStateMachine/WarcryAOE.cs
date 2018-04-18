@@ -8,7 +8,7 @@ public class WarcryAOE : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "enemy")
+        if(collision.tag == "Enemy")
         {
             collision.SendMessage("Damage", doMassiveDamage);
         }
@@ -16,7 +16,7 @@ public class WarcryAOE : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "enemy")
+        if (collision.tag == "Enemy")
         {
             collision.SendMessage("Damage", doMassiveDamage);
         }

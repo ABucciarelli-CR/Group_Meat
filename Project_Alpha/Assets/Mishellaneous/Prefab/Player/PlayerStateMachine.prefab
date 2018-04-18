@@ -476,13 +476,13 @@ GameObject:
   - component: {fileID: 4417582037683390}
   - component: {fileID: 58035590970050642}
   - component: {fileID: 114699482464469890}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: WarcryAOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1596613996653086
 GameObject:
   m_ObjectHideFlags: 1
@@ -941,7 +941,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1238,6 +1238,7 @@ MonoBehaviour:
   audioSource: {fileID: 82090149285757014}
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
+  frenzyAOECollider: {fileID: 1563070854386040}
   standardDamage: 20
   healForDamage: 6
   maxHealthConsume: 10
