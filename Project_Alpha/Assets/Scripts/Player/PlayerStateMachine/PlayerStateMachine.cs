@@ -23,15 +23,24 @@ public class PlayerStateMachine : MonoBehaviour
     //playerValue
     [Title("Variabili base del player.")]
     public bool airControl = true;
-    public bool abilitateTimeForQuickTimeEvent = true;
     public int lifeIncrement = 25;
     public int lifeHealWhenEat = 20;
-    public int clickForEat = 4;
     public float dashSpeed = 500f;
     public float jumpForce = 20000f;
     public float moveForce = 10f;
-    public float QTETime = 5f;
     
+    [Title("variabili del QTE per magnà.")]
+    public bool abilitataClickMode = true;//se abilitata si clicca, altrimenti i dorsali vanno tenuti premuti
+    [EnableIf("abilitataClickMode")]
+    public bool abilitateTimeForQuickTimeEvent = true;
+    [EnableIf("abilitataClickMode")]
+    public int clickForEat = 4;
+    [EnableIf("abilitataClickMode")]
+    public float QTETime = 5f;
+    [DisableIf("abilitataClickMode")]
+    public float pressedTime = 5f;
+    private float timeWasPressed = 0f;
+
     [Title("Audio del player.")]
     public AudioClip jump;
     public AudioClip walk;
@@ -70,7 +79,7 @@ public class PlayerStateMachine : MonoBehaviour
     //private bool QTEButtonRight = false;
     private float QTEButtonLeft;
     private float QTEButtonRight;
-    private float QTEIsPressedForFloat = .8f;
+    private float QTEIsPressedForFloat = .5f;
 
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
@@ -115,6 +124,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Awake()
     {
+        timeWasPressed = pressedTime;
         anim = GetComponent<Animator>();
         life = GetComponent<Life>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -177,7 +187,15 @@ public class PlayerStateMachine : MonoBehaviour
     {
         //Debug.Log("CD" + eatCountdown);
 
-        textCountdownQTE.text = eatCountdown.ToString();
+        if(abilitataClickMode)
+        {
+            textCountdownQTE.text = eatCountdown.ToString();
+        }
+        else
+        {
+            textCountdownQTE.text = (Mathf.Round(timeWasPressed * 100) / 100).ToString();
+        }
+        
 
         if (CheckIfAnyoneDead())
         {
@@ -186,6 +204,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
         else
         {
+            timeWasPressed = pressedTime;
             eatCountdown = clickForEat;
             EnableDisableQTEIcon(false);
         }
@@ -351,41 +370,60 @@ public class PlayerStateMachine : MonoBehaviour
             StartCoroutine(TimeForQuickTime());
         }*/
         //if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
-        if (QTEButtonRight < QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
+
+        if(abilitataClickMode)
         {
-            QTEButtonAlreadyDown = true;
-            eatCountdown--;
-            if(eatCountdown <= 0)
+            //modalità a click
+            if (QTEButtonRight < QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
             {
-                eatCountdown = clickForEat;
-                //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
-                if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
+                QTEButtonAlreadyDown = true;
+                eatCountdown--;
+                if (eatCountdown <= 0)
                 {
-                    EatEnemy();
-                    //StopCoroutine(TimeForQuickTime());
-                    QTEOnlyone = true;
+                    eatCountdown = clickForEat;
+                    //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                    if (abilitateTimeForQuickTimeEvent && QTEOnlyone)
+                    {
+                        EatEnemy();
+                        //StopCoroutine(TimeForQuickTime());
+                        QTEOnlyone = true;
+                    }
+                    else
+                    {
+                        EatEnemy();
+                    }
                 }
-                else
+
+            }
+
+            if (QTEButtonAlreadyDown && QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
+            {
+                QTEButtonAlreadyDown = false;
+            }
+            //}
+            /*
+            else
+            {
+                StopCoroutine(TimeForQuickTime());
+                playerState = PlayerState.idle;
+                EnableDisableQTEIcon(false);
+                QTEOnlyone = true;
+            }*/
+        }
+        else
+        {
+            Debug.Log("right button: " + QTEButtonRight);
+            Debug.Log("left button: " + QTEButtonLeft);
+            if (QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
+            {
+                timeWasPressed -= Time.deltaTime;
+                if (timeWasPressed <= 0)
                 {
+                    timeWasPressed = pressedTime;
                     EatEnemy();
                 }
             }
-                
         }
-
-        if(QTEButtonAlreadyDown && QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
-        {
-            QTEButtonAlreadyDown = false;
-        }
-        //}
-        /*
-        else
-        {
-            StopCoroutine(TimeForQuickTime());
-            playerState = PlayerState.idle;
-            EnableDisableQTEIcon(false);
-            QTEOnlyone = true;
-        }*/
     }
 
     ///////////////////////////
