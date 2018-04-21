@@ -92,6 +92,5 @@ public class CheckArenaEnemyEnd : MonoBehaviour
             //globalVariables.enemyDead = 0;
             //enemyCountDown = 0;
         }
-
 	}
 }

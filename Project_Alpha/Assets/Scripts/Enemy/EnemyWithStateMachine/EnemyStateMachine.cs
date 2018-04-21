@@ -29,6 +29,7 @@ public class EnemyStateMachine : MonoBehaviour
     //[ReadOnly]
     public bool facingRight = false;
     public bool dontResetFlipCountdown = false;
+    private bool arrivedToThePoint = false;
     /*[HideInInspector]*/
 
     [ReadOnly]
@@ -245,6 +246,11 @@ public class EnemyStateMachine : MonoBehaviour
             }
         }
 
+        if(!arrivedToThePoint)
+        {
+            MoveToThePoint();
+        }
+
         switch (enemyState)
         {
             case EnemyState.idle:
@@ -304,7 +310,6 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual void SearchPlayer()
     {
         //offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
-        MoveToThePoint();
         if (doPlayerDamage)
         {
             /*
@@ -420,9 +425,25 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void MoveToThePoint()
     {
-        direction = gameObject.transform.position.x - pointGoto.transform.position.x;
+        if(IsNear(gameObject.transform.position.x, pointGoto.transform.position.x))
+        {
+            direction = gameObject.transform.position.x - pointGoto.transform.position.x;
 
-        rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
+        }
+    }
+
+    public bool IsNear(float point1, float point2)
+    {
+        if(Mathf.Abs(point1 - point2) > 50)
+        {
+            return true;
+        }
+        else
+        {
+            arrivedToThePoint = true;
+            return false;
+        }
     }
 
     public virtual IEnumerator WaitBeforeFlip(float time, float timeBeforeStop)

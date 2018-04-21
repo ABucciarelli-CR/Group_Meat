@@ -159,7 +159,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4723973966108560, guid: ade81885b923d75469185596548a92ee, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 61240788332093838, guid: ade81885b923d75469185596548a92ee,
         type: 2}
@@ -436,7 +436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
@@ -861,7 +861,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4429737013254770, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
@@ -1090,61 +1090,6 @@ MonoBehaviour:
   dialogs:
   - {fileID: 1600644347}
   activeItself: 0
---- !u!1001 &1225346798
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1794.022
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 184.42511
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.30699676
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007564877038534, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1202592456498434, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4122652910431930, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1400
-      objectReference: {fileID: 0}
-    - target: {fileID: 114502891700547062, guid: e21ee40078f5deb42bd94ae81ae2a635,
-        type: 2}
-      propertyPath: startSpawning
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e21ee40078f5deb42bd94ae81ae2a635, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1332762300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4386045684384030, guid: ff2c7f3e2fcad2444a6ac538f0a1d395, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4430984407029236, guid: ff2c7f3e2fcad2444a6ac538f0a1d395, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1746,7 +1691,7 @@ RectTransform:
   m_Children:
   - {fileID: 343921838}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
