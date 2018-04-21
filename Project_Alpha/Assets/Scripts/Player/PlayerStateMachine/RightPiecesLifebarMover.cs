@@ -14,14 +14,14 @@ public class RightPiecesLifebarMover : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        startingPosition = gameObject.transform.position;
+        startingPosition = gameObject.transform.localPosition;
     }
     // * realHealth.value
     // Update is called once per frame
     void Update ()
     {
         float toUnit = ((1 / realHealth.maxValue) * realHealth.value);
-        Debug.Log((startLifebarPoint.transform.position.x - startingPosition.x) * toUnit);
-        gameObject.transform.position = new Vector2((startLifebarPoint.transform.position.x - startingPosition.x) * toUnit, gameObject.transform.position.y);
+        Debug.Log((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit);
+        gameObject.transform.localPosition = new Vector2((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit, gameObject.transform.localPosition.y);
 	}
 }
