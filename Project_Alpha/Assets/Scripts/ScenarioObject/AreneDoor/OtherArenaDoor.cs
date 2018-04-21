@@ -6,12 +6,12 @@ public class OtherArenaDoor : MonoBehaviour
 {
 
 	public GameObject phisicalDoor;
+    public bool becomeVisible = true;
+    //private GlobalVariables globalVariables;
 
-	//private GlobalVariables globalVariables;
 
-
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
 	{
 		//globalVariables = GameObject.Find("GameManager").GetComponent<GlobalVariables> ();
 
@@ -34,5 +34,9 @@ public class OtherArenaDoor : MonoBehaviour
     private void CloseAndOpen(bool activation)
     {
         phisicalDoor.SetActive(activation);
+        if (!becomeVisible)
+        {
+            phisicalDoor.GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 }

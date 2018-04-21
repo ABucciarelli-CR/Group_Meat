@@ -21,7 +21,7 @@ public class RightPiecesLifebarMover : MonoBehaviour
     void Update ()
     {
         float toUnit = ((1 / realHealth.maxValue) * realHealth.value);
-        Debug.Log((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit);
+        //Debug.Log((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit);
         gameObject.transform.localPosition = new Vector2((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit, gameObject.transform.localPosition.y);
 	}
 }

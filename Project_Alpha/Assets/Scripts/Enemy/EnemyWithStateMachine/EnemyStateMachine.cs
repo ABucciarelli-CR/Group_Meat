@@ -283,7 +283,6 @@ public class EnemyStateMachine : MonoBehaviour
         {
             spriteRenderer.color = enemyStandardColor;
         }*/
-        MoveToThePoint();
     }
 
     public virtual void Attack()
@@ -305,6 +304,7 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual void SearchPlayer()
     {
         //offenseStateSpriteRenderer.color = enemyOffenseStateStandardColor;
+        MoveToThePoint();
         if (doPlayerDamage)
         {
             /*
