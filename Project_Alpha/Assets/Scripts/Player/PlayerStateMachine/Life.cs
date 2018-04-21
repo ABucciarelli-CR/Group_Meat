@@ -20,6 +20,8 @@ public class Life : MonoBehaviour
     public Slider[] secondLifeBar;
     [ReadOnly]
     public Slider[] maxLifeBar;
+    [ReadOnly]
+    public GameObject rightSideHealthbar;
     
     private bool waited = false;
     [ReadOnly]
@@ -86,6 +88,7 @@ public class Life : MonoBehaviour
 
     public void IncrementLife(int increment)
     {
+        rightSideHealthbar.GetComponent<RightPiecesLifebarMover>().SpawnTheBloodyXplosion();
         maxLifeBar[0].value += increment;
         maxLifeBar[1].value += increment;
     }

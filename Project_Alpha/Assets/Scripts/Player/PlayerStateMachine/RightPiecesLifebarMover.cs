@@ -9,6 +9,7 @@ public class RightPiecesLifebarMover : MonoBehaviour
 {
     public Slider realHealth;
     public GameObject startLifebarPoint;
+    public GameObject bloodExplosion;
     private Vector3 startingPosition;
 
 	// Use this for initialization
@@ -24,4 +25,10 @@ public class RightPiecesLifebarMover : MonoBehaviour
         //Debug.Log((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit);
         gameObject.transform.localPosition = new Vector2((startingPosition.x - startLifebarPoint.transform.localPosition.x) * toUnit, gameObject.transform.localPosition.y);
 	}
+
+    public void SpawnTheBloodyXplosion()
+    {
+        gameObject.GetComponent<TheAnimator>().enabled = true;
+        //Instantiate(bloodExplosion, gameObject.transform);
+    }
 }

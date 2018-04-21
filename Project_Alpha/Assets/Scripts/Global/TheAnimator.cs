@@ -17,6 +17,7 @@ public class TheAnimator : MonoBehaviour
     public bool loop = false;
     public bool ignorePause = false;
     public bool useImage = false;
+    public bool deactivate = false;
     public bool randomFramerate = false;
     [EnableIf("randomFramerate")]
     public float fpsMax = 10;
@@ -92,9 +93,13 @@ public class TheAnimator : MonoBehaviour
             }
         }
 
-        if(destroy)
+        if(destroy && !deactivate)
         {
             Destroy(this.gameObject);
+        }
+        else if (destroy && deactivate)
+        {
+            gameObject.SetActive(false);
         }
 	}
 
