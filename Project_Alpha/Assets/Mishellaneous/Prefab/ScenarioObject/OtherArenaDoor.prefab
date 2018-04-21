@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4324102736776598}
   - component: {fileID: 114778607883744636}
   - component: {fileID: 50561646426956704}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: OtherArenaDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

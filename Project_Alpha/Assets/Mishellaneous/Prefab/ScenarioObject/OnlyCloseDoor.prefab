@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4688411522636900}
   - component: {fileID: 50554356982167320}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: OnlyCloseDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4697610269943064}
   - component: {fileID: 212547798369725434}
   - component: {fileID: 61980455148896272}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: PhisicalDoor
   m_TagString: Ground
   m_Icon: {fileID: 0}

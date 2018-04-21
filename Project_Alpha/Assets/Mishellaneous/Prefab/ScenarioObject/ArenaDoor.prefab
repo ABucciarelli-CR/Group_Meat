@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114354605828882112}
   - component: {fileID: 114482794870638986}
   - component: {fileID: 50974318971810222}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: ArenaDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   thisDoorClosed: 0
+  isPlayer: 0
 --- !u!114 &114354605828882112
 MonoBehaviour:
   m_ObjectHideFlags: 1

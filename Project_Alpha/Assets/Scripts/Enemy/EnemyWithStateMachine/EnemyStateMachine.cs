@@ -86,8 +86,10 @@ public class EnemyStateMachine : MonoBehaviour
     public AudioClip[] healClip;
     public AudioClip[] idleClip;
     
-    //[ReadOnly]
+    [ReadOnly]
     public GameObject attackAnimation;
+
+    private GameObject pointGoto;
     
     private Color enemyStandardColor;
     private Color enemyAttackColor;
@@ -410,6 +412,13 @@ public class EnemyStateMachine : MonoBehaviour
         {
             TimeCanDeath -= 1;
         }
+    }
+
+    public void MoveToThePoint()
+    {
+        direction = gameObject.transform.position.x - pointGoto.transform.position.x;
+
+        rb2d.velocity = new Vector2(-Mathf.Sign(direction) * speed * 200, rb2d.velocity.y);
     }
 
     public virtual IEnumerator WaitBeforeFlip(float time, float timeBeforeStop)
