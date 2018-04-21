@@ -8,6 +8,7 @@ namespace TheArenaDoor
     {
         public GameObject phisicalDoor;
         public GameObject colliderWithPlayer;
+        public bool becomeVisible = true;
 
         private GlobalVariables globalVariables;
 
@@ -35,6 +36,10 @@ namespace TheArenaDoor
                 onlyOne = false;
                 //globalVariables.enemyDead = 0;
                 phisicalDoor.SetActive (true);
+                if(!becomeVisible)
+                {
+                    phisicalDoor.GetComponent<SpriteRenderer>().enabled = false;
+                }
 				colliderWithPlayer.SetActive (false);
             }
             /*

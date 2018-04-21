@@ -89,7 +89,7 @@ public class EnemyStateMachine : MonoBehaviour
     [ReadOnly]
     public GameObject attackAnimation;
 
-    private GameObject pointGoto;
+    [HideInInspector]public GameObject pointGoto;
     
     private Color enemyStandardColor;
     private Color enemyAttackColor;
@@ -160,6 +160,10 @@ public class EnemyStateMachine : MonoBehaviour
 
         rb2d = gameObject.GetComponent<Rigidbody2D>();
 
+        if(pointGoto == null)
+        {
+            pointGoto = gameObject;
+        }
         //stun.SetActive(false);
         //search the stun gameobject
         /*
@@ -279,7 +283,7 @@ public class EnemyStateMachine : MonoBehaviour
         {
             spriteRenderer.color = enemyStandardColor;
         }*/
-        
+        MoveToThePoint();
     }
 
     public virtual void Attack()

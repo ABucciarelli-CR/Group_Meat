@@ -31,6 +31,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     [ReadOnly]
     public List<GameObject> enemyList;
     /*[HideInInspector] */public bool endSpawn = false;
+    public GameObject pointToGo;
 
     private GlobalVariables globalVariables;
 
@@ -97,6 +98,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             }
 
             GameObject _enemy = Instantiate(thisEnemy, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            _enemy.GetComponent<EnemyStateMachine>().pointGoto = pointToGo;
             enemyList.Add(_enemy);
             if (AddEnemyAtExternal)
             {

@@ -6,6 +6,7 @@ public class OnlyCloseDoor : MonoBehaviour
 {
     public GameObject door;
     public LayerMask playerLayerMask;
+    public bool becomeVisible = true;
     public bool thisDoorClosed = false;
     
     private RaycastHit2D hitRight;
@@ -30,6 +31,10 @@ public class OnlyCloseDoor : MonoBehaviour
             if (hitRight.collider.CompareTag("Player"))
             {
                 door.SetActive(true);
+                if (!becomeVisible)
+                {
+                    door.GetComponent<SpriteRenderer>().enabled = false;
+                }
                 gameObject.SetActive(false);
             }
         }
@@ -40,6 +45,10 @@ public class OnlyCloseDoor : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             door.SetActive(true);
+            if (!becomeVisible)
+            {
+                door.GetComponent<SpriteRenderer>().enabled = false;
+            }
             gameObject.SetActive(false);
         }
     }
