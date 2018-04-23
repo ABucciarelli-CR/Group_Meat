@@ -28,7 +28,8 @@ public class RightPiecesLifebarMover : MonoBehaviour
 
     public void SpawnTheBloodyXplosion()
     {
-        gameObject.GetComponent<TheAnimator>().enabled = true;
+        bloodExplosion.SetActive(true);
+        //gameObject.GetComponent<TheAnimator>().enabled = true;
         //Instantiate(bloodExplosion, gameObject.transform);
     }
 }

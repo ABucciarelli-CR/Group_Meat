@@ -412,8 +412,8 @@ public class PlayerStateMachine : MonoBehaviour
         }
         else
         {
-            Debug.Log("right button: " + QTEButtonRight);
-            Debug.Log("left button: " + QTEButtonLeft);
+            //Debug.Log("right button: " + QTEButtonRight);
+            //Debug.Log("left button: " + QTEButtonLeft);
             if (QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
             {
                 timeWasPressed -= Time.deltaTime;

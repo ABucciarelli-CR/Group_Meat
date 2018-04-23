@@ -152,9 +152,11 @@ public class Life : MonoBehaviour
 
     IEnumerator GraduallyDecrementLife()
     {
+        float incrementItself = .1f;
         for(;secondLifeBar[0].value > lifeBar[0].value; secondLifeBar[0].value -= 1.5f)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(incrementItself);
+            incrementItself -= incrementItself / 3;
         }
         inDecrementation = false;
     }

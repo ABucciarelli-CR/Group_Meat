@@ -99,6 +99,10 @@ public class TheAnimator : MonoBehaviour
         }
         else if (destroy && deactivate)
         {
+            //Debug.Log("Deactivation_____________________");
+            //Debug.Log("Frame: " + frame);
+            frame = 0;
+            destroy = false;
             gameObject.SetActive(false);
         }
 	}
