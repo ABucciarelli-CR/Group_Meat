@@ -75,10 +75,9 @@ public class EnemyTank : EnemyStateMachine
 
     public override void Attack()
     {
-        base.Attack();
-
         if (waited)
         {
+            Debug.Log("Attack");
             GameObject atk = Instantiate(attackAnimation, this.transform);
             atk.transform.localScale = new Vector2((atk.transform.localScale.x * 10) / 2, (atk.transform.localScale.y * 10) / 2);
             if (doPlayerDamage)
@@ -90,11 +89,14 @@ public class EnemyTank : EnemyStateMachine
             }
             waited = false;
         }
-
+        
         if (!alreadyInAttack)
         {
+            Debug.Log("Attack2");
             enemyState = EnemyState.searchPlayer;
         }
+
+        base.Attack();
     }
 
     public override void SearchPlayer()

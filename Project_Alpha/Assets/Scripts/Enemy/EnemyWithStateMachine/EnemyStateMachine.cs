@@ -358,33 +358,36 @@ public class EnemyStateMachine : MonoBehaviour
     public virtual void CheckForFlip()
     {
         //il nemico si gira verso il player
-        if (!callAlreadyCheckTheFlip)
+        if (enemyState != EnemyState.stun)
         {
-            if (player.transform.position.x < this.transform.position.x && facingRight)
+            if (!callAlreadyCheckTheFlip)
             {
-                callAlreadyCheckTheFlip = true;
-                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip, timeBeforeStoppedCoroutine));
+                if (player.transform.position.x < this.transform.position.x && facingRight)
+                {
+                    callAlreadyCheckTheFlip = true;
+                    coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip, timeBeforeStoppedCoroutine));
+                }
+                if (player.transform.position.x > this.transform.position.x && !facingRight)
+                {
+                    callAlreadyCheckTheFlip = true;
+                    coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip, timeBeforeStoppedCoroutine));
+                }
             }
-            if (player.transform.position.x > this.transform.position.x && !facingRight)
-            {
-                callAlreadyCheckTheFlip = true;
-                coroutine = StartCoroutine(WaitBeforeFlip(waitTimeBeforeFlip, timeBeforeStoppedCoroutine));
-            }
-        }
 
-        if(coroutine != null)
-        {
-            if (player.transform.position.x < this.transform.position.x && !facingRight)
+            if (coroutine != null)
             {
-                StopCoroutine(coroutine);
-                callAlreadyCheckTheFlip = false;
-                coroutine = null;
-            }
-            if (player.transform.position.x > this.transform.position.x && facingRight)
-            {
-                StopCoroutine(coroutine);
-                callAlreadyCheckTheFlip = false;
-                coroutine = null;
+                if (player.transform.position.x < this.transform.position.x && !facingRight)
+                {
+                    StopCoroutine(coroutine);
+                    callAlreadyCheckTheFlip = false;
+                    coroutine = null;
+                }
+                if (player.transform.position.x > this.transform.position.x && facingRight)
+                {
+                    StopCoroutine(coroutine);
+                    callAlreadyCheckTheFlip = false;
+                    coroutine = null;
+                }
             }
         }
     }
@@ -457,16 +460,9 @@ public class EnemyStateMachine : MonoBehaviour
         Flip();
     }
 
-    public virtual IEnumerator WaitTime(float time)
-    {
-        Debug.Log("waiting");
-        yield return new WaitForSeconds(time);
-        Debug.Log("stop waiting");
-    }
-
     public IEnumerator Wait(float sec)
     {
-        //Debug.Log("waiting");
+        Debug.Log("waiting");
         alreadyInAttack = true;
         if (atkClip.Length > 1)
         {
