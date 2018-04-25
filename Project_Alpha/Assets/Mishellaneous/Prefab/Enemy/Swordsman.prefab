@@ -481,7 +481,7 @@ MonoBehaviour:
   houndDamage: 50
   houndHealth: 120
   houndSpeed: 2
-  houndAttackDelay: 1.7
+  houndAttackDelay: 1
   maxAttackDistance: 4000
   maxVisibleDistance: 10000
   stunned: 50

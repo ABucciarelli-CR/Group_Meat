@@ -134,7 +134,7 @@ MonoBehaviour:
   spawnAtStart: 1
   spawnDelayAtStart: 1
   spawnDelayBetweenEnemy: 1
-  startSpawning: 1
+  startSpawning: 0
   enemyList: []
   endSpawn: 0
   pointToGo: {fileID: 1024481763306368}

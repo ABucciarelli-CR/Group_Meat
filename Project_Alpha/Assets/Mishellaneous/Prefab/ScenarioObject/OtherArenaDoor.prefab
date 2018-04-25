@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4246778516894380}
   - component: {fileID: 212013024506357730}
   - component: {fileID: 61368530109029738}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: PhisicalDoor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317205979708904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15418.368, y: -1981.73, z: 19.5}
+  m_LocalPosition: {x: 39754.56, y: -1070.8013, z: 19.5}
   m_LocalScale: {x: 500, y: 2000, z: 5}
   m_Children:
   - {fileID: 4246778516894380}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phisicalDoor: {fileID: 1553649252860918}
+  becomeVisible: 1
 --- !u!212 &212013024506357730
 SpriteRenderer:
   m_ObjectHideFlags: 1

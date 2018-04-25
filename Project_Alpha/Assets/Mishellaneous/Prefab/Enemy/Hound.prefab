@@ -429,6 +429,7 @@ MonoBehaviour:
   ttcd: 0
   doPlayerDamage: 0
   facingRight: 0
+  dontResetFlipCountdown: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 20
@@ -479,9 +480,10 @@ MonoBehaviour:
   houndDamage: 40
   houndHealth: 60
   houndSpeed: 3
-  houndAttackDelay: 1.3
+  houndAttackDelay: 0.75
   maxAttackDistance: 2000
   maxVisibleDistance: 10000
+  stunned: 50
   attackCollider: {fileID: 1141315643346728}
   visibleDistanceCollider: {fileID: 1916724179839626}
 --- !u!212 &212506096533325686
