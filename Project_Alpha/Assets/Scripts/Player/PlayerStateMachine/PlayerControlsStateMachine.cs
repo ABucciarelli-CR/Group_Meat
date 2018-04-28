@@ -5,10 +5,21 @@ using UnityEngine;
 
 public class PlayerControlsStateMachine : MonoBehaviour
 {
+    /*States:
+     * 
+     * 0: IDLE
+     * 1: JUMP
+     * 2: ATTACK
+     * 3: DASH
+     * 
+     */
+
     [ReadOnly]
     public DashCount dashCount;
     [ReadOnly]
     public Life life;
+    [ReadOnly]
+    public Animator animator;
 
     [Title("in percentuale, la vita che vienet tolta al player se non ha dash disponibili")]
     public float dashHealthConsume = 5f;
@@ -37,6 +48,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        animator = GetComponent<Animator>();
         stateMachine = GetComponent<PlayerStateMachine>();
 	}
 	
@@ -116,7 +128,8 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
     private void Move()
     {
-        if(leftAndRightMovement != 0)
+        animator.SetFloat("Speed", gameObject.GetComponent<Rigidbody2D>().velocity.magnitude);
+        if (leftAndRightMovement != 0)
         {
             stateMachine.playerState = PlayerStateMachine.PlayerState.movement;
         }

@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681141103866890}
   - component: {fileID: 212461142799169446}
+  - component: {fileID: 95872490154687790}
   - component: {fileID: 114294193775306860}
   - component: {fileID: 114983930273971624}
   - component: {fileID: 114973157682605710}
@@ -133,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499659360003460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1931.0687, y: 164.80547, z: 0}
+  m_LocalPosition: {x: 28.728683, y: 69.1317, z: 0}
   m_LocalScale: {x: 0.1289136, y: 0.1289136, z: 0.1289136}
   m_Children:
   - {fileID: 4636723157443480}
@@ -325,6 +326,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95872490154687790
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499659360003460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114176169373472200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,6 +386,7 @@ MonoBehaviour:
   playerAndShieldsLayerMask:
     serializedVersion: 2
     m_Bits: 16384
+  maxDead: 2
 --- !u!114 &114380433473519270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +410,7 @@ MonoBehaviour:
   loop: 1
   ignorePause: 0
   useImage: 0
+  deactivate: 0
   randomFramerate: 0
   fpsMax: 10
 --- !u!114 &114973157682605710
@@ -423,6 +443,7 @@ MonoBehaviour:
   damage: 0
   attackDelay: 0
   healDelay: 0
+  TimeCanDeath: 2
   movement: {x: 0, y: 0}
   direction: 1
   timeToChangeDirection: 5
@@ -472,9 +493,11 @@ MonoBehaviour:
   enemyIsOnAttack: {r: 0, g: 0, b: 0, a: 0}
   atkClip:
   - {fileID: 8300000, guid: de76a28e7fbcafa48a1f1ea063c80ff8, type: 3}
+  healClip: []
   idleClip: []
   attackAnimation: {fileID: 1795370632868728, guid: b699a892f0baf484fa64864ece9725dc,
     type: 2}
+  pointGoto: {fileID: 0}
   instantiateOnlyOne: 0
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   flipDelay: 0.1

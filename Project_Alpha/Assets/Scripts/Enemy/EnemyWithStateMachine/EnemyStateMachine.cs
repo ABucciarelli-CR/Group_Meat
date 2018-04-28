@@ -2,12 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ *STATES:
+ * 
+ * 0:IDLE
+ * 1:ATTACK
+ * 2:HEAL
+ * 3:SEARCH-PLAYER
+ * 4:ESCAPE
+ * 5:STUN
+*/
 [RequireComponent(typeof(Blink))]
 public class EnemyStateMachine : MonoBehaviour
 {
+    [HideInInspector] public Animator animator;
     [HideInInspector] public EnemyState enemyState;
-    /*[HideInInspector]*/public GameObject stun;
+    /*[HideInInspector]*/
+    public GameObject stun;
 
 
     [Title("ReadOnly, modifiche disabilitate.")]
@@ -141,6 +152,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         //offenseState = offenseState.GetComponent<GameObject>();
         gameManager = GameObject.Find("GameManager");
         player = GameObject.FindWithTag("Player");
@@ -254,10 +266,14 @@ public class EnemyStateMachine : MonoBehaviour
         switch (enemyState)
         {
             case EnemyState.idle:
+                Debug.Log("state 0");
+                animator.SetInteger("State", 0);
                 Idle();
                 break;
 
             case EnemyState.attack:
+                Debug.Log("state 1");
+                animator.SetInteger("State", 1);
                 Attack();
                 break;
 
@@ -469,7 +485,8 @@ public class EnemyStateMachine : MonoBehaviour
             gameObject.GetComponent<AudioSource>().clip = atkClip[1];
             gameObject.GetComponent<AudioSource>().Play();
         }
-        yield return new WaitForSeconds(sec);
+        //yield return new WaitForSeconds(sec);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         if (atkClip.Length > 0)
         {
             gameObject.GetComponent<AudioSource>().clip = atkClip[0];
