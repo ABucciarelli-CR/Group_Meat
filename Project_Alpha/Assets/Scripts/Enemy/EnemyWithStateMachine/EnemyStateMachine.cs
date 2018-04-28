@@ -11,6 +11,7 @@ using UnityEngine;
  * 3:SEARCH-PLAYER
  * 4:ESCAPE
  * 5:STUN
+ * 
 */
 [RequireComponent(typeof(Blink))]
 public class EnemyStateMachine : MonoBehaviour
@@ -266,13 +267,11 @@ public class EnemyStateMachine : MonoBehaviour
         switch (enemyState)
         {
             case EnemyState.idle:
-                Debug.Log("state 0");
                 animator.SetInteger("State", 0);
                 Idle();
                 break;
 
             case EnemyState.attack:
-                Debug.Log("state 1");
                 animator.SetInteger("State", 1);
                 Attack();
                 break;

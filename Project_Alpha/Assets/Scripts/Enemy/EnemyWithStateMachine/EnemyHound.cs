@@ -73,7 +73,7 @@ public class EnemyHound : EnemyStateMachine
 
     public override void Attack()
     {
-        if (waited)
+        /*if (waited)
         {
             GameObject atk = Instantiate(attackAnimation, this.transform);
             atk.transform.localScale = new Vector2((atk.transform.localScale.x * 10) / 2, (atk.transform.localScale.y * 10) / 2);
@@ -82,7 +82,7 @@ public class EnemyHound : EnemyStateMachine
                 player.SendMessage("Damage", damage);
             }
             waited = false;
-        }
+        }*/
 
         base.Attack();
 
