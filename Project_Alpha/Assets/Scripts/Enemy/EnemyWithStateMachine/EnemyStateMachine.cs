@@ -154,9 +154,9 @@ public class EnemyStateMachine : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        player = GameObject.FindWithTag("Player");
         //offenseState = offenseState.GetComponent<GameObject>();
         gameManager = GameObject.Find("GameManager");
-        player = GameObject.FindWithTag("Player");
         gameManager.GetComponent<EnemyManager>().Add(this.gameObject);
         enemyStandardColor = Color.white;
         enemyAttackColor = new Color(1f, 0.3f, 0f);

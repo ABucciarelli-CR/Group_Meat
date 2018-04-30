@@ -5,7 +5,14 @@ using UnityEngine;
 public class EndAttack : StateMachineBehaviour
 {
     public GameObject player;
-    public GameObject enemy;
+    public float damage;
+    //public GameObject enemy;
+
+    private void Awake()
+    {
+        player = GameObject.Find("PlayerStateMachine");
+    }
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
     //
@@ -23,7 +30,7 @@ public class EndAttack : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        player.SendMessage("Damage", enemy.GetComponent<EnemyStateMachine>().damage);
+        player.SendMessage("Damage", damage);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
@@ -35,4 +42,18 @@ public class EndAttack : StateMachineBehaviour
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
     //
     //}
+}
+
+public class AcquisizioneCoseNonNormalmenteAcquisibili : MonoBehaviour
+{
+    private void Start()
+    {
+        Debug.Log("debuggoLoggo" + gameObject.GetComponent<EndAttack>().player.GetComponent<EnemyHound>().damage);
+        gameObject.GetComponent<EndAttack>().damage = gameObject.GetComponent<EndAttack>().player.GetComponent<EnemyHound>().damage;
+    }
+
+    private void Update()
+    {
+        Debug.Log("debuggoLoggohhhhhhhhhhhhh");
+    }
 }

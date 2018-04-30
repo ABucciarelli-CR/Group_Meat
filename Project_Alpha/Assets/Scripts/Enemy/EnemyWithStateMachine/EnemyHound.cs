@@ -34,7 +34,8 @@ public class EnemyHound : EnemyStateMachine
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
         visibleDistanceCollider.GetComponent<CircleCollider2D>().radius = maxVisibleDistance;
-
+        animator = gameObject.GetComponent<Animator>();
+        //animator.GetComponent<EndAttack>().damage = damage;
         //hitColliders = new Collider2D[maxArray];
     }
     

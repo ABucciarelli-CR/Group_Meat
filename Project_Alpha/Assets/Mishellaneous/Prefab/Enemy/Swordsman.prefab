@@ -335,7 +335,7 @@ Animator:
   m_GameObject: {fileID: 1499659360003460}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c92ee82e8dafaa46b9ebc11d02e5bac, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e230000ee22461d44bc9810d67a60f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   enemyState: 0
   stun: {fileID: 1841621777264310}
   speed: 1.6
