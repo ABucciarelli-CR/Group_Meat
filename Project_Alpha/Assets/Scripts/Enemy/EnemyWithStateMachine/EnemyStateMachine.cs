@@ -267,12 +267,18 @@ public class EnemyStateMachine : MonoBehaviour
         switch (enemyState)
         {
             case EnemyState.idle:
-                animator.SetInteger("State", 0);
+                if(animator != null)
+                {
+                    animator.SetInteger("State", 0);
+                }
                 Idle();
                 break;
 
             case EnemyState.attack:
-                animator.SetInteger("State", 1);
+                if(animator != null)
+                {
+                    animator.SetInteger("State", 1);
+                }
                 Attack();
                 break;
 
@@ -484,8 +490,15 @@ public class EnemyStateMachine : MonoBehaviour
             gameObject.GetComponent<AudioSource>().clip = atkClip[1];
             gameObject.GetComponent<AudioSource>().Play();
         }
-        //yield return new WaitForSeconds(sec);
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        
+        if(animator == null)
+        {
+            yield return new WaitForSeconds(sec);
+        }
+        else
+        {
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        }
         if (atkClip.Length > 0)
         {
             gameObject.GetComponent<AudioSource>().clip = atkClip[0];

@@ -8,6 +8,11 @@ public class GlobalVariables : MonoBehaviour
 	//public bool closeDoor = false;
     public bool frenzyCanBeUsed = false;
 
-    //public int enemyDead = 0;
+    public float SwordsmanAttack;
+    public float HoundAttack;
+    public float HealerAttack;
+    public float TankAttack;
+    public float ArcerAttack;
 
+    //public int enemyDead = 0;
 }

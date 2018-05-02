@@ -11,6 +11,7 @@ public class EndAttack : StateMachineBehaviour
     private void Awake()
     {
         player = GameObject.Find("PlayerStateMachine");
+        
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -30,6 +31,7 @@ public class EndAttack : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
+        damage = GameObject.Find("GameManager").GetComponent<GlobalVariables>().SwordsmanAttack;
         player.SendMessage("Damage", damage);
     }
 
@@ -44,16 +46,3 @@ public class EndAttack : StateMachineBehaviour
     //}
 }
 
-public class AcquisizioneCoseNonNormalmenteAcquisibili : MonoBehaviour
-{
-    private void Start()
-    {
-        Debug.Log("debuggoLoggo" + gameObject.GetComponent<EndAttack>().player.GetComponent<EnemyHound>().damage);
-        gameObject.GetComponent<EndAttack>().damage = gameObject.GetComponent<EndAttack>().player.GetComponent<EnemyHound>().damage;
-    }
-
-    private void Update()
-    {
-        Debug.Log("debuggoLoggohhhhhhhhhhhhh");
-    }
-}
