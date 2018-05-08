@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499659360003460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.728683, y: 69.1317, z: 0}
+  m_LocalPosition: {x: -998.0223, y: 256.86267, z: 0}
   m_LocalScale: {x: 0.1289136, y: 0.1289136, z: 0.1289136}
   m_Children:
   - {fileID: 4636723157443480}
@@ -508,7 +508,7 @@ MonoBehaviour:
   houndAttackDelay: 1
   maxAttackDistance: 4000
   maxVisibleDistance: 10000
-  stunned: 50
+  stunned: 5
   attackCollider: {fileID: 1518298284584094}
   visibleDistanceCollider: {fileID: 1410888497948050}
 --- !u!212 &212132286188467296

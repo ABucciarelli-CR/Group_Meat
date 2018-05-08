@@ -31,6 +31,7 @@ public class EndAttack : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
+        
         damage = GameObject.Find("GameManager").GetComponent<GlobalVariables>().SwordsmanAttack;
         player.SendMessage("Damage", damage);
     }

@@ -217,6 +217,7 @@ public class EnemyStateMachine : MonoBehaviour
             }
             else if (stunnedTime >= stunTime && enemyState == EnemyState.stun)
             {
+                //Debug.Log("fine stun______________________" + stunnedTime);
                 regenerate = true;
                 spriteRenderer.color = enemyStandardColor;
                 enemyState = EnemyState.idle;
@@ -283,18 +284,34 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyState.heal:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 2);
+                }
                 Healing();
                 break;
 
             case EnemyState.searchPlayer:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 3);
+                }
                 SearchPlayer();
                 break;
 
             case EnemyState.escape:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 4);
+                }
                 Escape();
                 break;
 
             case EnemyState.stun:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 5);
+                }
                 Stun();
                 break;
 
