@@ -45,7 +45,7 @@ public class EnemyHealer : EnemyStateMachine
 
         attackCollider.GetComponent<CircleCollider2D>().radius = maxAttackDistance;
         gameManager = GameObject.Find("GameManager");
-        disappearingPlatform = GameObject.Find("DisapperingFloor"); ;
+        //disappearingPlatform = GameObject.Find("DisapperingFloor"); ;
         StartCoroutine(WaitForSpawn(5f));
         StartCoroutine(Wait(healDelay));
         //hitColliders = new Collider2D[maxArray];
