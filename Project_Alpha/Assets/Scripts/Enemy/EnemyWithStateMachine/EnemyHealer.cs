@@ -88,20 +88,20 @@ public class EnemyHealer : EnemyStateMachine
         if((onlyHealer && disappearingPlatform != null && canCheckHealer) || (callForTheEnd && disappearingPlatform != null && canCheckHealer))
         {
             disappearingPlatform.SetActive(false);
-            if(callFinalOnlyone)
+            /*if(callFinalOnlyone)
             {
                 callFinalOnlyone = false;
                 StartCoroutine(WaitForFinal());
-            }
+            }*/
         }
-        else if((onlyHealer && disappearingPlatform == null && canCheckHealer) || (callForTheEnd && disappearingPlatform == null && canCheckHealer))
+        /*else if((onlyHealer && disappearingPlatform == null && canCheckHealer) || (callForTheEnd && disappearingPlatform == null && canCheckHealer))
         {
             if (callFinalOnlyone)
             {
                 callFinalOnlyone = false;
                 StartCoroutine(WaitForFinal());
             }
-        }
+        }*/
 
     }
 

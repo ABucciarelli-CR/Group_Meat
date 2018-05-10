@@ -9,7 +9,10 @@ public class DisappearingFloor : MonoBehaviour
     {
         if(collision.name == "Healer" || collision.name == "Healer(Clone)")
         {
-            collision.GetComponent<EnemyHealer>().disappearingPlatform = gameObject;
+            if (collision.GetComponent<EnemyHealer>().disappearingPlatform == null)
+            {
+                collision.GetComponent<EnemyHealer>().disappearingPlatform = gameObject;
+            }
         }
     }
 
@@ -17,7 +20,10 @@ public class DisappearingFloor : MonoBehaviour
     {
         if (collision.name == "Healer" || collision.name == "Healer(Clone)")
         {
-            collision.GetComponent<EnemyHealer>().disappearingPlatform = gameObject;
+            if(collision.GetComponent<EnemyHealer>().disappearingPlatform == null)
+            {
+                collision.GetComponent<EnemyHealer>().disappearingPlatform = gameObject;
+            }
         }
     }
 }

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class EnemySpawnerStateMachine : MonoBehaviour
 {
+    [Title("se è presente un healer, immettere la porta che fa iniziare lo spawn del tutto")]
+    public bool isHealerIn = false;
+    [EnableIf("isHealerIn")]
+    public GameObject startSpawningDoor;
+
     public bool multiTypeSpawn = false;
     [EnableIf("multiTypeSpawn")]
     public List<GameObject> enemies = new List<GameObject>();
