@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisappearingFloor : MonoBehaviour
 {
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Healer" || collision.name == "Healer(Clone)")
@@ -25,5 +25,5 @@ public class DisappearingFloor : MonoBehaviour
                 collision.GetComponent<EnemyHealer>().disappearingPlatform = gameObject;
             }
         }
-    }
+    }*/
 }

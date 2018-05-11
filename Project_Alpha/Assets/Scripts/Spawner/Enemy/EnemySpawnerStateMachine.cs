@@ -9,6 +9,8 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     public bool isHealerIn = false;
     [EnableIf("isHealerIn")]
     public GameObject startSpawningDoor;
+    [EnableIf("isHealerIn")]
+    public GameObject platformToRemove;
 
     public bool multiTypeSpawn = false;
     [EnableIf("multiTypeSpawn")]
@@ -44,6 +46,7 @@ public class EnemySpawnerStateMachine : MonoBehaviour
     //private bool canSpawn = false;
     private bool waited = false;
     private bool initialSpawn = false;
+    private bool canIRemoveThePlatform = false;
     
     private List<GameObject> whoExternalEntity;
     private int i = 0;
@@ -84,6 +87,35 @@ public class EnemySpawnerStateMachine : MonoBehaviour
                     break;
             }
         }
+
+        //controllo se gli spawner all'interno dell'arena son tutti vuoti, nel caso, faccio scomparire la piattaforma
+        canIRemoveThePlatform = true;
+        if (isHealerIn)
+        {
+            foreach (GameObject singleSpawner in startSpawningDoor.GetComponent<CheckArenaEnemyEnd>().spawner)
+            {
+                if(!singleSpawner.name.ToString().Contains("Spawner_Healer"))
+                {
+                    if(!singleSpawner.GetComponent<EnemySpawnerStateMachine>().endSpawn)
+                    {
+                        canIRemoveThePlatform = false;
+                    }
+                }
+
+                if (!canIRemoveThePlatform)
+                {
+                    break;
+                }
+            }
+
+            //se non ci sono più nemici da far spawnare rimuovo la piattaforma(se ce l'ho)
+            if (canIRemoveThePlatform && platformToRemove != null)
+            {
+                platformToRemove.SetActive(false);
+            }
+        }
+
+        
     }
     //__________________________state machine things____________________________________________//
 
@@ -112,11 +144,11 @@ public class EnemySpawnerStateMachine : MonoBehaviour
             waited = false;
             enemyNumber--;
             spawnerState = SpawnerState.check;
-
+            /*
             if(gameObject.name == "Spawner_Healer")
             {
                 gameObject.GetComponent<HealerSpawnerArena>().myHealer.Add(_enemy);
-            }
+            }*/
         }
     }
 

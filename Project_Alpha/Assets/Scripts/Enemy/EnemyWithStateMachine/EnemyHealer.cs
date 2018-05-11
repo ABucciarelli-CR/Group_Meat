@@ -27,8 +27,8 @@ public class EnemyHealer : EnemyStateMachine
     public GameObject attackCollider;
     //[ReadOnly]
     //public GameObject player;
-    [ReadOnly]
-    public GameObject disappearingPlatform;
+    //[ReadOnly]
+    //public GameObject disappearingPlatform;
     [ReadOnly]
     public GameObject healingAnimation;
 
@@ -84,7 +84,7 @@ public class EnemyHealer : EnemyStateMachine
                 break;
             }
         }
-
+        /*
         if((onlyHealer && disappearingPlatform != null && canCheckHealer) || (callForTheEnd && disappearingPlatform != null && canCheckHealer))
         {
             disappearingPlatform.SetActive(false);
@@ -93,7 +93,7 @@ public class EnemyHealer : EnemyStateMachine
                 callFinalOnlyone = false;
                 StartCoroutine(WaitForFinal());
             }*/
-        }
+        //}*/
         /*else if((onlyHealer && disappearingPlatform == null && canCheckHealer) || (callForTheEnd && disappearingPlatform == null && canCheckHealer))
         {
             if (callFinalOnlyone)
