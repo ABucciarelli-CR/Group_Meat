@@ -8,9 +8,7 @@ using UnityEngine;
  * 0:IDLE
  * 1:ATTACK
  * 2:HEAL
- * 3:SEARCH-PLAYER
- * 4:ESCAPE
- * 5:STUN
+ * 3:STUN
  * 
 */
 [RequireComponent(typeof(Blink))]
@@ -41,7 +39,8 @@ public class EnemyStateMachine : MonoBehaviour
     //[ReadOnly]
     public bool facingRight = false;
     public bool dontResetFlipCountdown = false;
-    private bool arrivedToThePoint = false;
+    [HideInInspector]public bool animationEnded = false;
+    [HideInInspector]public bool arrivedToThePoint = false;
     /*[HideInInspector]*/
 
     [ReadOnly]
@@ -200,6 +199,61 @@ public class EnemyStateMachine : MonoBehaviour
 
     void Update()
     {
+        switch (enemyState)
+        {
+            case EnemyState.idle:
+                animationEnded = false;
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 0);
+                }
+                Idle();
+                break;
+
+            case EnemyState.attack:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 1);
+                }
+                Attack();
+                break;
+
+            case EnemyState.heal:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 2);
+                }
+                Healing();
+                break;
+
+            case EnemyState.searchPlayer:
+                /*if (animator != null)
+                {
+                    animator.SetInteger("State", 3);
+                }*/
+                SearchPlayer();
+                break;
+
+            case EnemyState.escape:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 4);
+                }
+                Escape();
+                break;
+
+            case EnemyState.stun:
+                if (animator != null)
+                {
+                    animator.SetInteger("State", 5);
+                }
+                Stun();
+                break;
+
+            default:
+                break;
+        }
+
         //Debug.Log("waited: " + waited);
         if (enemyHealth.health <= 0 && onlyOneDeath)
         {
@@ -260,66 +314,12 @@ public class EnemyStateMachine : MonoBehaviour
             }
         }
 
-        if(!arrivedToThePoint)
+        if(!arrivedToThePoint && (enemyState == EnemyState.idle || enemyState == EnemyState.searchPlayer))
         {
             MoveToThePoint();
         }
-
-        switch (enemyState)
-        {
-            case EnemyState.idle:
-                if(animator != null)
-                {
-                    animator.SetInteger("State", 0);
-                }
-                Idle();
-                break;
-
-            case EnemyState.attack:
-                if(animator != null)
-                {
-                    animator.SetInteger("State", 1);
-                }
-                Attack();
-                break;
-
-            case EnemyState.heal:
-                if (animator != null)
-                {
-                    animator.SetInteger("State", 2);
-                }
-                Healing();
-                break;
-
-            case EnemyState.searchPlayer:
-                if (animator != null)
-                {
-                    animator.SetInteger("State", 3);
-                }
-                SearchPlayer();
-                break;
-
-            case EnemyState.escape:
-                if (animator != null)
-                {
-                    animator.SetInteger("State", 4);
-                }
-                Escape();
-                break;
-
-            case EnemyState.stun:
-                if (animator != null)
-                {
-                    animator.SetInteger("State", 5);
-                }
-                Stun();
-                break;
-
-            default:
-                break;
-        }
+        //print(enemyState);
     }
-
 
     public virtual void Idle()
     {/*
@@ -377,6 +377,8 @@ public class EnemyStateMachine : MonoBehaviour
         gameObject.tag = "Corpse";
         gameObject.layer = deadLayer;
     }
+
+    //not state machine things
 
     public virtual void AddToList(List<GameObject> thisList)
     {
@@ -486,6 +488,24 @@ public class EnemyStateMachine : MonoBehaviour
             return false;
         }
     }
+
+    //****************************************************//
+    //things 4 animator
+
+    public virtual void AttackForAnimator()
+    {
+        if (doPlayerDamage)
+        {
+            player.SendMessage("Damage", damage);
+        }
+    }
+
+    public virtual void IsAnimationEnded()
+    {
+        animationEnded = true;
+    }
+
+    //****************************************************//
 
     public virtual IEnumerator WaitBeforeFlip(float time, float timeBeforeStop)
     {

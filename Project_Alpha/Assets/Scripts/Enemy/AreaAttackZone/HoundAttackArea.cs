@@ -10,7 +10,7 @@ public class HoundAttackArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(collision);
+        //Debug.Log("IsIn");
         thisEnemy.SendMessage("IsPlayerdamageable", true);
         thisCircleCollider.SetActive(false);
     }

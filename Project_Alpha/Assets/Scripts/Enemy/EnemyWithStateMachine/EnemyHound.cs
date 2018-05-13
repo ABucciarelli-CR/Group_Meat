@@ -41,12 +41,16 @@ public class EnemyHound : EnemyStateMachine
     
     private void FixedUpdate()
     {
-        if(gameManager.GetComponent<GlobalVariables>().SwordsmanAttack == 0)
+        /*if(gameManager.GetComponent<GlobalVariables>().SwordsmanAttack == 0)
         {
             gameManager.GetComponent<GlobalVariables>().SwordsmanAttack = damage;
-        }
+        }*/
         //il nemico si gira verso il player
-        CheckForFlip();
+        if (enemyState == EnemyState.idle || enemyState == EnemyState.searchPlayer)
+        {
+            CheckForFlip();
+        }
+        
 
         if (healtToSet)
         {
@@ -90,8 +94,11 @@ public class EnemyHound : EnemyStateMachine
         }*/
 
         //base.Attack();
-
-        enemyState = EnemyState.idle;
+        if (!doPlayerDamage && animationEnded)
+        {
+            Debug.Log("_______________________");
+            enemyState = EnemyState.idle;
+        }
     }
 
     public override void SearchPlayer()

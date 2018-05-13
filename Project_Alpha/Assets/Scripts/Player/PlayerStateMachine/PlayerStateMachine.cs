@@ -10,6 +10,16 @@ using UnityEngine.UI;
 /// 2 = warcry
 /// 
 /// </attackSummary>
+/// 
+/// <statesSummary>
+/// 
+/// 0 = idle
+/// (1 = walk)--NOT
+/// 1 = jump
+/// 2 = attack
+/// 3 = devour
+/// 
+/// </statesSummary>
 
 [RequireComponent(typeof(Attack))]
 [RequireComponent(typeof(PlayerControlsStateMachine))]
@@ -228,14 +238,12 @@ public class PlayerStateMachine : MonoBehaviour
         switch (playerState)
         {
             case PlayerState.idle:
+                anim.SetInteger("States", 0);
                 Idle();
                 break;
 
             case PlayerState.attack:
-                if(playerAttack == 0)
-                {
-                    offenseStateSpriteRenderer.color = playerOffenseStateAttackColor;
-                }
+                anim.SetInteger("States", 2);
                 StartCoroutine(Wait(.1f, false));
                 Attack(playerAttack);
                 break;
@@ -245,6 +253,7 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
 
             case PlayerState.jump:
+                anim.SetInteger("States", 1);
                 Jump(playerMovement);
                 break;
 
