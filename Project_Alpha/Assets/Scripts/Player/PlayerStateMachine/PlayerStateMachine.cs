@@ -113,6 +113,10 @@ public class PlayerStateMachine : MonoBehaviour
     private bool singleJump = true;
     private bool activeFrenzy = false;
 
+    //animatr thngs
+    private bool exitAnimation = false;
+    //
+
     [Title("Modifiche abilitate.")]
     [SerializeField] private bool isGrounded = true;
     private int i = 0; //counter
@@ -128,8 +132,8 @@ public class PlayerStateMachine : MonoBehaviour
         attack,
         movement,
         jump,
-        dash//,
-        //eat
+        dash,
+        eat
     }
 
     private void Awake()
@@ -206,7 +210,7 @@ public class PlayerStateMachine : MonoBehaviour
             textCountdownQTE.text = (Mathf.Round(timeWasPressed * 100) / 100).ToString();
         }
         
-
+        //____________________________EAT________________________//
         if (CheckIfAnyoneDead())
         {
             EnableDisableQTEIcon(true);
@@ -244,7 +248,7 @@ public class PlayerStateMachine : MonoBehaviour
 
             case PlayerState.attack:
                 anim.SetInteger("States", 2);
-                StartCoroutine(Wait(.1f, false));
+                //StartCoroutine(Wait(.1f, false));
                 Attack(playerAttack);
                 break;
 
@@ -260,12 +264,11 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerState.dash:
                 Dash();
                 break;
-                /*
+                
             case PlayerState.eat:
-                offenseStateSpriteRenderer.color = playerOffenseStateEatColor;
-                StartCoroutine(Wait(.1f, false));
-                Eat();
-                break;*/
+                anim.SetInteger("States", 3);
+                //Eat();
+                break;
 
             default:
                 break;
@@ -292,9 +295,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Attack(int attackType)
     {
-        attack.DoAttack(attackType, facingRight);
+        //attack.DoAttack(attackType, facingRight);
 
-        playerState = PlayerState.idle;
+        //playerState = PlayerState.idle;
     }
 
     private void Movement(float leftRightMove, bool jumpCall = true)
@@ -325,7 +328,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if(jumpCall)
         {
-            playerState = PlayerState.idle;
+            //playerState = PlayerState.idle;
         }
     }
 
@@ -348,7 +351,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (isGrounded)
         {
-            playerState = PlayerState.idle;
+            //playerState = PlayerState.idle;
         }
         //TODO: animation start
     }
@@ -370,6 +373,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Eat()
     {
+        
+
         //if (CheckIfAnyoneDead())
         //{
         //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = true;
@@ -380,7 +385,7 @@ public class PlayerStateMachine : MonoBehaviour
         }*/
         //if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
 
-        if(abilitataClickMode)
+        if (abilitataClickMode)
         {
             //modalità a click
             if (QTEButtonRight < QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
@@ -425,13 +430,25 @@ public class PlayerStateMachine : MonoBehaviour
             //Debug.Log("left button: " + QTEButtonLeft);
             if (QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
             {
+                playerState = PlayerState.eat;
                 timeWasPressed -= Time.deltaTime;
                 if (timeWasPressed <= 0)
                 {
                     timeWasPressed = pressedTime;
+                    anim.SetInteger("States", 0);
                     EatEnemy();
                 }
             }
+            else
+            {
+                timeWasPressed = pressedTime;
+                anim.SetInteger("States", 0);
+            }
+        }
+
+        if(exitAnimation)
+        {
+            anim.SetInteger("States", 0);
         }
     }
 
@@ -540,6 +557,21 @@ public class PlayerStateMachine : MonoBehaviour
             me.enabled = enableDisable;
         }
     }
+
+    /****************************************/
+    /*animator things*/
+
+    public void AnimatorExitAnimation()
+    {
+        exitAnimation = true;
+    }
+
+    public void AnimatorGoToIdle()
+    {
+        playerState = PlayerState.idle;
+    }
+
+    /***************************************/
 
     IEnumerator TimeForQuickTime()
     {
