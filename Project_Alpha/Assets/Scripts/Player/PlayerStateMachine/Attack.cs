@@ -163,7 +163,7 @@ public class Attack : MonoBehaviour
         //Todo: Animation Start
         if(atk == null)
         {
-            atk = Instantiate(attackAnimation, this.transform);
+            /*atk = Instantiate(attackAnimation, this.transform);
             atk.transform.localScale = new Vector2(-((atk.transform.localScale.x * 10) / 2.5f), ((atk.transform.localScale.y * 10)));
             if (atkDir)
             {
@@ -174,7 +174,7 @@ public class Attack : MonoBehaviour
                 atk.transform.eulerAngles = new Vector3(0f, 0f, 36f);
             }
             atk.transform.localPosition = new Vector2(atk.transform.localPosition.x + 700, atk.transform.localPosition.y + 1500);
-
+            */
 
             damageAreaCollider.CeckHit();
 

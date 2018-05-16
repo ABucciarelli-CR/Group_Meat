@@ -235,17 +235,17 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyState.escape:
-                if (animator != null)
+                /*if (animator != null)
                 {
                     animator.SetInteger("State", 4);
-                }
+                }*/
                 Escape();
                 break;
 
             case EnemyState.stun:
                 if (animator != null)
                 {
-                    animator.SetInteger("State", 5);
+                    animator.SetInteger("State", 3);
                 }
                 Stun();
                 break;
@@ -284,6 +284,16 @@ public class EnemyStateMachine : MonoBehaviour
         if (enemyState != EnemyState.stun && instantiateOnlyOne)
         {
             DeactivateStun();
+        }
+
+        if(enemyState == EnemyState.idle || enemyState == EnemyState.searchPlayer || enemyState == EnemyState.escape)
+        {
+            //Debug.Log("...........................");
+            animator.SetFloat("Velocity", rb2d.velocity.magnitude);
+        }
+        else
+        {
+            animator.SetFloat("Velocity", 0);
         }
 
         /*

@@ -96,7 +96,7 @@ public class EnemyHound : EnemyStateMachine
         //base.Attack();
         if (!doPlayerDamage && animationEnded)
         {
-            Debug.Log("_______________________");
+            //Debug.Log("_______________________");
             enemyState = EnemyState.idle;
         }
     }

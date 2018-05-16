@@ -195,6 +195,12 @@ public class PlayerStateMachine : MonoBehaviour
         anim.SetBool("Ground", isGrounded);
         // Set the vertical animation
         anim.SetFloat("vSpeed", rb2d.velocity.y);*/
+
+        if(playerState != PlayerState.movement)
+        {
+            //Debug.Log("_____________________________________");
+            anim.SetFloat("Speed", 0);
+        }
     }
     
     private void Update ()
@@ -214,7 +220,8 @@ public class PlayerStateMachine : MonoBehaviour
         if (CheckIfAnyoneDead())
         {
             EnableDisableQTEIcon(true);
-            Eat();
+            playerState = PlayerState.eat;
+            //Eat();
         }
         else
         {
@@ -222,7 +229,8 @@ public class PlayerStateMachine : MonoBehaviour
             eatCountdown = clickForEat;
             EnableDisableQTEIcon(false);
         }
-
+        //________________________________________________________
+        
         if (playerState == PlayerState.movement)
         {
             if(!walkAudio.isPlaying)
@@ -232,6 +240,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
         else
         {
+            
             if (walkAudio.isPlaying)
             {
                 walkAudio.Pause();
@@ -249,7 +258,7 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerState.attack:
                 anim.SetInteger("States", 2);
                 //StartCoroutine(Wait(.1f, false));
-                Attack(playerAttack);
+                //Attack(playerAttack);
                 break;
 
             case PlayerState.movement:
@@ -257,7 +266,7 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
 
             case PlayerState.jump:
-                anim.SetInteger("States", 1);
+                //anim.SetInteger("States", 1);
                 Jump(playerMovement);
                 break;
 
@@ -266,8 +275,7 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
                 
             case PlayerState.eat:
-                anim.SetInteger("States", 3);
-                //Eat();
+                Eat();
                 break;
 
             default:
@@ -293,9 +301,9 @@ public class PlayerStateMachine : MonoBehaviour
         //TODO: animation start
     }
 
-    private void Attack(int attackType)
+    public void Attack(int attackType)
     {
-        //attack.DoAttack(attackType, facingRight);
+        attack.DoAttack(attackType, facingRight);
 
         //playerState = PlayerState.idle;
     }
@@ -313,6 +321,7 @@ public class PlayerStateMachine : MonoBehaviour
     
 
         rb2d.velocity = new Vector2(leftRightMove * moveForce, rb2d.velocity.y);
+        anim.SetFloat("Speed", rb2d.velocity.magnitude);
         
         //lastMove = leftRightMove;
 
@@ -351,7 +360,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (isGrounded)
         {
-            //playerState = PlayerState.idle;
+            playerState = PlayerState.idle;
         }
         //TODO: animation start
     }
@@ -373,8 +382,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Eat()
     {
-        
-
         //if (CheckIfAnyoneDead())
         //{
         //textQTE.GetComponentInChildren<SpriteRenderer>().enabled = true;
@@ -430,11 +437,13 @@ public class PlayerStateMachine : MonoBehaviour
             //Debug.Log("left button: " + QTEButtonLeft);
             if (QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
             {
-                playerState = PlayerState.eat;
+                //playerState = PlayerState.eat;
+                anim.SetInteger("States", 3);
                 timeWasPressed -= Time.deltaTime;
                 if (timeWasPressed <= 0)
                 {
                     timeWasPressed = pressedTime;
+                    playerState = PlayerState.idle;
                     anim.SetInteger("States", 0);
                     EatEnemy();
                 }
@@ -442,12 +451,14 @@ public class PlayerStateMachine : MonoBehaviour
             else
             {
                 timeWasPressed = pressedTime;
+                playerState = PlayerState.idle;
                 anim.SetInteger("States", 0);
             }
         }
 
         if(exitAnimation)
         {
+            playerState = PlayerState.idle;
             anim.SetInteger("States", 0);
         }
     }
@@ -569,6 +580,7 @@ public class PlayerStateMachine : MonoBehaviour
     public void AnimatorGoToIdle()
     {
         playerState = PlayerState.idle;
+        anim.SetInteger("States", 0);
     }
 
     /***************************************/

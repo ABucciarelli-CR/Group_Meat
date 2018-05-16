@@ -650,12 +650,12 @@ Prefab:
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 12018.75
+      value: 9287.5
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 437.5
+      value: -1100
       objectReference: {fileID: 0}
     - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
@@ -764,12 +764,12 @@ Prefab:
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 541.98883
+      value: 323.4888
       objectReference: {fileID: 0}
     - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 302.98944
+      value: 179.98944
       objectReference: {fileID: 0}
     - target: {fileID: 114659575356544348, guid: be1b5b7138d6a5b47a882d7492b13adb,
         type: 2}
@@ -1345,7 +1345,132 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1499659360003460, guid: e84a93a0dccf836428e18f8a3267a4c6, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212461142799169446, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212461142799169446, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2250
+      objectReference: {fileID: 0}
+    - target: {fileID: 212461142799169446, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2435.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114294193775306860, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114294193775306860, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: maxHealth
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114294193775306860, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: playerAndShieldsLayerMask.m_Bits
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: enemyState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: speed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: attackDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: facingRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: arrivedToThePoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: waited
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: enemyHealth
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: offenseStateSpriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: deadLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: enemyIsOnAttack.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: enemyIsOnAttack.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: enemyIsOnAttack.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983930273971624, guid: e84a93a0dccf836428e18f8a3267a4c6,
+        type: 2}
+      propertyPath: pointGoto
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e84a93a0dccf836428e18f8a3267a4c6, type: 2}
