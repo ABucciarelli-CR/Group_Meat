@@ -75,6 +75,7 @@ public class EnemyTank : EnemyStateMachine
 
     public override void Attack()
     {
+        /*
         if (waited)
         {
             Debug.Log("Attack");
@@ -94,7 +95,7 @@ public class EnemyTank : EnemyStateMachine
         {
             Debug.Log("Attack2");
             enemyState = EnemyState.searchPlayer;
-        }
+        }*/
 
         base.Attack();
     }

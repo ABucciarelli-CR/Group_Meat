@@ -101,6 +101,16 @@ public class PlayerControlsStateMachine : MonoBehaviour
 
             jump = false;
         }
+        //se stà a divorare
+        else if (stateMachine.playerState == PlayerStateMachine.PlayerState.eat)
+        {
+            //Move();
+            //Jump();
+            //Dash();
+            //Eat();
+
+            jump = false;
+        }
 
         stateMachine.playerMovement = leftAndRightMovement;
     }

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/RealLevels/Home.unity
-    guid: 91071ac108928054cb72f9faf9c0537b
+    path: Assets/Levels/RealLevels/Text_Devoratix.unity
+    guid: ac4f2d5c9ebc56d45ae016a425404605
   - enabled: 1
     path: Assets/Levels/RealLevels/LVTutorial.unity
     guid: 1e77b24172c7a3f44b30e470ab4f699a

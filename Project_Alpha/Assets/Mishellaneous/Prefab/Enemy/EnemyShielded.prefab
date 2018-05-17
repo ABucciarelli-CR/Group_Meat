@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4449434063787410}
+  - component: {fileID: 95756773529248436}
   - component: {fileID: 212750635599342100}
   - component: {fileID: 114914444598088372}
   - component: {fileID: 114394838672791466}
@@ -193,7 +194,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565304783806814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 348.3546, y: 99.259026, z: 0}
+  m_LocalPosition: {x: -998.723, y: 166.46791, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 4742174450481172}
@@ -447,6 +448,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95756773529248436
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565304783806814}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114394838672791466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,6 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f99f6ac7b47a24eb84825aa9ca6244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   enemyState: 0
   stun: {fileID: 1729082671062778}
   speed: 0.8
@@ -553,6 +572,8 @@ MonoBehaviour:
   doPlayerDamage: 0
   facingRight: 0
   dontResetFlipCountdown: 0
+  animationEnded: 0
+  arrivedToThePoint: 0
   stunTime: 3
   waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50

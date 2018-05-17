@@ -94,6 +94,8 @@ public class PlayerStateMachine : MonoBehaviour
     [Title("ReadOnly, modifiche disabilitate.")]
     [ReadOnly]
     public GameObject playerLife;
+
+    public GameObject devourAnimation;
     [ReadOnly]
     public Collider2D eatCollider;
     [ReadOnly]
@@ -220,8 +222,8 @@ public class PlayerStateMachine : MonoBehaviour
         if (CheckIfAnyoneDead())
         {
             EnableDisableQTEIcon(true);
-            playerState = PlayerState.eat;
-            //Eat();
+            //playerState = PlayerState.eat;
+            Eat();
         }
         else
         {
@@ -247,7 +249,6 @@ public class PlayerStateMachine : MonoBehaviour
             }
         }
         
-        //Debug.Log(playerState);
         switch (playerState)
         {
             case PlayerState.idle:
@@ -274,13 +275,15 @@ public class PlayerStateMachine : MonoBehaviour
                 Dash();
                 break;
                 
-            case PlayerState.eat:
-                Eat();
-                break;
+            //case PlayerState.eat:
+                //Eat();
+                //break;
 
             default:
                 break;
         }
+
+        Debug.Log(playerState);
     }
 
     ///////////////////////////
@@ -392,6 +395,7 @@ public class PlayerStateMachine : MonoBehaviour
         }*/
         //if (QTEButtonRight < -QTEIsPressedForFloat && QTEButtonLeft < QTEIsPressedForFloat && !QTEButtonAlreadyDown)
 
+        
         if (abilitataClickMode)
         {
             //modalità a click
@@ -450,17 +454,25 @@ public class PlayerStateMachine : MonoBehaviour
             }
             else
             {
+                Debug.Log("Muciacciaaaaaaaaaaaaaaaaa");
                 timeWasPressed = pressedTime;
                 playerState = PlayerState.idle;
                 anim.SetInteger("States", 0);
             }
         }
 
-        if(exitAnimation)
+        if (exitAnimation)
         {
             playerState = PlayerState.idle;
             anim.SetInteger("States", 0);
         }
+        /*
+        if(playerMovement != 0)
+        {
+            playerState = PlayerState.idle;
+            anim.SetInteger("States", 0);
+        }*/
+        
     }
 
     ///////////////////////////
@@ -513,6 +525,7 @@ public class PlayerStateMachine : MonoBehaviour
                 if (enemyDeadHitted[i].CompareTag("Corpse"))
                 {
                     eatAudio.Play();
+                    Instantiate(devourAnimation, enemyDeadHitted[i].gameObject.transform.position, Quaternion.identity);
                     Destroy(enemyDeadHitted[i].gameObject);
                     IncrementLife(lifeIncrement);
                     Heal(lifeHealWhenEat);
