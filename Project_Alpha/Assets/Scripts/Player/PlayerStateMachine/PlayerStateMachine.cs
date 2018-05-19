@@ -252,7 +252,10 @@ public class PlayerStateMachine : MonoBehaviour
         switch (playerState)
         {
             case PlayerState.idle:
-                anim.SetInteger("States", 0);
+                if (QTEButtonRight <= QTEIsPressedForFloat && QTEButtonLeft <= QTEIsPressedForFloat)
+                {
+                    anim.SetInteger("States", 0);
+                }
                 Idle();
                 break;
 
@@ -447,7 +450,7 @@ public class PlayerStateMachine : MonoBehaviour
                 if (timeWasPressed <= 0)
                 {
                     timeWasPressed = pressedTime;
-                    playerState = PlayerState.idle;
+                    //playerState = PlayerState.idle;
                     anim.SetInteger("States", 0);
                     EatEnemy();
                 }
@@ -456,14 +459,14 @@ public class PlayerStateMachine : MonoBehaviour
             {
                 Debug.Log("Muciacciaaaaaaaaaaaaaaaaa");
                 timeWasPressed = pressedTime;
-                playerState = PlayerState.idle;
+                //playerState = PlayerState.idle;
                 anim.SetInteger("States", 0);
             }
         }
 
         if (exitAnimation)
         {
-            playerState = PlayerState.idle;
+            //playerState = PlayerState.idle;
             anim.SetInteger("States", 0);
         }
         /*

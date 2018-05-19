@@ -68,6 +68,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4947244010513676}
+  - component: {fileID: 95047577328167894}
   - component: {fileID: 212325278991086032}
   - component: {fileID: 114297171087717318}
   - component: {fileID: 114261174878613148}
@@ -174,7 +175,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811349277448878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1507.5974, y: 139.73157, z: 0}
+  m_LocalPosition: {x: -1305, y: 410, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4781104119118942}
@@ -354,6 +355,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95047577328167894
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811349277448878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 537994322cea5634b82bca2f9d10469b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114008317345482170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,6 +395,7 @@ MonoBehaviour:
   loop: 1
   ignorePause: 0
   useImage: 0
+  deactivate: 0
   randomFramerate: 0
   fpsMax: 10
 --- !u!114 &114045451954919124
@@ -402,18 +421,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454af97e3d44a574a8b8c8bdb0caa40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   enemyState: 3
   stun: {fileID: 1152012494536932}
   speed: 0.8
   damage: 15
   attackDelay: 4
   healDelay: 0
+  TimeCanDeath: 2
   movement: {x: 0, y: 0}
   direction: 1
   timeToChangeDirection: 5
   ttcd: 0
   doPlayerDamage: 0
   facingRight: 0
+  dontResetFlipCountdown: 0
+  animationEnded: 0
+  arrivedToThePoint: 0
   stunTime: 3
   waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 50
@@ -456,8 +480,10 @@ MonoBehaviour:
   enemyIsOnAttack: {r: 1, g: 0, b: 1, a: 1}
   atkClip:
   - {fileID: 8300000, guid: c21b39c227d56ce409b0193f315fecfd, type: 3}
+  healClip: []
   idleClip: []
   attackAnimation: {fileID: 0}
+  pointGoto: {fileID: 0}
   instantiateOnlyOne: 0
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   archerDamage: 30
@@ -489,6 +515,7 @@ MonoBehaviour:
   playerAndShieldsLayerMask:
     serializedVersion: 2
     m_Bits: 16640
+  maxDead: 2
 --- !u!114 &114346256597667916
 MonoBehaviour:
   m_ObjectHideFlags: 1

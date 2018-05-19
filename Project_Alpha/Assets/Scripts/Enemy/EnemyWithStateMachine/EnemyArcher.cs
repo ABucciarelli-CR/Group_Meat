@@ -91,7 +91,7 @@ public class EnemyArcher : EnemyStateMachine
     public override void Attack()
     {
         //create and shoot arrow
-        if(waited)
+        /*if(waited)
         {
             waited = false;
             //StartCoroutine(Wait(attackDelay));
@@ -99,7 +99,7 @@ public class EnemyArcher : EnemyStateMachine
             GameObject arrow = Instantiate(arrowPrefab, arrowSpawn.transform.position, Quaternion.identity);
             arrow.SendMessage("AtkSet", damage);
 
-        }
+        }*/
 
         base.Attack();
 
@@ -155,6 +155,16 @@ public class EnemyArcher : EnemyStateMachine
     {
         thereIsAPlayer = isIn;
     }
+
+    public override void AttackForAnimator()
+    {
+        /*if (doPlayerDamage)
+        {*/
+            GameObject arrow = Instantiate(arrowPrefab, arrowSpawn.transform.position, Quaternion.identity);
+            arrow.SendMessage("AtkSet", damage);
+        //}
+    }
+
     /*
     new IEnumerator Wait(float sec)
     {
