@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499659360003460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -998.0223, y: 256.86267, z: 0}
+  m_LocalPosition: {x: 4775.8394, y: 101.94345, z: 0}
   m_LocalScale: {x: 0.1289136, y: 0.1289136, z: 0.1289136}
   m_Children:
   - {fileID: 4636723157443480}
@@ -217,9 +217,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1734, y: -403.45023}
+  m_Offset: {x: -2797.4387, y: -332.58826}
   serializedVersion: 2
-  m_Radius: 3694.2874
+  m_Radius: 2701.7102
 --- !u!61 &61222339844499280
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -452,6 +452,8 @@ MonoBehaviour:
   doPlayerDamage: 0
   facingRight: 0
   dontResetFlipCountdown: 0
+  animationEnded: 0
+  arrivedToThePoint: 0
   stunTime: 5
   waitTimeBeforeFlip: 0.1
   healthRegenAfterStun: 20
@@ -502,13 +504,12 @@ MonoBehaviour:
   instantiateOnlyOne: 0
   MyTitle: piccolo test, puoi scriverci quello che vuoi :D
   flipDelay: 0.1
-  houndDamage: 50
+  houndDamage: 40
   houndHealth: 120
   houndSpeed: 2
   houndAttackDelay: 1
-  maxAttackDistance: 4000
+  maxAttackDistance: 2900
   maxVisibleDistance: 10000
-  stunned: 5
   attackCollider: {fileID: 1518298284584094}
   visibleDistanceCollider: {fileID: 1410888497948050}
 --- !u!212 &212132286188467296

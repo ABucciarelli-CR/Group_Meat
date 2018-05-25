@@ -227,6 +227,10 @@ public class PlayerStateMachine : MonoBehaviour
         }
         else
         {
+            if(anim.GetInteger("States") == 3)
+            {
+                anim.SetInteger("States", 0);
+            }
             timeWasPressed = pressedTime;
             eatCountdown = clickForEat;
             EnableDisableQTEIcon(false);
@@ -445,6 +449,10 @@ public class PlayerStateMachine : MonoBehaviour
             if (QTEButtonRight > QTEIsPressedForFloat && QTEButtonLeft > QTEIsPressedForFloat)
             {
                 //playerState = PlayerState.eat;
+                if (playerState == PlayerState.attack)
+                {
+                    playerState = PlayerState.idle;
+                }
                 anim.SetInteger("States", 3);
                 timeWasPressed -= Time.deltaTime;
                 if (timeWasPressed <= 0)
@@ -457,7 +465,6 @@ public class PlayerStateMachine : MonoBehaviour
             }
             else
             {
-                Debug.Log("Muciacciaaaaaaaaaaaaaaaaa");
                 timeWasPressed = pressedTime;
                 //playerState = PlayerState.idle;
                 anim.SetInteger("States", 0);

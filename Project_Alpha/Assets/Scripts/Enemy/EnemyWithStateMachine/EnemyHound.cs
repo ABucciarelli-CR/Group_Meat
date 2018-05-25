@@ -14,7 +14,7 @@ public class EnemyHound : EnemyStateMachine
     public int houndHealth = 30;
     public float houndSpeed = 1.2f;
     public float houndAttackDelay = 5f;
-    public float maxAttackDistance = 3000f;
+    public float maxAttackDistance = 2700;
     public float maxVisibleDistance = 4000f;
     //public float stunned = 5f;
 
@@ -94,6 +94,10 @@ public class EnemyHound : EnemyStateMachine
         }*/
 
         //base.Attack();
+        if(rb2d.velocity.x != 0)
+        {
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        }
         if (!doPlayerDamage && animationEnded)
         {
             //Debug.Log("_______________________");

@@ -343,6 +343,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if(!alreadyInAttack)
         {
+            
             waited = false;
             StartCoroutine(Wait(attackDelay));
         }
