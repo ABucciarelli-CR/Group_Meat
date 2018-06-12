@@ -44,15 +44,13 @@ public class PlayerControlsStateMachine : MonoBehaviour
     private int  normalAttack = 0;
     private int frenzyState = 1;
     private int warcry = 2;
-
-    // Use this for initialization
+    
     void Start ()
     {
         animator = GetComponent<Animator>();
         stateMachine = GetComponent<PlayerStateMachine>();
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate ()
     {
         leftAndRightMovement = Input.GetAxis("Horizontal");
@@ -65,6 +63,12 @@ public class PlayerControlsStateMachine : MonoBehaviour
         //rightQTE = Input.GetButton("RightEatQTE");
         leftQTE = Input.GetAxis("LeftEatQTE");
         rightQTE = Input.GetAxis("RightEatQTE");
+
+        if(Input.GetButton("RightEatQTE") == true && Input.GetButton("LeftEatQTE") == true)
+        {
+            stateMachine.SendMessage("QTEButtonLeftIsDown", 1);
+            stateMachine.SendMessage("QTEButtonRightIsDown", 1);
+        }
 
         stateMachine.SendMessage("QTEButtonLeftIsDown", leftQTE);
         stateMachine.SendMessage("QTEButtonRightIsDown", rightQTE);

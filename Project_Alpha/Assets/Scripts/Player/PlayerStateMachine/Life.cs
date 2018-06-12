@@ -10,9 +10,9 @@ public class Life : MonoBehaviour
     public int maxLife = 1000;
     public int startLife = 200;
 
-    [ReadOnly]
+    //[ReadOnly]
     public int actualLife;
-    [ReadOnly]
+    //[ReadOnly]
     public int maxLifeBarValue;
     [ReadOnly]
     public Slider[] lifeBar;

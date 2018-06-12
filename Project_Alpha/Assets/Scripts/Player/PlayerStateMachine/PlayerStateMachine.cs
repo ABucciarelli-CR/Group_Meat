@@ -379,14 +379,12 @@ public class PlayerStateMachine : MonoBehaviour
     {
         gameObject.layer = 13;
         //lastMove = leftRightMove;
-        //TODO: wait 4 animation
 
         rb2d.velocity = new Vector2(0, 0);
         //Debug.Log(Mathf.Sign(lastMove));
         rb2d.MovePosition(rb2d.position + new Vector2(Mathf.Sign(lastMove) * dashSpeed, 0));
         playerState = PlayerState.idle;
         StartCoroutine(WaitForLayer(.1f));
-        //TODO: wait 4 animation
 
     }
 

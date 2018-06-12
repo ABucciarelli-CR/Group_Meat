@@ -9,6 +9,7 @@ public class GameManagerAction : MonoBehaviour
 {
     public GameObject canvas;
     public EventSystem eventSystem;
+    public GameObject jumps;
     public List<GameObject> menuParts;
     public List<GameObject> dialogs;
 
@@ -57,6 +58,29 @@ public class GameManagerAction : MonoBehaviour
                 break;
             }
         }
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            jumps.SetActive(false);
+        }
+
+        if (Time.timeScale == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                jumps.SetActive(true);
+            }
+
+            if(Input.GetKeyDown("joystick button 2"))
+            {
+                menuParts[1].GetComponent<Cambio_scena>().ChangeScene();
+            }
+
+            if (Input.GetKeyDown("joystick button 2"))
+            {
+                menuParts[2].GetComponent<Cambio_scena>().ChangeScene();
+            }
+        } 
     }
 
     public void RestartTheLevel(bool isRestart)
@@ -85,7 +109,7 @@ public class GameManagerAction : MonoBehaviour
             PauseAllAudio();
             Time.timeScale = 0;
             //canvas.SetActive(true);
-            
+
             if(externalCall)
             {
                 for(int i=0; i<menuParts.Count - 2; i++)
@@ -117,6 +141,7 @@ public class GameManagerAction : MonoBehaviour
             RemovePauseAllAudio();
             StartCoroutine(WaitForCamera());
             Time.timeScale = 1;
+            jumps.SetActive(false);
             //canvas.SetActive(false);
             foreach (GameObject go in menuParts)
             {
