@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class PassCheck : MonoBehaviour
+public class LastEnemyDamage : MonoBehaviour
 {
+    public string enemyName;
     public AnalyticsTracker anTracker;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void KilledBy(string thisEnemyName)
     {
+        enemyName = thisEnemyName;
+        Debug.Log("Killed by: " + enemyName);
         anTracker.TriggerEvent();
-        gameObject.SetActive(false);
     }
 }

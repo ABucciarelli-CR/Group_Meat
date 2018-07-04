@@ -94,6 +94,14 @@ public class EnemyHound : EnemyStateMachine
         }*/
 
         //base.Attack();
+
+        //------------The Analytics things---------------
+        if(player.GetComponentInChildren<Life>().actualLife <= 0)
+        {
+            GameObject.Find("DeathBy").GetComponent<LastEnemyDamage>().KilledBy("Knight");
+        }
+        //-----------------------------------------------
+
         if(rb2d.velocity.x != 0)
         {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);

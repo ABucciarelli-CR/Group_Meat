@@ -41,6 +41,10 @@ public class Arrow : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("Damage", arrowDamage);
+            if (player.GetComponentInChildren<Life>().actualLife <= 0)
+            {
+                GameObject.Find("DeathBy").GetComponent<LastEnemyDamage>().KilledBy("Archer");
+            }
         }
         else if(friendlyFire)
         {

@@ -98,6 +98,10 @@ public class EnemyTank : EnemyStateMachine
         }*/
 
         base.Attack();
+        if (player.GetComponentInChildren<Life>().actualLife <= 0)
+        {
+            GameObject.Find("DeathBy").GetComponent<LastEnemyDamage>().KilledBy("Tank");
+        }
     }
 
     public override void SearchPlayer()
