@@ -163,6 +163,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Exit_Arena2
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 6
   m_Trigger: 0
 --- !u!114 &8104643
 MonoBehaviour:
@@ -268,6 +274,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Exit_Arena3
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 8
   m_Trigger: 0
 --- !u!114 &12244874
 MonoBehaviour:
@@ -2122,73 +2134,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18bca58921f411f498bcf8b4bb8395d0, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &352029351
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951865975122908, guid: be1b5b7138d6a5b47a882d7492b13adb,
-        type: 2}
-      propertyPath: singleJump
-      value: 
-      objectReference: {fileID: 685396254}
-    - target: {fileID: 114672259033907976, guid: be1b5b7138d6a5b47a882d7492b13adb,
-        type: 2}
-      propertyPath: singleJump
-      value: 
-      objectReference: {fileID: 1000908507}
-    - target: {fileID: 114706600484462500, guid: be1b5b7138d6a5b47a882d7492b13adb,
-        type: 2}
-      propertyPath: singleJump
-      value: 
-      objectReference: {fileID: 1168274860}
-    - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 388.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 218.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &371420142
 Prefab:
   m_ObjectHideFlags: 0
@@ -2377,6 +2322,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_JumpCuphead
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 2
   m_Trigger: 0
 --- !u!114 &382506427
 MonoBehaviour:
@@ -3157,6 +3108,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Exit_Arena1
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 4
   m_Trigger: 0
 --- !u!114 &586232692
 MonoBehaviour:
@@ -3616,6 +3573,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 648691859}
+  - component: {fileID: 648691860}
   m_Layer: 17
   m_Name: Analytics
   m_TagString: Untagged
@@ -3644,6 +3602,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &648691860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 648691858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 207469858, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventName: 
+  m_TrackableProperty:
+    m_Fields:
+    - m_ParamName: 
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 0
+      m_StaticString: 
+  m_Trigger: 0
 --- !u!1 &678297024 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1848509283712214, guid: c479bce189be63142ad70c377588e0b1,
@@ -4678,7 +4657,7 @@ Prefab:
     - target: {fileID: 224294631829631254, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 224399731072356728, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
@@ -4688,12 +4667,12 @@ Prefab:
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -48656.25
+      value: -46425
       objectReference: {fileID: 0}
     - target: {fileID: 224233907319326442, guid: 519712f95f6a28b49848d5a2c7e5a46c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1230
+      value: 2486.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 519712f95f6a28b49848d5a2c7e5a46c, type: 2}
@@ -7275,6 +7254,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Enter_Arena3
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 7
   m_Trigger: 0
 --- !u!114 &1239681045
 MonoBehaviour:
@@ -7513,6 +7498,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Enter_Arena1
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 3
   m_Trigger: 0
 --- !u!114 &1270619048
 MonoBehaviour:
@@ -9670,6 +9661,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1582432303
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204228465134554, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 567
+      objectReference: {fileID: 0}
+    - target: {fileID: 224190781740708234, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 319
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951865975122908, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: singleJump
+      value: 
+      objectReference: {fileID: 685396254}
+    - target: {fileID: 114706600484462500, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: singleJump
+      value: 
+      objectReference: {fileID: 1168274860}
+    - target: {fileID: 114672259033907976, guid: be1b5b7138d6a5b47a882d7492b13adb,
+        type: 2}
+      propertyPath: singleJump
+      value: 
+      objectReference: {fileID: 1000908507}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: be1b5b7138d6a5b47a882d7492b13adb, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1595053344
 Prefab:
   m_ObjectHideFlags: 0
@@ -10531,6 +10589,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Jump1
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 1
   m_Trigger: 0
 --- !u!114 &1721521609
 MonoBehaviour:
@@ -11722,6 +11786,12 @@ MonoBehaviour:
       m_TypeString: 
       m_DoStatic: 1
       m_StaticString: Check_Enter_Arena2
+    - m_ParamName: NumericFlag
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 1
+      m_StaticString: 5
   m_Trigger: 0
 --- !u!114 &1956758672
 MonoBehaviour:

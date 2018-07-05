@@ -26,6 +26,8 @@ public class EnemyTank : EnemyStateMachine
 
     private bool healtToSet = true;
 
+    
+
     private void Awake()
     {
         damage = tankDamage;

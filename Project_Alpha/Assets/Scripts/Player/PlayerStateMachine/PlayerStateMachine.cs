@@ -377,6 +377,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Dash()
     {
+        GameObject.Find("GameManager").GetComponent<GlobalVariables>().BlinkCount++;
         gameObject.layer = 13;
         //lastMove = leftRightMove;
 
@@ -532,6 +533,8 @@ public class PlayerStateMachine : MonoBehaviour
             {
                 if (enemyDeadHitted[i].CompareTag("Corpse"))
                 {
+                    //Analytics------------------------------------
+                    GameObject.Find("GameManager").GetComponent<GlobalVariables>().DevouredCount++;
                     eatAudio.Play();
                     Instantiate(devourAnimation, enemyDeadHitted[i].gameObject.transform.position, Quaternion.identity);
                     Destroy(enemyDeadHitted[i].gameObject);

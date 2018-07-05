@@ -160,7 +160,7 @@ public class PlayerControlsStateMachine : MonoBehaviour
     private void Dash()
     {
         //4 input
-        if(inputDash && havePossibleDash)
+        if (inputDash && havePossibleDash)
         {
             stateMachine.playerState = PlayerStateMachine.PlayerState.dash;
             dashCount.SendMessage("RemoveOneCharge");

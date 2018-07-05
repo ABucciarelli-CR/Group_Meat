@@ -14,5 +14,10 @@ public class GlobalVariables : MonoBehaviour
     public float TankAttack;
     public float ArcerAttack;
 
+    //Analytics--------------------------
+    public int DeathCount = 0;
+    public int BlinkCount = 0;
+    public int DevouredCount = 0;
+
     //public int enemyDead = 0;
 }

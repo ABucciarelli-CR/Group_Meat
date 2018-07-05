@@ -131,6 +131,7 @@ public class Life : MonoBehaviour
         {
             //Debug.Log("Sei Morto");
             ResetGlobalVariables();
+            GameObject.Find("GameManager").GetComponent<GlobalVariables>().DeathCount++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
